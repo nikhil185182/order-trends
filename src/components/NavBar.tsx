@@ -20,7 +20,7 @@ export default function NavBar() {
                     </Typography>
                     <Stack direction='row' spacing={2}>
                         <Button color='inherit' >{ORDER_TREND}</Button>
-                        <Button color='inherit'>{COMPANY_TREND}</Button>
+                        <Button color='inherit' >{COMPANY_TREND}</Button>
                         <Button color='inherit'>{NEW_USER}</Button>
                         <Button color='inherit'>{INACTIVE_USER}</Button>
                     </Stack>

@@ -1,0 +1,24 @@
+.MainContainer{
+    display: flex;
+    flex-direction: row;
+}
+.SubContainerOne{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.SubContainerTwo{
+    display: flex;
+    justify-content: center;
+    width:70%;
+    margin: 1%;
+    padding: 1%
+    
+}
+.DatePickerComponent{
+    height: 40%;
+    
+}
+.SearchbarComponent{
+    height: 40%;
+}

@@ -5,6 +5,7 @@ import Compare from './Compare';
 import { OrderTrendDto } from '../shared/dto/orderTrendDto';
 
 const OrderTrend = (props : {orderList : OrderTrendDto[]})=>{
+    
     const [isStats, SetStats] = useState(true);
 
     const mapList = new Map();

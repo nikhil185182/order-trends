@@ -55,9 +55,6 @@ const Compare = (props: { orderMap: Map<String, OrderTrendDto> }) => {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker onYearChange={undefined} className="sha"
                         value={value}
-                        // minDate={minimum}
-                        // maxDate={maximum}
-                        // maxDate={}
                         onChange={(newValue) => {
                             setValue(newValue);
                             const monthVal : number = newValue?.get('month')! + 1;
