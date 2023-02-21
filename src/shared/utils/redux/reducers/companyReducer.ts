@@ -45,7 +45,7 @@ const companysSlice = createSlice({
       })
       .addCase(fetchCompanyData.fulfilled, (state, { payload }: any) => {
         state.status = "success"
-        state.Data.push(payload)
+        state.Data=payload
       })
       .addCase(fetchCompanyData.rejected, (state ) => {
         state.status = "failed";
