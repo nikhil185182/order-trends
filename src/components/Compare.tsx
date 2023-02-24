@@ -7,13 +7,13 @@ import dayjs, { Dayjs } from 'dayjs';
 import '../shared/css/NavBar.css';
 import { Bar } from 'react-chartjs-2';
 import { GRAPH_OPTIONS } from '../shared/config';
-import { DUMMY_DATA } from '../shared/global_constants';
+
 
 
 const Compare = (props: { orderMap: Map<String, OrderTrendDto> }) => {
     const [value, setValue] = useState<Dayjs | null>(null);
     const [dateList, SetDateList] = useState<(OrderTrendDto)[]>([]);
-    const [graphData,SetGraphData] = useState<gType>(DUMMY_DATA);
+    // const [graphData,SetGraphData] = useState<gType>(DUMMY_DATA);
 
     const minimum : String = Array.from(props.orderMap)[0][0];
     const maximum : String = Array.from(props.orderMap)[props.orderMap.size-1][0];
@@ -46,7 +46,7 @@ const Compare = (props: { orderMap: Map<String, OrderTrendDto> }) => {
                 },
               ],
         }
-        SetGraphData(temp_graphData);
+        // SetGraphData(temp_graphData);
     },[dateList]);
     return (
         <div className="compareTab">
@@ -83,7 +83,7 @@ const Compare = (props: { orderMap: Map<String, OrderTrendDto> }) => {
                 </div>
 
             </div>
-                <Bar options={GRAPH_OPTIONS} data={graphData}/>
+                {/* <Bar options={GRAPH_OPTIONS} data={graphData}/> */}
         </div>
     )
 }

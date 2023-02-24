@@ -5,8 +5,9 @@ export interface companyLevel {
 }
 
 export interface fres{
-  companyres : companyLevel[]
+  getSpecificCompanyData : companyLevel[]
 }
+
 export type reqbody ={
   companyString:String,
   dateString:String

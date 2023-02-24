@@ -6,6 +6,10 @@
     display: flex;
     flex-direction: column;
     width: 25%;
+    height: 40%;
+    border: 5px;
+    scroll-behavior: auto;
+    border: 10px;
 }
 .SubContainerTwo{
     display: flex;

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,BarElement,Title,Tooltip,Legend, ChartData} from 'chart.js';
 import { Line ,Bar} from 'react-chartjs-2';
 import { OrderTrendDto, gType } from '../shared/dto/orderTrendDto';
-import { DUMMY_DATA } from '../shared/global_constants';
 import { GRAPH_OPTIONS } from '../shared/config';
 
 ChartJS.register(
@@ -24,7 +23,7 @@ const Statistics = (props : {orderList : OrderTrendDto[]})=>{
     const data1 : OrderTrendDto[] = props.orderList;
     var Ddata: OrderTrendDto[] = [];
 
-    const [graphData,SetGraphData] = useState<gType>(DUMMY_DATA);
+    const [graphData,SetGraphData] = useState<gType>();
 
 
     function  updateDays(days : number){
@@ -65,7 +64,7 @@ const Statistics = (props : {orderList : OrderTrendDto[]})=>{
 
     return (
         <div className='stats_bar'>
-            {isLine?<Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData}/>}
+            {/* {isLine?<Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData}/>} */}
             <div className="chartCust">
                 <Button onClick={handleLineClick}>Line Chart</Button>
                 <Button onClick={handleBarClick}>Bar Chart</Button>
