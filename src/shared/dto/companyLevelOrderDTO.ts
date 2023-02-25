@@ -14,7 +14,7 @@ export type reqbody ={
 }
 
 export interface company{
-  CompanyName:String
+  CompanyName:string
 }
 
 export type companiesList = {    

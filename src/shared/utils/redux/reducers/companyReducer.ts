@@ -124,10 +124,10 @@ export const Cutil = async (params: reqbody) => {
 }
 
 
-export const Helperutil=async ()=>{
+export const Helperutil =async()=>{
   const dispatch= useAppDispatch()
     try {
-        const response = await CompanyUtil();
+        const response :company[]= await CompanyUtil();
             dispatch(fetchCompanies(response))    
     } catch (error : any) {
         return error.Message

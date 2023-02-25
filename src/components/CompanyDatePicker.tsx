@@ -1,4 +1,5 @@
-import { Button, TextField } from '@mui/material';
+import { Delete } from '@mui/icons-material';
+import { Button, Chip, TextField } from '@mui/material';
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { randomInt } from 'crypto';
@@ -11,9 +12,8 @@ const CompanyDatePicker = () => {
     const [value,setValue] = useState<Dayjs|null>(dayjs());
     const [dateList,SetDateList] = useState<string[]>([]);
 
-
   return (
-    <div className="stats_bar">
+    <div className='datepickerComponent'>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DesktopDatePicker onYearChange={undefined} className="sha"
             value={value}
@@ -30,12 +30,16 @@ const CompanyDatePicker = () => {
     </LocalizationProvider>
     <div className="dateListbox">
         {
-            dateList.map((e) => {
+            dateList.map((e,index) => {
                 return (
-                    <div className="chipObject" >
-                        <p>{e}</p>
-                        <p onClick={() => SetDateList(dateList.filter(item => item != e))}>x</p>
-                    </div>
+                    <>
+                    <Chip
+                    label={e}
+                    icon={<Delete/>}
+                    variant="outlined"
+                    onClick={() => SetDateList(dateList.filter(item => item != e))}
+                  />
+                  </>
                 )
             })
         }
