@@ -1,0 +1,76 @@
+.chart_component {
+    align-items: center;
+    float: right;
+    width:1000px;
+    height: 550px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 50px;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+
+.Datepicker_component {
+    align-items: center;
+    float: left;
+    width:250px;
+    height: 550px;
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 50px;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+
+.Total_component {
+    display: flex;
+}
+
+.Day_picker_btn {
+    margin-left: 65px!important;
+    margin-bottom: 10px!important;
+}
+
+.Date_picker_btn {
+    margin-left: 60px!important;
+    margin-bottom: 10px!important;
+}
+
+.Day_picker {
+    margin-left: 15px!important;
+    margin-bottom: 10px!important;
+    margin-top: 25px!important;
+}
+
+.Date_picker {
+    margin-top: 25px!important;
+}
+
+
+.submit_btn {
+    margin-top: 280px!important;
+    margin-left: 70px!important;
+}
+
+.Line_btn {
+    margin-left: 350px!important;
+    margin-right: 20px!important;
+    margin-top: 30px!important;
+}
+
+.bar_btn {
+    margin-top: 30px!important;
+}
+
+.chip_component {
+    margin-top: 5px!important;
+    margin-left: 70px!important;
+}
+
+
+
+
+
+

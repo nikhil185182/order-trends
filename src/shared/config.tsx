@@ -1,5 +1,5 @@
-export const DAYS = 865;
-export const GRAPH_OPTIONS = {
+export const DAYS = 300;
+export const GRAPH_OPTION = {
     responsive: true,
     scales: {
         x: {

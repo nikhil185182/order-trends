@@ -4,7 +4,7 @@ import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,BarE
 import { Line ,Bar} from 'react-chartjs-2';
 import { OrderTrendDto, gType } from '../shared/dto/orderTrendDto';
 import { DUMMY_DATA } from '../shared/global_constants';
-import { GRAPH_OPTIONS } from '../shared/config';
+import { GRAPH_OPTION } from '../shared/config';
 
 ChartJS.register(
     CategoryScale,
@@ -65,7 +65,7 @@ const Statistics = (props : {orderList : OrderTrendDto[]})=>{
 
     return (
         <div className='stats_bar'>
-            {isLine?<Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData}/>}
+            {isLine?<Line options={GRAPH_OPTION} data={graphData} /> : <Bar options={GRAPH_OPTION} data={graphData}/>}
             <div className="chartCust">
                 <Button onClick={handleLineClick}>Line Chart</Button>
                 <Button onClick={handleBarClick}>Bar Chart</Button>

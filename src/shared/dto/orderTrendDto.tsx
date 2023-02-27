@@ -6,8 +6,18 @@ export type  OrderTrendDto = {
     TotalOrders : Number
 }
 
+export type  getInactiveUsersData = {
+    __typename: String;
+    CompanyName: String;
+    LatestOrderDate: Date;
+}
+
 export type Li = {
-    ordertrend : OrderTrendDto[]
+    ordertrend : OrderTrendDto[];
+}
+
+export type Li2 = {
+    inactiveusers : getInactiveUsersData[];
 }
 
 export type gType = {

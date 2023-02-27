@@ -6,7 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import '../shared/css/NavBar.css';
 import { Bar } from 'react-chartjs-2';
-import { GRAPH_OPTIONS } from '../shared/config';
+import { GRAPH_OPTION } from '../shared/config';
 import { DUMMY_DATA } from '../shared/global_constants';
 
 
@@ -86,7 +86,7 @@ const Compare = (props: { orderMap: Map<String, OrderTrendDto> }) => {
                 </div>
 
             </div>
-                <Bar options={GRAPH_OPTIONS} data={graphData}/>
+                <Bar options={GRAPH_OPTION} data={graphData}/>
         </div>
     )
 }
