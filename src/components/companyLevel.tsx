@@ -1,19 +1,22 @@
-import { useEffect } from "react";
 import "../shared/css/companyLevel.css";
-import { company } from "../shared/dto/companyLevelOrderDTO";
-import { useAppDispatch, useAppSelector } from "../shared/utils/redux/hooks";
-import { Helperutil } from "../shared/utils/redux/reducers/companyReducer";
-import { CompanySelector } from "../shared/utils/redux/selectors/companySelector";
+import { useAppDispatch } from "../shared/utils/redux/hooks";
+import { Helperutil } from "../shared/utils/redux/companyAPI";
 import CompanyButtonContainer from "./CompanyButton";
-import CompanyChart from "./CompanyChart";
 import CompanyDatePicker from "./CompanyDatePicker";
+
 import CompanyAutocomplete from "./CompanySearchBar";
-import AutocompleteExample from "./CompanySearchBar";
+import FrequencyVsDateGraph from "./fvd";
+
 
 const CompanyTrend = () => {
 
 
+  const dispatch = useAppDispatch()
+
     Helperutil()
+
+    // dispatch(fetchCompanyData({companyString:"AO CAFE,The Spot,Firehouse Subs",dateString:"2020-04-04,2020-05-06,2021-04-05,2021-07-06,"}))
+
 
 
   return (
@@ -25,7 +28,7 @@ const CompanyTrend = () => {
           <CompanyButtonContainer />
         </div>
         <div className="subcontainerTwo">
-          <CompanyChart />
+           <FrequencyVsDateGraph/>
         </div>
       </div>
     </>

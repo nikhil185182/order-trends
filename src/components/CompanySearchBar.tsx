@@ -1,51 +1,59 @@
-import { Delete } from '@mui/icons-material';
-import Autocomplete from '@mui/material/Autocomplete/Autocomplete';
-import Chip from '@mui/material/Chip/Chip';
-import TextField from '@mui/material/TextField/TextField';
-import { useState } from 'react';
-import { company } from '../shared/dto/companyLevelOrderDTO';
-import { useAppSelector } from '../shared/utils/redux/hooks';
-import { CompanySelector } from '../shared/utils/redux/selectors/companySelector';
-
-
-
+import Autocomplete from "@mui/material/Autocomplete/Autocomplete";
+import TextField from "@mui/material/TextField/TextField";
+import { useEffect } from "react";
+import { useState } from "react";
+import { company } from "../shared/dto/companyLevelOrderDTO";
+import { useAppDispatch, useAppSelector } from "../shared/utils/redux/hooks";
+import { setCompanyString } from "../shared/utils/redux/reducers/companyReducer";
+import { CompanySelector } from "../shared/utils/redux/selectors/companySelector";
 
 const CompanyAutocomplete = () => {
-    const options: company[] = useAppSelector(CompanySelector)||[{CompanyName:"Option 1"}];
+  const options: company[] = useAppSelector(CompanySelector) || [
+    { CompanyName: "Options are loading" },
+  ];
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-    const handleSelect = (_: any, value: string) => {
-        setSelectedOptions([...selectedOptions, value]);
-      };
-      const handleRemove = (option: company) => {
-        setSelectedOptions(selectedOptions.filter((o) => o !== option.CompanyName));
-      };
-            
+  const dispatch = useAppDispatch();
 
 
+  useEffect(()=>{
+    dispatch(setCompanyString(selectedOptions))
+    console.log("====================================");
+    console.log(`selected copanies list ${selectedOptions}`);
+    console.log("====================================");
+  },[selectedOptions])
 
-return(
+
+
+  const handleOnChange = (value: company[]) => {
+    console.log("====================================");
+    console.log(value);
+    console.log("====================================");
+
+    setSelectedOptions(value.map((v) => v.CompanyName));
+
+
+    
+    
+
+
+  };
+
+  return (
+
     <Autocomplete
-    multiple
-    disablePortal
-    options={options}
-    getOptionLabel={(option:company)=>option.CompanyName!}
-    sx={{ width: 300 }}
-    renderTags={(value, getTagProps) =>
-        value.map((option, index) => (
-          <Chip
-            label={option.CompanyName}
-            variant="outlined"
-            deleteIcon={<Delete />}
-            {...getTagProps({ index })}
-          />
-        ))
-      }
-    renderInput={(params) => <TextField {...params} label="Select a company" />}
-  />
-)
-}
+      multiple
+      disablePortal
+      options={options}
+      onChange={(event, value) => handleOnChange(value)}
+      getOptionLabel={(option: company) => option.CompanyName!}
+      sx={{ width: 300 }}
+      renderInput={(params) => (
+        <TextField {...params} label="Select a company" />
+      )}
+    />
+  );
+};
 export default CompanyAutocomplete;
 
 
-  

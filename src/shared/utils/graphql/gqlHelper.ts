@@ -13,7 +13,7 @@ import {
 } from "./queries";
 
 export const CompanyUtil = async () => {
-  const { data } =  useQuery<companiesList>(COMPANIES_QUERY);
+  const { data } =useQuery<companiesList>(COMPANIES_QUERY);
   const tempResult: company[] = data?.companyLists!;
   const result: company[] = [];
   tempResult?.map((c: company) => result.push(c));
@@ -30,11 +30,14 @@ export function OrderUtil() {
   return original;
 }
 
-export const  GetSpecificCompanyData = async(
+export async function GetSpecificCompanyData(
   companyString: String,
   dateString: String
-)=> {
-  const  {data,loading,error} = useQuery<fres>(
+) {
+  console.log("====================================");
+  console.log("I called gql helper");
+  console.log("====================================");
+  const { data, loading, error } =  useQuery<fres>(
     GETSPECIFICCOMPANIESDATA_QUERY,
     {
       variables: {
@@ -42,9 +45,8 @@ export const  GetSpecificCompanyData = async(
         i2: dateString,
       },
     }
-  )
-  return {data,loading,error}
+  );
 
-    }
-  
 
+  return { data, loading, error };
+}

@@ -1,6 +1,6 @@
 export interface companyLevel {
   Company: string;
-  Date: String;
+  Date: string;
   TotalOrders: number;
 }
 
