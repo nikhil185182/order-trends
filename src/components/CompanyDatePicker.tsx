@@ -24,7 +24,7 @@ const CompanyDatePicker = () => {
   return (
     <div className='datepickerComponent'>
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DesktopDatePicker onYearChange={undefined} className="sha"
+        <DesktopDatePicker  onYearChange={undefined} className="sha"
             value={value}
             onChange={()=>true}
             onAccept={ (newValue) => {

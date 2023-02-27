@@ -1,6 +1,6 @@
 import "../shared/css/companyLevel.css";
 import { useAppDispatch } from "../shared/utils/redux/hooks";
-import { Helperutil } from "../shared/utils/redux/companyAPI";
+import { fetchCompanyData, Helperutil } from "../shared/utils/redux/companyAPI";
 import CompanyButtonContainer from "./CompanyButton";
 import CompanyDatePicker from "./CompanyDatePicker";
 
@@ -14,24 +14,21 @@ const CompanyTrend = () => {
   const dispatch = useAppDispatch()
 
     Helperutil()
-
-    // dispatch(fetchCompanyData({companyString:"AO CAFE,The Spot,Firehouse Subs",dateString:"2020-04-04,2020-05-06,2021-04-05,2021-07-06,"}))
-
-
+    const cs : string ="AO CAFE,The Spot,Freebirds,Wicks Park Bar & Grill,BBQ Pete's,Del Charro c/o Inn of the Governors,Prime 120,Edgar's Bakery,Food Dance,WCCRS Demo,Happi House,Turner Hall Ballroom"
+    dispatch(fetchCompanyData({companyString:cs,dateString:"2020-04-04,2020-05-06,2021-04-05,2021-07-06,"}))
 
   return (
-    <>
       <div className="MainContainer">
         <div className="SubcontainerOne">
-          <CompanyDatePicker />
-          <CompanyAutocomplete />
+          <div className="DatepickerComponent"><CompanyDatePicker /></div>
+          <div><CompanyAutocomplete /></div>
           <CompanyButtonContainer />
         </div>
         <div className="subcontainerTwo">
            <FrequencyVsDateGraph/>
         </div>
       </div>
-    </>
+ 
   );
 };
 

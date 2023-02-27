@@ -40,7 +40,7 @@ const CompanyAutocomplete = () => {
   };
 
   return (
-
+<div className="searchBar">
     <Autocomplete
       multiple
       disablePortal
@@ -52,6 +52,7 @@ const CompanyAutocomplete = () => {
         <TextField {...params} label="Select a company" />
       )}
     />
+    </div>
   );
 };
 export default CompanyAutocomplete;

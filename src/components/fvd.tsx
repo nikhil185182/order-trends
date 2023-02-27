@@ -1,6 +1,7 @@
 
 import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,BarElement,Title,Tooltip,Legend} from 'chart.js';
 import { Line } from "react-chartjs-2";
+import { GRAPH_OPTIONS } from '../shared/config';
 import { companyLevel } from '../shared/dto/companyLevelOrderDTO';
 import { useAppSelector } from '../shared/utils/redux/hooks';
 import { ReqCompanies } from '../shared/utils/redux/selectors/companySelector';
@@ -66,7 +67,7 @@ const TotalOrdersVsDateGraph = ()=> {
     })),
   };
 
-  return <Line data={chartData} width={500} height={500}/>;
+  return <Line data={chartData} width={500} height={500} options={GRAPH_OPTIONS}/>;
 }
 
 
