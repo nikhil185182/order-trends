@@ -6,7 +6,7 @@ export type  OrderTrendDto = {
     TotalOrders : Number
 }
 
-export type Li = {
+export type GQL_ResponseType = {
     ordertrend : OrderTrendDto[]
 }
 
@@ -18,4 +18,16 @@ export type gType = {
         borderColor: string;
         backgroundColor: string;
     }[];
+}
+
+
+
+export type ReduxObjType = {
+    Data : OrderTrendDto[],
+    orderDateList : OrderTrendDto[],
+    status : String
+}
+
+export type ReduxOrderDateListType = {
+    orderDateList : OrderTrendDto[]
 }

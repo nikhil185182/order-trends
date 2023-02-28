@@ -4,12 +4,12 @@ export const GRAPH_OPTIONS = {
     scales: {
         x: {
             grid: {
-                display: false
+                display: true
             }
         },
         y: {
             grid: {
-                display: false
+                display: true
             }
         }
     },

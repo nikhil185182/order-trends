@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import store from './redux/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Router } from 'react-router-dom';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql/",
@@ -13,9 +16,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <ApolloProvider client={client}>
-          <App/>
-      </ApolloProvider>
+    <ApolloProvider client={client}>
+      <Provider store={store}>
+        <BrowserRouter><App/></BrowserRouter>
+      </Provider>
+    </ApolloProvider>
   </React.StrictMode>
 );
 
