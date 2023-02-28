@@ -1,17 +1,11 @@
 
 import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,BarElement,Title,Tooltip,Legend} from 'chart.js';
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { GRAPH_OPTIONS } from '../shared/config';
 import { companyLevel } from '../shared/dto/companyLevelOrderDTO';
 import { useAppSelector } from '../shared/utils/redux/hooks';
 import { ReqCompanies } from '../shared/utils/redux/selectors/companySelector';
 
-
-interface CompanyData {
-  Company: string;
-  Date: string;
-  TotalOrders: number;
-}
 
 interface GroupedData {
   [key: string]: companyLevel[];
@@ -37,14 +31,14 @@ const TotalOrdersVsDateGraph = ()=> {
         { Company: "Company A", Date: "2022-01-02", TotalOrders: 20 },
         { Company: "Company A", Date: "2022-01-03", TotalOrders: 15 },
         { Company: "Company B", Date: "2022-01-01", TotalOrders: 5 },
-        { Company: "Company B", Date: "2022-01-02", TotalOrders: 25 },
-        { Company: "Company B", Date: "2022-01-03", TotalOrders: 20 },
-        { Company: "Company c", Date: "2022-01-01", TotalOrders: 14 },
-        { Company: "Company c", Date: "2022-01-2", TotalOrders: 25 },
-        { Company: "Company c", Date: "2022-01-03", TotalOrders: 10 },
+        { Company: "Company B", Date: "2022-01-02", TotalOrders: 10 },
+        { Company: "Company B", Date: "2022-01-03", TotalOrders: 7.5 },
+        { Company: "Company c", Date: "2022-01-01", TotalOrders: 7.5 },
+        { Company: "Company c", Date: "2022-01-02", TotalOrders: 15 },
+        { Company: "Company c", Date: "2022-01-03", TotalOrders: 11 },
       ];
 
-    const data : companyLevel[] = useAppSelector(ReqCompanies)||data1
+    const data : companyLevel[] = useAppSelector(ReqCompanies)||data1;
 
 
 
@@ -64,6 +58,8 @@ const TotalOrdersVsDateGraph = ()=> {
       data: groupedData[Company].map((d) => d.TotalOrders),
       fill: false,
       borderColor: getRandomColor(),
+      lineTension: 0.25,        
+      radius: 7.5      
     })),
   };
 

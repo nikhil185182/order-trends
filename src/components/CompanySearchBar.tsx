@@ -1,4 +1,8 @@
+import { ThemeProvider } from "@emotion/react";
 import Autocomplete from "@mui/material/Autocomplete/Autocomplete";
+import { createStyles, styled } from "@mui/material/styles";
+import createTheme, { Theme } from "@mui/material/styles/createTheme";
+import makeStyles from "@mui/material/styles/makeStyles";
 import TextField from "@mui/material/TextField/TextField";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -7,12 +11,12 @@ import { useAppDispatch, useAppSelector } from "../shared/utils/redux/hooks";
 import { setCompanyString } from "../shared/utils/redux/reducers/companyReducer";
 import { CompanySelector } from "../shared/utils/redux/selectors/companySelector";
 
+
 const CompanyAutocomplete = () => {
   const options: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
   const dispatch = useAppDispatch();
 
 
@@ -21,7 +25,7 @@ const CompanyAutocomplete = () => {
     console.log("====================================");
     console.log(`selected copanies list ${selectedOptions}`);
     console.log("====================================");
-  },[selectedOptions])
+  },[selectedOptions,dispatch])
 
 
 
@@ -42,6 +46,7 @@ const CompanyAutocomplete = () => {
   return (
 <div className="searchBar">
     <Autocomplete
+    className="searchauto"
       multiple
       disablePortal
       options={options}

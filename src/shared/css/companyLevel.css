@@ -5,53 +5,68 @@
     justify-content:space-between;
 }
 .SubContainerOne{
-   width: 25%; 
+   width: 15%; 
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   align-items: center;
+   justify-content: center;
    overflow: hidden;
 }
 
+.DatepickerComponent {
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width:200px;
+    height: 200px; 
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 50px;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    scrollbar-width: none!important;
+    overflow-y: scroll;
+   
+}
 
-.subcontainerTwo{
-    width: 90%;
-    height:570px;
-    padding: 2.5%;
+.SearchBarComponent{
+    align-items: center;
+    float: left;
+    width:150px;
+    height: 200px; 
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 50px;
+    padding-right: 100px!important;
+    margin-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    scrollbar-width:none!important;
+    overflow-y: scroll;
     
 }
- .graphcomp{
+
+.subcontainerTwo{
     width: 100%;
-    height: fit-content
-
-}
-canvas{
-    width: 100%;
-}
-
-.datepickerComponent{
-    display:flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content:center;
-    height: 40%;
-    width: 100%!important;
-    border-color: black;
-    overflow-y: scroll;
-} 
-.searchBar{
-    padding: 10px;
-    display:flex;
-    align-items: start;
-    justify-content:center;
-    height: 40%;
-    width: 100%! important;
-    border-color: black;
+    height:570px;
+    padding: 2.5%;
+    margin-top: 25px;
+    margin-right: 25px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
 }
 
-.dateListbox{
-    align-items: center;
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-} 
+.ButtonComponent{
+  margin-top: 650px;
+  margin-left: 125px;
+  border-radius: 10px;
+  width: fit-content;
+  background-color: "#54B948";
+}
+
+
+.searchauto{
+    width: 200px!important;
+}
+

@@ -5,7 +5,7 @@ import CompanyButtonContainer from "./CompanyButton";
 import CompanyDatePicker from "./CompanyDatePicker";
 
 import CompanyAutocomplete from "./CompanySearchBar";
-import FrequencyVsDateGraph from "./fvd";
+import FrequencyVsDateGraph from "./CompanyChart";
 
 
 const CompanyTrend = () => {
@@ -15,14 +15,14 @@ const CompanyTrend = () => {
 
     Helperutil()
     const cs : string ="AO CAFE,The Spot,Freebirds,Wicks Park Bar & Grill,BBQ Pete's,Del Charro c/o Inn of the Governors,Prime 120,Edgar's Bakery,Food Dance,WCCRS Demo,Happi House,Turner Hall Ballroom"
-    dispatch(fetchCompanyData({companyString:cs,dateString:"2020-04-04,2020-05-06,2021-04-05,2021-07-06,"}))
+    dispatch(fetchCompanyData({companyString:cs,dateString:"2020-04-04,2020-05-06,2021-04-05,2021-07-06,2020-09-10"}))
 
   return (
       <div className="MainContainer">
         <div className="SubcontainerOne">
           <div className="DatepickerComponent"><CompanyDatePicker /></div>
-          <div><CompanyAutocomplete /></div>
-          <CompanyButtonContainer />
+          <div className="SearchBarComponent"><CompanyAutocomplete /></div>
+          <div className="ButtonComponent"><CompanyButtonContainer /></div>
         </div>
         <div className="subcontainerTwo">
            <FrequencyVsDateGraph/>

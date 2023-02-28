@@ -6,15 +6,18 @@ import {
 import { fetchCompanyData } from "../companyAPI";
 
 type dto = {
-  Data: companyLevel[];
   companyString: string[];
   dateString: string[];
+  Data: companyLevel[];
+
   status: string;
   companies: company[];
 
 };
 
 const InitialState: dto = {
+  companyString: [],
+  dateString: [],
   Data: [
     {
       Company: "",
@@ -22,8 +25,7 @@ const InitialState: dto = {
       TotalOrders: 0,
     },
   ],
-  companyString: [],
-  dateString: [],
+
   companies: [],
   status: ""
 };

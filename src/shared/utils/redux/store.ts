@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, configureStore } from "@reduxjs/toolkit";
 import companyReducer from "./reducers/companyReducer";
 
  const store =configureStore({
     reducer:{
         company:companyReducer,
+    
     }
+    
 })
 
 export type RootState = ReturnType<typeof store.getState>;
