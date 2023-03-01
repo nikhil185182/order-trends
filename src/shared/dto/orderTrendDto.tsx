@@ -7,6 +7,7 @@ export type  OrderTrendDto = {
 }
 
 export type  getInactiveUsersData = {
+    orderDate: any;
     __typename: String;
     CompanyName: String;
     LatestOrderDate: Date;
