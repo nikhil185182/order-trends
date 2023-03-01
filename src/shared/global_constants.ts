@@ -24,3 +24,6 @@ export const TOTAL_ORDERS_LABEL = 'Total Orders';
 export const ORANGE = '#FA8231';
 export const BLUE = '#3C40C6';
 export const GREEN = '#55B74E';
+
+export const DUPLICATE_DATA = "Date already exists in the Graph";
+export const DATA_NOT_FOUND = "Date is not found in the database";

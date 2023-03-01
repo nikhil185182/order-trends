@@ -8,13 +8,13 @@ import '../shared/css/NavBar.css';
 import { Bar } from 'react-chartjs-2';
 import { GRAPH_OPTIONS } from '../shared/config';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../shared/global_constants';
-import { getDateFromDatePicker, getMaximumDateData, getOrderListMap } from '../shared/utils/helperFunctions';
+import { getDateFromDatePicker,getOrderListMap } from '../shared/utils/helperFunctions';
 import { useAppDispatch, useAppSelector } from '../redux/selectors/hooks';
 import {getOrderListData, selectOrderTrendData } from '../redux/selectors/orderTrendSelector';
 import { addOrderDateList } from '../redux/reducers/orderTrendReducer';
 import CompareDatePicker from './CompareDatePicker';
 import CompareBarGraph from './CompareBarGraph';
-
+import styled from '@emotion/styled';
 
 const Compare = () => {
     const orderList = useAppSelector(selectOrderTrendData);

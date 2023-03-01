@@ -10,16 +10,6 @@ export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
     return val;
 }
 
-export const getMaximumDateData = (maximum:string,orderMap: Map<String, OrderTrendDto>) => {
-    return {
-        __typename : "OrderData",
-        OrderDate:orderMap.get(maximum)?.OrderDate!,
-        AttemptedOrders:orderMap.get(maximum)?.AttemptedOrders!,
-        CompletedOrders:orderMap.get(maximum)?.CompletedOrders!,
-        TotalOrders:orderMap.get(maximum)?.TotalOrders!
-    }
-}
-
 
 export const getOrderListMap = (orderList : OrderTrendDto[]) =>{
     const mapList = new Map<string,OrderTrendDto>();

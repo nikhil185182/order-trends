@@ -54,6 +54,10 @@
     margin: 5px;
 }
 
+p:hover{
+    cursor: pointer;
+}
+
 .compareTab{
     display: flex;
     width: 80%;
@@ -65,24 +69,26 @@
 .dateListbox{
     overflow-y: scroll;
     height: 500px;
-    margin: 10px 5px; padding: 5px;
-    text-align: justify;
+    margin: 10px 5px; 
+    padding: 5px;
+    text-align: center;
 }
 
-.dateListbox ::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
 }
 
-.dateListbox ::-webkit-scrollbar-track {
-    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3); 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset 0 0 6px rgba(169, 169, 169, 0.3); 
     border-radius:5px;
 }
-.dateListbox ::-webkit-scrollbar-thumb {
+
+::-webkit-scrollbar-thumb {
     border-radius:5px;
-    -webkit-box-shadow: inset 0 0 6px red; 
+    -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82); 
 }
 
-.hs{
+.compare_bar_graph{
     width: 75%;
 }
 

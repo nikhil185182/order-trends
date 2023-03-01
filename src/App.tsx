@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import OrderTrend from './containers/companyOrderTrend/OrderTrend';
+import OrderTrend from './containers/orderTrend/OrderTrend';
 import { useAppDispatch } from './redux/selectors/hooks';
 import { fetchOrderTrenData, setOrderTrendData } from './redux/reducers/orderTrendReducer';
 

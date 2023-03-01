@@ -15,7 +15,7 @@ import CssBaseline from '@mui/material';
 export default function NavBar() {
     let navigate = useNavigate();
     return (
-        <AppBar position="static" style={{ background: '#54B948',margin:0}}>
+        <AppBar position="static" style={{ background: '#54B948',margin:'0px'}}>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={()=>navigate('/')}>
                     Ecommerce Analytics

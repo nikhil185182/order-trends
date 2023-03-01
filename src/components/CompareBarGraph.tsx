@@ -40,7 +40,7 @@ export default function CompareBarGraph() {
     }, [dateList]);
 
   return (
-    <div>
+    <div className='compare_bar_graph'>
         <Bar options={GRAPH_OPTIONS} data={graphData} />
     </div>
   )

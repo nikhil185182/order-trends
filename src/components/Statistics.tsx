@@ -72,9 +72,7 @@ const Statistics = () => {
         SetGraphData(temp_graphData);
     }
 
-    useEffect(() => {
-        updateDays(30);
-    }, [orderList]);
+    useEffect(() => {updateDays(30)}, [orderList]);
 
     const handleBarClick = () => SetLine(false);
     const handleLineClick = () => SetLine(true);
