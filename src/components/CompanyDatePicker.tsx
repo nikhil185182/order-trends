@@ -47,7 +47,7 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <TextField size="small"  {...params} />}
         />
       </LocalizationProvider>
       <div className="dateListbox">

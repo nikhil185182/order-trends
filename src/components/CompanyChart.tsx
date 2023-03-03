@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { GRAPH_OPTIONS } from "../shared/config";
 import { companyLevel } from "../shared/dto/companyLevelOrderDTO";
+import { gType } from "../shared/dto/orderTrendDto";
 import { DUMMY_DATA } from "../shared/global_constants";
 import { useAppSelector } from "../shared/utils/redux/hooks";
 import { ReqCompanies } from "../shared/utils/redux/selectors/companySelector";
@@ -33,8 +34,14 @@ ChartJS.register(
 );
 
 const TotalOrdersVsDateGraph = () => {
-  const data1: companyLevel[] = [];
-  const data: companyLevel[] |null = useAppSelector(ReqCompanies) || data1;
+  const data1: companyLevel[] = [
+    {
+      Company: "",
+      Date: "",
+      TotalOrders:0
+    }
+  ];
+  const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
 
   const groupedData = data.reduce<GroupedData>((result, currentValue) => {
     const { Company, ...rest } = currentValue;
@@ -45,14 +52,11 @@ const TotalOrdersVsDateGraph = () => {
     return result;
   }, {});
 
-  const [isfilled,setFilled] = useState(true)
-  useEffect(()=>{
-  if(data){
-    setFilled(false)
-  }
-},[isfilled])
 
-  const chartData = {
+  const chartData = (data[0].Company==data1[0].Company) ? {
+    labels:[],
+    datasets:[]
+  }: {
     labels: [...new Set(data.map((d) => d.Date))],
     datasets: Object.keys(groupedData).map((Company) => ({
       label: Company,
