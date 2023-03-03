@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Statistics from './Statistics';
 import Compare from './Compare';
 import { OrderTrendDto } from '../shared/dto/orderTrendDto';

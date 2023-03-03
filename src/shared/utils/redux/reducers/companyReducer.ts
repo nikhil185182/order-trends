@@ -22,7 +22,7 @@ const InitialState: dto = {
     {
       Company: "",
       Date: "",
-      TotalOrders: 0,
+      TotalOrders: 0
     },
   ],
 

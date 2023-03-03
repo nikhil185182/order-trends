@@ -1,12 +1,13 @@
-import { Delete } from "@mui/icons-material";
 import { Chip, TextField } from "@mui/material";
-import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DatePicker, DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAppDispatch } from "../shared/utils/redux/hooks";
 import { setDateString } from "../shared/utils/redux/reducers/companyReducer";
+import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
   const [dateList, SetDateList] = useState<string[]>([]);
@@ -22,13 +23,13 @@ const CompanyDatePicker = () => {
   
 
   return (
-    <>
+    <div className="dateComp">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DesktopDatePicker
-          onYearChange={undefined}
+        <DatePicker
           className="sha"
+          label='select Dates'
           value={value}
-          onChange={() => true}
+          onChange={()=>false}
           onAccept={(newValue) => {
             setValue(newValue);
             const monthVal: number = newValue?.get("month")! + 1;
@@ -40,7 +41,10 @@ const CompanyDatePicker = () => {
               mVal +
               "-" +
               newValue?.get("date").toString()!;
-            SetDateList([...dateList, val]);
+            if(dateList.indexOf(val)===-1)
+              SetDateList([...dateList, val]);
+            else
+              alert("you've already selected it")
             setValue(null);
           }}
           renderInput={(params) => <TextField {...params} />}
@@ -52,8 +56,9 @@ const CompanyDatePicker = () => {
             <>
               <Chip
                 key={index}
+                className="chipObject"
                 label={e}
-                icon={<Delete />}
+                icon={<DangerousIcon/>}
                 variant="outlined"
                 onClick={() =>
                   SetDateList(dateList.filter((item) => item != e))
@@ -63,7 +68,7 @@ const CompanyDatePicker = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

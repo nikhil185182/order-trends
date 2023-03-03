@@ -6,35 +6,33 @@ import {
 } from "../shared/utils/redux/selectors/companySelector";
 import { fetchCompanyData } from "../shared/utils/redux/companyAPI";
 import { AppDispatch } from "../shared/utils/redux/store";
-import { GetSpecificCompanyData } from "../shared/utils/graphql/gqlHelper";
-import { fetchCompanyDatas } from "../shared/utils/redux/reducers/companyReducer";
-import { companyLevel, fres, reqbody } from "../shared/dto/companyLevelOrderDTO";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 const CompanyButtonContainer = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const companyArray: string[] = useAppSelector(CompanyStringSelector);
   const dateArray: string[] = useAppSelector(DateStringSelector);
-  const [data,setData] = useState<companyLevel[]>()
-
-
-
-  const handleClick = useCallback(async ()=> {
-    const cs: string = companyArray.join(",")
-    const ds:string = dateArray.join(",")
-    const{data,loading}=await GetSpecificCompanyData(cs,ds)
-    if(data&&!loading){
-      setData(data.getSpecificCompanyData)
-      dispatch(fetchCompanyDatas(data?.getSpecificCompanyData))
+  const [cs,setcs] = useState("")
+  const [ds,setds] = useState("")
+  dispatch(fetchCompanyData({companyString:cs,dateString:ds}))
+  const handleClick = ()=> {
+   setcs(companyArray.join(","))
+   setds(dateArray.join(",")) 
     }
+    return (
+      <Button onClick={handleClick} style={{
+        color :"white",
+        backgroundColor:"#54B948",
+        width:"100%"
+      }} >
+        submit
+      </Button>
+    );
     
-  },[])
+  }
   
-  return (
-    <Button onClick={handleClick} >
-      submit
-    </Button>
-  );
-};
+
+
+
 
 export default CompanyButtonContainer;
