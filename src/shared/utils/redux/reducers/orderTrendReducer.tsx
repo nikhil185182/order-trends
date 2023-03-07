@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { OrderTrendDto, ReduxObjType, ReduxOrderDateListType } from '../../shared/dto/orderTrendDto';
-import { ORDERTREND_DUMMY_DATA } from '../../shared/global_constants';
-import { OrderTrendUtil } from '../../shared/utils/graphql/gqlHelper';
+import { OrderTrendDto,ReduxObjType,ReduxOrderDateListType } from '../../../dto/orderTrendDto';
+import { ORDERTREND_DUMMY_DATA } from '../../../global_constants';
+import { OrderTrendUtil } from '../../graphql/gqlHelper';
 
 const initialState : ReduxObjType = {
     Data : [ORDERTREND_DUMMY_DATA],

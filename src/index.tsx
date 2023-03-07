@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import store from './redux/store';
+import store from './shared/utils/redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Router } from 'react-router-dom';
 

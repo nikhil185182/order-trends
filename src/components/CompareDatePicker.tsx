@@ -5,10 +5,10 @@ import dayjs, { Dayjs } from 'dayjs'
 import React, { useEffect, useState } from 'react'
 import { OrderTrendDto} from '../shared/dto/orderTrendDto';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DATA_NOT_FOUND, DUPLICATE_DATA, GRAPH_DUMMY_DATA } from '../shared/global_constants'
-import { addOrderDateList } from '../redux/reducers/orderTrendReducer'
+import { DATA_NOT_FOUND, DUPLICATE_DATA, GRAPH_DUMMY_DATA } from '../shared/global_constants';
+import { addOrderDateList } from '../shared/utils/redux/reducers/orderTrendReducer'
 import { getDateFromDatePicker } from '../shared/utils/helperFunctions'
-import { useAppDispatch } from '../redux/selectors/hooks'
+import { useAppDispatch } from '../shared/utils/redux/selectors/hooks'
 
 
 export default function CompareDatePicker(props: { orderMap: Map<string, OrderTrendDto> }) {

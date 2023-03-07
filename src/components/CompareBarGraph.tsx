@@ -3,8 +3,8 @@ import { Bar } from 'react-chartjs-2'
 import { GRAPH_OPTIONS } from '../shared/config'
 import { gType } from '../shared/dto/orderTrendDto';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../shared/global_constants';
-import { useAppSelector } from '../redux/selectors/hooks';
-import { getOrderListData } from '../redux/selectors/orderTrendSelector';
+import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
+import { getOrderListData } from '../shared/utils/redux/selectors/orderTrendSelector';
 
 export default function CompareBarGraph() {
 
