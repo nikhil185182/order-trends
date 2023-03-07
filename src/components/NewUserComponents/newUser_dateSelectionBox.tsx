@@ -8,7 +8,8 @@ import { settingfromdate, settingtodate, toggleDrawer } from "../../shared/utils
 import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
-import '../../containers/newCustomers/newUserDemo.css';
+
+import "../../shared/css/newUserDemo.css";
 
 
 

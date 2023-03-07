@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NewUsers from './components/NewUsersComponents/NewUser';
+
 //import newUserSlice, { gettingnewUsersDates, settingnewUsersDates } from './shared/utils/redux/reducers/newUserReducer';
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { Fetchnewusersdata,  } from './shared/utils/redux/reducers/newUserReducer';
-import PersistentDrawerRight from './components/NewUsersComponents/SideBarDemo';
+
 import NewUserDemo from './containers/newCustomers/newUserDemo';
-import NewUserTable from './components/mycomponents/newUsertable';
+
 
 import NavBar from "./components/NavBar";
 

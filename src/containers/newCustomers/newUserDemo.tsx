@@ -1,12 +1,12 @@
-import { styled } from "@mui/material/styles";
-import "./newUserDemo.css";
-import NavBar from "../../components/NavBar";
+
+import "../../shared/css/newUserDemo.css";
+
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import BarsClick from "../../components/mycomponents/NewUserChart";
-import NewUserDate_selectionBox from "../../components/mycomponents/newUser_dateSelectionBox";
-import NewUsersideBar from "../../components/mycomponents/newCompany_sideBar";
-import NewUserTable from "../../components/mycomponents/newUsertable";
-import NewUserChart from "../../components/mycomponents/NewUserChart";
+
+import NewUserDate_selectionBox from "../../components/NewUserComponents/newUser_dateSelectionBox";
+import NewUsersideBar from "../../components/NewUserComponents/newCompany_sideBar";
+import NewUserTable from "../../components/NewUserComponents/newUsertable";
+import NewUserChart from "../../components/NewUserComponents/NewUserChart";
 
 
 

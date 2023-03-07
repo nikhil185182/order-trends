@@ -17,7 +17,8 @@ import { NewUsersDTO } from "../../shared/dto/newUsersDto";
 import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, ToggleButton } from "@mui/material";
 import { AppDispatch } from "../../shared/utils/redux/store";
-import '../../containers/newCustomers/newUserDemo.css';
+
+import "../../shared/css/newUserDemo.css";
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,PointElement,LineElement);
 
 export default function NewUserChart() {
