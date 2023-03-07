@@ -4,6 +4,7 @@ import OrderTrend from './containers/orderTrend/OrderTrend';
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './shared/utils/redux/reducers/orderTrendReducer';
 import Dummy from './components/Dummy';
+import NewUserDemo from './containers/newCustomers/newUserDemo';
 
 
 
@@ -20,7 +21,7 @@ function App() {
         <div className="hello">
           <Routes>
             <Route path="/ordertrend" element={<OrderTrend />} />
-            {/* <Route path="/company" element={<Dummy />} /> */}
+            <Route path="/newUsers" element={<NewUserDemo />} />
           </Routes>
         </div>
       </BrowserRouter>
