@@ -7,6 +7,8 @@ import {
 import { fetchCompanyData } from "../shared/utils/redux/companyAPI";
 import { AppDispatch } from "../shared/utils/redux/store";
 import { useState } from "react";
+import { WidthFull } from "@mui/icons-material";
+import { height } from "@mui/system";
 
 const CompanyButtonContainer = () => {
   const dispatch: AppDispatch = useAppDispatch();
@@ -23,8 +25,14 @@ const CompanyButtonContainer = () => {
       <Button onClick={handleClick} style={{
         color :"white",
         backgroundColor:"#54B948",
-        width:"100%"
+        width:"90%",
+        borderRadius:"20px",
+        fontSize:"16.5px",
+        height:"80%"
       }} >
+       
+          
+         
         submit
       </Button>
     );

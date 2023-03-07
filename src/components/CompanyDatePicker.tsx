@@ -1,17 +1,18 @@
 import { Chip, TextField } from "@mui/material";
-import { DatePicker, DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DesktopDatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import DangerousIcon from '@mui/icons-material/Dangerous';
+import {ClearRounded} from '@mui/icons-material';
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAppDispatch } from "../shared/utils/redux/hooks";
 import { setDateString } from "../shared/utils/redux/reducers/companyReducer";
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
+import { AppDispatch } from "../shared/utils/redux/store";
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
   const [dateList, SetDateList] = useState<string[]>([]);
-  const dispatch = useAppDispatch();
+  const [year,setYear]=useState(false)
+  const dispatch:AppDispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(setDateString(dateList));
@@ -20,21 +21,31 @@ const CompanyDatePicker = () => {
     console.log("====================================");
   }, [dateList,dispatch]);
 
+
+
   
 
   return (
     <div className="dateComp">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
+        <DesktopDatePicker
           className="sha"
-          label='select Dates'
+          label='Select Dates'
           value={value}
-          onChange={()=>false}
+          disableFuture={true}
+          onYearChange={()=>{
+             console.log('====================================');
+             console.log(`year changed`);
+             setYear(!year)
+             console.log('====================================');
+          }}
+          onChange={()=>true}
           onAccept={(newValue) => {
             setValue(newValue);
             const monthVal: number = newValue?.get("month")! + 1;
             const mVal: string =
               monthVal < 10 ? "0" + monthVal : monthVal.toString();
+
             const val: string =
               newValue?.get("year").toString()! +
               "-" +
@@ -47,7 +58,7 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField size="small"  {...params} />}
+          renderInput={(params) => <TextField size="small" color="secondary" {...params} />}
         />
       </LocalizationProvider>
       <div className="dateListbox">
@@ -55,14 +66,23 @@ const CompanyDatePicker = () => {
           return (
             <>
               <Chip
+               style={{
+                position:"relative",
+               }}
                 key={index}
                 className="chipObject"
                 label={e}
-                icon={<DangerousIcon/>}
-                variant="outlined"
+                icon={
+                <ClearRounded 
+                style={{
+                  position:"absolute",
+                  right:"10px",
+                }}
+                
                 onClick={() =>
                   SetDateList(dateList.filter((item) => item != e))
-                }
+                }/>}
+                variant="filled"
               />
             </>
           );

@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Filler } from "chart.js";
 import { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { GRAPH_OPTIONS } from "../shared/config";
@@ -30,7 +31,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const TotalOrdersVsDateGraph = () => {
@@ -41,6 +42,7 @@ const TotalOrdersVsDateGraph = () => {
       TotalOrders:0
     }
   ];
+  
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
 
   const groupedData = data.reduce<GroupedData>((result, currentValue) => {
@@ -52,6 +54,7 @@ const TotalOrdersVsDateGraph = () => {
     return result;
   }, {});
 
+ 
 
   const chartData = (data[0].Company==data1[0].Company) ? {
     labels:[],
@@ -68,10 +71,13 @@ const TotalOrdersVsDateGraph = () => {
     })),
   };
 
+  useEffect(()=>{},[chartData])
+
   return (
     <Line data={chartData} width={500} height={500} options={GRAPH_OPTIONS} />
   );
 };
+
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF";

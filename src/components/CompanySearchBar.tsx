@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from "../shared/utils/redux/hooks";
 import { setCompanyString } from "../shared/utils/redux/reducers/companyReducer";
 import SearchIcon from '@mui/icons-material/Search';
 import { CompanySelector } from "../shared/utils/redux/selectors/companySelector";
-import { Height } from "@mui/icons-material";
 
 
 const CompanyAutocomplete = () => {

@@ -2,6 +2,11 @@
     background: 'white';
 }
 
+body{
+margin: 0;
+padding:0;
+}
+
 
 .hello1{
     background: blue;
