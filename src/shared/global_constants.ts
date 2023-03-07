@@ -27,3 +27,7 @@ export const GREEN = '#55B74E';
 
 export const DUPLICATE_DATA = "Date already exists in the Graph";
 export const DATA_NOT_FOUND = "Date is not found in the database";
+
+
+export const STATISTICS = "Statistics";
+export const CUSTOMISE_COMPARE = "Customise & Compare";

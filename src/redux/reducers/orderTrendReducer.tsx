@@ -29,9 +29,13 @@ const orderTrendSlice  = createSlice({
         },
     },
     extraReducers : (builder)=>{
-        // builder.addCase(fetchOrderTrenData.pending);
-        builder.addCase(fetchOrderTrenData.fulfilled,(state,action : PayloadAction<OrderTrendDto[]>)=>{
+        builder.addCase(fetchOrderTrenData.pending,(state)=>{
+            state.status="Pending";
+        }).addCase(fetchOrderTrenData.fulfilled,(state,action : PayloadAction<OrderTrendDto[]>)=>{
             state.Data = action.payload;
+            state.status="Fulfilled";
+        }).addCase(fetchOrderTrenData.rejected,(state)=>{
+            state.status="Rejected";
         })
     }
 })

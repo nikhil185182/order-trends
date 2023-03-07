@@ -48,6 +48,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
         <div className="compare_bar">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker onYearChange={undefined}
+                    label="Add dates to graph"
                     value={value}
                     maxDate={dayjs(maximumDate)}
                     minDate={dayjs(minimumDate)}

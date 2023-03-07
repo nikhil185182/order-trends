@@ -1,8 +1,9 @@
 import NavBar from './components/NavBar';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import OrderTrend from './containers/orderTrend/OrderTrend';
 import { useAppDispatch } from './redux/selectors/hooks';
-import { fetchOrderTrenData} from './redux/reducers/orderTrendReducer';
+import { fetchOrderTrenData } from './redux/reducers/orderTrendReducer';
+import Dummy from './components/Dummy';
 
 
 
@@ -14,12 +15,15 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <div className="hello">
+      <BrowserRouter>
+        <NavBar />
+        <div className="hello">
           <Routes>
             <Route path="/ordertrend" element={<OrderTrend />} />
+            {/* <Route path="/company" element={<Dummy />} /> */}
           </Routes>
-      </div>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

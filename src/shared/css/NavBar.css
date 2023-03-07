@@ -10,17 +10,27 @@
 
 .stats_bar{
     align-items: center;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+}
+
+body{
+    margin: 0;
 }
 
 
-.chartCust{
-    padding: 10px;
-    width: 17.1%;
+.radio_group{
     display: flex;
+    flex-direction: column;
+    background: #54B948;
+}
+
+.chartCust{
+    margin-top: 25px;
+    width: 20.1%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
 
@@ -42,6 +52,13 @@
     margin: 20px;
 }
 
+.order_trend_box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
 .chipObject{
     display: flex;
     flex-direction: row;
@@ -54,21 +71,28 @@
     margin: 5px;
 }
 
+
 p:hover{
     cursor: pointer;
 }
 
 .compareTab{
     display: flex;
-    width: 80%;
+    /* background: #54B948; */
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items:flex-start
 }
 
+/* @media screen and (max-height:100px){
+    .dateListbox{
+        overflow-y: scroll;
+    }
+} */
+
 .dateListbox{
-    overflow-y: scroll;
-    height: 500px;
+    max-height: 380px;
+    overflow-y: auto;
     margin: 10px 5px; 
     padding: 5px;
     text-align: center;
@@ -99,25 +123,35 @@ p:hover{
 }
 
 
+button:hover{
+    cursor: pointer;
+}
+
 .active{
-    border-color: #54B948;
     background-color: #54B948;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    padding: 0;
+    border: none;
+    /* font-weight: 600; */
 }
 
 .inactive{
+    border: 2px solid #54B948;
     background-color: white;
     border-color: #54B948;
     color: #54B948;
-    padding: 10px;
-    border-radius: 5px;
-    border-width: 1px;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    /* font-weight: 600; */
 }
 
 .daysCust{
-    width: 38.5%;
+    margin-top: 20px;
+    width: 47.5%;
     display: flex;
     justify-content: space-between;
 }
