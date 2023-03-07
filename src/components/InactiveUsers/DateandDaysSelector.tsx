@@ -1,4 +1,4 @@
-import { Box, Button, Chip, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import { Box, Button, Chip, FormControl, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, styled, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Tooltip, tooltipClasses, TooltipProps, Typography } from '@mui/material';
 import { DatePicker, DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
@@ -8,7 +8,15 @@ import '../../shared/css/inactive.css';
 import { getInactiveUsersData } from '../../shared/dto/orderTrendDto';
 import { DataFromGraphql } from '../../shared/utils/Graphql/gqlHelper';
 import { addingInactiveUsersdata, settingDays } from '../../shared/utils/redux/reducers/InactiveUsersReducer';
-import { useAppDispatch } from '../../shared/utils/redux/Selectors/hooks';
+import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/Selectors/hooks';
+
+const today1 = new Date();
+const p = today1.toString();
+const date = new Date(Date.parse(p));
+const isoString = date.toISOString();
+const formattedDate = isoString.slice(0, 10); 
+
+
 
 
 
@@ -20,6 +28,28 @@ function Daysdifference(pastDate: string): number {
     return diffInDays;
 }
 
+const SubmitTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
+  const DateTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+    },
+  }));
+
 const pastDate = "2023-02-01";
 const daysDiff = Daysdifference(pastDate);
 
@@ -28,24 +58,27 @@ console.log(`The number of days between ${pastDate} and today is ${daysDiff} day
 
 function DateandDaysSelector() {
     const [IsDate, SetDate] = useState(true);
-    const [Day, setDay] = React.useState(0);
+    const [Day, setDay] = React.useState(15);
+    const [Val, SetVal] = useState("");
     const handleDayClick = () => SetDate(false);
     const handleDateClick = () => SetDate(true);
-    const [value, setValue] = useState<Dayjs | null>(dayjs());
+    const [value, setValue] = useState<Dayjs | null>(dayjs().subtract(30, 'day'));
     const [dateList, SetDateList] = useState<string[]>([]);
     const handleChange = (event: SelectChangeEvent) => {
         setDay(event.target.value as unknown as number);
     }
 
     const dispatch = useAppDispatch();
+    const Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
 
     return (
         <div>
             <div>
-                <Button className='Day_picker_btn' onClick={handleDayClick} variant="outlined">Day-Picker</Button>
-                <Button className='Date_picker_btn' onClick={handleDateClick} variant="outlined">Date-Picker</Button>
-                {IsDate ?
-                    <>
+                {/* <Button className='Date_picker_btn' onClick={handleDateClick} variant="contained">Date-Picker</Button> */}
+                {
+                    <>  <div className='container'>
+                        {/* <h5>{"Date Picker"}</h5> */}
+                        <DateTooltip title="Add from Date">
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DesktopDatePicker onYearChange={undefined} className='Date_picker'
                                 value={value}
@@ -54,34 +87,36 @@ function DateandDaysSelector() {
                                     setValue(newValue);
                                     const monthVal: number = newValue?.get('month')! + 1;
                                     const mVal: string = monthVal < 10 ? '0' + monthVal : monthVal.toString();
-                                    const val: string = newValue?.get('year').toString()! + '-' + mVal + '-' + newValue?.get('date').toString()!;
+                                    var val: string = newValue?.get('year').toString()! + '-' + mVal + '-' + newValue?.get('date').toString()!;
                                     var days = Daysdifference(val);
                                     setDay(days);
+                                    SetVal(val);
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
-                        <div className="dateListbox">
-                            {
-                                dateList.map((e) => {
-                                    return (
-                                        <div>
-                                            <Chip
-                                                variant="outlined"
-                                                className='chip_component'
-                                                label={e}
-                                                onDelete={() => SetDateList(dateList.filter(item => item != e))}
-                                                deleteIcon={<DeleteIcon />}
-                                            />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
+                        </DateTooltip>
 
+                        <div>
+                            <div className='Inactive_table' >
+                                <Typography className='InactiveUsertable_container_title' ><b>Inactive Companies details</b></Typography>
+                                <TableContainer component={Paper} className="InactiveUsertable_container">
+                                    <Table aria-label="customized table"> <TableBody>
+                                        <TableRow> <TableCell >From Date</TableCell>
+                                            <TableCell align="left">{Val}</TableCell> </TableRow> <TableRow>
+                                            <TableCell > To Date</TableCell><TableCell align="left">{formattedDate}</TableCell>
+                                        </TableRow> <TableRow><TableCell >No. Of Days </TableCell>
+                                            <TableCell align="left">{Day}</TableCell></TableRow><TableRow>
+                                            <TableCell >Inactive Companies</TableCell>
+                                            <TableCell align="left">{Ddata.length}</TableCell>
+                                        </TableRow> </TableBody> </Table> </TableContainer></div>
+                        </div>
+                        </div>
+                        <SubmitTooltip title="Add Clicked date">
                         <Button
-                            variant="outlined"
-                            style={{ position: 'absolute', bottom: 100, left: 150 }}
+                            variant="contained"
+                            className='submit_btn'
+                            // style={{ position: 'absolute', bottom: 300, left: 150 }}
                             onClick={() => {
                                 dispatch(settingDays(Day));
                                 console.log("action dispatched");
@@ -89,33 +124,9 @@ function DateandDaysSelector() {
                         >
                             Submit
                         </Button>
-                    </> :
-                    <div className='Day_picker'>
-                        <Box sx={{ minWidth: 120 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Days</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="Days"
-                                    onChange={handleChange}
-                                >
-                                    <MenuItem onClick={() => {
-                                        dispatch(settingDays(180));
-                                        console.log("action dispatched");
-                                    }} value={180}>180</MenuItem>
-                                    <MenuItem onClick={() => {
-                                        dispatch(settingDays(240));
-                                        console.log("action dispatched");
-                                    }} value={240}>240</MenuItem>
-                                    <MenuItem onClick={() => {
-                                        dispatch(settingDays(365));
-                                        console.log("action dispatched");
-                                    }} value={365}>365</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Box>
-                    </div>
+                        </SubmitTooltip>
+                        
+                    </>
                 }
 
             </div>

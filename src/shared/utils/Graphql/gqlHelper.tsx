@@ -39,8 +39,6 @@ export  const DataFromGraphqlUser = (): getInactiveUsersData[] => {
   const { loading, error, data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
     variables: { input : inputDays }
   })
-
-  console.log(data);
   if (data) {
   const li2: getInactiveUsersData[] | undefined = data?.inactiveusers;
 

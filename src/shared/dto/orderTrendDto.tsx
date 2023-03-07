@@ -11,6 +11,7 @@ export type  getInactiveUsersData = {
     __typename: String;
     CompanyName: String;
     LatestOrderDate: Date;
+    Impact: Number;
 }
 
 export type Li = {
