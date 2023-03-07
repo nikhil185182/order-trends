@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 //import newUserSlice, { gettingnewUsersDates, settingnewUsersDates } from './shared/utils/redux/reducers/newUserReducer';
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
@@ -8,6 +8,7 @@ import NewUserDemo from './containers/newCustomers/newUserDemo';
 
 
 import NavBar from "./components/NavBar";
+import OrderTrend from "./components/OrderTrend";
 
   
 
@@ -20,23 +21,16 @@ function App() {
 
   
   return (
-   <div className="hello" style={{width:"100%"}}>
-    <header>
-          <NavBar />
-        </header>
-   
-      
-      <Router>
-        <Routes>
-          <Route path='/' element={<NewUserDemo/>}/>
-          {/* <Route path="/demo" element={<PersistentDrawerRight/>}/> */}
-          {/* <Route path='/a' element={<NewUsers />}/>
-          <Route path='/table' element={<NewUserTable/>}/>
-          <Route path='/s' element={<PersistentDrawerRight />}/> */}
-          
-        </Routes>
-      </Router></div>
-    
+    <>
+      <BrowserRouter>
+        <NavBar />
+        <div className="hello">
+          <Routes>
+            <Route path="/newUsers" element={<NewUserDemo />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 
