@@ -1,1 +1,161 @@
+.x{
+    background: 'white';
+}
 
+
+.hello1{
+    background: blue;
+    color: black;
+}
+
+.stats_bar{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    margin: 0;
+}
+
+
+.radio_group{
+    display: flex;
+    flex-direction: column;
+    background: #54B948;
+}
+
+.chartCust{
+    margin-top: 25px;
+    width: 20.1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.compare_bar{
+    border: 2px;
+    border-color: rgb(177, 177, 177);
+    border-radius: 10px;
+    border-style:solid;
+    padding: 20px;
+    width: 200px;
+    align-items: center;
+}
+
+.order_trend{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background: yellow; */
+    margin: 20px;
+}
+
+.order_trend_box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.chipObject{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 25px;
+    justify-content: space-around;
+    align-items: center;
+    height: 43px;
+    margin: 5px;
+}
+
+
+p:hover{
+    cursor: pointer;
+}
+
+.compareTab{
+    display: flex;
+    /* background: #54B948; */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start
+}
+
+/* @media screen and (max-height:100px){
+    .dateListbox{
+        overflow-y: scroll;
+    }
+} */
+
+.dateListbox{
+    max-height: 380px;
+    overflow-y: auto;
+    margin: 10px 5px; 
+    padding: 5px;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset 0 0 6px rgba(169, 169, 169, 0.3); 
+    border-radius:5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius:5px;
+    -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82); 
+}
+
+.compare_bar_graph{
+    width: 75%;
+}
+
+.toggle_trend{
+    display: flex;
+    justify-content: space-between;
+    width: 20.6%;
+}
+
+
+button:hover{
+    cursor: pointer;
+}
+
+.active{
+    background-color: #54B948;
+    color: white;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    padding: 0;
+    border: none;
+    /* font-weight: 600; */
+}
+
+.inactive{
+    border: 2px solid #54B948;
+    background-color: white;
+    border-color: #54B948;
+    color: #54B948;
+    border-radius: 10px;
+    height: 40px;
+    width: 90px;
+    /* font-weight: 600; */
+}
+
+.daysCust{
+    margin-top: 20px;
+    width: 47.5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonBlack{
+    background-color: rgb(175, 44, 0);
+}
