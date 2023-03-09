@@ -24,7 +24,7 @@
     align-items: center;
     display: inline-block;
     width: 170px;
-    height: 210px;
+    height: 100px;
     margin-top: 15px;
     margin-left: 20px;
     padding: 50px;
@@ -82,7 +82,7 @@
 }
 
 .Date_picker {
-    margin-top: 25px !important;
+    margin-top: 5px !important;
     display: grid;
 }
 
@@ -98,8 +98,8 @@
 }
 
 .submit_btn {
-    margin-top: -800px !important;
-    margin-left: 40px !important;
+    margin-top: 40px !important;
+    margin-left: -10px !important;
     margin-bottom: 0px !important;
     background-color: #55B74E !important;
 }
@@ -111,6 +111,9 @@
     background-color: #55B74E !important;
 }
 
+.stepper {
+    width: 170px;
+}
 .radio_group {
     margin-left: 450px !important;
 }
