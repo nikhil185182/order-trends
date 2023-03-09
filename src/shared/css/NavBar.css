@@ -57,6 +57,7 @@ body{
     align-items: center;
     flex-direction: column;
     margin-top: 10px;
+    background: #54B948;
 }
 
 .chipObject{
