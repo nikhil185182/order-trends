@@ -59,6 +59,9 @@ export const COMPARE_DATEPICKER = styled.div`
     padding: 20px;
     width: 200px;
     align-items: center;
+
+
+    
 `;
 
 export const DATELIST_BOX = styled.div`
