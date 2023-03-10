@@ -13,7 +13,7 @@ export const ORDER_TREND_BOX = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top:80px;
 `;
 
 export const STATISTICS_TAB = styled.div`

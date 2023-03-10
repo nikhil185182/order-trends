@@ -2,6 +2,9 @@ import { useQuery } from "@apollo/client";
 import { GQL_ResponseType, OrderTrendDto } from "../../dto/orderTrendDto";
 import { NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
 import { DAYS } from "../../config";
+import { NewUsersDTO } from "../../dto/newUsersDto";
+import { useAppSelector } from "../redux/selectors/hooks";
+import { newusertype } from "../../dto/newUsersDto";
 
 export function OrderTrendUtil(){
     const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
@@ -11,10 +14,6 @@ export function OrderTrendUtil(){
     return finalList;
 }
 
-import { NewUsersDTO } from "../../dto/newUsersDto";
-import { useAppSelector } from "../redux/selectors/hooks";
-import { newusertype } from "../../dto/newUsersDto";
-//import { NewUserQuery } from "./queries";
 export const DataFromGraphql = ():NewUsersDTO[] => {
 
     let Newuserquery = NEW_USER_QUERY;
