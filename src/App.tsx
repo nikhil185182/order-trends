@@ -5,12 +5,13 @@ import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './shared/utils/redux/reducers/orderTrendReducer';
 import Dummy from './components/Dummy';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
-import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
-import CompanyTrend from './containers/companyLevel';
+import { Button } from '@mui/material';
 import InactiveUsers from './components/InactiveUsers/InactiveUsers';
+import CompanyTrend from './containers/companyLevel';
 import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphql, DataFromGraphqlUser, DataFromGraphql_inactive } from './shared/utils/graphql/gqlHelper';
+import { DataFromGraphql_inactive, DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
 import { addingInactiveUsersdata30, addingInactiveUsersdata60, addingInactiveUsersdata90, addingInactiveUsersdata120, addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
+import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
 
 
 

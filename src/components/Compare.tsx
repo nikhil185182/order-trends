@@ -15,23 +15,18 @@ import { addOrderDateList } from '../shared/utils/redux/reducers/orderTrendReduc
 import CompareDatePicker from './CompareDatePicker';
 import CompareBarGraph from './CompareBarGraph';
 import styled from '@emotion/styled';
+import { COMPARE_TAB } from '../shared/styledComponents/orderTrendComponents';
 
 
 const Compare = () => {
     const orderList = useAppSelector(selectOrderTrendData);
     const orderMap = getOrderListMap(orderList);
 
-const StyledButton = styled.div`
-  font-size: 32px;
-  color: white;
-`;
-
     return (
-        // <StyledButton><CompareBarGraph/></StyledButton>
-        <div className="compareTab">
+        <COMPARE_TAB>
             <CompareDatePicker orderMap={orderMap} />
             <CompareBarGraph />
-        </div>
+        </COMPARE_TAB>
     )
 }
 

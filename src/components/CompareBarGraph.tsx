@@ -5,6 +5,7 @@ import { gType } from '../shared/dto/orderTrendDto';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../shared/global_constants';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
 import { getOrderListData } from '../shared/utils/redux/selectors/orderTrendSelector';
+import { COMPARE_GRAPH } from '../shared/styledComponents/orderTrendComponents';
 
 export default function CompareBarGraph() {
 
@@ -40,8 +41,8 @@ export default function CompareBarGraph() {
     }, [dateList]);
 
   return (
-    <div className='compare_bar_graph'>
+    <COMPARE_GRAPH>
         <Bar options={GRAPH_OPTIONS} data={graphData} />
-    </div>
+    </COMPARE_GRAPH>
   )
 }
