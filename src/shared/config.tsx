@@ -24,7 +24,7 @@ export const GRAPH_OPTIONS = {
 };
 
 
-import { ActiveElement, ChartEvent } from "chart.js";
+
 
 export const newUser_datepickers_Title="Select Duration";
 

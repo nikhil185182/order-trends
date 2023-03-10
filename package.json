@@ -18,7 +18,7 @@
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "chart.js": "^4.2.0",
+    "chart.js": "^4.2.1",
     "dayjs": "^1.11.7",
     "graphql": "^16.6.0",
     "moment": "^2.29.4",
