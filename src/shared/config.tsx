@@ -37,10 +37,6 @@ export const GRAPH_OPTIONS = {
   },
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2e72b46f7ac7de1ecbad2d209834629d9e297a64
 export const newUser_datepickers_Title="Select Duration";
 
 export const NewUser_BarOptions = {

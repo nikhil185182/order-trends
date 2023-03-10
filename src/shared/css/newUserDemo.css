@@ -4,6 +4,7 @@ html {
   padding: 0;
 }
 .NewUserCompletePage {
+  marginTop:10%;
   display: flex;
 }
 .NewUsersdateSelection_block {
