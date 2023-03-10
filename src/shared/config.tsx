@@ -1,30 +1,41 @@
 export const DAYS = 865;
+
+
+
 export const GRAPH_OPTIONS = {
-    responsive: true,
-    scales: {
-        x: {
-            grid: {
-                display: true
-            }
-        },
-        y: {
-            grid: {
-                display: true
-            }
-        }
-    },
-    plugins: {
-        legend: {
-            position: 'top' as const,
-        },
-        title: {
-            display: false,
-        },
-    },
+  responsive: true,
+  
+  hoverRadius:8,
+  scales: {
+      x: {
+          grid: {
+              display: true
+          },
+          title:{
+              display:true,
+              text:"Order Dates"
+          }
+      },
+      y: {
+          beginAtZero: true,
+          grid: {
+              display: true
+          },
+          title:{
+              display:true,
+              text:"Total Number Of Orders"
+          }
+      }
+  },
+  plugins: {
+      legend: {
+          position: 'top' as const,
+      },
+      title: {
+          display: false,
+      },
+  },
 };
-
-
-
 
 export const newUser_datepickers_Title="Select Duration";
 

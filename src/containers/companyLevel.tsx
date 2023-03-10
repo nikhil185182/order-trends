@@ -1,3 +1,7 @@
+import CompanyButtonContainer from "../components/CompanyLevel/CompanyButton";
+import TotalOrdersVsDateGraph from "../components/CompanyLevel/CompanyChart";
+import CompanyDatePicker from "../components/CompanyLevel/CompanyDatePicker";
+import ReactSearchBar from "../components/CompanyLevel/reactsb";
 import "../shared/css/companyLevel.css";
 import { Helperutil } from "../shared/utils/redux/companyAPI";
 // import CompanyButtonContainer from "../components/CompanyButton";
@@ -11,17 +15,17 @@ const CompanyTrend = () => {
     <div className="MainContainer">
       <div className="SubcontainerOne">
         <div className="SearchBarComponent">
-          {/* <ReactSearchBar /> */}
+          <ReactSearchBar />
         </div>
         <div className="DatepickerComponent">
-          {/* <CompanyDatePicker /> */}
+          <CompanyDatePicker />
         </div>
         <div className="ButtonComponent">
-          {/* <CompanyButtonContainer /> */}
+          <CompanyButtonContainer />
         </div>
       </div>
       <div className="subcontainerTwo">
-        {/* <FrequencyVsDateGraph /> */}
+        <TotalOrdersVsDateGraph />
       </div>
     </div>
   );

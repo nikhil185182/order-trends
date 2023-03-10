@@ -71,7 +71,7 @@
   flex-direction: column;
   align-items: center;
 }
-.chipObject {
+.chipObject1 {
   margin-top: 5px !important;
   display: flex;
   flex-direction: row-reverse;

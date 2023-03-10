@@ -1,13 +1,10 @@
 import { Button } from "@mui/material";
-import { useAppDispatch,useAppSelector } from "../shared/utils/redux/selectors/hooks";
-import { CompanyStringSelector,DateStringSelector } from "../shared/utils/redux/companySelector";
-// import { useAppDispatch, useAppSelector } from "../shared/utils/redux/hooks";
-// import {
-//   CompanyStringSelector,
-//   DateStringSelector,
-// } from "../shared/utils/redux/selectors/companySelector";
-import { fetchCompanyData } from "../shared/utils/redux/companyAPI";
-import { AppDispatch } from "../shared/utils/redux/store";
+import { useAppSelector,useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
+import { CompanyStringSelector,DateStringSelector } from "../../shared/utils/redux/companySelector";
+
+import { fetchCompanyData } from "../../shared/utils/redux/companyAPI";
+import { AppDispatch } from "../../shared/utils/redux/store";
+
 import { useState } from "react";
 import { WidthFull } from "@mui/icons-material";
 import { height } from "@mui/system";
