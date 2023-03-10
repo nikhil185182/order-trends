@@ -17,4 +17,29 @@ export const NEW_USER_QUERY = gql`query GetNewUsers($Fromdate:DateTime!,$Todate:
     companyCreatedTimeStamp
     namesOfCompanies
     frequency
-  }} `
+  }} `;
+
+  export const COMPANIES_QUERY = gql`
+query companyRequest{
+  companyLists{
+ CompanyName
+ }
+ }`
+
+
+export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:String!){
+  getSpecificCompanyData(cname:$i1,cdates:$i2){
+    TotalOrders
+    Date
+    Company  
+  } 
+}`
+
+export const INACTIVEUSERS_QUERY = gql`
+   query InactiveUsersQuery($input : Int!){
+	inactiveusers(days : $input){
+    CompanyName
+    LatestOrderDate
+   }	
+ }
+`;

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
-import { act } from "@testing-library/react";
+
 import dayjs, { Dayjs } from "dayjs";
 import { format } from "path";
 import { NewUsersDTO } from "../../../dto/newUsersDto";

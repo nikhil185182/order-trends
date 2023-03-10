@@ -22,17 +22,12 @@ export default function NavBar() {
                 <Typography>
                     e-Commerce Analytics
                 </Typography>
-                {isMatch ? (
-                    <div className="drawer_comp" style={{ marginLeft: 'none' }}>
-                        <DrawerComp />
-                    </div>
-                ) :
-                    <div className="btn_cls" style={{ marginLeft: 'auto' }}>
-                        <Button color='inherit' onClick={() => navigate('/ordertrend')}>{ORDER_TREND}</Button>
-                        <Button color='inherit'  >{COMPANY_TREND}</Button>
-                        <Button color='inherit' onClick={() => navigate('/newUsers')} >{NEW_USER}</Button>
-                        <Button color='inherit'>{INACTIVE_USER}</Button>
-                    </div>}
+                <Stack direction='row' spacing={2}>
+                    <Button color='inherit' onClick={()=>navigate('/ordertrend')}>{ORDER_TREND}</Button>
+                    <Button color='inherit'  >{COMPANY_TREND}</Button>
+                    <Button color='inherit' onClick={()=>navigate('/newUsers')} >{NEW_USER}</Button>
+                    <Button color='inherit'>{INACTIVE_USER}</Button>
+                </Stack>
             </Toolbar>
         </AppBar>
     )

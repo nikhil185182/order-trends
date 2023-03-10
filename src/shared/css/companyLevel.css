@@ -1,0 +1,129 @@
+.MainContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.SubcontainerOne {
+  width: 25%;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px;
+  align-items: center;
+  justify-content: space-between;
+}
+.subcontainerTwo {
+  width: 100%;
+  height: 650px;
+  margin-top: 15px;
+  margin-right: 25px;
+  padding: 1.25%;
+  box-shadow: rgba(34, 33, 33, 0.2) 0px 4px 10px 0px;
+  border-radius: 10px;
+}
+.DatepickerComponent {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  height: 285px;
+  width: 300px;
+  align-items: center;
+  margin-top: 7.5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none !important;
+}
+.SearchBarComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 285px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
+  border-radius: 10px;
+  scrollbar-width: none !important;
+  overflow-y: scroll;
+}
+.ButtonComponent {
+  margin: 12px;
+  padding: auto;
+  width: 150px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(169, 169, 169, 0.3);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82);
+}
+.dateListbox {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+.chipObject1 {
+  margin-top: 5px !important;
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 15px !important;
+  width: 150px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-radius: 0px;
+}
+
+
+.autocomplete-search {
+  position: relative;
+}
+
+.autocomplete-search input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.autocomplete-search ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.autocomplete-search li {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.autocomplete-search li:hover {
+  background-color: #f2f2f2;
+}
+
+.autocomplete-search li:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.autocomplete-search li:last-child {
+  border-radius: 0 0 4px 4px;
+}

@@ -1,10 +1,12 @@
 import { useQuery } from "@apollo/client";
 import { GQL_ResponseType, OrderTrendDto } from "../../dto/orderTrendDto";
-import { NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
 import { DAYS } from "../../config";
 import { NewUsersDTO } from "../../dto/newUsersDto";
 import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";
+import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
+import { getInactiveUsersData, Li2 } from "../../dto/InactiveUsersDTO";
 
 export function OrderTrendUtil(){
     const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
@@ -39,6 +41,77 @@ export const DataFromGraphql = ():NewUsersDTO[] => {
         return []
     }
 }
+export const CompanyUtil = async () => {
+    const { data } =useQuery<companiesList>(COMPANIES_QUERY);
+    const tempResult: company[] = data?.companyLists!;
+    const result: company[] = [];
+    tempResult?.map((c: company) => result.push(c));
+    return tempResult;
+  };
+  
+  
+  export async function GetSpecificCompanyData(
+    companyString: String,
+    dateString: String
+  ) {
+    console.log("====================================");
+    console.log("I called gql helper");
+    console.log("====================================");
+    const { data, loading, error } =  useQuery<fres>(
+      GETSPECIFICCOMPANIESDATA_QUERY,
+      {
+        variables: {
+          i1: companyString,
+          i2: dateString,
+        },
+      }
+    );
+  
+  
+    return { data, loading, error };
+  }
+
+  export  const DataFromGraphql_inactive = (Days:Number): getInactiveUsersData[] => {
+    const { loading, error, data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
+      variables: { input: Days }
+    })
+  
+    const li2: getInactiveUsersData[] | undefined = data?.inactiveusers;
+  
+    var original: getInactiveUsersData[] = [];
+  
+    li2?.map((e: getInactiveUsersData) => {
+      original.push(e);
+    })
+    return original;
+  }
+  
+  export  const DataFromGraphqlUser = (): getInactiveUsersData[] => {
+    const inputDays = useAppSelector(state=>state.InactiveUsers.Days);
+    const { loading, error, data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
+      variables: { input : inputDays }
+    })
+    if (data) {
+    const li2: getInactiveUsersData[] | undefined = data?.inactiveusers;
+  
+    var original: getInactiveUsersData[] = [];
+  
+    li2?.map((e: getInactiveUsersData) => {
+      original.push(e);
+    })
+    console.log(original);
+    return original;
+  
+  } else if (loading) {
+      console.log("Data is Loading")
+      return []
+  }
+  else {
+      console.log(`Error ${error?.message}`)
+      return []
+  }
+  }
+  
     
 
   
