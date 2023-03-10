@@ -3,12 +3,13 @@ import { LocalizationProvider, DesktopDatePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs'
 import React, { useEffect, useState } from 'react'
-import { OrderTrendDto} from '../shared/dto/orderTrendDto';
+import { OrderTrendDto } from '../shared/dto/orderTrendDto';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DATA_NOT_FOUND, DUPLICATE_DATA, GRAPH_DUMMY_DATA } from '../shared/global_constants';
 import { addOrderDateList } from '../shared/utils/redux/reducers/orderTrendReducer'
 import { getDateFromDatePicker } from '../shared/utils/helperFunctions'
 import { useAppDispatch } from '../shared/utils/redux/selectors/hooks'
+import { COMPARE_DATEPICKER, DATELIST_BOX } from '../shared/styledComponents/orderTrendComponents'
 
 
 export default function CompareDatePicker(props: { orderMap: Map<string, OrderTrendDto> }) {
@@ -21,8 +22,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
     const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
     const [dateList, SetDateList] = useState<(OrderTrendDto)[]>([props.orderMap.get(maximumDate)!]);
 
-    const handleDelete = (e: OrderTrendDto) => SetDateList(dateList.filter((item: OrderTrendDto) => item!= e));
-
+    const handleDelete = (e: OrderTrendDto) => SetDateList(dateList.filter((item: OrderTrendDto) => item != e));
 
     useEffect(() => {
         dispatch(addOrderDateList({ orderDateList: dateList }));
@@ -45,7 +45,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
     }
 
     return (
-        <div className="compare_bar">
+        <COMPARE_DATEPICKER>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker onYearChange={undefined}
                     label="Add dates to graph"
@@ -57,20 +57,19 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
-            <div className="dateListbox">
+            <DATELIST_BOX>
                 {
                     dateList.map((e: OrderTrendDto) => {
                         return (
                             <div className="chipObject">
                                 <p>{e.OrderDate}</p>
-                                <p onClick={() => handleDelete(e)}><DeleteIcon
-                                 fontSize='small'/></p>
+                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small'/></p>
                             </div>
                         )
                     })
                 }
-            </div>
-        </div>
+            </DATELIST_BOX>
+        </COMPARE_DATEPICKER>
     )
 }
 

@@ -13,6 +13,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { CHART_CUSTOMISE, DAYS_CUSTOMISE, STATISTICS_TAB } from '../shared/styledComponents/orderTrendComponents';
 
 ChartJS.register(
     CategoryScale,
@@ -85,13 +86,13 @@ const Statistics = () => {
 
 
     return (
-        <div className='stats_bar'>
+        <STATISTICS_TAB>
             {isLine ? <Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData} />}
-            <div className="chartCust">
-                    <FormControlLabel control={<Radio style={{color:'#54B948'}} onClick={handleLineClick} checked={isLine} />} label="Line Chart" />
-                    <FormControlLabel control={<Radio style={{color:'#54B948'}} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
-            </div>
-            <div className="daysCust">
+            <CHART_CUSTOMISE>
+                <FormControlLabel control={<Radio style={{color:'#54B948'}} onClick={handleLineClick} checked={isLine} />} label="Line Chart" />
+                <FormControlLabel control={<Radio style={{color:'#54B948'}} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
+            </CHART_CUSTOMISE>
+            <DAYS_CUSTOMISE>
                 <button className='btn_class inactive' onClick={() => updateDays(865)}>865 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(365)}>365 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(180)}>180 Days</button>
@@ -99,8 +100,8 @@ const Statistics = () => {
                 <button className='btn_class inactive' onClick={() => updateDays(60)}>60 Days</button>
                 <button className='btn_class  active' onClick={() => updateDays(30)}>30 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(15)}>15 Days</button>
-            </div>
-        </div>
+            </DAYS_CUSTOMISE>
+        </STATISTICS_TAB>
     )
 }
 

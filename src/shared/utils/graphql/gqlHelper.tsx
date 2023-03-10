@@ -7,7 +7,6 @@ import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";
 import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
 import { getInactiveUsersData, Li2 } from "../../dto/InactiveUsersDTO";
-//import { NewUserQuery } from "./queries";
 
 export function OrderTrendUtil(){
     const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
@@ -16,7 +15,6 @@ export function OrderTrendUtil(){
     tempList?.map((e: OrderTrendDto) => {finalList.push(e);})
     return finalList;
 }
-
 
 export const DataFromGraphql = ():NewUsersDTO[] => {
 
