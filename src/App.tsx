@@ -19,7 +19,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   dispatch(fetchOrderTrenData());
-  dispatch(Fetchnewusersdata());
+ 
 
 
   let displaydata30: getInactiveUsersData[] = DataFromGraphql_inactive(30);
