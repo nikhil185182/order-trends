@@ -4,7 +4,7 @@ html {
   padding: 0;
 }
 .NewUserCompletePage {
-  marginTop:10%;
+  margin-Top: 5%;
   display: flex;
 }
 .NewUsersdateSelection_block {
@@ -141,6 +141,7 @@ html {
 
   @media only screen and (max-width:1000px){
     .NewUserCompletePage {
+      margin-top: 15%;
       display: grid;
       grid-template-rows: 46%;
   grid-gap: 0%;
