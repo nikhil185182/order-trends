@@ -3,7 +3,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import OrderTrend from './containers/orderTrend/OrderTrend';
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './shared/utils/redux/reducers/orderTrendReducer';
-import Dummy from './components/Dummy';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
 import { Button } from '@mui/material';
 import InactiveUsers from './components/InactiveUsers/InactiveUsers';
