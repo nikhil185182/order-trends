@@ -61,7 +61,6 @@ const CompanyAutocomplete = () => {
         <TextField {...params} label="Select companies" />
       )}
     />
-    
     </div>
   );
 };

@@ -20,7 +20,7 @@ export const GRAPH_OPTIONS = {
             },
             title:{
                 display:true,
-                text:"Total Number Of Orders"
+                text:"Total Orders"
             }
         }
     },

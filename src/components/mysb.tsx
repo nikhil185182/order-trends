@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { company } from '../shared/dto/companyLevelOrderDTO';
 import { useAppSelector } from '../shared/utils/redux/hooks';
 import { CompanySelector } from '../shared/utils/redux/selectors/companySelector';
-
+import '../shared/css/mysb.css'
 
 
 function AutocompleteSearch() {
-
     const dataArray: company[] = useAppSelector(CompanySelector) || [
         { CompanyName: "Options are loading" },
       ];
@@ -24,7 +23,7 @@ function AutocompleteSearch() {
   };
 
   return (
-    <div>
+    <div className='autocomplete-search'>
       <input
         type="text"
         placeholder="Search..."

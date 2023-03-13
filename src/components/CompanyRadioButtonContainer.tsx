@@ -1,0 +1,33 @@
+import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useAppDispatch } from '../shared/utils/redux/hooks'
+import { setLabel } from '../shared/utils/redux/reducers/companyReducer'
+
+const CompanyRadioButtonContainer = () => {
+    const dispatch = useAppDispatch()
+    const [value, setValue] =useState('Total Orders');
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue((event.target as HTMLInputElement).value);
+    }
+    useEffect(()=>{
+      dispatch(setLabel(value));
+    },[value])
+  return (
+<FormControl>
+      <FormLabel id="demo-row-radio-buttons-group-label">Toggle the below options</FormLabel>
+      <RadioGroup
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+        onChange={handleChange}
+      >
+        <FormControlLabel value="Total Orders" defaultChecked={true} control={<Radio />} label="Total Orders" />
+        <FormControlLabel value="Completed Orders" control={<Radio />} label="Completed Orders" />
+        <FormControlLabel value="Attempted Orders" control={<Radio />} label="Attempted Orders" />
+      </RadioGroup>
+    </FormControl>
+  )
+}
+
+export default CompanyRadioButtonContainer

@@ -4,6 +4,7 @@ import CompanyButtonContainer from "../components/CompanyButton";
 import CompanyDatePicker from "../components/CompanyDatePicker";
 import FrequencyVsDateGraph from "../components/CompanyChart";
 import ReactSearchBar from "../components/reactsb";
+import CompanyRadioButtonContainer from "../components/CompanyRadioButtonContainer";
 
 const CompanyTrend = () => {
   Helperutil();
@@ -21,7 +22,12 @@ const CompanyTrend = () => {
         </div>
       </div>
       <div className="subcontainerTwo">
+        <div className="chartComponent">
         <FrequencyVsDateGraph />
+        </div>
+        <div className="radiobutton">
+          <CompanyRadioButtonContainer/>
+        </div>
       </div>
     </div>
   );

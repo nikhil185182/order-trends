@@ -1,5 +1,5 @@
 import { Chip, TextField } from "@mui/material";
-import { DesktopDatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {ClearRounded} from '@mui/icons-material';
 import dayjs, { Dayjs } from "dayjs";
@@ -8,10 +8,10 @@ import { useState } from "react";
 import { useAppDispatch } from "../shared/utils/redux/hooks";
 import { setDateString } from "../shared/utils/redux/reducers/companyReducer";
 import { AppDispatch } from "../shared/utils/redux/store";
+
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
   const [dateList, SetDateList] = useState<string[]>([]);
-  const [year,setYear]=useState(false)
   const dispatch:AppDispatch = useAppDispatch();
 
   useEffect(() => {
@@ -33,14 +33,8 @@ const CompanyDatePicker = () => {
           label='Select Dates'
           value={value}
           disableFuture={true}
-          onYearChange={()=>{
-             console.log('====================================');
-             console.log(`year changed`);
-             setYear(!year)
-             console.log('====================================');
-          }}
-          onChange={()=>true}
-          onAccept={(newValue) => {
+          closeOnSelect={false}
+          onChange={(newValue) => {
             setValue(newValue);
             const monthVal: number = newValue?.get("month")! + 1;
             const mVal: string =

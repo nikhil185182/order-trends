@@ -53,6 +53,7 @@ export default function ReactSearchBar() {
             <Chip
               style={{
                 position: "relative",
+                
               }}
               key={index}
               className="chipObject"
