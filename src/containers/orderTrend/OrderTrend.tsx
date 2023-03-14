@@ -58,7 +58,7 @@ const OrderTrend = () => {
              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Statistics" {...a11yProps(0)} />
-                    <Tab label="Customise & Compare" {...a11yProps(1)} />
+                    <Tab label="Compare" {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0} >

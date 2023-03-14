@@ -57,7 +57,7 @@
 .chipObject{
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: 80%;
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
     justify-content: space-around;

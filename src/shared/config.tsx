@@ -2,7 +2,7 @@ export const DAYS = 865;
 
 export const GRAPH_OPTIONS = {
   responsive: true,
-  
+  maintainAspectRatio: false,
   hoverRadius:8,
   scales: {
       x: {
