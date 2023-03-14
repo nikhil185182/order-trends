@@ -165,7 +165,7 @@ export default function NewUserChart() {
   var to_final = new Date(Number(to[2]), Number(to[0]) - 1, Number(to[1]));
 
   return (<div>
-    <div className="chartHeading_div" >New Enrollments from  {from_final.toDateString()} - {to_final.toDateString()}</div>
+    <div className="chartHeading_div" >Company Enrollments from  {from_final.toDateString()} - {to_final.toDateString()}</div>
 
     {isLine ? (
       <Bar data={Data} options={baroptions} />

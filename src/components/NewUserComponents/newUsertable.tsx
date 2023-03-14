@@ -31,7 +31,7 @@ export default function NewUserTable() {
   console.log(diffDays)
   return (
     <div className='newUserTable_details' >
-      <Typography className='newUsertable_container_title' ><b>New Users Info</b></Typography>
+      <Typography className='newUsertable_container_title' ><b>New Companies Enrolled</b></Typography>
       <TableContainer component={Paper} className="newUsertable_container"  >
         <Table aria-label="customized table">
 
