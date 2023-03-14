@@ -1,43 +1,41 @@
 
-import "../../shared/css/newUserDemo.css";
+// import "../../shared/css/newUserDemo.css";
 
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 
 import NewUserDate_selectionBox from "../../components/NewUserComponents/newUser_dateSelectionBox";
 import NewUsersideBar from "../../components/NewUserComponents/newCompany_sideBar";
 import NewUserTable from "../../components/NewUserComponents/newUsertable";
 import NewUserChart from "../../components/NewUserComponents/NewUserChart";
 import Dialogbox from "../../components/NewUserComponents/Dialog";
+import { Fetchnewusersdata } from "../../shared/utils/redux/reducers/newUserReducer";
+import { AppDispatch } from "../../shared/utils/redux/store";
+import { NewUserCompletePage, NewUsersdateSelection_block, NewUser_chartcomponent_withoutsidebar, NewUser_chartcomponent_withsidebar } from "../../shared/styledComponents/newUserComponentsStyled";
 
 
 
 export default function NewUserDemo() {
+  const dispatch: AppDispatch = useAppDispatch()
+  dispatch(Fetchnewusersdata());
   const IsDrawerOpen = useAppSelector((state) => state.NewUser.isDrawerOpen);
 
   return (
     <>
-      <div className="NewUserCompletePage">
-        <div className="NewUsersdateSelection_block">
-          <NewUserDate_selectionBox />
-          <NewUserTable />
-        </div>
+      <NewUserCompletePage>
+          <NewUsersdateSelection_block>
+              <NewUserDate_selectionBox />
+              <NewUserTable />
+        </NewUsersdateSelection_block>
         {IsDrawerOpen ? (
-          <div
-            className="newUser_chartcomponent_withsidebar"
-            
-          >
+  <NewUser_chartcomponent_withsidebar>
             <NewUserChart />
-          </div>
-        ) : (
-          <div
-            className="newUser_chartcomponent_withoutsidebar"
-           
-          >
-            <NewUserChart />
-          </div>
-        )}
-      </div>
-      {/* <Dialogbox/> */}
+          </NewUser_chartcomponent_withsidebar>
+ ) : (
+ <NewUser_chartcomponent_withoutsidebar>
+            <NewUserChart /></NewUser_chartcomponent_withoutsidebar>
+)}
+      </NewUserCompletePage>
+{/* <Dialogbox/> */}
       <NewUsersideBar />
     </>
   );
