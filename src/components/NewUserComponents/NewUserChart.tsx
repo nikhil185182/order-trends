@@ -158,7 +158,7 @@ export default function NewUserChart() {
           label: (context: any) => {
             return [
               `New Enrollments: ${context.raw}`,
-              "Click on it to Get Companies Info",
+              "Click on it to Get Enrolled Companies",
             ];
           },
         },
@@ -197,7 +197,7 @@ export default function NewUserChart() {
   return (
     <>
       <ChartHeading_div>
-        New Enrollments from {from_final.toDateString()} -{" "}
+        Company Enrollments from {from_final.toDateString()} -{" "}
         {to_final.toDateString()}
       </ChartHeading_div>
       {isLine ? (

@@ -42,7 +42,7 @@ export default function NewUserTable() {
   return (
     <NewUserTable_details>
       <NewUsertable_container_title>
-        New Users Info{" "}
+        Company Enrollments{" "}
       </NewUsertable_container_title>
 
       <TableContainer

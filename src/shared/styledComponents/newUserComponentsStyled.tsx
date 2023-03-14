@@ -17,7 +17,7 @@ grid-gap: 8%;
 export const NewUser_datePicker_title_Typography = styled(Typography)`
    && {
     padding: 6%;
-    padding-left: 25%;
+    padding-left: 21%;
     padding-top: 8%;
     font-weight: bold ;
 
@@ -32,7 +32,7 @@ font-weight: bold;
 export const NewUsertable_container_title = styled(Typography)`
    && {
     padding: 5%;
-    padding-left: 27%;
+    padding-left: 17%;
     margin-top: 3% !important ;
     padding-bottom: 1%;
     font-weight:bold;

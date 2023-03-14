@@ -98,7 +98,7 @@ export const GRAPH_OPTIONS = {
 };
 
 
-export const newUser_datepickers_Title="Select Duration";
+export const newUser_datepickers_Title="Select Date Range";
 
 export const NewUser_BarOptions = {
     responsive: true,

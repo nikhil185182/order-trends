@@ -66,7 +66,7 @@ export default function NewUsersideBar() {
             }}
           >
             {" "}
-            Enrolled Companies
+            Companies Enrolled
           </Typography>
         </NewuserSidebar_heading>
 
