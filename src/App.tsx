@@ -41,7 +41,7 @@ function App() {
           <Routes>
             <Route path="/ordertrend" element={<OrderTrend />} />
             <Route path="/newUsers" element={<NewUserDemo />} />
-            <Route path="/companylevel" element={<CompanyTrend  />} />\
+            <Route path="/companytrend" element={<CompanyTrend  />} />\
             <Route path="/inactiveUsers" element={<InactiveUsers />} />
           </Routes>
         </div>

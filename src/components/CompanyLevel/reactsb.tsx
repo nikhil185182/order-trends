@@ -56,7 +56,7 @@ export default function ReactSearchBar() {
                 position: "relative",
               }}
               key={index}
-              className="chipObject1"
+              className="chipObject"
               label={e}
               icon={
                 <ClearRoundedIcon
@@ -64,10 +64,10 @@ export default function ReactSearchBar() {
                     position: "absolute",
                     right: "10px",
                   }}
+                  onClick={() => SetCompanyList(companyList.filter((item) => item != e))}
                 />
               }
               variant="outlined"
-              onClick={() => SetCompanyList(companyList.filter((item) => item != e))}
             />
           );
         })}
