@@ -12,7 +12,7 @@ import {
 import { Filler } from "chart.js";
 import { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
-import { GRAPH_OPTIONS } from "../../shared/config";
+import { CompanyLevel_graphOptions, GRAPH_OPTIONS } from "../../shared/config";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { ReqCompanies } from "../../shared/utils/redux/companySelector";
@@ -74,7 +74,7 @@ const TotalOrdersVsDateGraph = () => {
   useEffect(()=>{},[chartData])
 
   return (
-    <Line data={chartData} width={500} height={500} options={GRAPH_OPTIONS} />
+    <Line data={chartData} width={500} height={500} options={CompanyLevel_graphOptions} />
   );
 };
 

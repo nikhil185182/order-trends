@@ -22,11 +22,11 @@ export default function NavBar() {
                 <Typography>
                     e-Commerce Analytics
                 </Typography>
-                <Stack direction='row' spacing={2}>
+                <Stack direction='row' spacing={2} style={{marginLeft:'Auto'}}>
                     <Button color='inherit' onClick={()=>navigate('/ordertrend')}>{ORDER_TREND}</Button>
-                    <Button color='inherit'  >{COMPANY_TREND}</Button>
+                    <Button color='inherit' onClick={()=>navigate('/companylevel')} >{COMPANY_TREND}</Button>
                     <Button color='inherit' onClick={()=>navigate('/newUsers')} >{NEW_USER}</Button>
-                    <Button color='inherit'>{INACTIVE_USER}</Button>
+                    <Button color='inherit'onClick={()=>navigate('/inactiveUsers')}>{INACTIVE_USER}</Button>
                 </Stack>
             </Toolbar>
         </AppBar>

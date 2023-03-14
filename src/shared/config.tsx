@@ -1,12 +1,36 @@
+import { ChartEvent, ActiveElement } from "chart.js";
+
+import { NewUsersDTO } from "./dto/newUsersDto";
+import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "./utils/redux/reducers/newUserReducer";
+import { useAppDispatch, useAppSelector } from "./utils/redux/selectors/hooks";
+import { AppDispatch } from "./utils/redux/store";
+
+export  function Config(){
+  
+  const dispatch: AppDispatch = useAppDispatch();
+const newusersdatafromstore: NewUsersDTO[] = useAppSelector(
+  (state) => state.NewUser.newUsersdata
+);
+}
+
+
+
+
 export const DAYS = 865;
 
 
 
-export const GRAPH_OPTIONS = {
+
+
+
+
+
+export const CompanyLevel_graphOptions= {
   responsive: true,
-  
+ maintainAspectRatio:false,
   hoverRadius:8,
   scales: {
+    
       x: {
           grid: {
               display: true
@@ -37,10 +61,43 @@ export const GRAPH_OPTIONS = {
   },
 };
 
-<<<<<<< HEAD
+export const GRAPH_OPTIONS = {
+  responsive: true,
+ 
+  hoverRadius:8,
+  scales: {
+    
+      x: {
+          grid: {
+              display: true
+          },
+          title:{
+              display:true,
+              text:"Order Dates"
+          }
+      },
+      y: {
+          beginAtZero: true,
+          grid: {
+              display: true
+          },
+          title:{
+              display:true,
+              text:"Total Number Of Orders"
+          }
+      }
+  },
+  plugins: {
+      legend: {
+          position: 'top' as const,
+      },
+      title: {
+          display: false,
+      },
+  },
+};
 
-=======
->>>>>>> 2e72b46f7ac7de1ecbad2d209834629d9e297a64
+
 export const newUser_datepickers_Title="Select Duration";
 
 export const NewUser_BarOptions = {
