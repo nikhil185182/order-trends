@@ -2,6 +2,8 @@ export interface companyLevel {
   Company: string;
   Date: string;
   TotalOrders: number;
+  CompletedOrders:number;
+  AttemptedOrders:number;
 }
 
 export interface fres{

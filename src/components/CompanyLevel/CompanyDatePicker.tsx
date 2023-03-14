@@ -78,12 +78,13 @@ const CompanyDatePicker = () => {
                 style={{
                   position:"absolute",
                   right:"10px",
-                }}
-                
-                onClick={() =>
-                  SetDateList(dateList.filter((item) => item != e))
-                }/>}
-                variant="filled"
+                }
+              }
+              onClick={() =>
+                SetDateList(dateList.filter((item) => item != e))
+              }
+/>}
+                variant="outlined"
               />
             </>
           );

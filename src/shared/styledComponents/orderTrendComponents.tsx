@@ -34,9 +34,10 @@ export const CHART_CUSTOMISE = styled.div`
 
 export const DAYS_CUSTOMISE = styled.div`
     margin-top: 20px;
-    width: 47.5%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
+    // background-color: aqua;
 `;
 
 export const COMPARE_TAB = styled.div`
