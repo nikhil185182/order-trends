@@ -64,10 +64,11 @@ export default function ReactSearchBar() {
                     position: "absolute",
                     right: "10px",
                   }}
+                  onClick={() => SetCompanyList(companyList.filter((item) => item != e))}
                 />
               }
               variant="outlined"
-              onClick={() => SetCompanyList(companyList.filter((item) => item != e))}
+              
             />
           );
         })}

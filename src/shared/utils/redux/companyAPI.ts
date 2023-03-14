@@ -22,7 +22,7 @@ export const fetchCompanyData = createAsyncThunk(
           tempResult?.map((c: companyLevel) => result.push(c));
   
   
-          console.log('====================resukt is ================');
+          console.log('====================result is ================');
           console.log(result);
           console.log('====================================');
           return result;

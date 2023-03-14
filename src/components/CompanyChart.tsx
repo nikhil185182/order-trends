@@ -82,16 +82,7 @@ const TotalOrdersVsDateGraph = () => {
     },
 };
 
-
-
-
-
-
-
-
-
-
-  const groupedData = data.reduce<GroupedData>((result, currentValue) => {
+const groupedData = data.reduce<GroupedData>((result, currentValue) => {
     const { Company, ...rest } = currentValue;
     if (!result[Company]) {
       result[Company] = [];
@@ -102,7 +93,7 @@ const TotalOrdersVsDateGraph = () => {
 
   const helper = (label:string)=>{
 
-    if(label=="Total Orders"){
+    if(label==="Total Orders"){
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
@@ -115,7 +106,7 @@ const TotalOrdersVsDateGraph = () => {
         })),
       };
     }
-    else if(label=="Attempted Orders"){
+    else if(label==="Attempted Orders"){
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({

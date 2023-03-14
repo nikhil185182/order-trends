@@ -22,7 +22,6 @@
   box-shadow: rgba(34, 33, 33, 0.2) 0px 4px 10px 0px;
   border-radius: 10px;
 }
-
 .DatepickerComponent {
   display: flex;
   flex-direction: column;
@@ -53,7 +52,6 @@
   padding: auto;
   width: 150px;
 }
-
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -81,6 +79,15 @@
   height: 60px;
   background: rgba(0, 0, 0, 0.08) !important;
   border-radius: 0px;
+}
+.fc-rb{
+  width: max-content;
+  margin-top: 20px!important;
+  margin-left: 30%!important;
+  margin-right:  auto!important;
+}
+.chartComponent{
+  height: 90%;
 }
 
 

@@ -66,17 +66,17 @@ const CompanyDatePicker = () => {
                 key={index}
                 className="chipObject"
                 label={e}
+                variant="outlined"
                 icon={
                 <ClearRounded 
                 style={{
                   position:"absolute",
                   right:"10px",
                 }}
-                
                 onClick={() =>
                   SetDateList(dateList.filter((item) => item != e))
                 }/>}
-                variant="filled"
+  
               />
             </>
           );
