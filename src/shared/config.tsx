@@ -63,7 +63,7 @@ export const CompanyLevel_graphOptions= {
 
 export const GRAPH_OPTIONS = {
   responsive: true,
- 
+  maintainAspectRatio: false,
   hoverRadius:8,
   scales: {
     
