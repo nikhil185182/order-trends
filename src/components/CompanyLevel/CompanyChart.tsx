@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { ReqCompanies } from "../../shared/utils/redux/companySelector";
@@ -86,19 +86,23 @@ const TotalOrdersVsDateGraph = () => {
     if (!result[Company]) {
       result[Company] = [];
     }
-    result[Company].push({ Company, ...rest });
+    result[Company].push({ Company,...rest });
     return result;
   }, {});
+
+  
 
   const helper = (label:string)=>{
 
     if(label=="Total Orders"){
+      console.log('====================================');
+      console.log(groupedData);
+      console.log('====================================');
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
           label: Company,
           data: groupedData[Company].map((d) => d.TotalOrders),
-          fill: true,
           borderColor: getRandomColor(),
           lineTension: 0.25,
           radius: 7.5,
@@ -106,12 +110,14 @@ const TotalOrdersVsDateGraph = () => {
       };
     }
     else if(label=="Attempted Orders"){
+      console.log('====================================');
+      console.log(groupedData);
+      console.log('====================================');
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
           label: Company,
           data: groupedData[Company].map((d) => d.AttemptedOrders),
-          fill: true,
           borderColor: getRandomColor(),
           lineTension: 0.25,
           radius: 7.5,
@@ -124,7 +130,6 @@ const TotalOrdersVsDateGraph = () => {
         datasets: Object.keys(groupedData).map((Company) => ({
           label: Company,
           data: groupedData[Company].map((d) => d.CompletedOrders),
-          fill: true,
           borderColor: getRandomColor(),
           lineTension: 0.25,
           radius: 7.5,
