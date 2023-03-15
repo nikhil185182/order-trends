@@ -61,7 +61,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                 {
                     dateList.map((e: OrderTrendDto) => {
                         return (
-                            <div className="chipObject">
+                            <div className="statschipObject">
                                 <p>{e.OrderDate}</p>
                                 <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small'/></p>
                             </div>
