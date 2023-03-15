@@ -30,6 +30,8 @@ query companyRequest{
 export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:String!){
   getSpecificCompanyData(cname:$i1,cdates:$i2){
     TotalOrders
+    AttemptedOrders
+    CompletedOrders
     Date
     Company  
   } 
