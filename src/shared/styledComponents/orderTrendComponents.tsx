@@ -13,7 +13,7 @@ export const ORDER_TREND_BOX = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top:80px;
+    margin-top:70px;
 `;
 
 export const STATISTICS_TAB = styled.div`
@@ -26,24 +26,26 @@ export const STATISTICS_TAB = styled.div`
 
 export const CHART_CUSTOMISE = styled.div`
     margin-top: 25px;
-    width: 20.1%;
+    width: 2vw%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-family: "Times New Roman", Times, serif;
 `;
 
 export const DAYS_CUSTOMISE = styled.div`
     margin-top: 20px;
-    width: 50%;
+    width:50vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
     // background-color: aqua;
-    @media (max-width:700px){
-        flex-direction:column;
-        justify-content: space-between;
-        height:20%;
-        width:15%;
-    }
+    // @media (max-width:700px){
+    //     flex-direction:column;
+    //     justify-content: space-between;
+    //     height:20%;
+    //     width:15%;
+    // }
 `;
 
 export const COMPARE_TAB = styled.div`
@@ -62,8 +64,14 @@ export const COMPARE_TAB = styled.div`
 export const STATISTICS_GRAPH = styled.div`
 position: relative; 
 margin: auto;
-height: 50vh;
-width: 80%;
+height: 63vh;
+width: 100%;
+@media(max-width:700px){
+    height:50vh;
+}
+@media(max-width:1100px){
+    height:60vh;
+}
 // background-color: aqua;
 `;
 
@@ -71,20 +79,25 @@ export const COMPARE_GRAPH = styled.div`
     position: relative; 
     margin: auto;
     height: 50vh;
-    width: 80%;
+    width: 90%;
     // background-color: aqua;
 `;
 
 export const COMPARE_DATEPICKER = styled.div`
     border: 2px;
-    border-color: rgb(177, 177, 177);
     border-radius: 10px;
-    border-style:solid;
     padding: 20px;
     width: 20%;
-    align-items: center;
+    // align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
-
+    @media(max-width:1042px){
+        width:80%;
+        align-items: center;
+    }
     
 `;
 
