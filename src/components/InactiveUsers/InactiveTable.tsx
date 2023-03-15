@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import SearchBar from "material-ui-search-bar";
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import '../../shared/css/inactive.css';
 import DateandDaysSelector from "./DateandDaysSelector";
-import { TablePagination } from "@mui/material";
 import { getInactiveUsersData } from "../../shared/dto/InactiveUsersDTO";
+import TablePagination from "@mui/material/TablePagination";
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
@@ -25,18 +23,7 @@ export default function InactiveTable() {
     setRows(Ddata);
   }, [Ddata]);
 
-  const useStyles = makeStyles({
-    root: {
-      width: "100%",
-      padding: "20px",
-    },
-    table: {
-      minWidth: 850,
-    },
-    searchBar: {
-      marginBottom: "10px",
-    },
-  });
+
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -46,6 +33,8 @@ export default function InactiveTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = Ddata.filter((row) => {
@@ -67,24 +56,27 @@ export default function InactiveTable() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell colSpan={3} align="center">
+                <TableCell className="Heading" colSpan={3} align="center">
                   <h2>Inactive Companies List</h2>
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2}>
-                  <SearchBar className="search_bar"
-                    value={searched}
-                    onChange={(searchVal) => requestSearch(searchVal)}
-                    onCancelSearch={() => cancelSearch()}
-                  />
+                <TableCell colSpan={2} align="left" >
+                  {/* <TextField
+                    label="Search"
+                    variant="outlined"
+                    value={searchTerm}
+                    onChange={requestSearch(value)
+                    InputProps={{
+                      startAdornment: <SearchIcon />,
+                    }}
+                  /> */}
                 </TableCell>
                 <TableCell align="right"></TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Company Name</TableCell>
-                <TableCell align="left">Latest Order Date</TableCell>
-                <TableCell align="center">Impact</TableCell>
+                <TableCell align="right">Latest Order Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody className="inner-rows">
@@ -94,9 +86,6 @@ export default function InactiveTable() {
                   <TableRow >
                     <TableCell component="th" scope="row">
                       {row.CompanyName}
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.LatestOrderDate.toString().slice(0, 10)}
                     </TableCell>
                     <TableCell component="th" scope="row" align="right">
                       {row.LatestOrderDate.toString().slice(0, 10)}

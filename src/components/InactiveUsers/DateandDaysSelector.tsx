@@ -14,19 +14,13 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 const steps = [
     {
         label: 'Select required date on the Date Picker',
-        description: `Pick a Required date in the date picker and click the
-                      submit button below it.`,
+        description: `Select a Required date in the date picker and click the
+        submit button below it.`,
     },
     {
-        label: 'View the Required number days on the Chart',
-        description:
-            'The Count of Inactive Users can be viewed on the Clickable Chart.',
-    },
-    {
-        label: 'Click on the chart to view Companies List',
-        description: `Click on the required bar or Line on the Chart to view the list
-                       of Companies along with Latest Order dates, required companies
-                       can be found using the Search bar`,
+        label: 'View the List of Inactive Users on Table',
+        description:`The Count of Inactive Users since the past 60 Days
+        from the selected date can be viewed on the Table.`,
     },
 ];
 

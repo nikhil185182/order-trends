@@ -32,6 +32,8 @@ export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:Stri
     TotalOrders
     Date
     Company  
+    CompletedOrders
+    AttemptedOrders
   } 
 }`
 
