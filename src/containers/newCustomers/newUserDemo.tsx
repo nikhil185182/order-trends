@@ -7,10 +7,9 @@ import NewUserDate_selectionBox from "../../components/NewUserComponents/newUser
 import NewUsersideBar from "../../components/NewUserComponents/newCompany_sideBar";
 import NewUserTable from "../../components/NewUserComponents/newUsertable";
 import NewUserChart from "../../components/NewUserComponents/NewUserChart";
-import Dialogbox from "../../components/NewUserComponents/Dialog";
+import { NewUserCompletePage, NewUsersdateSelection_block, NewUser_chartcomponent_withsidebar, NewUser_chartcomponent_withoutsidebar } from "../../shared/styledComponents/newUserComponentsStyled";
 import { Fetchnewusersdata } from "../../shared/utils/redux/reducers/newUserReducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
-import { NewUserCompletePage, NewUsersdateSelection_block, NewUser_chartcomponent_withoutsidebar, NewUser_chartcomponent_withsidebar } from "../../shared/styledComponents/newUserComponentsStyled";
 
 
 

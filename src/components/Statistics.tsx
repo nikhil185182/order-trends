@@ -91,8 +91,8 @@ const Statistics = () => {
                 {isLine ? <Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData} />}
             </STATISTICS_GRAPH>
             <CHART_CUSTOMISE>
-                <FormControlLabel control={<Radio style={{ color: '#54B948' }} onClick={handleLineClick} checked={isLine} />} label="Line Chart" />
-                <FormControlLabel control={<Radio style={{ color: '#54B948' }} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
+                <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleLineClick} checked={isLine} />} label={"Line Chart"} />
+                <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
             </CHART_CUSTOMISE>
             <DAYS_CUSTOMISE>
                 <button className='btn_class inactive' onClick={() => updateDays(865)}>865 Days</button>

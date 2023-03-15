@@ -4,12 +4,13 @@ import CompanyDatePicker from "../components/CompanyLevel/CompanyDatePicker";
 import CompanyRadioButtonContainer from "../components/CompanyLevel/CompanyRadioButtonContainer";
 import ReactSearchBar from "../components/CompanyLevel/reactsb";
 import "../shared/css/companyLevel.css";
+import { MainContainer } from "../shared/styledComponents/CompanyOrderTrend";
 import { Helperutil } from "../shared/utils/redux/companyAPI";
 
 const CompanyTrend = () => {
   Helperutil();
   return (
-    <div className="MainContainer">
+   <MainContainer>
       <div className="SubcontainerOne">
         <div className="SearchBarComponent">
           <ReactSearchBar />
@@ -25,13 +26,13 @@ const CompanyTrend = () => {
         <div className="chartComponent">
         <TotalOrdersVsDateGraph />
         </div>
-       
         <div className="radiobutton">
           <CompanyRadioButtonContainer/>
         </div>
       </div>
-      
-    </div>
+      </MainContainer>
+
+
   );
 };
 

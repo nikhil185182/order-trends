@@ -1,5 +1,7 @@
 import { Chip, TextField } from "@mui/material";
 import { DesktopDatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import {ClearRounded} from '@mui/icons-material';
 import dayjs, { Dayjs } from "dayjs";
@@ -74,7 +76,7 @@ const CompanyDatePicker = () => {
                 className="chipObject"
                 label={e}
                 icon={
-                <ClearRounded 
+                <HighlightOffTwoToneIcon 
                 style={{
                   position:"absolute",
                   right:"10px",

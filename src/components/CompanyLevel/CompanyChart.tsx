@@ -9,9 +9,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useEffect, useState } from "react";
-import { Bar, Line } from "react-chartjs-2";
-import { GRAPH_OPTIONS } from "../../shared/config";
+import { useEffect } from "react";
+import { Line } from "react-chartjs-2";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { ReqCompanies } from "../../shared/utils/redux/companySelector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
@@ -43,6 +42,7 @@ const TotalOrdersVsDateGraph = () => {
   ];
 
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
+  console.log(data);
   const y_label: string = useAppSelector((state) => state.company.label);
 
   
@@ -136,7 +136,7 @@ const TotalOrdersVsDateGraph = () => {
   }
 
   const chartData =  
-    data[0].Company === data1[0].Company
+    (data[0].Company === data1[0].Company)
       ? {
           labels: [],
           datasets: [],
@@ -149,7 +149,7 @@ const TotalOrdersVsDateGraph = () => {
     [chartData]);
 
   return (
-    <Line data={chartData} width={500} height={500} options={GRAPH_OPTIONS} />
+    <Line data={chartData} width={500} height={500} options={options} />
   );
 };
 

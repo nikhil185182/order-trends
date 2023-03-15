@@ -71,23 +71,9 @@ export const CompanyUtil = async () => {
     return { data, loading, error };
   }
 
-  export  const DataFromGraphql_inactive = (Days:Number): getInactiveUsersData[] => {
-    const { loading, error, data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
-      variables: { input: Days }
-    })
-  
-    const li2: getInactiveUsersData[] | undefined = data?.inactiveusers;
-  
-    var original: getInactiveUsersData[] = [];
-  
-    li2?.map((e: getInactiveUsersData) => {
-      original.push(e);
-    })
-    return original;
-  }
   
   export  const DataFromGraphqlUser = (): getInactiveUsersData[] => {
-    const inputDays = useAppSelector(state=>state.InactiveUsers.Days);
+    const inputDays = useAppSelector(state=>state.InactiveUsers.Date);
     const { loading, error, data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
       variables: { input : inputDays }
     })
