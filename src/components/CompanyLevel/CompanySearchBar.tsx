@@ -6,6 +6,8 @@ import { company } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { setCompanyString } from "../../shared/utils/redux/reducers/companyReducer";
 import { CompanySelector } from "../../shared/utils/redux/companySelector";
+import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import { Chip, InputAdornment } from "@mui/material";
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -18,7 +20,9 @@ const CompanyAutocomplete = () => {
     { CompanyName: "Options are loading" },
   ];
 
-
+  const [svalue,setValue]=useState<company>({
+    CompanyName:""
+  });
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
@@ -32,39 +36,65 @@ const CompanyAutocomplete = () => {
 
 
 
-  const handleOnChange = (value: company[]) => {
+  const handleOnChange = (value: company) => {
     console.log("====================================");
     console.log(value);
     console.log("====================================");
-
-    setSelectedOptions(value.map((v) => v.CompanyName));
-
+    setSelectedOptions([...selectedOptions,value.CompanyName]);
   };
 
   return (
-<div className="searchBar">
+<div>
+  <div className="sb">
     <Autocomplete
       className="searchauto"
-      multiple 
-      style={{
-        border:0,
-        display:"flex",
-        flexDirection:"row-reverse",
-        height:"10px"
+      value={svalue}
+      onChange={(event, svalue) => {
+        handleOnChange(svalue!)
+        setValue({
+          CompanyName:""
+        })
       }}
-      autoHighlight={true}
-      popupIcon={<SearchIcon/>}
       disablePortal 
-      sx={{ width: 200 }}
+      sx={{ 
+        width:200
+      }}
       options={options}
-      onChange={(event, value) => handleOnChange(value)}
       getOptionLabel={(option: company) => option.CompanyName!}
       renderInput={(params) => (
-        <TextField {...params} label="Select companies" />
+        <TextField {...params}
+         label="Select companies" 
+
+         />
       )}
     />
-    
     </div>
+    <div className="dateListbox">
+        {selectedOptions.map((e, index) => {
+          return (
+            <Chip
+              style={{
+                position: "relative",
+              }}
+              key={index}
+              className="chipObject"
+              label={e}
+              icon={
+                <ClearRoundedIcon
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                  }}
+                  onClick={() => setSelectedOptions(selectedOptions.filter((item) => item != e))}
+                />
+              }
+              variant="outlined"
+            />
+          );
+        })}
+  </div>
+</div>
+
   );
 };
 export default CompanyAutocomplete;

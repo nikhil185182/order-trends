@@ -2,6 +2,7 @@ import CompanyButtonContainer from "../components/CompanyLevel/CompanyButton";
 import TotalOrdersVsDateGraph from "../components/CompanyLevel/CompanyChart";
 import CompanyDatePicker from "../components/CompanyLevel/CompanyDatePicker";
 import CompanyRadioButtonContainer from "../components/CompanyLevel/CompanyRadioButtonContainer";
+import CompanyAutocomplete from "../components/CompanyLevel/CompanySearchBar";
 import ReactSearchBar from "../components/CompanyLevel/reactsb";
 import "../shared/css/companyLevel.css";
 import { MainContainer } from "../shared/styledComponents/CompanyOrderTrend";
