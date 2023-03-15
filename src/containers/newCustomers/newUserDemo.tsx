@@ -7,7 +7,6 @@ import NewUserDate_selectionBox from "../../components/NewUserComponents/newUser
 import NewUsersideBar from "../../components/NewUserComponents/newCompany_sideBar";
 import NewUserTable from "../../components/NewUserComponents/newUsertable";
 import NewUserChart from "../../components/NewUserComponents/NewUserChart";
-import Dialogbox from "../../components/NewUserComponents/Dialog";
 
 
 

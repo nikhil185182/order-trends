@@ -1,37 +1,15 @@
-import { Box, Button,  MobileStepper, Paper, Select, SelectChangeEvent, styled, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Tooltip, tooltipClasses, TooltipProps, Typography, useTheme } from '@mui/material';
+import { Box, Button, MobileStepper, Paper, Select, SelectChangeEvent, styled, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Tooltip, tooltipClasses, TooltipProps, Typography, useTheme } from '@mui/material';
 import { DatePicker, DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-// import { useAppDispatch,useAppSelector } from '../../shared/utils/redux/Selectors/hooks';
-// import { addingInactiveUsersdata, settingDays } from '../../shared/utils/redux/reducers/InactiveUsersReducer';
-// import '../../shared/css/inactive.css';
 import '../../shared/css/inactive.css';
+import { getInactiveUsersData } from '../../shared/dto/InactiveUsersDTO';
+import { addingInactiveUsersdata, settingDate } from '../../shared/utils/redux/reducers/InactiveUserReducer';
+import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/selectors/hooks';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import { settingDays } from '../../shared/utils/redux/reducers/InactiveUserReducer';
-import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/selectors/hooks';
-
-
-const today1 = new Date();
-const p = today1.toString();
-const date = new Date(Date.parse(p));
-const isoString = date.toISOString();
-const formattedDate = isoString.slice(0, 10);
-
-
-
-
-
-function Daysdifference(pastDate: string): number {
-    const oneDayInMs = 24 * 60 * 60 * 1000;
-    const today = new Date();
-    const past = new Date(pastDate);
-    const diffInDays = Math.round(Math.abs((today.getTime() - past.getTime()) / oneDayInMs));
-    return diffInDays;
-}
 
 const steps = [
     {
@@ -51,12 +29,6 @@ const steps = [
                        can be found using the Search bar`,
     },
 ];
-
-const pastDate = "2023-02-01";
-const daysDiff = Daysdifference(pastDate);
-
-console.log(`The number of days between ${pastDate} and today is ${daysDiff} days.`);
-
 
 function DateandDaysSelector() {
     const [IsDate, SetDate] = useState(true);
@@ -87,19 +59,18 @@ function DateandDaysSelector() {
         <div>
             <div>
                 {
-                    <>  <div className='container'>
-
+                    <>  
+                    <div className='container'>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DesktopDatePicker onYearChange={undefined} className='Date_picker'
                                 value={value}
-                                label="From Date"
+                                label="Select a Date"
                                 onChange={(newValue) => {
                                     setValue(newValue);
                                     const monthVal: number = newValue?.get('month')! + 1;
                                     const mVal: string = monthVal < 10 ? '0' + monthVal : monthVal.toString();
                                     var val: string = newValue?.get('year').toString()! + '-' + mVal + '-' + newValue?.get('date').toString()!;
-                                    var days = Daysdifference(val);
-                                    setDay(days);
+                                    console.log(val);
                                     SetVal(val);
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
@@ -111,7 +82,7 @@ function DateandDaysSelector() {
                             variant="contained"
                             className='submit_btn'
                             onClick={() => {
-                                dispatch(settingDays(Day));
+                                dispatch(settingDate(Val));
                                 console.log("action dispatched");
                             }}
                         >
@@ -119,7 +90,7 @@ function DateandDaysSelector() {
                         </Button>
 
                         <div>
-                            <Box sx={{ width: 270, flexGrow: 1,marginTop: 8 }}>
+                            <Box sx={{ width: 270, flexGrow: 1, marginTop: 8 }}>
                                 <Paper
                                     square
                                     elevation={0}
@@ -168,12 +139,7 @@ function DateandDaysSelector() {
                                 />
                             </Box>
                         </div>
-
-
                     </div>
-
-
-
                     </>
                 }
 

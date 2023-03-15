@@ -6,7 +6,6 @@ import { fetchCompanyData } from "../../shared/utils/redux/companyAPI";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
 import { useState } from "react";
-import { WidthFull } from "@mui/icons-material";
 import { height } from "@mui/system";
 
 const CompanyButtonContainer = () => {

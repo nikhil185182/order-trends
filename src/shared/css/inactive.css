@@ -1,22 +1,13 @@
-.chart_component {
-    align-items: center;
-    float: right;
-    width: 1100px;
-    height: 570px;
-    margin-top: 15px;
-    margin-left: 20px;
-    padding: 50px;
-    margin-bottom: 20px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5%;
 }
-
+.Total_component{
+    display: flex;
+    margin-top: 5%;
+}
 .InactiveUsertable_container {
     height : 270px!important;
 }
@@ -32,85 +23,37 @@
     box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
 }
-
-.drawer {
-    margin-top: 100px;
-}
-
-.table {
-    width: 72% !important;
-    float: right;
-    margin-right: 20px;
-    margin-top: 30px;
-    box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px !important;
-}
-
 .rows {
     width: 20%;
     overflow: hidden;
 }
-
 .inner-rows {
     width: 70%;
 }
-
 .search_bar {
     width: 50%;
     float: right;
     margin: 10px;
 }
-
-.Total_component {
-    display: flex;
-}
-
-.Day_picker_btn {
-    margin-left: 65px !important;
-    margin-bottom: 10px !important;
-}
-
-/* .Date_picker_btn {
-    margin-left: 60px!important;
-    margin-bottom: 10px!important;
-    background-color: #55B74E!important;
-} */
-
-.Day_picker {
-    margin-left: 15px !important;
-    margin-bottom: 10px !important;
-    margin-top: 25px !important;
-}
-
 .Date_picker {
     margin-top: 5px !important;
     display: grid;
 }
-
-.Inactive_table {
-    box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
-    display: inline-block;
-    height: 300px;
-    width: 250px;
-    padding: 10px;
-    margin-top: 200px;
-    margin-right: 0px!important;
+.Inactive_Table {
+    box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px !important;
+    width: 900px;
+    padding: 20px;
+    border-radius: 10px!important;
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
-
 .submit_btn {
-    margin-top: 40px !important;
+    margin-top: 35px !important;
     margin-left: -10px !important;
     margin-bottom: 0px !important;
     background-color: #55B74E !important;
 }
-
-.Line_btn {
-    margin-left: 380px !important;
-    margin-right: 20px !important;
-    margin-top: 5px !important;
-    background-color: #55B74E !important;
-}
-
 .stepper {
     width: 170px;
 }
@@ -118,12 +61,6 @@
     margin-left: 450px !important;
 }
 
-.bar_btn {
-    margin-top: 5px !important;
-    background-color: #55B74E !important;
-}
 
-.chip_component {
-    margin-top: 5px !important;
-    margin-left: 70px !important;
-}
+  
+
