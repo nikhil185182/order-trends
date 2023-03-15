@@ -42,6 +42,7 @@ const TotalOrdersVsDateGraph = () => {
   ];
 
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
+  console.log(data);
   const y_label: string = useAppSelector((state) => state.company.label);
 
   
