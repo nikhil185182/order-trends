@@ -5,13 +5,7 @@ import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "./utils
 import { useAppDispatch, useAppSelector } from "./utils/redux/selectors/hooks";
 import { AppDispatch } from "./utils/redux/store";
 
-export  function Config(){
-  
-  const dispatch: AppDispatch = useAppDispatch();
-const newusersdatafromstore: NewUsersDTO[] = useAppSelector(
-  (state) => state.NewUser.newUsersdata
-);
-}
+export const DummyCompanies="%[_]%,%zzz%";
 
 
 

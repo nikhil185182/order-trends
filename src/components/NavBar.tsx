@@ -27,7 +27,9 @@ export default function NavBar() {
                         <DrawerComp />
                     </div>
                 ) :
-                    <div className="btn_cls" style={{ marginLeft: 'auto' }}>
+                    <div className="btn_cls" style={{ 
+                        marginLeft: 'auto'
+                     }}>
                         <Button color='inherit' onClick={() => navigate('/ordertrend')}>{ORDER_TREND}</Button>
                         <Button color='inherit' onClick={()=>navigate('/companytrend')} >{COMPANY_TREND}</Button>
                         <Button color='inherit' onClick={() => navigate('/newUsers')} >{NEW_USER}</Button>
