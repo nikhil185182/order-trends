@@ -9,7 +9,7 @@ type dto = {
   companyString: string[];
   dateString: string[];
   Data: companyLevel[];
-
+  label:string;
   status: string;
   companies: company[];
 
@@ -22,12 +22,15 @@ const InitialState: dto = {
     {
       Company: "",
       Date: "",
-      TotalOrders: 0
+      TotalOrders: 0,
+      AttemptedOrders:0,
+      CompletedOrders:0
     },
   ],
 
   companies: [],
-  status: ""
+  status: "",
+  label:"TotalOrders"
 };
 
 const companysSlice = createSlice({
@@ -49,6 +52,9 @@ const companysSlice = createSlice({
     setDateString(state, { payload }: PayloadAction<string[]>) {
       state.dateString = payload;
     },
+    setLabel(state,{payload}:PayloadAction<string>){
+      state.label=payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -77,4 +83,5 @@ export const {
   fetchCompanyDatas,
   setCompanyString,
   setDateString,
+  setLabel
 } = companysSlice.actions;

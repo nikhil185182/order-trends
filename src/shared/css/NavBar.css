@@ -57,7 +57,7 @@
 .chipObject{
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: 80%;
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
     justify-content: space-around;
@@ -122,15 +122,22 @@ button:hover{
     cursor: pointer;
 }
 
+
+.btn_class{
+    border-radius: 10px;
+    /* width: 100%; */
+    /* max-height: 40px; */
+    /* max-width: 90px; */
+    padding: 0;
+    border: none;
+    /* margin-top:35px; */
+    min-width:12%;
+    min-height: 40px;
+}
+
 .active{
     background-color: #54B948;
     color: white;
-    border-radius: 10px;
-    height: 40px;
-    width: 90px;
-    padding: 0;
-    border: none;
-    /* font-weight: 600; */
 }
 
 .inactive{
@@ -138,10 +145,6 @@ button:hover{
     background-color: white;
     border-color: #54B948;
     color: #54B948;
-    border-radius: 10px;
-    height: 40px;
-    width: 90px;
-    /* font-weight: 600; */
 }
 
 .daysCust{

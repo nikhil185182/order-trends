@@ -1,13 +1,10 @@
 import CompanyButtonContainer from "../components/CompanyLevel/CompanyButton";
 import TotalOrdersVsDateGraph from "../components/CompanyLevel/CompanyChart";
 import CompanyDatePicker from "../components/CompanyLevel/CompanyDatePicker";
+import CompanyRadioButtonContainer from "../components/CompanyLevel/CompanyRadioButtonContainer";
 import ReactSearchBar from "../components/CompanyLevel/reactsb";
 import "../shared/css/companyLevel.css";
 import { Helperutil } from "../shared/utils/redux/companyAPI";
-// import CompanyButtonContainer from "../components/CompanyButton";
-// import CompanyDatePicker from "../components/CompanyDatePicker";
-// import FrequencyVsDateGraph from "../components/CompanyChart";
-// import ReactSearchBar from "../components/reactsb";
 
 const CompanyTrend = () => {
   Helperutil();
@@ -25,8 +22,15 @@ const CompanyTrend = () => {
         </div>
       </div>
       <div className="subcontainerTwo">
+        <div className="chartComponent">
         <TotalOrdersVsDateGraph />
+        </div>
+       
+        <div className="radiobutton">
+          <CompanyRadioButtonContainer/>
+        </div>
       </div>
+      
     </div>
   );
 };

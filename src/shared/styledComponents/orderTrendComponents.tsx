@@ -34,21 +34,45 @@ export const CHART_CUSTOMISE = styled.div`
 
 export const DAYS_CUSTOMISE = styled.div`
     margin-top: 20px;
-    width: 47.5%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
+    // background-color: aqua;
+    @media (max-width:700px){
+        flex-direction:column;
+        justify-content: space-between;
+        height:20%;
+        width:15%;
+    }
 `;
 
 export const COMPARE_TAB = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:flex-start
+    align-items:flex-start;
+    // background-color: aqua;
+    @media(max-width:700px){
+        flex-direction: column;
+        justify-content: space-between;
+        align-items:center;
+    }
 `;
 
+export const STATISTICS_GRAPH = styled.div`
+position: relative; 
+margin: auto;
+height: 50vh;
+width: 80%;
+// background-color: aqua;
+`;
 
 export const COMPARE_GRAPH = styled.div`
-    width: 75%;
+    position: relative; 
+    margin: auto;
+    height: 50vh;
+    width: 80%;
+    // background-color: aqua;
 `;
 
 export const COMPARE_DATEPICKER = styled.div`
@@ -57,8 +81,11 @@ export const COMPARE_DATEPICKER = styled.div`
     border-radius: 10px;
     border-style:solid;
     padding: 20px;
-    width: 200px;
+    width: 20%;
     align-items: center;
+
+
+    
 `;
 
 export const DATELIST_BOX = styled.div`
