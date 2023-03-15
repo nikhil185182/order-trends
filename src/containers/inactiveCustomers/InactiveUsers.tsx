@@ -1,8 +1,8 @@
 // import '../../shared/css/inactive.css';
 import React from 'react'
-import InactiveChartdisplay from './InactiveChartdisplay';
-import DateandDaysSelector from './DateandDaysSelector';
- import '../../shared/css/inactive.css';
+import DateandDaysSelector from '../../components/InactiveUsers/DateandDaysSelector';
+import '../../shared/css/inactive.css';
+import InactiveTable from '../../components/InactiveUsers/InactiveTable';
 
 
 const InactiveUsers = () => {
@@ -12,7 +12,7 @@ const InactiveUsers = () => {
             <DateandDaysSelector />
         </div>
         <div className='chart_component'>
-            <InactiveChartdisplay />            
+            <InactiveTable />            
         </div>      
     </div>
   )

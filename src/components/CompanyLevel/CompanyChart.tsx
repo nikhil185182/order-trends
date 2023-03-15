@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { ReqCompanies } from "../../shared/utils/redux/companySelector";
@@ -42,6 +42,7 @@ const TotalOrdersVsDateGraph = () => {
   ];
 
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
+  console.log(data);
   const y_label: string = useAppSelector((state) => state.company.label);
 
   
@@ -135,7 +136,7 @@ const TotalOrdersVsDateGraph = () => {
   }
 
   const chartData =  
-    data[0].Company === data1[0].Company
+    (data[0].Company === data1[0].Company)
       ? {
           labels: [],
           datasets: [],
@@ -147,7 +148,9 @@ const TotalOrdersVsDateGraph = () => {
     }, 
     [chartData]);
 
-  return <Line data={chartData} width={500} height={500} options={options} />;
+  return (
+    <Line data={chartData} width={500} height={500} options={options} />
+  );
 };
 
 function getRandomColor() {
