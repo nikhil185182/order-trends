@@ -207,21 +207,12 @@ export default function NewUserChart() {
       )}
 
       <Bothbuttons>
-        <FormControl className="dummy">
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            name="radio-buttons-group"
-            row
-          >
+        <FormControl>
+          <RadioGroup row>
             <FormControlLabel
-              value="barchart"
               control={
                 <Radio
-                  sx={{
-                    "&, &.Mui-checked": {
-                      color: "#55B74E",
-                    },
-                  }}
+                  style={{ color: "#54B948" }}
                   onClick={() => dispatch(toggleLineOrBar(true))}
                   checked={isLine}
                 />
@@ -229,14 +220,9 @@ export default function NewUserChart() {
               label="Bar Chart"
             />
             <FormControlLabel
-              value="linechart"
               control={
                 <Radio
-                  sx={{
-                    "&, &.Mui-checked": {
-                      color: "#55B74E",
-                    },
-                  }}
+                  style={{ color: "#54B948" }}
                   onClick={() => dispatch(toggleLineOrBar(false))}
                   checked={!isLine}
                 />

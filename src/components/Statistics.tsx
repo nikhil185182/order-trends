@@ -37,18 +37,18 @@ const Statistics = () => {
 
     const btns = document.querySelectorAll('.btn_class');
 
-    function updateDays(days: number) {
-        btns.forEach((btn1) => {
-            btn1.addEventListener('click', () => {
-                btns.forEach((btn2) => {
-                    btn2.classList.remove('active');
-                    btn2.classList.add('inactive');
-                });
-                btn1.classList.remove('inactive');
-                btn1.classList.add('active');
+    btns.forEach((btn1) => {
+        btn1.addEventListener('click', () => {
+            btns.forEach((btn2) => {
+                btn2.classList.remove('active');
+                btn2.classList.add('inactive');
             });
+            btn1.classList.remove('inactive');
+            btn1.classList.add('active');
         });
+    });
 
+    function updateDays(days: number) {
         Ddata.length = 0;
         const initIndex = orderList.length - 1 - days >= 0 ? orderList.length - 1 - days : 0;
         Ddata = orderList.slice(initIndex, orderList.length - 1);
