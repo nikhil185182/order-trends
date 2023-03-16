@@ -15,6 +15,7 @@ import {
 } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import {
+  CustomDrawer,
   NewUserSidebar_dateBox,
   NewuserSidebar_heading,
 } from "../../shared/styledComponents/newUserComponentsStyled";
@@ -30,7 +31,7 @@ export default function NewUsersideBar() {
   );
   return (
     <>
-      <Drawer
+      {/* <Drawer
         anchor="right"
         open={IsDrawerOpen}
         onClose={() => {
@@ -53,16 +54,26 @@ export default function NewUsersideBar() {
             borderRadius: 3,
           },
         }}
+      > */}
+      <CustomDrawer
+      anchor="right"
+      open={IsDrawerOpen}
+      onClose={() => {
+        dispatch(toggleDrawer(false));
+      }}
       >
         <NewuserSidebar_heading>
           <Typography
             style={{
-              fontFamily: "Segoe UI",
+              fontFamily: "Roboto",
               color: "white",
-              paddingLeft: "3.5%",
-              marginTop: "5%",
-              fontSize: "148%",
+              paddingLeft: "5%",
+              fontSize: "150%",
               fontWeight: "bold",
+              alignItems:'center',
+              paddingTop:'4%'
+            
+             
             }}
           >
             {" "}
@@ -73,7 +84,7 @@ export default function NewUsersideBar() {
         <NewUserSidebar_dateBox>
           <Typography
             style={{
-              fontFamily: "Segoe UI",
+              fontFamily: "Roboto",
               paddingLeft: "5%",
               fontSize: "120%",
               fontWeight: "bold",
@@ -86,7 +97,7 @@ export default function NewUsersideBar() {
           <Divider />
           <Typography
             style={{
-              fontFamily: "Segoe UI",
+              fontFamily: "Roboto",
               paddingLeft: "5%",
               fontSize: "120%",
               fontWeight: "bold",
@@ -113,7 +124,8 @@ export default function NewUsersideBar() {
             </ListItem>
           ))}
         </List>
-      </Drawer>
+        </CustomDrawer>
+      {/* </Drawer> */}
     </>
   );
 }

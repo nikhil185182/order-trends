@@ -10,8 +10,10 @@ import "../../shared/css/newUserDemo.css";
 import { Divider, Typography } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import {
+
   NewUsertable_container_title,
   NewUserTable_details,
+  StyledTableContainer,
 } from "../../shared/styledComponents/newUserComponentsStyled";
 
 export default function NewUserTable() {
@@ -44,16 +46,17 @@ export default function NewUserTable() {
       <NewUsertable_container_title>
         Company Enrollments{" "}
       </NewUsertable_container_title>
-
+{/* 
       <TableContainer
         component={Paper}
         sx={{
           position:'relative',
           paddingTop: "1%",
           borderRadius: "7% !important",
-          marginTop: "19%",
+          marginTop: "21%",
         }}
-      >
+      > */}
+      <StyledTableContainer>
         <Table aria-label="customized table">
           <TableBody>
             <TableRow>
@@ -74,7 +77,8 @@ export default function NewUserTable() {
             </TableRow>
           </TableBody>
         </Table>
-      </TableContainer>
+        </StyledTableContainer>
+      {/* </TableContainer> */}
     </NewUserTable_details>
   );
 }
