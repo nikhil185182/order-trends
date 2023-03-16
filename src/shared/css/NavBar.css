@@ -69,7 +69,6 @@
 .statschipObject{
     display: flex;
     flex-direction: row;
-    width: 80%;
     background-color: rgb(243, 243, 243);
     border-radius: 25px;
     justify-content: space-around;
@@ -98,11 +97,20 @@ p:hover{
 } */
 
 .dateListbox{
+    /* background-color: aqua; */
+    width: 90%;
+    display: flex;
+    flex-wrap:wrap;
+    font-size: small;
+    /* height: 200px; */
+    /* flex-direction: ; */
+    /* flex-wrap: wrap; */
+
     max-height: 380px;
     overflow-y: auto;
-    margin: 10px 5px; 
-    padding: 5px;
-    text-align: center;
+    overflow-x: auto;
+    /* margin: 10px 5px;  */
+    /* padding: 5px; */
 }
 
 /* ::-webkit-scrollbar {
@@ -118,6 +126,12 @@ p:hover{
     border-radius:5px;
     -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82); 
 } */ 
+
+
+.feature_button{
+    background: black;
+    width: fit-content;
+}
 
 .compare_bar_graph{
     width: 75%;

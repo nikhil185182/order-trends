@@ -57,18 +57,21 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
-            <DATELIST_BOX>
+            {/* <DATELIST_BOX> */}
+            <div className="dateListbox">
                 {
                     dateList.map((e: OrderTrendDto) => {
                         return (
                             <div className="statschipObject">
                                 <p>{e.OrderDate}</p>
-                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small'/></p>
+                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small' /></p>
                             </div>
                         )
                     })
                 }
-            </DATELIST_BOX>
+            </div>
+
+            {/* </DATELIST_BOX> */}
         </COMPARE_DATEPICKER>
     )
 }
