@@ -351,11 +351,11 @@ align-items:center;
 
 padding-bottom:3% ;
 padding-top:0% ;
+@media(max-width:1000px){
+  height:11%
+}
 
-@media(max-width:590px){
-  height:11%;
- 
-}`;
+`;
 export const NewUserSidebar_dateBox=styled.div`
 box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 padding:2% ;
