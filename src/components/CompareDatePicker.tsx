@@ -63,7 +63,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                         return (
                             <div className="statschipObject">
                                 <p>{e.OrderDate}</p>
-                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small'/></p>
+                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small' /></p>
                             </div>
                         )
                     })

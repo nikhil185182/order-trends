@@ -42,7 +42,7 @@ export default function ReactSearchBar() {
         }}
         onFocus={() => true}
         leftIcon={<Search />}
-        iconBoxSize="34px"
+        iconBoxSize="36px"
         inputHeight="40px"
         dropdownHoverColor="rgba(62, 60, 60, 0.2)"
         onChange={() => true}
