@@ -31,7 +31,7 @@ export default function ReactSearchBar() {
     <div >
       <div className="sb">
       <ReactSearchBox
-        placeholder="Select Company"
+        placeholder="Select Companies"
         autoFocus={true}
         data={data1}
         clearOnSelect
@@ -42,7 +42,7 @@ export default function ReactSearchBar() {
         }}
         onFocus={() => true}
         leftIcon={<Search />}
-        iconBoxSize="50px"
+        iconBoxSize="36px"
         inputHeight="40px"
         dropdownHoverColor="rgba(62, 60, 60, 0.2)"
         onChange={() => true}
