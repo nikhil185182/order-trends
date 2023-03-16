@@ -31,7 +31,7 @@ export default function ReactSearchBar() {
     <div >
       <div className="sb">
       <ReactSearchBox
-        placeholder="Select Companies"
+        placeholder="Select Company"
         autoFocus={true}
         data={data1}
         clearOnSelect
