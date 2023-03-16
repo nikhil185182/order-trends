@@ -57,8 +57,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
-            {/* <DATELIST_BOX> */}
-            <div className="dateListbox">
+            <DATELIST_BOX>
                 {
                     dateList.map((e: OrderTrendDto) => {
                         return (
@@ -69,9 +68,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                         )
                     })
                 }
-            </div>
-
-            {/* </DATELIST_BOX> */}
+            </DATELIST_BOX>
         </COMPARE_DATEPICKER>
     )
 }

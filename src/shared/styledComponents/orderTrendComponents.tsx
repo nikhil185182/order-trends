@@ -101,11 +101,15 @@ export const COMPARE_DATEPICKER = styled.div`
 `;
 
 export const DATELIST_BOX = styled.div`
+    width: 100%;
+    justify-content: center;
 
+    display: flex;
+    flex-wrap:wrap;
+    font-size: small;
     max-height: 380px;
     overflow-y: auto;
-    margin: 10px 5px; 
-    padding: 5px;
-    text-align: center;
+    overflow-x: auto;
+    // background-color: aqua;
 `;
 
