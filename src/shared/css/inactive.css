@@ -13,7 +13,7 @@
   .search-bar {
     margin-bottom: 1rem;
   }
-  
+
   .InactiveUsertable_container {
     height: 270px!important;
   }
@@ -80,59 +80,12 @@
     margin-left: 450px !important;
   }
   
-  /* Media queries */
-  
-  @media screen and (max-width: 767px) {
-    .container {
-      flex-direction: column-reverse;
-    }
-    
-    .Datepicker_component {
-      order: 1;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    
-    .Inactive_Table {
-      order: 2;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
+
+
   
   
   
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Adjust styles for medium screens */
-    .search_bar {
-      width: 70%;
-      margin: 10px;
-    }
-    
-    .Inactive_Table {
-      width: 70%;
-      margin-left: 0;
-    }
-    
-    .radio_group {
-      margin-left: 0 !important;
-    }
-  }
+
   
-  @media screen and (min-width: 1024px) {
-    /* Adjust styles for large screens */
-    .search_bar {
-      width: 50%;
-      margin: 10px;
-    }
-    
-    .Inactive_Table {
-      width: 900px;
-      margin-left: 50px;
-    }
-    
-    .radio_group {
-      margin-left: 450px !important;
-    }
-  }
+
   

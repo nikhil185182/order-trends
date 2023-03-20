@@ -2,7 +2,7 @@ import { gType } from "./dto/orderTrendDto";
 
 export const ORDER_TREND = 'Order Trend';
 export const COMPANY_TREND = 'Company Level Order Trend';
-export const INACTIVE_USER = 'Inactive Customers';
+export const INACTIVE_USER = 'Inactive Companies';
 export const NEW_USER = 'Companies Enrolled';
 
 export const GRAPH_DUMMY_DATA: gType = {
