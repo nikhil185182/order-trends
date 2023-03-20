@@ -53,8 +53,7 @@ export const COMPARE_TAB = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items:flex-start;
-    // background-color: aqua;
-    @media(max-width:700px){
+    @media(max-width:900px){
         flex-direction: column;
         justify-content: space-between;
         align-items:center;
@@ -79,8 +78,7 @@ export const COMPARE_GRAPH = styled.div`
     position: relative; 
     margin: auto;
     height: 50vh;
-    width: 90%;
-    // background-color: aqua;
+    width: 75%;
 `;
 
 export const COMPARE_DATEPICKER = styled.div`
@@ -88,23 +86,30 @@ export const COMPARE_DATEPICKER = styled.div`
     border-radius: 10px;
     padding: 20px;
     width: 20%;
+    // background-color: aqua;
     // align-items: center;
     display:flex;
     flex-direction: column;
     justify-content: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
-    @media(max-width:1042px){
-        width:80%;
+    @media(max-width:900px){
+        width:70%;
         align-items: center;
     }
     
 `;
 
 export const DATELIST_BOX = styled.div`
+    width: 100%;
+    justify-content: center;
+
+    display: flex;
+    flex-wrap:wrap;
+    font-size: small;
     max-height: 380px;
     overflow-y: auto;
-    margin: 10px 5px; 
-    padding: 5px;
-    text-align: center;
+    overflow-x: auto;
+    // background-color: aqua;
 `;
+

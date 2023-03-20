@@ -21,20 +21,21 @@ export default function NewUserDemo() {
   return (
     <>
       <NewUserCompletePage>
-          <NewUsersdateSelection_block>
-              <NewUserDate_selectionBox />
-              <NewUserTable />
+        <NewUsersdateSelection_block>
+          <NewUserDate_selectionBox />
+          
+          <NewUserTable />
         </NewUsersdateSelection_block>
         {IsDrawerOpen ? (
-  <NewUser_chartcomponent_withsidebar>
+          <NewUser_chartcomponent_withsidebar>
             <NewUserChart />
           </NewUser_chartcomponent_withsidebar>
- ) : (
- <NewUser_chartcomponent_withoutsidebar>
+        ) : (
+          <NewUser_chartcomponent_withoutsidebar>
             <NewUserChart /></NewUser_chartcomponent_withoutsidebar>
-)}
+        )}
       </NewUserCompletePage>
-{/* <Dialogbox/> */}
+      {/* <Dialogbox/> */}
       <NewUsersideBar />
     </>
   );

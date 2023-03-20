@@ -9,6 +9,7 @@
 .SubcontainerOne {
   width: 25%;
   margin: 1%;
+  padding: 1%;
   height: 650px;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
 .subcontainerTwo {
   width: 100%;
   height: 650px;
-  margin-top: 0.5%;
+  margin: 1%;
   margin-right: 0.5%;
   margin-left: 0.5%;
   padding: 1.25%;
@@ -28,8 +29,8 @@
 .DatepickerComponent {
   display: flex;
   flex-direction: column;
-  height: 95%;
-  width: 90%;
+  height: 125%;
+  width: 95%;
   align-items: center;
   padding: 30px;
   margin-top: 7.5px;
@@ -38,18 +39,33 @@
   overflow-y: scroll;
   scrollbar-width: none!important;
 }
-.SearchBarComponent {
+.searchBar{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 95%;
+  height: 125%;
   padding: 30px;
-  width: 90%;
+  width: 95%;
   margin-bottom: 20px;
   box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
   border-radius: 10px;
   scrollbar-width: none!important;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+.SearchBarComponent  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 30px;
+  width: 92%;
+  margin-bottom: 20px;
+  box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
+  border-radius: 10px;
+  scrollbar-width: none!important;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .ButtonComponent {
   margin: 12px;
@@ -74,6 +90,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 .chipObject {
   margin-top: 5px !important;
   display: flex;
@@ -90,6 +107,7 @@
   margin-left: 30%!important;
   margin-right:  auto!important;
 }
+
 .chartComponent{
   height: 90%;
 }
