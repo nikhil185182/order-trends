@@ -8,7 +8,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import '../../shared/css/inactive.css';
-import DateandDaysSelector from "./DateandDaysSelector";
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 import { getInactiveUsersData } from "../../shared/dto/InactiveUsersDTO";
 import TablePagination from "@mui/material/TablePagination";
 
@@ -38,13 +40,15 @@ export default function InactiveTable() {
 
   const requestSearch = (searchedVal: string) => {
     const filteredRows = Ddata.filter((row) => {
-      return row.CompanyName.toLowerCase().includes(searchedVal.toLowerCase());
+      return row.CompanyName.toLowerCase().includes(searchedVal.toLowerCase())
+        || row.CompanyName.toLowerCase().includes(searchTerm.toLowerCase());
     });
     setRows(filteredRows);
   };
 
   const cancelSearch = () => {
     setSearched("");
+    setSearchTerm("");
     requestSearch(searched);
   };
 
@@ -62,15 +66,24 @@ export default function InactiveTable() {
               </TableRow>
               <TableRow>
                 <TableCell colSpan={2} align="left" >
-                  {/* <TextField
-                    label="Search"
+                  <TextField
+                    label="Search Companies"
                     variant="outlined"
                     value={searchTerm}
-                    onChange={requestSearch(value)
+                    onChange={(event)=>{
+                      setSearchTerm(event.target.value)
+                      requestSearch(event.target.value)
+                    }
+                    }
                     InputProps={{
-                      startAdornment: <SearchIcon />,
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
                     }}
-                  /> */}
+                    className="search-bar"
+                  />
                 </TableCell>
                 <TableCell align="right"></TableCell>
               </TableRow>
