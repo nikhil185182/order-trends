@@ -1,5 +1,5 @@
 import { Search} from "@mui/icons-material";
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { Chip } from "@mui/material";
 import { useEffect, useState } from "react";
 import { company } from "../../shared/dto/companyLevelOrderDTO";
@@ -59,7 +59,7 @@ export default function ReactSearchBar() {
               className="chipObject"
               label={e}
               icon={
-                <ClearRoundedIcon
+                <HighlightOffTwoToneIcon
                   style={{
                     position: "absolute",
                     right: "10px",

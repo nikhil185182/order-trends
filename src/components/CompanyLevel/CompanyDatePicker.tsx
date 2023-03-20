@@ -1,9 +1,7 @@
 import { Chip, TextField } from "@mui/material";
-import { DesktopDatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import {ClearRounded} from '@mui/icons-material';
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -23,11 +21,6 @@ const CompanyDatePicker = () => {
     console.log(dateList);
     console.log("====================================");
   }, [dateList,dispatch]);
-
-
-
-  
-
   return (
     <div className="dateComp">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
