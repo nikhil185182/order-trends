@@ -10,6 +10,10 @@
     margin-top: 5%;
   }
   
+  .search-bar {
+    margin-bottom: 1rem;
+  }
+  
   .InactiveUsertable_container {
     height: 270px!important;
   }

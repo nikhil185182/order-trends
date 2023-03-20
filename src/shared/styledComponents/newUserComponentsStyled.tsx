@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const NewUserCompletePage=styled.div`
 margin-top: 4.8%;
 display: flex;
-
+width:95%!important;
+height: 70%!important;
 
 @media (max-width: 1000px) {
   display: grid;
