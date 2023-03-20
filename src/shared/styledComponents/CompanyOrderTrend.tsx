@@ -121,9 +121,14 @@ export const SearchBarComponent  = styled.div`
 
   export const RadioButtonComponent= styled.div`
     width: max-content;
-    margin-top: 1%!important;
-    margin-left: 25%!important;
-    margin-right:  auto!important;
+    margin-top: 1%;
+    margin-left: 25%;
+    @media (max-width:840px){
+     margin-left:10%;
+    }
+    @media (max-width:340px){
+      margin-left:1%;
+     }
   `
   
   export const ChartComponent = styled.div`
