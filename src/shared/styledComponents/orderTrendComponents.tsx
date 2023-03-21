@@ -40,7 +40,6 @@ export const DAYS_CUSTOMISE = styled.div`
     justify-content: space-between;
     align-items:center;
     flex-wrap: wrap;
-    background-color: aqua;
     // @media (max-width:700px){
     //     flex-direction:column;
     //     justify-content: space-between;
@@ -105,7 +104,7 @@ export const DATELIST_BOX = styled.div`
     width: 100%;
     justify-content: center;
 
-    display: flex;
+    display: inline-flex;
     flex-wrap:wrap;
     font-size: small;
     max-height: 380px;
