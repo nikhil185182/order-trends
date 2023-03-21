@@ -1,8 +1,9 @@
-import { TextField } from '@mui/material'
+import { Chip, TextField } from '@mui/material'
 import { LocalizationProvider, DesktopDatePicker } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { OrderTrendDto } from '../shared/dto/orderTrendDto';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DATA_NOT_FOUND, DUPLICATE_DATA, GRAPH_DUMMY_DATA } from '../shared/global_constants';
@@ -62,10 +63,13 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                 {
                     dateList.map((e: OrderTrendDto) => {
                         return (
-                            <div className="statschipObject">
-                                <p>{e.OrderDate}</p>
-                                <p onClick={() => handleDelete(e)}><CancelTwoToneIcon/></p>
-                            </div>
+                            <Chip style={{ position: "relative" }} className="chipObject" label={e.OrderDate}
+                                icon={
+                                    <HighlightOffTwoToneIcon
+                                        style={{ position: "absolute", right: "10px" }}
+                                        onClick={() => handleDelete}
+                                    />
+                            } variant='outlined'/>
                         )
                     })
                 }
