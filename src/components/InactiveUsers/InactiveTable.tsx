@@ -13,6 +13,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { getInactiveUsersData } from "../../shared/dto/InactiveUsersDTO";
 import TablePagination from "@mui/material/TablePagination";
+import { IconButton } from "@mui/material";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
@@ -20,6 +23,7 @@ export default function InactiveTable() {
   const [searched, setSearched] = useState<string>("");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [sortingOrder, setSortingOrder] = useState('asc');
   const inputDate = useAppSelector(state => state.InactiveUsers.Date);
   useEffect(() => {
     setRows(Ddata);
@@ -53,6 +57,7 @@ export default function InactiveTable() {
   };
 
 
+
   return (
     <>
       <Paper className="Inactive_Table">
@@ -60,7 +65,7 @@ export default function InactiveTable() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell className="Heading" colSpan={3} align="center">
+                <TableCell className="Heading" colSpan={3} align="center" style={{ backgroundColor: '#f5f5f5' }}>
                   <h2>Inactive Companies List</h2>
                 </TableCell>
               </TableRow>
@@ -70,7 +75,7 @@ export default function InactiveTable() {
                     label="Search Companies"
                     variant="outlined"
                     value={searchTerm}
-                    onChange={(event)=>{
+                    onChange={(event) => {
                       setSearchTerm(event.target.value)
                       requestSearch(event.target.value)
                     }
@@ -88,12 +93,26 @@ export default function InactiveTable() {
                 <TableCell align="right"></TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Company Name</TableCell>
-                <TableCell align="right">Latest Order Date</TableCell>
+                <TableCell >Company Name</TableCell>
+                <TableCell align="right">
+                  Latest Order Date
+                  <IconButton onClick={() => setSortingOrder(sortingOrder === 'asc' ? 'desc' : 'asc')}>
+                    {sortingOrder === 'asc' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                  </IconButton>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody className="inner-rows">
-              {rows
+              {rows.filter((row) =>
+                row.CompanyName.toLowerCase().includes(searchTerm.toLowerCase())
+              )
+                .sort((a, b) => {
+                  if (sortingOrder === 'asc') {
+                    return new Date(a.LatestOrderDate).getTime() - new Date(b.LatestOrderDate).getTime();
+                  } else {
+                    return new Date(b.LatestOrderDate).getTime() - new Date(a.LatestOrderDate).getTime();
+                  }
+                })
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
                   <TableRow >
