@@ -41,7 +41,7 @@ export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:Stri
 
 export const INACTIVEUSERS_QUERY = gql`
 query InactiveUsers($input: DateTime!) {
-  inactiveusers(days: $input) {
+  inactiveusers(date: $input) {
     CompanyName
     LatestOrderDate
   }

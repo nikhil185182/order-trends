@@ -80,6 +80,15 @@
   .radio_group {
     margin-left: 450px !important;
   }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 24px;
+    font-weight: bold;
+  }
   
 
 

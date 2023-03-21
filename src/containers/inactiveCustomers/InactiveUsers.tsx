@@ -1,24 +1,33 @@
-// import '../../shared/css/inactive.css';
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import DateandDaysSelector from '../../components/InactiveUsers/DateandDaysSelector';
 import '../../shared/css/inactive.css';
 import InactiveTable from '../../components/InactiveUsers/InactiveTable';
 
-
 const InactiveUsers = () => {
-  return (
-    <div className='Total_component'>
-        <div className='Datepicker_component'>
-            <DateandDaysSelector />
-        </div>
-        <div className='chart_component'>
-            <InactiveTable />            
-        </div>      
-    </div>
-  )
-}
+  const [loading, setLoading] = useState(true);
 
-export default InactiveUsers
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  return (
+    <div className="Total_component">
+      <div className="Datepicker_component">
+        <DateandDaysSelector />
+      </div>
+      <div className="chart_component">
+        {loading ? (
+          <div className="loader">Loading...</div>
+        ) : (
+          <InactiveTable />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default InactiveUsers;
+
 
 
 
