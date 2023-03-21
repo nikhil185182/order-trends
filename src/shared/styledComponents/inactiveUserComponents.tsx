@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5%;
 `;
 
-export const TotalComponent = styled.div`
+export const Total_component = styled.div`
   display: flex;
   margin-top: 5%;
 `;
 
-export const InactiveUserTableContainer = styled.div`
+export const InactiveUsertable_container = styled.div`
   height: 270px!important;
 `;
 
@@ -20,7 +20,7 @@ export const Heading = styled.div`
   height: 5px!important;
 `;
 
-export const DatepickerComponent = styled.div`
+export const Datepicker_component = styled.div`
   align-items: center;
   display: inline-block;
   width: 170px;
@@ -33,27 +33,27 @@ export const DatepickerComponent = styled.div`
   border-radius: 10px;
 `;
 
-export const Rows = styled.div`
+export const rows = styled.div`
   width: 20%;
   overflow: hidden;
 `;
 
-export const InnerRows = styled.div`
+export const inner = styled.div`
   width: 70%;
 `;
 
-export const SearchBar = styled.div`
+export const search_bar = styled.div`
   width: 50%;
   float: right;
   margin: 10px;
 `;
 
-export const DatePicker = styled.div`
+export const Date_picker = styled.div`
   margin-top: 5px !important;
   display: grid;
 `;
 
-export const InactiveTable = styled.div`
+export const Inactive_Table = styled.div`
   box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px !important;
   width: 900px;
   padding: 20px;
@@ -63,69 +63,68 @@ export const InactiveTable = styled.div`
   margin-bottom: 20px;
 `;
 
-export const SubmitButton = styled.button`
+export const submit_btn = styled.button`
   margin-top: 35px !important;
   margin-left: -10px !important;
   margin-bottom: 0px !important;
   background-color: #55B74E !important;
 `;
 
-export const Stepper = styled.div`
+export const stepper = styled.div`
   width: 170px;
 `;
 
-export const RadioGroup = styled.div`
+export const radio_group = styled.div`
   margin-left: 450px !important;
 `;
 
 /* Media queries */
 
-export const MobileContainer = styled(Container)`
+export const MobileContainer = styled(container)`
   flex-direction: column-reverse;
 
-  ${DatepickerComponent} {
+  ${Datepicker_component} {
     order: 1;
     margin-top: 0;
     margin-bottom: 20px;
   }
 
-  ${InactiveTable} {
+  ${Inactive_Table} {
     order: 2;
-    margin-left: auto;
-    margin-right: auto;
+    margin:auto;
   }
 `;
 
 export const MediumScreenStyles = `
   /* Adjust styles for medium screens */
-  ${SearchBar} {
+  ${search_bar} {
     width: 70%;
     margin: 10px;
   }
 
-  ${InactiveTable} {
+  ${Inactive_Table} {
     width: 70%;
     margin-left: 0;
   }
 
-  ${RadioGroup} {
+  ${radio_group} {
     margin-left: 0 !important;
   }
 `;
 
 export const LargeScreenStyles = `
   /* Adjust styles for large screens */
-  ${SearchBar} {
+  ${search_bar} {
     width: 50%;
     margin: 10px;
   }
 
-  ${InactiveTable} {
+  ${Inactive_Table} {
     width: 900px;
     margin-left: 50px;
   }
 
-  ${RadioGroup} {
+  ${radio_group} {
     margin-left: 450px !important;
   }
 `;
