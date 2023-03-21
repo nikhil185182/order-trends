@@ -37,9 +37,10 @@ export const DAYS_CUSTOMISE = styled.div`
     margin-top: 20px;
     width:50vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items:center;
     flex-wrap: wrap;
-    // background-color: aqua;
+    background-color: aqua;
     // @media (max-width:700px){
     //     flex-direction:column;
     //     justify-content: space-between;

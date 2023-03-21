@@ -151,14 +151,11 @@ button:hover{
 
 .btn_class{
     border-radius: 10px;
-    /* width: 100%; */
-    /* max-height: 40px; */
-    /* max-width: 90px; */
     padding: 0;
     border: none;
     /* margin-top:35px; */
     min-width:12%;
-    min-height: 40px;
+    min-height: 3rem;
 }
 
 .active{
