@@ -16,6 +16,7 @@ import TablePagination from "@mui/material/TablePagination";
 import { IconButton } from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { Inactive_Table } from "../../shared/styledComponents/inactiveUserComponents";
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
@@ -60,7 +61,7 @@ export default function InactiveTable() {
 
   return (
     <>
-      <Paper className="Inactive_Table">
+      <Inactive_Table>
         <TableContainer className="rows">
           <Table aria-label="simple table">
             <TableHead>
@@ -136,7 +137,7 @@ export default function InactiveTable() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Paper>
+      </Inactive_Table>
 
 
     </>
