@@ -32,10 +32,10 @@ export default function DrawerComp() {
         setOpenDrawer(!openDrawer);
     }
 
-    const s1 = { border: tab[0]? '1px solid green' : '', color:'green',margin:'2px' };
-    const s2 = { border: tab[1]? '1px solid green' : '', color:'green',margin:'2px' };
-    const s3 = { border: tab[2]? '1px solid green' : '', color:'green',margin:'2px' };
-    const s4 = { border: tab[3]? '1px solid green' : '', color:'green',margin:'2px' };
+    const s1 = { border: tab[0]? '1px solid green' : '', color:'green',margin:'1px'};
+    const s2 = { border: tab[1]? '1px solid green' : '', color:'green',margin:'1px' };
+    const s3 = { border: tab[2]? '1px solid green' : '', color:'green',margin:'1px' };
+    const s4 = { border: tab[3]? '1px solid green' : '', color:'green',margin:'1px' };
 
     return (
         <>

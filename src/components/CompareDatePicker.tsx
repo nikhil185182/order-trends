@@ -9,7 +9,8 @@ import { DATA_NOT_FOUND, DUPLICATE_DATA, GRAPH_DUMMY_DATA } from '../shared/glob
 import { addOrderDateList } from '../shared/utils/redux/reducers/orderTrendReducer'
 import { getDateFromDatePicker } from '../shared/utils/helperFunctions'
 import { useAppDispatch } from '../shared/utils/redux/selectors/hooks'
-import { COMPARE_DATEPICKER, DATELIST_BOX } from '../shared/styledComponents/orderTrendComponents'
+import { COMPARE_DATEPICKER, DATELIST_BOX } from '../shared/styledComponents/orderTrendComponents';
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 
 
 export default function CompareDatePicker(props: { orderMap: Map<string, OrderTrendDto> }) {
@@ -63,7 +64,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                         return (
                             <div className="statschipObject">
                                 <p>{e.OrderDate}</p>
-                                <p onClick={() => handleDelete(e)}><DeleteIcon fontSize='small' /></p>
+                                <p onClick={() => handleDelete(e)}><CancelTwoToneIcon/></p>
                             </div>
                         )
                     })

@@ -12,8 +12,10 @@ import {
 import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
+import { RadioButtonComponent } from "../../shared/styledComponents/CompanyOrderTrend";
 import { ReqCompanies } from "../../shared/utils/redux/companySelector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import CompanyRadioButtonContainer from "./CompanyRadioButtonContainer";
 
 interface GroupedData {
   [key: string]: companyLevel[];
@@ -149,7 +151,9 @@ const TotalOrdersVsDateGraph = () => {
     [chartData]);
 
   return (
+    <>
     <Line data={chartData} width={500} height={500} options={options} />
+    </>
   );
 };
 
