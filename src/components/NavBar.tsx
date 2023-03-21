@@ -42,7 +42,7 @@ export default function NavBar() {
                     e-Commerce Analytics
                 </Typography>
                 {isMatch ? (
-                    <div className="drawer_comp" style={{ marginLeft: 'none' }}>
+                    <div className="drawer_comp" style={{ marginLeft: 'auto' }}>
                         <DrawerComp />
                     </div>
                 ) :
