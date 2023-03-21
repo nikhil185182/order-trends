@@ -31,11 +31,10 @@ const CompanyRadioButtonContainer = () => {
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
         onChange={handleChange}
-        color="green"
       >
-        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio />} label="Total Orders" />
-        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio />} label="Completed Orders" />
-        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio />} label="Attempted Orders" />
+        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio style={{ color: "#54B948" }} />} label="Total Orders" />
+        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
+        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
       </RadioGroup>
     </FormControl>
     :
@@ -46,9 +45,9 @@ const CompanyRadioButtonContainer = () => {
         onChange={handleChange}
         color="green"
       >
-        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio />} label="Total Orders" />
-        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio />} label="Completed Orders" />
-        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio />} label="Attempted Orders" />
+        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Total Orders" />
+        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
+        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
       </RadioGroup>
     </FormControl>
 
