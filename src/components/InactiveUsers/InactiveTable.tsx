@@ -16,7 +16,7 @@ import TablePagination from "@mui/material/TablePagination";
 import { IconButton } from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Inactive_Table } from "../../shared/styledComponents/inactiveUserComponents";
+import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../../shared/styledComponents/inactiveUserComponents";
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
@@ -62,7 +62,8 @@ export default function InactiveTable() {
   return (
     <>
       <Inactive_Table>
-        <TableContainer className="rows">
+        <TableContainer>
+        <Rows>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -71,7 +72,8 @@ export default function InactiveTable() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell colSpan={2} align="left" >
+                <TableCell colSpan={2} align="right" >
+                  <Search_bar>
                   <TextField
                     label="Search Companies"
                     variant="outlined"
@@ -88,8 +90,8 @@ export default function InactiveTable() {
                         </InputAdornment>
                       ),
                     }}
-                    className="search-bar"
                   />
+                  </Search_bar>
                 </TableCell>
                 <TableCell align="right"></TableCell>
               </TableRow>
@@ -103,7 +105,7 @@ export default function InactiveTable() {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody className="inner-rows">
+            <TableBody>
               {rows.filter((row) =>
                 row.CompanyName.toLowerCase().includes(searchTerm.toLowerCase())
               )
@@ -117,7 +119,7 @@ export default function InactiveTable() {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => (
                   <TableRow >
-                    <TableCell component="th" scope="row">
+                    <TableCell component="th" scope="row" align="left">
                       {row.CompanyName}
                     </TableCell>
                     <TableCell component="th" scope="row" align="right">
@@ -127,6 +129,7 @@ export default function InactiveTable() {
                 ))}
             </TableBody>
           </Table>
+          </Rows>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}

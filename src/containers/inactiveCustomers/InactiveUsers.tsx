@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import DateandDaysSelector from '../../components/InactiveUsers/DateandDaysSelector';
 import '../../shared/css/inactive.css';
 import InactiveTable from '../../components/InactiveUsers/InactiveTable';
+import { Total_component } from '../../shared/styledComponents/inactiveUserComponents';
 
 const InactiveUsers = () => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ const InactiveUsers = () => {
   }, []);
 
   return (
-    <div className="Total_component">
+   <Total_component>
       <div className="Datepicker_component">
         <DateandDaysSelector />
       </div>
@@ -22,7 +23,7 @@ const InactiveUsers = () => {
           <InactiveTable />
         )}
       </div>
-    </div>
+    </Total_component>
   );
 };
 
