@@ -294,8 +294,10 @@ margin-top: 0.7% !important;
   }
   `;
   export const ChartHeading_div=styled.div`
-  padding-left: 25%;
-  padding-top: 1%;
+  
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size: 150%;
   padding-bottom: 1.5%;`;
   export const Bothbuttons=styled.div`

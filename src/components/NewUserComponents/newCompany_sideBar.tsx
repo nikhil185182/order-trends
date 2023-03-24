@@ -8,6 +8,9 @@ import {
   useTheme,
   Typography,
 } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { toggleDrawer } from "../../shared/utils/redux/reducers/newUserReducer";
 import {
   useAppDispatch,
@@ -31,30 +34,6 @@ export default function NewUsersideBar() {
   );
   return (
     <>
-      {/* <Drawer
-        anchor="right"
-        open={IsDrawerOpen}
-        onClose={() => {
-          dispatch(toggleDrawer(false));
-        }}
-        PaperProps={{
-          elevation: 10,
-          sx: {
-            width: 250,
-            flexShrink: 100,
-            "& .MuiDrawer-paper": {
-              width: 100,
-            },
-            padding: 1,
-            marginTop: 8.2,
-
-            height: "87%",
-            color: "black",
-            backgroundColor: "white",
-            borderRadius: 3,
-          },
-        }}
-      > */}
       <CustomDrawer
       anchor="right"
       open={IsDrawerOpen}
@@ -62,7 +41,10 @@ export default function NewUsersideBar() {
         dispatch(toggleDrawer(false));
       }}
       >
-        <NewuserSidebar_heading>
+        <IconButton onClick={()=>dispatch(toggleDrawer(false))}>
+            {IsDrawerOpen? < ChevronRightIcon /> : < ChevronRightIcon/>}
+          </IconButton>
+       <NewuserSidebar_heading>
           <Typography
             style={{
               fontFamily: "Roboto",
@@ -116,7 +98,7 @@ export default function NewUsersideBar() {
                 primaryTypographyProps={{
                   paddingLeft: 1,
                   fontSize: "16px",
-                  fontFamily: "Segoe UI",
+                  fontFamily: "Roboto",
                   padding: "1",
                 }}
                 primary={text}
@@ -124,8 +106,9 @@ export default function NewUsersideBar() {
             </ListItem>
           ))}
         </List>
+        
         </CustomDrawer>
-      {/* </Drawer> */}
+    
     </>
   );
 }
