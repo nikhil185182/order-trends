@@ -10,6 +10,7 @@ import { addingInactiveUsersdata, settingDate } from '../../shared/utils/redux/r
 import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/selectors/hooks';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { Container, Date_picker, Direction, Submit_button } from '../../shared/styledComponents/inactiveUserComponents';
 
 const steps = [
     {
@@ -50,13 +51,12 @@ function DateandDaysSelector() {
     const Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
 
     return (
-        <div>
-            <div>
-                {
+        
                     <>  
-                    <div className='container'>
+                    <Container>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DesktopDatePicker onYearChange={undefined} className='Date_picker'
+                            <Date_picker>
+                            <DesktopDatePicker onYearChange={undefined}
                                 value={value}
                                 label="Select a Date"
                                 onChange={(newValue) => {
@@ -69,21 +69,23 @@ function DateandDaysSelector() {
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
                             />
+                        </Date_picker>
                         </LocalizationProvider>
-
-
+                        
+                        <Submit_button>
                         <Button
                             variant="contained"
-                            className='submit_btn'
                             onClick={() => {
                                 dispatch(settingDate(Val));
                                 console.log("action dispatched");
                             }}
+                            style={{backgroundColor: '#55B74E'}}
                         >
-                            Submit
+                        Submit
                         </Button>
+                        </Submit_button>
 
-                        <div>
+                        <Direction>
                             <Box sx={{ width: 270, flexGrow: 1, marginTop: 8 }}>
                                 <Paper
                                     square
@@ -132,13 +134,11 @@ function DateandDaysSelector() {
                                     }
                                 />
                             </Box>
-                        </div>
-                    </div>
+                        </Direction>
+                    </Container>
                     </>
-                }
+                
 
-            </div>
-        </div>
     )
 }
 
