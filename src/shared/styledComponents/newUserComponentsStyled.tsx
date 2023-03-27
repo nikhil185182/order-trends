@@ -1,4 +1,5 @@
 import { Drawer, TableContainer, Typography } from "@mui/material";
+import { typography } from "@mui/system";
 import styled from "styled-components";
 
 export const NewUserCompletePage=styled.div`
@@ -27,6 +28,7 @@ export const NewUser_datePicker_title_Typography = styled(Typography)`
     padding-left: 21%;
     padding-top: 8%;
     font-weight: bold ;
+    font-family: Roboto;
 
 @media(max-width:1000px){
     padding:6%;
@@ -43,6 +45,37 @@ font-weight: bold;
 }
    }
 `;
+
+export const SideBar_CompaniesEnrolledTypo=styled(Typography)`
+  && {
+  font-family: Roboto;
+      color: white;
+font-size:150% ;
+padding-left:5%;
+font-weight: bold;
+align-items: center;
+padding-top: 4%;
+  }
+`;
+export const SideBar_DateTypo=styled(Typography)`
+&&{
+  font-family: Roboto;
+      padding-left:5% ;
+      font-size:120% ;
+      font-weight:bold ;
+      margin-left:6% ;
+      margin:5% ;
+}`;
+export const Sidebar_EnrollmentsTypo=styled(Typography)`
+&&{
+  font-family: Roboto;
+padding-left: 5%;
+font-size:120% ;
+font-weight: bold;
+margin-left: 6%;
+margin: 5%;}
+`;
+
 export const NewUsertable_container_title = styled(Typography)`
    && {
     padding: 5%;
@@ -50,6 +83,7 @@ export const NewUsertable_container_title = styled(Typography)`
     margin-top: 3% !important ;
     padding-bottom: 1%;
     font-weight:bold;
+    font-family: Roboto;
 
 
 @media(max-width:1000px){
@@ -364,3 +398,4 @@ box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 
 padding:2% ;
 margin-top:4% ;
 border-radius: 5% !important;`;
+

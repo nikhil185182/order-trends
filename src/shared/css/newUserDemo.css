@@ -230,9 +230,40 @@ border-radius: 5% !important;
       /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
       box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
     }
+    .SideBar_CompaniesEnrolledTypo{
+      font-family: Roboto;
+      color: white;
+font-size:150% ;
+padding-left:5%;
+font-weight: bold;
+align-items: center;
+padding-top: 4%;
+
+      
+    }
+    .SideBar_DateTypo{
+
+      font-family: Roboto;
+      padding-left:5% ;
+      font-size:120% ;
+      font-weight:bold ;
+      margin-left:6% ;
+      margin:5% ;
+      
+    }
+    .Sidebar_EnrollmentsTypo{
+      font-family: Roboto;
+      padding-left: 5%;
+      font-size:120% ;
+      font-weight: bold;
+      margin-left: 6%;
+      margin: 5%;
+
+      
+    }
     .newUserTable_details {
       border: 3px solid rgb(183, 177, 177);
-    
+   
       border-radius: 15px;
       height: 78%;
       margin-top: 3% !important;
