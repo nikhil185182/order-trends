@@ -2,16 +2,10 @@ import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import "../../shared/css/newUserDemo.css";
-import { Divider, Typography } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import {
-
-  NewUsertable_container_title,
+ NewUsertable_container_title,
   NewUserTable_details,
   StyledTableContainer,
 } from "../../shared/styledComponents/newUserComponentsStyled";
@@ -46,16 +40,7 @@ export default function NewUserTable() {
       <NewUsertable_container_title>
         Company Enrollments{" "}
       </NewUsertable_container_title>
-{/* 
-      <TableContainer
-        component={Paper}
-        sx={{
-          position:'relative',
-          paddingTop: "1%",
-          borderRadius: "7% !important",
-          marginTop: "21%",
-        }}
-      > */}
+
       <StyledTableContainer>
         <Table aria-label="customized table">
           <TableBody>
@@ -78,7 +63,6 @@ export default function NewUserTable() {
           </TableBody>
         </Table>
         </StyledTableContainer>
-      {/* </TableContainer> */}
     </NewUserTable_details>
   );
 }

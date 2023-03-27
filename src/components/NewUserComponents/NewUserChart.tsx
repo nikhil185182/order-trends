@@ -1,12 +1,10 @@
-import { Bar, getElementAtEvent, Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import {
   ActiveElement,
-  BarProps,
   ChartEvent,
   LineElement,
   PointElement,
-  TooltipItem,
-  TooltipModel,
+
 } from "chart.js";
 import {
   toggleDrawer,
@@ -23,22 +21,22 @@ import {
   Title,
   Tooltip,
   Legend,
-  ChartComponent,
+
 } from "chart.js";
-import { useState, useRef } from "react";
+
 import { NewUsersDTO } from "../../shared/dto/newUsersDto";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/utils/redux/selectors/hooks";
 import {
-  Button,
+
   FormControl,
   FormControlLabel,
-  FormLabel,
+
   Radio,
   RadioGroup,
-  ToggleButton,
+
 } from "@mui/material";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
@@ -193,6 +191,12 @@ export default function NewUserChart() {
       },
     ],
   };
+  const barchart_Click=()=>{
+    dispatch(toggleLineOrBar(true))
+  }
+  const linechart_Click=()=>{
+    dispatch(toggleLineOrBar(false))
+  }
 
   return (
     <>
@@ -213,7 +217,7 @@ export default function NewUserChart() {
               control={
                 <Radio
                   style={{ color: "#54B948" }}
-                  onClick={() => dispatch(toggleLineOrBar(true))}
+                  onClick={barchart_Click}
                   checked={isLine}
                 />
               }
@@ -223,7 +227,7 @@ export default function NewUserChart() {
               control={
                 <Radio
                   style={{ color: "#54B948" }}
-                  onClick={() => dispatch(toggleLineOrBar(false))}
+                  onClick={linechart_Click}
                   checked={!isLine}
                 />
               }

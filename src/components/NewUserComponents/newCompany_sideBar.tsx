@@ -1,15 +1,10 @@
 import {
-  Drawer,
   IconButton,
   Divider,
   List,
   ListItem,
   ListItemText,
-  useTheme,
-  Typography,
 } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { toggleDrawer } from "../../shared/utils/redux/reducers/newUserReducer";
 import {
@@ -35,16 +30,20 @@ export default function NewUsersideBar() {
   const tempbarclickedDate = useAppSelector(
     (state) => state.NewUser.barclickedDate
   );
+  const onclosedrawer=()=>{
+    dispatch(toggleDrawer(false));
+  }
+  const closebutton=()=>{
+    dispatch(toggleDrawer(false))
+  }
   return (
     <>
       <CustomDrawer
       anchor="right"
       open={IsDrawerOpen}
-      onClose={() => {
-        dispatch(toggleDrawer(false));
-      }}
+      onClose={onclosedrawer}
       >
-        <IconButton onClick={()=>dispatch(toggleDrawer(false))}>
+        <IconButton onClick={closebutton}>
             {IsDrawerOpen? < ChevronRightIcon /> : < ChevronRightIcon/>}
           </IconButton>
        <NewuserSidebar_heading>

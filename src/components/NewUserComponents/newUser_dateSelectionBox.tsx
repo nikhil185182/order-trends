@@ -1,21 +1,18 @@
-import { TextField, Button, Typography, TextFieldProps } from "@mui/material";
+import { TextField, Button,} from "@mui/material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { JSXElementConstructor, ReactElement, useState } from "react";
+import { useState } from "react";
 import { newUser_datepickers_Title } from "../../shared/config";
 import {
   settingfromdate,
   settingtodate,
-  toggleDrawer,
 } from "../../shared/utils/redux/reducers/newUserReducer";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
-
-//import "../../shared/css/newUserDemo.css";
 import {
   FromContainer,
   NewUserDatepickers,
@@ -32,7 +29,21 @@ export default function NewUserDate_selectionBox() {
   const [defaultto, setto] = useState<Date>(new Date());
   const dispatch: AppDispatch = useAppDispatch();
   const defaultdates = useAppSelector((state) => state.NewUser);
-  
+  const onchangefromdate=(selectedfromdate:dayjs.Dayjs) => {
+    setfrom(selectedfromdate?.toDate()!);
+  }
+  const onchangetodate=(selectedtodate:dayjs.Dayjs) => {
+    if (selectedtodate?.toDate()! > defaultfrom) {
+      setto(selectedtodate?.toDate()!);
+    } else {
+      alert("Select the To date After The from Date ");
+    }
+  }
+  const submitClick=() => {
+    dispatch(settingfromdate(defaultfrom.toLocaleDateString()!));
+    dispatch(settingtodate(defaultto.toLocaleDateString()!));
+  }
+
   return (
     <NewUserDatepickers>
       <NewUser_datePicker_title_Typography>
@@ -45,9 +56,7 @@ export default function NewUserDate_selectionBox() {
               inputFormat="DD/MM/YYYY"
               label="From"
               value={dayjs(defaultdates.fromDate)}
-              onChange={(selectedfromdate) => {
-                setfrom(selectedfromdate?.toDate()!);
-              }}
+              onChange={(selectedfromdate:dayjs.Dayjs|null)=>onchangefromdate(selectedfromdate!)}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
@@ -60,13 +69,7 @@ export default function NewUserDate_selectionBox() {
               inputFormat="DD/MM/YYYY"
               label="To"
               value={dayjs(defaultdates.toDate)}
-              onChange={(selectedtodate) => {
-                if (selectedtodate?.toDate()! > defaultfrom) {
-                  setto(selectedtodate?.toDate()!);
-                } else {
-                  alert("Select the To date After The from Date ");
-                }
-              }}
+              onChange={(selectedtodate:dayjs.Dayjs|null)=>onchangetodate(selectedtodate!)}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
@@ -76,10 +79,7 @@ export default function NewUserDate_selectionBox() {
         <Button
           variant="contained"
           style={{ backgroundColor: "#54B948" }}
-          onClick={() => {
-            dispatch(settingfromdate(defaultfrom.toLocaleDateString()!));
-            dispatch(settingtodate(defaultto.toLocaleDateString()!));
-          }}
+          onClick={() => submitClick()}
         >
           Submit
         </Button>
