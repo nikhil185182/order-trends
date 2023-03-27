@@ -24,7 +24,9 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
     const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
     const [dateList, SetDateList] = useState<(OrderTrendDto)[]>([props.orderMap.get(maximumDate)!]);
 
-    const handleDelete = (e: OrderTrendDto) => SetDateList(dateList.filter((item: OrderTrendDto) => item != e));
+    const handleDelete = (e: OrderTrendDto) => {
+        SetDateList(dateList.filter((item: OrderTrendDto) => item != e));
+    }
 
     useEffect(() => {
         dispatch(addOrderDateList({ orderDateList: dateList }));
@@ -67,7 +69,7 @@ export default function CompareDatePicker(props: { orderMap: Map<string, OrderTr
                                 icon={
                                     <HighlightOffTwoToneIcon
                                         style={{ position: "absolute", right: "10px" }}
-                                        onClick={() => handleDelete}
+                                        onClick={() =>SetDateList(dateList.filter((item: OrderTrendDto) => item != e))}
                                     />
                             } variant='outlined'/>
                         )

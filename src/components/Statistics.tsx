@@ -1,6 +1,5 @@
-import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ChartData } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import { OrderTrendDto, gType } from '../shared/dto/orderTrendDto';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../shared/global_constants';
@@ -8,11 +7,7 @@ import { ORDERTREND_LINE_GRAPH_OPTIONS,ORDERTREND_BAR_GRAPH_OPTIONS } from '../s
 import '../shared/css/NavBar.css';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
 import { selectOrderTrendData } from '../shared/utils/redux/selectors/orderTrendSelector';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { Radio,FormControlLabel } from '@mui/material';
 import { CHART_CUSTOMISE, DAYS_CUSTOMISE, STATISTICS_GRAPH, STATISTICS_TAB } from '../shared/styledComponents/orderTrendComponents';
 
 ChartJS.register(
