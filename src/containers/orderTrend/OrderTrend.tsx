@@ -30,7 +30,7 @@ const OrderTrend = () => {
                 id={`simple-tabpanel-${index}`}
                 aria-labelledby={`simple-tab-${index}`}
                 {...other}
-                style={{ width: '90%', alignItems: 'center' }}
+                style={{ width: '100%', alignItems: 'center' }}
             >
                 {value === index && (
                     <Box sx={{ p: 3 }}>

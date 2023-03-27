@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
-import { GRAPH_OPTIONS } from '../shared/config'
+import { ORDERTREND_BAR_GRAPH_OPTIONS } from '../shared/config'
 import { gType } from '../shared/dto/orderTrendDto';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../shared/global_constants';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
@@ -42,7 +42,7 @@ export default function CompareBarGraph() {
 
   return (
     <COMPARE_GRAPH>
-        <Bar options={GRAPH_OPTIONS} data={graphData} />
+        <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
     </COMPARE_GRAPH>
   )
 }
