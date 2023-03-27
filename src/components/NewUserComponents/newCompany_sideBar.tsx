@@ -1,15 +1,10 @@
 import {
-  Drawer,
   IconButton,
   Divider,
   List,
   ListItem,
   ListItemText,
-  useTheme,
-  Typography,
 } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { toggleDrawer } from "../../shared/utils/redux/reducers/newUserReducer";
 import {
@@ -21,7 +16,10 @@ import {
   CustomDrawer,
   NewUserSidebar_dateBox,
   NewuserSidebar_heading,
-} from "../../shared/styledComponents/newUserComponentsStyled";
+  SideBar_CompaniesEnrolledTypo,
+  SideBar_DateTypo,
+  Sidebar_EnrollmentsTypo,
+} from "../../shared/styledComponents/newUserComponentsStyled"
 
 export default function NewUsersideBar() {
   const dispatch: AppDispatch = useAppDispatch();
@@ -32,66 +30,37 @@ export default function NewUsersideBar() {
   const tempbarclickedDate = useAppSelector(
     (state) => state.NewUser.barclickedDate
   );
+  const onclosedrawer=()=>{
+    dispatch(toggleDrawer(false));
+  }
+  const closebutton=()=>{
+    dispatch(toggleDrawer(false))
+  }
   return (
     <>
       <CustomDrawer
       anchor="right"
       open={IsDrawerOpen}
-      onClose={() => {
-        dispatch(toggleDrawer(false));
-      }}
+      onClose={onclosedrawer}
       >
-        <IconButton onClick={()=>dispatch(toggleDrawer(false))}>
+        <IconButton onClick={closebutton}>
             {IsDrawerOpen? < ChevronRightIcon /> : < ChevronRightIcon/>}
           </IconButton>
        <NewuserSidebar_heading>
-          <Typography
-            style={{
-              fontFamily: "Roboto",
-              color: "white",
-              paddingLeft: "5%",
-              fontSize: "150%",
-              fontWeight: "bold",
-              alignItems:'center',
-              paddingTop:'4%'
-            
-             
-            }}
-          >
+          <SideBar_CompaniesEnrolledTypo>
             {" "}
             Companies Enrolled
-          </Typography>
+         </SideBar_CompaniesEnrolledTypo>
         </NewuserSidebar_heading>
 
         <NewUserSidebar_dateBox>
-          <Typography
-            style={{
-              fontFamily: "Roboto",
-              paddingLeft: "5%",
-              fontSize: "120%",
-              fontWeight: "bold",
-              marginLeft: "6%",
-              margin: "5%",
-            }}
-          >
-            Date: {tempbarclickedDate}
-          </Typography>
-          <Divider />
-          <Typography
-            style={{
-              fontFamily: "Roboto",
-              paddingLeft: "5%",
-              fontSize: "120%",
-              fontWeight: "bold",
-              marginLeft: "6%",
-              margin: "5%",
-            }}
-          >
-            Enrollments: {listofcompanies.length}
-          </Typography>
-        </NewUserSidebar_dateBox>
-
-        <List>
+         <SideBar_DateTypo>
+            Date: {tempbarclickedDate}</SideBar_DateTypo>
+ <Divider />
+        <Sidebar_EnrollmentsTypo>
+            Enrollments: {listofcompanies.length}</Sidebar_EnrollmentsTypo>
+  </NewUserSidebar_dateBox>
+ <List>
           {listofcompanies?.map((text, index) => (
             <ListItem style={{ padding: "2%" }}>
               <ListItemText

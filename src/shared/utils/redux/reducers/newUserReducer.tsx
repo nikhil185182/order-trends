@@ -17,7 +17,7 @@ type initialstatetypes = {
   barclickedDate:String
 };
 const fromdate:Date=new Date()
-fromdate.setDate((fromdate.getDate()-60))
+fromdate.setDate((fromdate.getDate()-75))
 const todate:Date=new Date()
 
 const InitialState: initialstatetypes = {
