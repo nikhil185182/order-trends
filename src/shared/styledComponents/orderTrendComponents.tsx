@@ -77,7 +77,7 @@ width: 100%;
 export const COMPARE_GRAPH = styled.div`
     position: relative; 
     margin: auto;
-    height: 50vh;
+    height: 75vh;
     width: 75%;
 `;
 
@@ -85,9 +85,7 @@ export const COMPARE_DATEPICKER = styled.div`
     border: 2px;
     border-radius: 10px;
     padding: 20px;
-    width: 20%;
-    // background-color: aqua;
-    // align-items: center;
+    width: 15%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -102,14 +100,13 @@ export const COMPARE_DATEPICKER = styled.div`
 
 export const DATELIST_BOX = styled.div`
     width: 100%;
+    margin-top:5px;
     justify-content: center;
-
     display: inline-flex;
     flex-wrap:wrap;
     font-size: small;
     max-height: 380px;
     overflow-y: auto;
     overflow-x: auto;
-    // background-color: aqua;
 `;
 

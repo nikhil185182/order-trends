@@ -4,7 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { Line, Bar } from 'react-chartjs-2';
 import { OrderTrendDto, gType } from '../shared/dto/orderTrendDto';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../shared/global_constants';
-import { GRAPH_OPTIONS } from '../shared/config';
+import { ORDERTREND_LINE_GRAPH_OPTIONS,ORDERTREND_BAR_GRAPH_OPTIONS } from '../shared/config';
 import '../shared/css/NavBar.css';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
 import { selectOrderTrendData } from '../shared/utils/redux/selectors/orderTrendSelector';
@@ -88,7 +88,7 @@ const Statistics = () => {
     return (
         <STATISTICS_TAB>
             <STATISTICS_GRAPH>
-                {isLine ? <Line options={GRAPH_OPTIONS} data={graphData} /> : <Bar options={GRAPH_OPTIONS} data={graphData} />}
+                {isLine ? <Line options={ORDERTREND_LINE_GRAPH_OPTIONS} data={graphData} /> : <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />}
             </STATISTICS_GRAPH>
             <CHART_CUSTOMISE>
                 <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleLineClick} checked={isLine} />} label={"Line Chart"} />
