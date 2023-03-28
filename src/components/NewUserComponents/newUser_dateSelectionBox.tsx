@@ -24,7 +24,7 @@ import {
 
 export default function NewUserDate_selectionBox() {
   const fromdate: Date = new Date();
-  fromdate.setDate(fromdate.getDate() - 60);
+  fromdate.setDate(fromdate.getDate() - 75);
   const [defaultfrom, setfrom] = useState<Date>(fromdate);
   const [defaultto, setto] = useState<Date>(new Date());
   const dispatch: AppDispatch = useAppDispatch();
