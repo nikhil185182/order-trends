@@ -1,5 +1,6 @@
 import { Dayjs } from "dayjs";
 import { OrderTrendDto } from "../dto/orderTrendDto";
+import { useAppSelector } from "./redux/selectors/hooks";
 
 export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
     const monthVal : number = newValue?.get('month')! + 1;
@@ -18,4 +19,20 @@ export const getOrderListMap = (orderList : OrderTrendDto[]) =>{
         mapList.set(e.OrderDate.toString(),e);
     });   
     return mapList;
+}
+export const ConvertedfromandToDates=()=>{
+    const fromdate = useAppSelector((state) => state.NewUser.fromDate);
+  const todate = useAppSelector((state) => state.NewUser.toDate);
+  let from = fromdate.split("/");
+
+  let from_final = new Date(
+    Number(from[2]),
+    Number(from[0]) - 1,
+    Number(from[1])
+  );
+  let to = todate.split("/");
+
+  let to_final = new Date(Number(to[2]), Number(to[0]) - 1, Number(to[1]));
+  return [from_final,to_final]
+
 }

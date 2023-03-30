@@ -1,4 +1,6 @@
 import { gType } from "./dto/orderTrendDto";
+import { ConvertedfromandToDates } from "./utils/helperFunctions";
+import { useAppSelector } from "./utils/redux/selectors/hooks";
 
 export const ORDER_TREND = 'Order Trend';
 export const COMPANY_TREND = 'Company Order Trend';
@@ -31,3 +33,6 @@ export const DATA_NOT_FOUND = "Date is not found in the database";
 
 export const STATISTICS = "Statistics";
 export const CUSTOMISE_COMPARE = "Customise & Compare";
+export const CompaniesEnrolled_head=' Companies Enrolled';
+
+export const alertMessage='Select the To date After The from Date ';

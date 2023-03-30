@@ -20,6 +20,7 @@ import {
   SideBar_DateTypo,
   Sidebar_EnrollmentsTypo,
 } from "../../shared/styledComponents/newUserComponentsStyled"
+import { CompaniesEnrolled_head } from "../../shared/global_constants";
 
 export default function NewUsersideBar() {
   const dispatch: AppDispatch = useAppDispatch();
@@ -49,7 +50,7 @@ export default function NewUsersideBar() {
        <NewuserSidebar_heading>
           <SideBar_CompaniesEnrolledTypo>
             {" "}
-            Companies Enrolled
+            {CompaniesEnrolled_head}
          </SideBar_CompaniesEnrolledTypo>
         </NewuserSidebar_heading>
 
