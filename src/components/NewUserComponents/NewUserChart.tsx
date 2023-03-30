@@ -45,6 +45,7 @@ import {
   Bothbuttons,
   ChartHeading_div,
 } from "../../shared/styledComponents/newUserComponentsStyled";
+import { useEffect } from "react";
 
 Chart.register(
   CategoryScale,
@@ -106,8 +107,14 @@ export default function NewUserChart() {
         },
       },
       y: {
+        ticks: {
+          // forces step size to be 50 units
+          stepSize: 1
+        },
+        min:0,
         grid: {
           display: true,
+         
         },
       },
     },
@@ -145,8 +152,13 @@ export default function NewUserChart() {
         },
       },
       y: {
+        ticks: {
+          // forces step size to be 1 units
+          stepSize: 1
+        },
         grid: {
           display: false,
+          
         },
       },
     },
@@ -197,6 +209,7 @@ export default function NewUserChart() {
   const linechart_Click=()=>{
     dispatch(toggleLineOrBar(false))
   }
+ 
 
   return (
     <>

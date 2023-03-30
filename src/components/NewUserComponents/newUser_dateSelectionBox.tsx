@@ -55,7 +55,7 @@ export default function NewUserDate_selectionBox() {
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="From"
-              value={dayjs(defaultdates.fromDate)}
+              value={dayjs(defaultfrom)}
               onChange={(selectedfromdate:dayjs.Dayjs|null)=>onchangefromdate(selectedfromdate!)}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -68,7 +68,7 @@ export default function NewUserDate_selectionBox() {
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="To"
-              value={dayjs(defaultdates.toDate)}
+              value={dayjs(defaultto)}
               onChange={(selectedtodate:dayjs.Dayjs|null)=>onchangetodate(selectedtodate!)}
               renderInput={(params) => <TextField {...params} />}
             />
