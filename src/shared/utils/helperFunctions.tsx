@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { OrderTrendDto } from "../dto/orderTrendDto";
+import { OrderTrendDto } from "../../containers/orderTrend/orderTrendDto";
 
 export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
     const monthVal : number = newValue?.get('month')! + 1;

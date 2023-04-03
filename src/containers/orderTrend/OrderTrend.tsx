@@ -1,15 +1,8 @@
-import { Button } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import Statistics from '../../components/Statistics';
 import Compare from '../../components/Compare';
-import { useAppSelector } from '../../shared/utils/redux/selectors/hooks';
-import { selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
 import '../../shared/css/NavBar.css';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { CUSTOMISE_COMPARE, STATISTICS } from '../../shared/global_constants';
+import {Box,Tab,Tabs,Typography} from '@mui/material';
 import { ORDER_TREND_BOX } from '../../shared/styledComponents/orderTrendComponents';
 
 
@@ -56,7 +49,7 @@ const OrderTrend = () => {
     return (
         <ORDER_TREND_BOX>
              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tabs value={value} onChange={handleChange}>
                     <Tab label="Statistics" {...a11yProps(0)} />
                     <Tab label="Compare" {...a11yProps(1)} />
                 </Tabs>

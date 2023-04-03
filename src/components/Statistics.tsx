@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { OrderTrendDto, gType } from '../shared/dto/orderTrendDto';
+import { OrderTrendDto, gType } from '../containers/orderTrend/orderTrendDto';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../shared/global_constants';
 import { ORDERTREND_LINE_GRAPH_OPTIONS,ORDERTREND_BAR_GRAPH_OPTIONS } from '../shared/config';
 import '../shared/css/NavBar.css';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
 import { selectOrderTrendData } from '../shared/utils/redux/selectors/orderTrendSelector';
-import { Radio,FormControlLabel } from '@mui/material';
+import { Radio,FormControlLabel, Button } from '@mui/material';
 import { CHART_CUSTOMISE, DAYS_CUSTOMISE, STATISTICS_GRAPH, STATISTICS_TAB } from '../shared/styledComponents/orderTrendComponents';
 
 ChartJS.register(
@@ -90,6 +90,7 @@ const Statistics = () => {
                 <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
             </CHART_CUSTOMISE>
             <DAYS_CUSTOMISE>
+                {/* <StyledButton>Hello</StyledButton> */}
                 <button className='btn_class inactive' onClick={() => updateDays(865)}>865 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(365)}>365 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(180)}>180 Days</button>

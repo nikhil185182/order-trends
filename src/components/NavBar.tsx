@@ -45,7 +45,7 @@ export default function NavBar() {
                     </div>
                 ) :
                     <div className="btn_cls" style={{ marginLeft: 'auto' }}>
-                        <Button sx={{ border: tab[0] ? '1px solid white' : '', color: 'white' }} onClick={handleClick(1)}>{ORDER_TREND}</Button>
+                        <Button sx={{ border: tab[0] ? '1px solid white' : '', color: 'white' }} >{ORDER_TREND}</Button>
                         <Button sx={{ border: tab[1] ? '1px solid white' : '', color: 'white' }} onClick={handleClick(2)} >{COMPANY_TREND}</Button>
                         <Button sx={{ border: tab[2] ? '1px solid white' : '', color: 'white' }} onClick={handleClick(3)} >{NEW_USER}</Button>
                         <Button sx={{ border: tab[3] ? '1px solid white' : '', color: 'white' }} onClick={handleClick(4)}>{INACTIVE_USER}</Button>

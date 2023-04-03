@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from '../shared/config'
-import { gType } from '../shared/dto/orderTrendDto';
+import { gType } from '../containers/orderTrend/orderTrendDto';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../shared/global_constants';
 import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
 import { getOrderListData } from '../shared/utils/redux/selectors/orderTrendSelector';

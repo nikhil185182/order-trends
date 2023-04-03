@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { Button as MButton} from "@mui/material";
 
+// export const StyledButton = styled(MButton)(props => ({
+// color: ${props.color ? 'red' : 'green'}
+// )}
 const Button = styled.button`
   color: palevioletred;
   font-size: 1em;
