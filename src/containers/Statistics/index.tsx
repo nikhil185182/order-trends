@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend} from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { OrderTrendDto, gType } from '../containers/orderTrend/orderTrendDto';
-import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../shared/global_constants';
-import { ORDERTREND_LINE_GRAPH_OPTIONS,ORDERTREND_BAR_GRAPH_OPTIONS } from '../shared/config';
-import '../shared/css/NavBar.css';
-import { useAppSelector } from '../shared/utils/redux/selectors/hooks';
-import { selectOrderTrendData } from '../shared/utils/redux/selectors/orderTrendSelector';
-import { Radio,FormControlLabel, Button } from '@mui/material';
-import { CHART_CUSTOMISE, DAYS_CUSTOMISE, STATISTICS_GRAPH, STATISTICS_TAB } from '../shared/styledComponents/orderTrendComponents';
+import { OrderTrendDto, gType } from '../orderTrend/orderTrendDto';
+import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../../shared/global_constants';
+import { ORDERTREND_LINE_GRAPH_OPTIONS, ORDERTREND_BAR_GRAPH_OPTIONS } from '../../shared/config';
+import { useAppSelector } from '../../shared/utils/redux/selectors/hooks';
+import { selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
+import { Radio, FormControlLabel } from '@mui/material';
+import { ChartCustomise, DaysCustomise, StatisticsGraph, StatisticsTab } from '../../shared/styledComponents/orderTrendComponents';
 
 ChartJS.register(
     CategoryScale,
@@ -81,15 +80,16 @@ const Statistics = () => {
 
 
     return (
-        <STATISTICS_TAB>
-            <STATISTICS_GRAPH>
-                {isLine ? <Line options={ORDERTREND_LINE_GRAPH_OPTIONS} data={graphData} /> : <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />}
-            </STATISTICS_GRAPH>
-            <CHART_CUSTOMISE>
-                <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleLineClick} checked={isLine} />} label={"Line Chart"} />
-                <FormControlLabel control={<Radio style={{ color: '#54B948'}} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
-            </CHART_CUSTOMISE>
-            <DAYS_CUSTOMISE>
+        <StatisticsTab>
+            <StatisticsGraph>
+                {isLine ? <Line options={ORDERTREND_LINE_GRAPH_OPTIONS} data={graphData} /> :
+                    <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />}
+            </StatisticsGraph>
+            <ChartCustomise>
+                <FormControlLabel control={<Radio style={{ color: GREEN }} onClick={handleLineClick} checked={isLine} />} label={"Line Chart"} />
+                <FormControlLabel control={<Radio style={{ color: GREEN }} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
+            </ChartCustomise>
+            <DaysCustomise>
                 {/* <StyledButton>Hello</StyledButton> */}
                 <button className='btn_class inactive' onClick={() => updateDays(865)}>865 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(365)}>365 Days</button>
@@ -98,8 +98,8 @@ const Statistics = () => {
                 <button className='btn_class inactive' onClick={() => updateDays(60)}>60 Days</button>
                 <button className='btn_class  active' onClick={() => updateDays(30)}>30 Days</button>
                 <button className='btn_class inactive' onClick={() => updateDays(15)}>15 Days</button>
-            </DAYS_CUSTOMISE>
-        </STATISTICS_TAB>
+            </DaysCustomise>
+        </StatisticsTab>
     )
 }
 

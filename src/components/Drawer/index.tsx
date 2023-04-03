@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import { IconButton, List, ListItemButton } from '@mui/material';
-import { COMPANY_TREND, INACTIVE_USER, NEW_USER, ORDER_TREND } from '../shared/global_constants';
+import { COMPANY_TREND, INACTIVE_USER, NEW_USER, ORDER_TREND } from '../../shared/global_constants';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 

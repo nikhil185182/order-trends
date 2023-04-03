@@ -1,9 +1,9 @@
 import React from 'react';
-import Statistics from '../../components/Statistics';
-import Compare from '../../components/Compare';
+import Statistics from '../Statistics';
+import Compare from '../Compare';
 import '../../shared/css/NavBar.css';
-import {Box,Tab,Tabs,Typography} from '@mui/material';
-import { ORDER_TREND_BOX } from '../../shared/styledComponents/orderTrendComponents';
+import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { OrderTrendBox } from '../../shared/styledComponents/orderTrendComponents';
 
 
 const OrderTrend = () => {
@@ -47,8 +47,8 @@ const OrderTrend = () => {
 
 
     return (
-        <ORDER_TREND_BOX>
-             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <OrderTrendBox>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange}>
                     <Tab label="Statistics" {...a11yProps(0)} />
                     <Tab label="Compare" {...a11yProps(1)} />
@@ -60,7 +60,7 @@ const OrderTrend = () => {
             <TabPanel value={value} index={1}>
                 <Compare />
             </TabPanel>
-        </ORDER_TREND_BOX>
+        </OrderTrendBox>
     )
 }
 

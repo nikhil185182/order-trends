@@ -13,14 +13,14 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export const ORDER_TREND_BOX = styled.div`
+export const OrderTrendBox = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top:70px;
 `;
 
-export const STATISTICS_TAB = styled.div`
+export const StatisticsTab = styled.div`
     align-items: center;
     width: 100%;
     display: flex;
@@ -28,7 +28,7 @@ export const STATISTICS_TAB = styled.div`
 `;
 
 
-export const CHART_CUSTOMISE = styled.div`
+export const ChartCustomise = styled.div`
     margin-top: 25px;
     width: 2vw%;
     display: flex;
@@ -37,7 +37,7 @@ export const CHART_CUSTOMISE = styled.div`
     font-family: "Times New Roman", Times, serif;
 `;
 
-export const DAYS_CUSTOMISE = styled.div`
+export const DaysCustomise = styled.div`
     margin-top: 20px;
     width:50vw;
     display: flex;
@@ -52,7 +52,7 @@ export const DAYS_CUSTOMISE = styled.div`
     // }
 `;
 
-export const COMPARE_TAB = styled.div`
+export const CompareTab = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,7 +64,7 @@ export const COMPARE_TAB = styled.div`
     }
 `;
 
-export const STATISTICS_GRAPH = styled.div`
+export const StatisticsGraph = styled.div`
 position: relative; 
 margin: auto;
 height: 63vh;
@@ -78,14 +78,14 @@ width: 100%;
 // background-color: aqua;
 `;
 
-export const COMPARE_GRAPH = styled.div`
+export const CompareGraph = styled.div`
     position: relative; 
     margin: auto;
     height: 75vh;
     width: 75%;
 `;
 
-export const COMPARE_DATEPICKER = styled.div`
+export const ComparePicker = styled.div`
     border: 2px;
     border-radius: 10px;
     padding: 20px;
@@ -102,7 +102,7 @@ export const COMPARE_DATEPICKER = styled.div`
     
 `;
 
-export const DATELIST_BOX = styled.div`
+export const DateListBox = styled.div`
     width: 100%;
     margin-top:5px;
     justify-content: center;
