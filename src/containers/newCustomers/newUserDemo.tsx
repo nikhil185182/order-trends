@@ -26,6 +26,7 @@ export default function NewUserDemo() {
           
           <NewUserTable />
         </NewUsersdateSelection_block>
+        
         {IsDrawerOpen ? (
           <NewUser_chartcomponent_withsidebar>
             <NewUserChart />

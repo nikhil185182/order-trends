@@ -9,8 +9,7 @@ import {
   settingtodate,
 } from "../../shared/utils/redux/reducers/newUserReducer";
 import {
-  useAppDispatch,
-  useAppSelector,
+  useAppDispatch
 } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import {
@@ -21,14 +20,14 @@ import {
   NewUser_submit_btn,
    ToContainer,
 } from "../../shared/styledComponents/newUserComponentsStyled";
+import { alertMessage } from "../../shared/global_constants";
 
 export default function NewUserDate_selectionBox() {
+  const dispatch: AppDispatch = useAppDispatch();
   const fromdate: Date = new Date();
-  fromdate.setDate(fromdate.getDate() - 60);
+  fromdate.setDate(fromdate.getDate() - 75);
   const [defaultfrom, setfrom] = useState<Date>(fromdate);
   const [defaultto, setto] = useState<Date>(new Date());
-  const dispatch: AppDispatch = useAppDispatch();
-  const defaultdates = useAppSelector((state) => state.NewUser);
   const onchangefromdate=(selectedfromdate:dayjs.Dayjs) => {
     setfrom(selectedfromdate?.toDate()!);
   }
@@ -36,7 +35,7 @@ export default function NewUserDate_selectionBox() {
     if (selectedtodate?.toDate()! > defaultfrom) {
       setto(selectedtodate?.toDate()!);
     } else {
-      alert("Select the To date After The from Date ");
+      alert(alertMessage);
     }
   }
   const submitClick=() => {
@@ -55,7 +54,7 @@ export default function NewUserDate_selectionBox() {
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="From"
-              value={dayjs(defaultdates.fromDate)}
+              value={dayjs(defaultfrom)}
               onChange={(selectedfromdate:dayjs.Dayjs|null)=>onchangefromdate(selectedfromdate!)}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -68,7 +67,7 @@ export default function NewUserDate_selectionBox() {
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="To"
-              value={dayjs(defaultdates.toDate)}
+              value={dayjs(defaultto)}
               onChange={(selectedtodate:dayjs.Dayjs|null)=>onchangetodate(selectedtodate!)}
               renderInput={(params) => <TextField {...params} />}
             />

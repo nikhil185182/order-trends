@@ -31,3 +31,6 @@ export const DATA_NOT_FOUND = "Date is not found in the database";
 
 export const STATISTICS = "Statistics";
 export const CUSTOMISE_COMPARE = "Customise & Compare";
+export const CompaniesEnrolled_head=' Companies Enrolled';
+
+export const alertMessage='Select the To date After The from Date ';
