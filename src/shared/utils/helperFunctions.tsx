@@ -1,6 +1,5 @@
 import { Dayjs } from "dayjs";
 import { OrderTrendDto } from "../../containers/orderTrend/orderTrendDto";
-import { OrderTrendDto } from "../dto/orderTrendDto";
 import { useAppSelector } from "./redux/selectors/hooks";
 
 export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
