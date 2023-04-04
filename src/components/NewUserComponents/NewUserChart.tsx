@@ -45,6 +45,8 @@ import {
   Bothbuttons,
   ChartHeading_div,
 } from "../../shared/styledComponents/newUserComponentsStyled";
+import { ConvertedfromandToDates } from "../../shared/utils/helperFunctions";
+
 
 Chart.register(
   CategoryScale,
@@ -59,20 +61,10 @@ Chart.register(
 
 export default function NewUserChart() {
   const isLine = useAppSelector((state) => state.NewUser.isLineOrBar);
-  const fromdate = useAppSelector((state) => state.NewUser.fromDate);
-  const todate = useAppSelector((state) => state.NewUser.toDate);
-  var from = fromdate.split("/");
-
-  var from_final = new Date(
-    Number(from[2]),
-    Number(from[0]) - 1,
-    Number(from[1])
-  );
-  var to = todate.split("/");
-
-  var to_final = new Date(Number(to[2]), Number(to[0]) - 1, Number(to[1]));
-
-  const dispatch: AppDispatch = useAppDispatch();
+  const dates=ConvertedfromandToDates();
+  let from_final=dates[0];
+  let to_final=dates[1];
+const dispatch: AppDispatch = useAppDispatch();
   const newusersdatafromstore: NewUsersDTO[] = useAppSelector(
     (state) => state.NewUser.newUsersdata
   );
@@ -106,8 +98,13 @@ export default function NewUserChart() {
         },
       },
       y: {
+        ticks: {
+       stepSize: 1
+        },
+        min:0,
         grid: {
           display: true,
+         
         },
       },
     },
@@ -145,8 +142,13 @@ export default function NewUserChart() {
         },
       },
       y: {
+        ticks: {
+          // forces step size to be 1 units
+          stepSize: 1
+        },
         grid: {
           display: false,
+          
         },
       },
     },
@@ -197,12 +199,13 @@ export default function NewUserChart() {
   const linechart_Click=()=>{
     dispatch(toggleLineOrBar(false))
   }
+ 
 
   return (
     <>
       <ChartHeading_div>
-        Company Enrollments from {from_final.toDateString()} -{" "}
-        {to_final.toDateString()}
+      Company Enrollments from {from_final.toDateString()} -{" "}
+{to_final.toDateString()}
       </ChartHeading_div>
       {isLine ? (
         <Bar data={Data} options={baroptions} />

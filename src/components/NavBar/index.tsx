@@ -1,8 +1,7 @@
 import { AppBar, Toolbar, Typography, Button, useTheme, useMediaQuery } from '@mui/material';
-import { ORDER_TREND, COMPANY_TREND, NEW_USER, INACTIVE_USER } from '../shared/global_constants';
-import '../shared/css/NavBar.css';
+import { ORDER_TREND, COMPANY_TREND, NEW_USER, INACTIVE_USER } from '../../shared/global_constants';
 import { useNavigate } from 'react-router-dom';
-import DrawerComp from './DrawerComp';
+import DrawerComp from '../Drawer';
 import React, { useState } from 'react';
 
 export default function NavBar() {
@@ -16,6 +15,7 @@ export default function NavBar() {
     const handleClick = (x: number) => () => {
         tab.fill(false);
         tab[x - 1] = true;
+        console.log("clicked",x);
         switch (x) {
             case 1:
                 navigate('/');
@@ -40,7 +40,7 @@ export default function NavBar() {
                     e-Commerce Analytics
                 </Typography>
                 {isMatch ? (
-                    <div className="drawer_comp" style={{ marginLeft: 'auto' }}>
+                    <div style={{ marginLeft: 'auto' }}>
                         <DrawerComp />
                     </div>
                 ) :

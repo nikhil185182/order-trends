@@ -1,4 +1,4 @@
-export type  OrderTrendDto = {
+export type  Orders = {
     __typename : String,
     OrderDate : String,
     AttemptedOrders : Number,
@@ -6,11 +6,15 @@ export type  OrderTrendDto = {
     TotalOrders : Number
 }
 
-export type GQL_ResponseType = {
-    ordertrend : OrderTrendDto[]
+export type OrdersListType = {
+    data : Orders[]
 }
 
-export type gType = {
+export type OrderTrendGQLResponse = {
+    ordertrend : Orders[]
+}
+
+export type GraphType = {
     labels: string[];
     datasets: {
         label: string;
@@ -20,14 +24,8 @@ export type gType = {
     }[];
 }
 
-
-
-export type ReduxObjType = {
-    Data : OrderTrendDto[],
-    orderDateList : OrderTrendDto[],
+export type OrderTrendState = {
+    Data : Orders[],
+    orderDateList : Orders[],
     status : String
-}
-
-export type ReduxOrderDateListType = {
-    orderDateList : OrderTrendDto[]
 }

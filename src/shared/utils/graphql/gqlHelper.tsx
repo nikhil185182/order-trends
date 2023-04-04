@@ -1,7 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GQL_ResponseType, OrderTrendDto } from "../../dto/orderTrendDto";
-import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
-import { DAYS, DummyCompanies } from "../../config";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
 import { NewUsersDTO } from "../../dto/newUsersDto";
 import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";
@@ -9,13 +7,7 @@ import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
 import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "../../dto/InactiveUsersDTO";
 import { useEffect, useState } from "react";
 
-export function OrderTrendUtil(){
-    const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
-    const tempList: OrderTrendDto[] = data?.ordertrend!;
-    var finalList: OrderTrendDto[] = [];
-    tempList?.map((e: OrderTrendDto) => {finalList.push(e);})
-    return finalList;
-}
+
 
 export const DataFromGraphql = ():NewUsersDTO[] => {
 
@@ -42,6 +34,7 @@ export const DataFromGraphql = ():NewUsersDTO[] => {
         return []
     }
 }
+
 export const CompanyUtil = async () => {
     const { data } =useQuery<companiesList>(COMPANIES_QUERY);
     const tempResult: company[] = data?.companyLists!;

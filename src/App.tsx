@@ -1,17 +1,16 @@
 import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import OrderTrend from './containers/orderTrend/OrderTrend';
+
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
-import { fetchOrderTrenData } from './shared/utils/redux/reducers/orderTrendReducer';
+import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
-import { Button } from '@mui/material';
 import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
 import CompanyTrend from './containers/companyLevel';
-import { getInactiveUsersData, InactiveMonths } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
-import {  addingInactiveUsersdata, fetchInactiveData, fetchInactiveMonths } from './shared/utils/redux/reducers/InactiveUserReducer';
+import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
+import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
+import { addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
-import { companiesList } from './shared/dto/companyLevelOrderDTO';
+import OrderTrend from './containers/OrderTrend';
 
 
 
@@ -19,7 +18,6 @@ function App() {
 
   const dispatch = useAppDispatch();
 
-  dispatch(fetchOrderTrenData());
   dispatch(Fetchnewusersdata());
   let displaydata: getInactiveUsersData[] = DataFromGraphqlUser();
   dispatch(addingInactiveUsersdata(displaydata));

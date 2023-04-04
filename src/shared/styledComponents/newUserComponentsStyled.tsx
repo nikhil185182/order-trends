@@ -54,6 +54,8 @@ font-size:150% ;
 padding-left:5%;
 font-weight: bold;
 align-items: center;
+display:flex;
+justify-content:center;
 padding-top: 4%;
   }
 `;
@@ -199,6 +201,7 @@ width: 61%;
     },
   
   });
+
 
 
 export const NewUser_chartcomponent_withoutsidebar=styled.div`
@@ -381,6 +384,7 @@ margin-top: 0.7% !important;
   `;
   export const  NewuserSidebar_heading=styled.div`
   background-color:#55B74E ;
+  display:flex;
 border-radius:5% !important;
 width:100%;
 height: 8%;
