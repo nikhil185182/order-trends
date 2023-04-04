@@ -5,7 +5,7 @@ import { Orders, GraphType } from '../OrderTrend/models';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../../shared/global_constants';
 import { ORDERTREND_LINE_GRAPH_OPTIONS, ORDERTREND_BAR_GRAPH_OPTIONS } from '../../shared/config';
 import { useAppSelector } from '../../shared/utils/redux/selectors/hooks';
-import { selectOrderTrendData } from '../OrderTrend/selector';
+import { selectOrderTrendData } from './selector';
 import { Radio, FormControlLabel } from '@mui/material';
 import { ChartCustomise, DaysCustomise, StatisticsGraph, StatisticsTab } from './styledComponents';
 

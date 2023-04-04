@@ -1,7 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GQL_ResponseType, Orders } from "../../../containers/OrderTrend/models";
-import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
-import { DAYS } from "../../config";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
 import { NewUsersDTO } from "../../dto/newUsersDto";
 import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";

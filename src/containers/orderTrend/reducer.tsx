@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GQL_ResponseType, Orders,OrderTrendState,ReduxOrderDateListType } from './models';
+import {Orders,OrdersListType,OrderTrendGQLResponse,OrderTrendState } from './models';
 import { ORDERTREND_DUMMY_DATA } from '../../shared/global_constants';
 import { useQuery } from "@apollo/client";
 import { ORDERTREND_QUERY } from './queries';
@@ -14,10 +14,12 @@ const initialState : OrderTrendState = {
 
 //ASYNC ACTION
 export const fetchOrderTrenData = createAsyncThunk("ordertrend/fetch",async (thunkAPI)=>{
-    const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
+    const {data} = useQuery<OrderTrendGQLResponse>(ORDERTREND_QUERY, {variables: { input: DAYS }});
     const result = OrderTrendUtil(data!);
+    console.log(result);
     return result;
 });
+
 
 const orderTrendSlice  = createSlice({
     name:"orderTrendData",
@@ -26,8 +28,8 @@ const orderTrendSlice  = createSlice({
         setOrderTrendData : (state,action: PayloadAction<OrderTrendState>) => {
             state.Data = action.payload.Data;
         },
-        addOrderDateList : (state,action: PayloadAction<ReduxOrderDateListType>) => {
-            state.orderDateList = action.payload.orderDateList;
+        addOrderDateList : (state,action: PayloadAction<OrdersListType>) => {
+            state.orderDateList = action.payload.data;
         }
     },
     extraReducers : (builder)=>{

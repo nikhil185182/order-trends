@@ -6,7 +6,11 @@ export type  Orders = {
     TotalOrders : Number
 }
 
-export type GQL_ResponseType = {
+export type OrdersListType = {
+    data : Orders[]
+}
+
+export type OrderTrendGQLResponse = {
     ordertrend : Orders[]
 }
 
@@ -20,14 +24,8 @@ export type GraphType = {
     }[];
 }
 
-
-
 export type OrderTrendState = {
     Data : Orders[],
     orderDateList : Orders[],
     status : String
-}
-
-export type ReduxOrderDateListType = {
-    orderDateList : Orders[]
 }

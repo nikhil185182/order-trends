@@ -1,11 +1,11 @@
 import dayjs, { Dayjs } from 'dayjs';
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from '../../shared/config';
-import { DUPLICATE_DATA, DATA_NOT_FOUND } from '../../shared/global_constants';
+import { DUPLICATE_DATA,DATA_NOT_FOUND } from './messages';
 import { addOrderDateList } from '../OrderTrend/reducer';
 import { useAppSelector, useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
-import { getDateFromDatePicker, getOrderListMap } from '../../shared/utils/helperFunctions';
-import { getOrderListData, selectOrderTrendData } from '../OrderTrend/selector';
+import { getDateFromDatePicker,getOrderListMap } from './utils';
+import { getOrderListData, selectOrderTrendData } from './selector';
 import { CompareTab ,CompareGraph, ComparePicker, DateListBox  } from './styledComponents';
 import { Bar, Line } from 'react-chartjs-2';
 import { Orders, GraphType } from '../OrderTrend/models';
@@ -41,7 +41,7 @@ const Compare = () => {
     const handleLineClick = () => SetLine(true);
 
     const handleDelete = (e: Orders) => { SetDateList(dateList.filter(item => item != e))
-        dispatch(addOrderDateList({orderDateList:dateList}));
+        dispatch(addOrderDateList({data:dateList}));
     }
 
     // useEffect(() => {
@@ -55,7 +55,7 @@ const Compare = () => {
             const flag = dateList.filter(e=>e.OrderDate==orderMap.get(val)!.OrderDate).length > 0;
             if (!flag){
                 SetDateList([...dateList, orderMap.get(val)!]);
-                dispatch(addOrderDateList({orderDateList:dateList}));
+                dispatch(addOrderDateList({data:dateList}));
             }
             else {
                 SetConsoleMessage(DUPLICATE_DATA);
