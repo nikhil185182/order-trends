@@ -1,11 +1,11 @@
-
+import { GraphType } from "../containers/OrderTrend/models";
 
 export const ORDER_TREND = 'Order Trend';
 export const COMPANY_TREND = 'Company Order Trend';
 export const INACTIVE_USER = 'Inactive Companies';
 export const NEW_USER = 'Companies Enrolled';
 
-export const GRAPH_DUMMY_DATA = {
+export const GRAPH_DUMMY_DATA: GraphType = {
     labels: [],
     datasets: []
 }
@@ -24,9 +24,6 @@ export const TOTAL_ORDERS_LABEL = 'Total Orders';
 export const ORANGE = '#FA8231';
 export const BLUE = '#3C40C6';
 export const GREEN = '#55B74E';
-
-export const DUPLICATE_DATA = "Date already exists in the Graph";
-export const DATA_NOT_FOUND = "Date is not found in the database";
 
 
 export const STATISTICS = "Statistics";

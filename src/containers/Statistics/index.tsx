@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import { OrderTrendDto, gType } from '../orderTrend/orderTrendDto';
+import { Orders, GraphType } from '../OrderTrend/models';
 import { ATTEMPTED_ORDERS_LABEL, BLUE, COMPLETED_ORDERS_LABEL, GRAPH_DUMMY_DATA, GREEN, ORANGE, TOTAL_ORDERS_LABEL } from '../../shared/global_constants';
 import { ORDERTREND_LINE_GRAPH_OPTIONS, ORDERTREND_BAR_GRAPH_OPTIONS } from '../../shared/config';
 import { useAppSelector } from '../../shared/utils/redux/selectors/hooks';
-import { selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
+import { selectOrderTrendData } from './selector';
 import { Radio, FormControlLabel } from '@mui/material';
 import { ChartCustomise, DaysCustomise, StatisticsGraph, StatisticsTab } from './styledComponents';
 
@@ -24,10 +24,10 @@ ChartJS.register(
 const Statistics = () => {
     const [isLine, SetLine] = useState(true);
 
-    const orderList: OrderTrendDto[] = useAppSelector(selectOrderTrendData);
-    var Ddata: OrderTrendDto[] = [];
+    const orderList: Orders[] = useAppSelector(selectOrderTrendData);
+    var Ddata: Orders[] = [];
 
-    const [graphData, SetGraphData] = useState<gType>(GRAPH_DUMMY_DATA);
+    const [graphData, SetGraphData] = useState<GraphType>(GRAPH_DUMMY_DATA);
 
     const btns = document.querySelectorAll('.btn_class');
 

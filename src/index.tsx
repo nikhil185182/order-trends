@@ -4,8 +4,6 @@ import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import store from './shared/utils/redux/store';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './shared/css/theme';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql/",
