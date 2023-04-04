@@ -1,6 +1,6 @@
 import { Drawer, TableContainer, Typography } from "@mui/material";
 import { typography } from "@mui/system";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const NewUserCompletePage=styled.div`
 margin-top: 4.8%;
@@ -54,6 +54,8 @@ font-size:150% ;
 padding-left:5%;
 font-weight: bold;
 align-items: center;
+display:flex;
+justify-content:center;
 padding-top: 4%;
   }
 `;
@@ -199,6 +201,7 @@ width: 61%;
     },
   
   });
+
 
 
 export const NewUser_chartcomponent_withoutsidebar=styled.div`
@@ -381,6 +384,7 @@ margin-top: 0.7% !important;
   `;
   export const  NewuserSidebar_heading=styled.div`
   background-color:#55B74E ;
+  display:flex;
 border-radius:5% !important;
 width:100%;
 height: 8%;
@@ -398,4 +402,67 @@ box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 
 padding:2% ;
 margin-top:4% ;
 border-radius: 5% !important;`;
+interface INewUserChartProps {
+  IsDrawerOpen: boolean;
+}
+
+
+export const NewUser_chartcomponent_withsidebardemo = styled.div<INewUserChartProps>`
+margin-top: 0.7% !important;
+  margin-left: 2%;
+  height: 80% !important ;
+  /* width: 75%; */
+ width:71%;
+  margin-top: 0;
+  padding: 10px;
+  justify-content: space-between;
+  border-radius: 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  
+  
+  @media(max-width:1000px){
+    margin-top: 0.7% !important;
+    margin-left: 2%;
+    height: 100% !important ;
+    /* width: 75%; */
+   width:92%;
+    margin-top: 0;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  ${(props) =>
+    props.IsDrawerOpen &&
+    css`
+    width: 61%;
+    /* height: 80% !important  ; */
+    height: 100% !important;
+    margin-left: 2%;
+    margin-top: 1% !important;
+    padding-top: 5% !important;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 15px;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
+    
+    
+    @media(max-width:1000px){
+        width: 66%;
+        height: 100% !important  ;
+        margin-left: 2%;
+        margin-top: 1% !important;
+        padding-top: 5% !important;
+        padding: 10px;
+        justify-content: space-between;
+        border-radius: 15px;
+        /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+        box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
+    }
+    
+    `};
+`;
+
 
