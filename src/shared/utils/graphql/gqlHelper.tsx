@@ -1,12 +1,13 @@
 import { useQuery } from "@apollo/client";
 import { GQL_ResponseType, OrderTrendDto } from "../../dto/orderTrendDto";
-import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY, ORDERTREND_QUERY } from "./queries";
 import { DAYS, DummyCompanies } from "../../config";
 import { NewUsersDTO } from "../../dto/newUsersDto";
 import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";
 import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
-import { getInactiveUsersData, Li2 } from "../../dto/InactiveUsersDTO";
+import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "../../dto/InactiveUsersDTO";
+import { useEffect, useState } from "react";
 
 export function OrderTrendUtil(){
     const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
@@ -46,6 +47,7 @@ export const CompanyUtil = async () => {
     const tempResult: company[] = data?.companyLists!;
     const result: company[] = [];
     tempResult?.map((c: company) => result.push(c));
+    console.log(tempResult);
     return tempResult;
   };
   
@@ -65,9 +67,7 @@ export const CompanyUtil = async () => {
           i2: dateString,
         },
       }
-    );
-  
-  
+    ); 
     return { data, loading, error };
   }
 
@@ -97,6 +97,25 @@ export const CompanyUtil = async () => {
       return []
   }
   }
+  
+  export const InactiveUtil = (): InactiveMonths[] => {
+    const { data } = useQuery<GQL_list>(INACTIVEMONTHS_QUERY, { variables: { input: 60 } });
+    console.log(data);
+    const tempResult: InactiveMonths[] = data?.inactivemonths ?? [];
+    console.log(tempResult);
+    const result: InactiveMonths[] = [];
+    tempResult?.map((c: InactiveMonths) => result.push(c));
+    console.log(result);
+    return result;
+  };
+  
+  
+  
+
+  
+    
+
+  
   
     
 

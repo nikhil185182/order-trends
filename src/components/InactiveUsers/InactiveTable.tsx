@@ -20,16 +20,18 @@ import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../../shared/style
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
+  var Ddata1 = useAppSelector((state)=>state.InactiveUsers.GQL_list);
   const [rows, setRows] = useState<getInactiveUsersData[]>(Ddata);
   const [searched, setSearched] = useState<string>("");
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortingOrder, setSortingOrder] = useState('asc');
   const inputDate = useAppSelector(state => state.InactiveUsers.Date);
   useEffect(() => {
     setRows(Ddata);
   }, [Ddata]);
 
+  console.log(Ddata1);
 
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -132,7 +134,7 @@ export default function InactiveTable() {
           </Rows>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPageOptions={[5, 25, 100]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

@@ -7,10 +7,11 @@ import NewUserDemo from './containers/newCustomers/newUserDemo';
 import { Button } from '@mui/material';
 import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
 import CompanyTrend from './containers/companyLevel';
-import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
-import { addingInactiveUsersdata30, addingInactiveUsersdata60, addingInactiveUsersdata90, addingInactiveUsersdata120, addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
+import { getInactiveUsersData, InactiveMonths } from './shared/dto/InactiveUsersDTO';
+import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
+import {  addingInactiveUsersdata, fetchInactiveData, fetchInactiveMonths } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
+import { companiesList } from './shared/dto/companyLevelOrderDTO';
 
 
 
@@ -22,6 +23,9 @@ function App() {
   dispatch(Fetchnewusersdata());
   let displaydata: getInactiveUsersData[] = DataFromGraphqlUser();
   dispatch(addingInactiveUsersdata(displaydata));
+  let displaydata1: InactiveMonths[] = InactiveUtil();
+  dispatch(fetchInactiveData(displaydata1));
+ 
 
   return (
     <>
