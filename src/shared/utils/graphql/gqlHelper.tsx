@@ -41,6 +41,7 @@ export const DataFromGraphql = ():NewUsersDTO[] => {
         return []
     }
 }
+
 export const CompanyUtil = async () => {
     const { data } =useQuery<companiesList>(COMPANIES_QUERY);
     const tempResult: company[] = data?.companyLists!;

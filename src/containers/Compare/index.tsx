@@ -28,7 +28,7 @@ const Compare = () => {
     const maximumDate = Array.from(orderMap)[orderMap.size - 1][0];
 
     const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
-    const [dateList, SetDateList] = useState<(OrderTrendDto)[]>([orderMap.get(maximumDate)!]);
+    const [dateList, SetDateList] = useState<OrderTrendDto[]>([orderMap.get(maximumDate)!]);
 
     const [consoleMessage, SetConsoleMessage] = useState("");
     const [consoleOpen, SetConsoleOpen] = useState(false);
@@ -49,12 +49,17 @@ const Compare = () => {
     const HandleOnAccept = (newValue: Dayjs | null) => {
         setValue(newValue);
         const val = getDateFromDatePicker(newValue);
-        // console.log(dateList);
         if (orderMap.has(val)) {
+            // console.log("value is in orderMAp",orderMap.get(val));
             console.log(dateList);
-            console.log("value is in orderMAp",orderMap.get(val));
-            if (!dateList.includes(orderMap.get(val)!)) {
-                console.log("Value is not found");
+            const dummy = orderMap.get(val)!;
+            console.log(dummy);
+            // const x = dateList.includes(orderMap.get(val)!);
+            // console.log(x);
+            const obj : OrderTrendDto = dateList.find(e=>e.OrderDate==orderMap.get(val)?.OrderDate)!;
+            console.log("found object is ",obj);
+
+            if (!dateList.includes(orderMap.get(val)!)){
                 SetDateList([...dateList, orderMap.get(val)!]);
             }
             else {
