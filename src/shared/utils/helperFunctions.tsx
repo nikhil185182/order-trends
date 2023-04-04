@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { OrderTrendDto } from "../../containers/OrderTrend/orderTrendDto";
+import { Orders } from "../../containers/OrderTrend/models";
 import { useAppSelector } from "./redux/selectors/hooks";
 
 export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
@@ -12,9 +12,9 @@ export const getDateFromDatePicker = (newValue : Dayjs|null)=>{
 }
 
 
-export const getOrderListMap = (orderList : OrderTrendDto[]) =>{
-    const mapList = new Map<string,OrderTrendDto>();
-    orderList.map((e : OrderTrendDto)=>{
+export const getOrderListMap = (orderList : Orders[]) =>{
+    const mapList = new Map<string,Orders>();
+    orderList.map((e : Orders)=>{
         e = {...e,OrderDate : e.OrderDate.slice(0,10)}
         mapList.set(e.OrderDate.toString(),e);
     });   

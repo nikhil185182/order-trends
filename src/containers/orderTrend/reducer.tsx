@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { OrderTrendDto,ReduxObjType,ReduxOrderDateListType } from '../../../../containers/OrderTrend/orderTrendDto';
-import { ORDERTREND_DUMMY_DATA } from '../../../global_constants';
-import { OrderTrendUtil } from '../../graphql/gqlHelper';
+import { GQL_ResponseType, Orders,OrderTrendState,ReduxOrderDateListType } from './models';
+import { ORDERTREND_DUMMY_DATA } from '../../shared/global_constants';
+import { useQuery } from "@apollo/client";
+import { ORDERTREND_QUERY } from './queries';
+import { DAYS } from '../../shared/config';
+import { OrderTrendUtil } from './utils';
 
-const initialState : ReduxObjType = {
+const initialState : OrderTrendState = {
     Data : [ORDERTREND_DUMMY_DATA],
     orderDateList : [],
     status : ""
@@ -11,27 +14,26 @@ const initialState : ReduxObjType = {
 
 //ASYNC ACTION
 export const fetchOrderTrenData = createAsyncThunk("ordertrend/fetch",async (thunkAPI)=>{
-    return  OrderTrendUtil();
+    const {data} = useQuery<GQL_ResponseType>(ORDERTREND_QUERY, {variables: { input: DAYS }});
+    const result = OrderTrendUtil(data!);
+    return result;
 });
 
 const orderTrendSlice  = createSlice({
     name:"orderTrendData",
     initialState: initialState,
     reducers : {
-        setOrderTrendData : (state,action: PayloadAction<ReduxObjType>) => {
+        setOrderTrendData : (state,action: PayloadAction<OrderTrendState>) => {
             state.Data = action.payload.Data;
         },
         addOrderDateList : (state,action: PayloadAction<ReduxOrderDateListType>) => {
             state.orderDateList = action.payload.orderDateList;
-        },
-        deleteOrderDateList : (state,action: PayloadAction<ReduxObjType>) => {
-            state.orderDateList = action.payload.orderDateList;
-        },
+        }
     },
     extraReducers : (builder)=>{
         builder.addCase(fetchOrderTrenData.pending,(state)=>{
             state.status="Pending";
-        }).addCase(fetchOrderTrenData.fulfilled,(state,action : PayloadAction<OrderTrendDto[]>)=>{
+        }).addCase(fetchOrderTrenData.fulfilled,(state,action : PayloadAction<Orders[]>)=>{
             state.Data = action.payload;
             state.status="Fulfilled";
         }).addCase(fetchOrderTrenData.rejected,(state)=>{
@@ -40,6 +42,6 @@ const orderTrendSlice  = createSlice({
     }
 })
 
-export const {setOrderTrendData,addOrderDateList,deleteOrderDateList} = orderTrendSlice.actions;
+export const {setOrderTrendData,addOrderDateList} = orderTrendSlice.actions;
 
 export default orderTrendSlice.reducer;

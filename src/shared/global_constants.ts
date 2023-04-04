@@ -1,11 +1,11 @@
-import { gType } from "../containers/OrderTrend/orderTrendDto";
+import { GraphType } from "../containers/OrderTrend/models";
 
 export const ORDER_TREND = 'Order Trend';
 export const COMPANY_TREND = 'Company Order Trend';
 export const INACTIVE_USER = 'Inactive Companies';
 export const NEW_USER = 'Companies Enrolled';
 
-export const GRAPH_DUMMY_DATA: gType = {
+export const GRAPH_DUMMY_DATA: GraphType = {
     labels: [],
     datasets: []
 }
