@@ -6,9 +6,9 @@ import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
 import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
 import CompanyTrend from './containers/companyLevel';
-import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
-import { addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
+import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
+import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
+import { addingInactiveUsersdata, fetchInactiveData } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
 import OrderTrend from './containers/OrderTrend';
 
