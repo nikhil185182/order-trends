@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
 import { NewUsersDTO } from "../../dto/newUsersDto";
 import { useAppSelector } from "../redux/selectors/hooks";
 import { newusertype } from "../../dto/newUsersDto";
