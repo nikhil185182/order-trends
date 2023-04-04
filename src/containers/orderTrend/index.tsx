@@ -3,10 +3,16 @@ import Statistics from '../Statistics';
 import Compare from '../Compare';
 import '../../shared/css/NavBar.css';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import { OrderTrendBox } from '../../shared/styledComponents/orderTrendComponents';
+import { OrderTrendBox } from './styledComponents';
+import { fetchOrderTrenData } from '../../shared/utils/redux/reducers/orderTrendReducer';
+import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
 
 
 const OrderTrend = () => {
+
+    const dispatch = useAppDispatch();
+
+    dispatch(fetchOrderTrenData());
 
     interface TabPanelProps {
         children?: React.ReactNode;

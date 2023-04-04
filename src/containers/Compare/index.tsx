@@ -1,4 +1,3 @@
-import { CompareGraph, ComparePicker, DateListBox } from '../../shared/styledComponents/orderTrendComponents';
 import dayjs, { Dayjs } from 'dayjs';
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from '../../shared/config';
@@ -6,14 +5,14 @@ import { DUPLICATE_DATA, DATA_NOT_FOUND } from '../../shared/global_constants';
 import { addOrderDateList } from '../../shared/utils/redux/reducers/orderTrendReducer';
 import { useAppSelector, useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
 import { getDateFromDatePicker, getOrderListMap } from '../../shared/utils/helperFunctions';
-import { selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
-import { CompareTab } from '../../shared/styledComponents/orderTrendComponents';
+import { getOrderListData, selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
+import { CompareTab ,CompareGraph, ComparePicker, DateListBox  } from './styledComponents';
 import { Bar, Line } from 'react-chartjs-2';
-import { OrderTrendDto, gType } from '../orderTrend/orderTrendDto';
+import { OrderTrendDto, gType } from '../OrderTrend/orderTrendDto';
 import React, { useEffect, useState } from 'react';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../../shared/global_constants';
-import { Snackbar, TextField, Chip } from '@mui/material';
-import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
+import { Snackbar, TextField, Chip, FormControlLabel, Radio } from '@mui/material';
+import { LocalizationProvider, DatePicker, DesktopDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
@@ -36,7 +35,12 @@ const Compare = () => {
 
     const [graphData, SetGraphData] = useState<gType>(GRAPH_DUMMY_DATA);
 
-    const handleDelete = (e: OrderTrendDto) => {SetDateList(dateList.filter(item => item != e)) }
+    const [isLine, SetLine] = useState(true);
+
+    const handleBarClick = () => SetLine(false);
+    const handleLineClick = () => SetLine(true);
+
+    const handleDelete = (e: OrderTrendDto) => { SetDateList(dateList.filter(item => item != e)) }
 
     useEffect(() => {
         dispatch(addOrderDateList({ orderDateList: dateList }));
@@ -45,8 +49,12 @@ const Compare = () => {
     const HandleOnAccept = (newValue: Dayjs | null) => {
         setValue(newValue);
         const val = getDateFromDatePicker(newValue);
+        // console.log(dateList);
         if (orderMap.has(val)) {
+            console.log(dateList);
+            console.log("value is in orderMAp",orderMap.get(val));
             if (!dateList.includes(orderMap.get(val)!)) {
+                console.log("Value is not found");
                 SetDateList([...dateList, orderMap.get(val)!]);
             }
             else {
@@ -64,8 +72,7 @@ const Compare = () => {
 
 
 
-    // const dateList = useAppSelector(getOrderListData);
-
+    const ReduxdateList = useAppSelector(getOrderListData);
 
     useEffect(() => {
         var temp_graphData = {
@@ -92,7 +99,7 @@ const Compare = () => {
             ],
         }
         SetGraphData(temp_graphData);
-    }, [dateList]);
+    }, [ReduxdateList]);
 
     return (
         <CompareTab>
@@ -105,7 +112,7 @@ const Compare = () => {
                     autoHideDuration={3000}
                 />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker onYearChange={undefined}
+                    <DesktopDatePicker onYearChange={undefined}
                         label="Select date(s)"
                         value={value}
                         maxDate={dayjs(maximumDate)}
@@ -133,7 +140,13 @@ const Compare = () => {
                 </DateListBox>
             </ComparePicker>
             <CompareGraph>
-                <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
+                {isLine ? <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
+                    : <Line options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
+                }
+                {/* <ChartCustomise>
+                    <FormControlLabel control={<Radio style={{ color: GREEN }} onClick={handleLineClick} checked={isLine} />} label={"Line Chart"} />
+                    <FormControlLabel control={<Radio style={{ color: GREEN }} onClick={handleBarClick} checked={!isLine} />} label="Bar Chart" />
+                </ChartCustomise> */}
             </CompareGraph>
         </CompareTab>
     )

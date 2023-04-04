@@ -1,4 +1,4 @@
-import { gType } from "../containers/orderTrend/orderTrendDto";
+import { gType } from "../containers/OrderTrend/orderTrendDto";
 
 export const ORDER_TREND = 'Order Trend';
 export const COMPANY_TREND = 'Company Order Trend';
