@@ -7,7 +7,7 @@ import NewUserDate_selectionBox from "../../components/NewUserComponents/newUser
 import NewUsersideBar from "../../components/NewUserComponents/newCompany_sideBar";
 import NewUserTable from "../../components/NewUserComponents/newUsertable";
 import NewUserChart from "../../components/NewUserComponents/NewUserChart";
-import { NewUserCompletePage, NewUsersdateSelection_block, NewUser_chartcomponent_withsidebar, NewUser_chartcomponent_withoutsidebar } from "../../shared/styledComponents/newUserComponentsStyled";
+import { NewUserCompletePage, NewUsersdateSelection_block, NewUser_chartcomponent_withsidebar, NewUser_chartcomponent_withoutsidebar, NewUser_chartcomponent_withsidebardemo } from "../../shared/styledComponents/newUserComponentsStyled";
 import { Fetchnewusersdata } from "../../shared/utils/redux/reducers/newUserReducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
@@ -26,15 +26,16 @@ export default function NewUserDemo() {
           
           <NewUserTable />
         </NewUsersdateSelection_block>
+        <NewUser_chartcomponent_withsidebardemo IsDrawerOpen={IsDrawerOpen}><NewUserChart/></NewUser_chartcomponent_withsidebardemo>
         
-        {IsDrawerOpen ? (
+        {/* {IsDrawerOpen ? (
           <NewUser_chartcomponent_withsidebar>
             <NewUserChart />
           </NewUser_chartcomponent_withsidebar>
         ) : (
           <NewUser_chartcomponent_withoutsidebar>
             <NewUserChart /></NewUser_chartcomponent_withoutsidebar>
-        )}
+        )} */}
       </NewUserCompletePage>
       {/* <Dialogbox/> */}
       <NewUsersideBar />
