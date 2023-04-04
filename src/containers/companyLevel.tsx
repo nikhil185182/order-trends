@@ -28,7 +28,7 @@ const CompanyTrend = () => {
           <CompanyDatePicker />
         </DatepickerComponent>
         <ButtonComponent>
-          <CompanyButtonContainer />
+          <CompanyButtonContainer/>
         </ButtonComponent>
       </SubContainerOne>
       <SubcontainerTwo>

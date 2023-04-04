@@ -1,5 +1,5 @@
-import { Chip, TextField } from "@mui/material";
-import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { Chip, TextField, TextFieldProps } from "@mui/material";
+import { DatePicker,  LocalizationProvider } from "@mui/x-date-pickers";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -8,6 +8,9 @@ import { useState } from "react";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 import { setDateString } from "../../shared/utils/redux/reducers/companyReducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
+
+
+
 
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
@@ -24,7 +27,7 @@ const CompanyDatePicker = () => {
   return (
     <div className="dateComp">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DesktopDatePicker
+        <DatePicker
           className="sha"
           label='Select Dates'
           value={value}
@@ -35,6 +38,7 @@ const CompanyDatePicker = () => {
              setYear(!year)
              console.log('====================================');
           }}
+          views={['year','month','day']}
           onChange={()=>true}
           onAccept={(newValue) => {
             setValue(newValue);
@@ -54,7 +58,7 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField size="small" color="secondary" {...params} />}
+          renderInput={(params) => <TextField disabled={true}  size="small" color="secondary" {...params} />}
         />
       </LocalizationProvider>
       <div className="dateListbox">

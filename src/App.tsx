@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import OrderTrend from './containers/OrderTrend';
+
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './shared/utils/redux/reducers/orderTrendReducer';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
@@ -10,6 +10,7 @@ import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
 import { addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
+import OrderTrend from './containers/orderTrend';
 
 
 

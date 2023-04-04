@@ -8,7 +8,7 @@ import { getDateFromDatePicker, getOrderListMap } from '../../shared/utils/helpe
 import { getOrderListData, selectOrderTrendData } from '../../shared/utils/redux/selectors/orderTrendSelector';
 import { CompareTab ,CompareGraph, ComparePicker, DateListBox  } from './styledComponents';
 import { Bar, Line } from 'react-chartjs-2';
-import { OrderTrendDto, gType } from '../OrderTrend/orderTrendDto';
+import { OrderTrendDto, gType } from '../orderTrend/orderTrendDto';
 import React, { useEffect, useState } from 'react';
 import { GRAPH_DUMMY_DATA, ATTEMPTED_ORDERS_LABEL, ORANGE, COMPLETED_ORDERS_LABEL, BLUE, TOTAL_ORDERS_LABEL, GREEN } from '../../shared/global_constants';
 import { Snackbar, TextField, Chip, FormControlLabel, Radio } from '@mui/material';
