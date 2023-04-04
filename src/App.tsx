@@ -10,7 +10,7 @@ import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
 import { addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './shared/utils/redux/reducers/newUserReducer';
-import OrderTrend from './containers/orderTrend';
+import OrderTrend from './containers/OrderTrend';
 
 
 
