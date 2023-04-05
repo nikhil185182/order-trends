@@ -56,7 +56,7 @@ function DateandDaysSelector() {
                     <Container>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <Date_picker>
-                            <DesktopDatePicker onYearChange={undefined}
+                            <DatePicker onYearChange={undefined}
                                 value={value}
                                 label="Select a Date"
                                 onChange={(newValue) => {
@@ -67,6 +67,7 @@ function DateandDaysSelector() {
                                     console.log(val);
                                     SetVal(val);
                                 }}
+                                views={['year', 'month', 'day']}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </Date_picker>

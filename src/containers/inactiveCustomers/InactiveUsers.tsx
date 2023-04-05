@@ -2,35 +2,52 @@ import React, { useEffect, useState } from 'react';
 import DateandDaysSelector from '../../components/InactiveUsers/DateandDaysSelector';
 import '../../shared/css/inactive.css';
 import InactiveTable from '../../components/InactiveUsers/InactiveTable';
-import { Total_component } from '../../shared/styledComponents/inactiveUserComponents';
+import { Datepicker_component, InactiveUsertable_container, Total_component } from '../../shared/styledComponents/inactiveUserComponents';
+import InactiveGraph from '../../components/InactiveUsers/InactiveGraph';
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import '../../shared/css/inactive.css';
 
 const InactiveUsers = () => {
+
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     setLoading(false);
   }, []);
 
+
+
+  const handleTabSelect = (event: React.SyntheticEvent, newValue: number) => {
+    setActiveTab(newValue);
+  };
+
   return (
-   <Total_component>
-      <div className="Datepicker_component">
-        <DateandDaysSelector />
-      </div>
-      <div className="chart_component">
-        {loading ? (
-          <div className="loader">Loading...</div>
-        ) : (
-          <InactiveTable />
-        )}
-      </div>
+    <Total_component style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={activeTab} onChange={handleTabSelect} aria-label="basic tabs example">
+          <Tab label="Inactive Table" />
+          <Tab label="Inactive Graph" />
+        </Tabs>
+      </Box>
+      {activeTab === 0 && (
+        <>
+          <Datepicker_component>
+            <DateandDaysSelector />
+          </Datepicker_component>
+          <InactiveUsertable_container>
+            <InactiveTable />
+          </InactiveUsertable_container>
+        </>
+      )}
+      {activeTab === 1 && <InactiveGraph />}
     </Total_component>
   );
 };
 
+
+
 export default InactiveUsers;
-
-
-
-
-
 

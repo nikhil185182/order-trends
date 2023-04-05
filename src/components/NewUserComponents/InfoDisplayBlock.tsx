@@ -8,10 +8,11 @@ import {
  NewUsertable_container_title,
   NewUserTable_details,
   StyledTableContainer,
-} from "../../shared/styledComponents/newUserComponentsStyled";
+} from "../../containers/newCustomers/StyledComponents";
 
 export default function NewUserTable() {
   const fromdate = useAppSelector((state) => state.NewUser.fromDate);
+  
   const todate = useAppSelector((state) => state.NewUser.toDate);
   const companyinfo = useAppSelector((state) => state.NewUser.newUsersdata);
   let enrollment: number = 0;

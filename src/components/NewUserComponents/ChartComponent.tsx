@@ -11,7 +11,7 @@ import {
   toggleLineOrBar,
   updatebarclickedDate,
   updateCompaniesList,
-} from "../../shared/utils/redux/reducers/newUserReducer";
+} from "../../containers/newCustomers/Reducer";
 
 import {
   Chart,
@@ -24,7 +24,7 @@ import {
 
 } from "chart.js";
 
-import { NewUsersDTO } from "../../shared/dto/newUsersDto";
+import { NewUsersDTO } from "../../containers/newCustomers/models";
 import {
   useAppDispatch,
   useAppSelector,
@@ -44,8 +44,8 @@ import "../../shared/css/newUserDemo.css";
 import {
   Bothbuttons,
   ChartHeading_div,
-} from "../../shared/styledComponents/newUserComponentsStyled";
-import { ConvertedfromandToDates } from "../../shared/utils/helperFunctions";
+} from "../../containers/newCustomers/StyledComponents";
+import { ConvertedfromandToDates } from "../../containers/newCustomers/Utils";
 
 
 Chart.register(

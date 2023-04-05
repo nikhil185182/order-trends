@@ -1,44 +1,22 @@
 import { useQuery } from "@apollo/client";
-import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
-import { NewUsersDTO } from "../../dto/newUsersDto";
+import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY, NEW_USER_QUERY } from "./queries";
+
 import { useAppSelector } from "../redux/selectors/hooks";
-import { newusertype } from "../../dto/newUsersDto";
+
 import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
-import { getInactiveUsersData, Li2 } from "../../dto/InactiveUsersDTO";
+import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "../../dto/InactiveUsersDTO";
+import { useEffect, useState } from "react";
 
 
 
-export const DataFromGraphql = ():NewUsersDTO[] => {
 
-    let Newuserquery = NEW_USER_QUERY;
-   
-    
-    const inputfromdate=useAppSelector(state=>state.NewUser.fromDate)
-   
-    const inputtodate=useAppSelector(state=>state.NewUser.toDate)
-    
-    const { loading, error, data } = useQuery<newusertype>(Newuserquery,
-        {
-            variables:{Fromdate:new Date(inputfromdate),Todate:new Date(inputtodate)}
-        })
-    if (data) {
-        return data.NewUsersData
-
-    } else if (loading) {
-        console.log("Data is Loading")
-        return []
-    }
-    else {
-        console.log(`Error ${error?.message}`)
-        return []
-    }
-}
 
 export const CompanyUtil = async () => {
     const { data } =useQuery<companiesList>(COMPANIES_QUERY);
     const tempResult: company[] = data?.companyLists!;
     const result: company[] = [];
     tempResult?.map((c: company) => result.push(c));
+    console.log(tempResult);
     return tempResult;
   };
   
@@ -58,9 +36,7 @@ export const CompanyUtil = async () => {
           i2: dateString,
         },
       }
-    );
-  
-  
+    ); 
     return { data, loading, error };
   }
 
@@ -90,6 +66,25 @@ export const CompanyUtil = async () => {
       return []
   }
   }
+  
+  export const InactiveUtil = (): InactiveMonths[] => {
+    const { data } = useQuery<GQL_list>(INACTIVEMONTHS_QUERY, { variables: { input: 60 } });
+    console.log(data);
+    const tempResult: InactiveMonths[] = data?.inactivemonths ?? [];
+    console.log(tempResult);
+    const result: InactiveMonths[] = [];
+    tempResult?.map((c: InactiveMonths) => result.push(c));
+    console.log(result);
+    return result;
+  };
+  
+  
+  
+
+  
+    
+
+  
   
     
 
