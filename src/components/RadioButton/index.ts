@@ -1,0 +1,8 @@
+import { styled as MUIstyled } from "@mui/material/styles";
+import Radio from '@mui/material/Radio';
+import { GREEN } from "../../shared/global_constants";
+
+export const RadioButton = MUIstyled(Radio)({
+    color: GREEN,
+    accentColor:GREEN
+});
