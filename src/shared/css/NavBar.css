@@ -98,7 +98,7 @@ p:hover{
 } */
 
 .dateListbox{
-    background-color: aqua;
+    
     width: 90%;
     display: flex;
     flex-wrap:wrap;

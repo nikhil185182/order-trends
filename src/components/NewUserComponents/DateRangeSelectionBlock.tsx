@@ -3,11 +3,11 @@ import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { useState } from "react";
-import { newUser_datepickers_Title } from "../../shared/config";
+import { newUser_datepickers_Title } from "../../shared/global_constants";
 import {
   settingfromdate,
   settingtodate,
-} from "../../shared/utils/redux/reducers/newUserReducer";
+} from "../../containers/newCustomers/Reducer";
 import {
   useAppDispatch
 } from "../../shared/utils/redux/selectors/hooks";
@@ -19,7 +19,7 @@ import {
   NewUser_Each_Datepicker,
   NewUser_submit_btn,
    ToContainer,
-} from "../../shared/styledComponents/newUserComponentsStyled";
+} from "../../containers/newCustomers/StyledComponents";
 import { alertMessage } from "../../shared/global_constants";
 
 export default function NewUserDate_selectionBox() {
@@ -28,8 +28,10 @@ export default function NewUserDate_selectionBox() {
   fromdate.setDate(fromdate.getDate() - 75);
   const [defaultfrom, setfrom] = useState<Date>(fromdate);
   const [defaultto, setto] = useState<Date>(new Date());
+
   const onchangefromdate=(selectedfromdate:dayjs.Dayjs) => {
-    setfrom(selectedfromdate?.toDate()!);
+  
+  setfrom(selectedfromdate?.toDate()!);
   }
   const onchangetodate=(selectedtodate:dayjs.Dayjs) => {
     if (selectedtodate?.toDate()! > defaultfrom) {
@@ -39,6 +41,7 @@ export default function NewUserDate_selectionBox() {
     }
   }
   const submitClick=() => {
+   
     dispatch(settingfromdate(defaultfrom.toLocaleDateString()!));
     dispatch(settingtodate(defaultto.toLocaleDateString()!));
   }

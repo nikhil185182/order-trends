@@ -1,4 +1,4 @@
-import { useAppSelector } from "./redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 
 export const ConvertedfromandToDates = () => {
     const fromdate = useAppSelector((state) => state.NewUser.fromDate);
