@@ -1,12 +1,10 @@
 import React from 'react';
 import Statistics from '../Statistics';
 import Compare from '../Compare';
-import '../../shared/css/NavBar.css';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './reducer';
 import { OrderTrendBox } from './styledComponents';
-import { fetchFeature } from '../../shared/utils/redux/reducers/appReducer';
 
 
 
