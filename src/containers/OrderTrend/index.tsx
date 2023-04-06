@@ -6,12 +6,12 @@ import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './reducer';
 import { OrderTrendBox } from './styledComponents';
+import { fetchFeature } from '../../shared/utils/redux/reducers/appReducer';
 
 
 
 const OrderTrend = () => {
     const dispatch = useAppDispatch();
-
     dispatch(fetchOrderTrenData());
 
     interface TabPanelProps {

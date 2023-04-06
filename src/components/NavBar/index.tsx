@@ -22,39 +22,12 @@ import {
 import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 
 export default function NavBar() {
-
-  console.log("Navbar reloaded");
   let navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
-
+  
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [tab, SetTab] = useState([false, false,true, false]);
-
-  const feature = useAppSelector((state) => state.globalState.feature);
-
-
-  useEffect(() => {
-    tab.fill(false);
-    console.log("feature",feature);
-    switch (feature) {
-      case "orderTrend":
-        tab[0] = true;
-        break;
-      case "companyOrderTrend":
-        tab[1] = true;
-        break;
-      case "companiesEnrolled":
-        tab[2] = true;
-        break;
-      case "inactiveCustomers":
-        tab[3] = true;
-        break;
-    }
-    SetTab(tab);
-  }, [feature]);
+  const tab = useAppSelector((state) => state.globalState.feature);
 
   return (
     <AppBar style={{ background: "#54B948" }}>
@@ -68,25 +41,33 @@ export default function NavBar() {
           <div className="btn_cls" style={{ marginLeft: "auto" }}>
             <Button
               sx={{ border: tab[0] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("orderTrend")); navigate('/');}}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               {ORDER_TREND}
             </Button>
             <Button
               sx={{ border: tab[1] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companyOrderTrend")); navigate('/companytrend'); }}
+              onClick={() => {
+                navigate("/companytrend");
+              }}
             >
               {COMPANY_TREND}
             </Button>
             <Button
               sx={{ border: tab[2] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/CompaniesEnrolled');}}
+              onClick={() => {
+                navigate("/CompaniesEnrolled");
+              }}
             >
               {NEW_USER}
             </Button>
             <Button
               sx={{ border: tab[3] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {dispatch(fetchFeature("inactiveCustomers")); navigate('/inactiveUsers')}}
+              onClick={() => {
+                navigate("/inactiveUsers");
+              }}
             >
               {INACTIVE_USER}
             </Button>

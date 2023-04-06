@@ -14,9 +14,11 @@ import DateSelector from "../DateRangeSelection";
 import InformationDisplay from "../InformationDisplay";
 import CompaniesEnrolledChart from "../CompaniesEnrolledChart";
 import SideBar from "../SideBar";
+import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 
 export default function CompaniesEnrolled() {
   const dispatch: AppDispatch = useAppDispatch();
+  dispatch(fetchFeature([false,false,true,false])); 
   dispatch(Fetchnewusersdata());
 
   const IsDrawerOpen = useAppSelector((state) => state.NewUser.isDrawerOpen);
