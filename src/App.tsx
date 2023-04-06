@@ -4,13 +4,11 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import InactiveUsers from './containers/InactiveCustomers';
-import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
-import { addingInactiveUsersdata, fetchInactiveData } from './shared/utils/redux/reducers/InactiveUserReducer';
 import { Fetchnewusersdata } from './containers/CompaniesEnrolled/reducer';
 import OrderTrend from './containers/OrderTrend';
 import CompaniesEnrolled from './containers/CompaniesEnrolled';
 import CompanyTrend from './containers/CompanyOrderTrend';
+import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
 
 
 
