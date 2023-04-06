@@ -10,7 +10,6 @@ import { OrderTrendBox } from './styledComponents';
 
 
 const OrderTrend = () => {
-
     const dispatch = useAppDispatch();
 
     dispatch(fetchOrderTrenData());
