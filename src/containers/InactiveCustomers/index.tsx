@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DateandDaysSelector from '../DateandDaysSelector';
+import DateandDaysSelector from '../InactiveDateSelector';
 import InactiveTable from '../InactiveTable';
 import { Datepicker_component, InactiveUsertable_container, Total_component } from './styledComponents';
 import InactiveGraph from '../InactiveGraph';
