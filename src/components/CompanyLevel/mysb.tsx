@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { company } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 
-import { CompanySelector } from "../../shared/utils/redux/companySelector";
+import { CompanySelector } from "../../containers/CompanyOrderTrend/selector";
+import { Container } from '@mui/material';
 
 
 function AutocompleteSearch() {
@@ -32,11 +33,11 @@ function AutocompleteSearch() {
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <ul>
+      <Container>
         {suggestions.map((suggestion) => (
-          <li key={suggestion.CompanyName}>{suggestion.CompanyName}</li>
+          <div key={suggestion.CompanyName}>{suggestion.CompanyName}</div>
         ))}
-      </ul>
+      </Container>
     </div>
   );
 }

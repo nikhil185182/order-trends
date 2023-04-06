@@ -11,14 +11,6 @@ export const ORDERTREND_QUERY = gql`
   }
 `;
 
-
-export const NEW_USER_QUERY = gql`query GetNewUsers($Fromdate:DateTime!,$Todate:DateTime!){
-  NewUsersData(from:$Fromdate,to:$Todate){
-    companyCreatedTimeStamp
-    namesOfCompanies
-    frequency
-  }} `;
-
   export const COMPANIES_QUERY = gql`
 query companyRequest{
   companyLists{
@@ -26,7 +18,7 @@ query companyRequest{
  }
  }`
 
-
+ 
 export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:String!){
   getSpecificCompanyData(cname:$i1,cdates:$i2){
     TotalOrders
@@ -37,21 +29,3 @@ export const GETSPECIFICCOMPANIESDATA_QUERY = gql`query abc($i1:String!,$i2:Stri
   } 
 }`
 
-export const INACTIVEUSERS_QUERY = gql`
-query InactiveUsers($input: DateTime!) {
-  inactiveusers(date: $input) {
-    CompanyName
-    LatestOrderDate
-  }
-}
-`;
-
-export const INACTIVEMONTHS_QUERY = gql`
-query Inactivenew($input:Int!){
-  inactivemonths(days:$input) {
-    CompanyName
-    LastOrderDate
-    Months
-  }
-}
-`;

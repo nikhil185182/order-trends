@@ -2,10 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction, Slice } from "@reduxjs/to
 
 import dayjs, { Dayjs } from "dayjs";
 import { format } from "path";
-import { NewUsersDTO } from "../../../../containers/newCustomers/models";
-import { DataFromGraphqlUser } from "../../graphql/gqlHelper";
+
 import { RootState, AppDispatch } from "../store";
-import { DataFromGraphql } from "../../../../containers/newCustomers/gqlHelper";
+import { NewUsersDTO } from "../../../../containers/CompaniesEnrolled/models";
+import { DataFromGraphql } from "../../../../containers/CompaniesEnrolled/reducer";
+
 
 type initialstatetypes = {
   __typename : string,

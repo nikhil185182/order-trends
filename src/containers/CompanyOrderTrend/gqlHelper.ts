@@ -1,34 +1,19 @@
 import { useQuery } from "@apollo/client";
-
-
-import { useAppSelector } from "../redux/selectors/hooks";
-
-import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
-
-import { useEffect, useState } from "react";
+import { companiesList, company, fres } from "./models";
 import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY } from "./queries";
-
-
-
-
 
 export const CompanyUtil = async () => {
     const { data } =useQuery<companiesList>(COMPANIES_QUERY);
     const tempResult: company[] = data?.companyLists!;
     const result: company[] = [];
     tempResult?.map((c: company) => result.push(c));
-    console.log(tempResult);
     return tempResult;
   };
-  
-  
+
   export async function GetSpecificCompanyData(
     companyString: String,
     dateString: String
   ) {
-    console.log("====================================");
-    console.log("I called gql helper");
-    console.log("====================================");
     const { data, loading, error } =  useQuery<fres>(
       GETSPECIFICCOMPANIESDATA_QUERY,
       {
@@ -38,17 +23,9 @@ export const CompanyUtil = async () => {
         },
       }
     ); 
+    if(error) console.log(error);
+
+    console.log(data);
+     
     return { data, loading, error };
   }
-
-
-
-
-
-
-
-
-
-
-
-
