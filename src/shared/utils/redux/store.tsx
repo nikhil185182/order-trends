@@ -3,12 +3,13 @@ import orderTrendReducer from "../../../containers/OrderTrend/reducer";
 
 import InactiveUserSlice from "./reducers/InactiveUserReducer";
 import reducer from "../../../containers/CompanyOrderTrend/reducer";
-import newUserReducer from "./reducers/newUserReducer";
+import CompaniesEnrolled from "../../../containers/CompaniesEnrolled/reducer"
+
 
 const store = configureStore({
     reducer: {
         orderTrend: orderTrendReducer,
-        NewUser: newUserReducer,
+        NewUser: CompaniesEnrolled,
         company: reducer,
         InactiveUsers: InactiveUserSlice.reducer
     }

@@ -2,10 +2,8 @@ import { useQuery } from "@apollo/client";
 import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY, INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY} from "./queries";
 
 import { useAppSelector } from "../redux/selectors/hooks";
-
-import { companiesList, company, fres } from "../../dto/companyLevelOrderDTO";
 import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "../../dto/InactiveUsersDTO";
-import { NewUsersDTO, newusertype } from "../../../containers/newCustomers/models";
+
 
 
 

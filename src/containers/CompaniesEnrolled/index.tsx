@@ -15,7 +15,7 @@ import InformationDisplay from "../InformationDisplay";
 import CompaniesEnrolledChart from "../CompaniesEnrolledChart";
 import SideBar from "../SideBar";
 
-export default function NewUserDemo() {
+export default function CompaniesEnrolled() {
   const dispatch: AppDispatch = useAppDispatch();
   dispatch(Fetchnewusersdata());
 
