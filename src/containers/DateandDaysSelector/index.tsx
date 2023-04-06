@@ -4,13 +4,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import '../../shared/css/inactive.css';
-import { getInactiveUsersData } from '../../shared/dto/InactiveUsersDTO';
-import { addingInactiveUsersdata, settingDate } from '../../shared/utils/redux/reducers/InactiveUserReducer';
+import { getInactiveUsersData } from '../InactiveCustomers/models';
+import { addingInactiveUsersdata, settingDate } from '../InactiveCustomers/reducer';
 import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/selectors/hooks';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import { Container, Date_picker, Direction, Submit_button } from '../../shared/styledComponents/inactiveUserComponents';
+import { Container, Date_picker, Direction, Submit_button } from '../InactiveCustomers/styledComponents';
 
 const steps = [
     {
@@ -26,16 +25,9 @@ const steps = [
 ];
 
 function DateandDaysSelector() {
-    const [IsDate, SetDate] = useState(true);
     const [Day, setDay] = React.useState(15);
     const [Val, SetVal] = useState("");
-    const handleDayClick = () => SetDate(false);
-    const handleDateClick = () => SetDate(true);
     const [value, setValue] = useState<Dayjs | null>(dayjs().subtract(30, 'day'));
-    const [dateList, SetDateList] = useState<string[]>([]);
-    const handleChange = (event: SelectChangeEvent) => {
-        setDay(event.target.value as unknown as number);
-    }
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = steps.length;
@@ -101,7 +93,7 @@ function DateandDaysSelector() {
                                 >
                                     <Typography>{steps[activeStep].label}</Typography>
                                 </Paper>
-                                <Box sx={{ height: 255, maxWidth: 600, width: '100%', p: 2 }}>
+                                <Box sx={{ height: 180, maxWidth: 600, width: '100%', p: 2 }}>
                                     {steps[activeStep].description}
                                 </Box>
                                 <MobileStepper

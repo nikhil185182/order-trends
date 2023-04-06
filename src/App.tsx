@@ -6,9 +6,8 @@ import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import NewUserDemo from './containers/newCustomers';
 import InactiveUsers from './containers/InactiveCustomers';
 import CompanyTrend from './containers/companyLevel';
-import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
-import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
-import { addingInactiveUsersdata, fetchInactiveData } from './shared/utils/redux/reducers/InactiveUserReducer';
+import { InactiveMonths, getInactiveUsersData } from './containers/InactiveCustomers/models';
+import { addingInactiveUsersdata, fetchInactiveData, fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
 import { Fetchnewusersdata } from './containers/newCustomers/Reducer';
 import OrderTrend from './containers/OrderTrend';
 
@@ -19,10 +18,8 @@ function App() {
   const dispatch = useAppDispatch();
 
   dispatch(Fetchnewusersdata());
-  let displaydata: getInactiveUsersData[] = DataFromGraphqlUser();
-  dispatch(addingInactiveUsersdata(displaydata));
-  let displaydata1: InactiveMonths[] = InactiveUtil();
-  dispatch(fetchInactiveData(displaydata1));
+  dispatch(fetchInactiveDate());
+  dispatch(fetchInactiveMonths());
  
 
   return (

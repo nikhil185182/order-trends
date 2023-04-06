@@ -5,7 +5,7 @@ import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { Dialog, DialogContent } from "@mui/material";
 import styled from "styled-components";
 import { ChartEvent, ActiveElement, ChartData, ChartItem } from "chart.js";
-import { Wrapper, Dropdown, ChartContainer } from "../../shared/styledComponents/inactiveUserComponents";
+import { Wrapper, Dropdown, ChartContainer } from "../InactiveCustomers/styledComponents";
 
 
 

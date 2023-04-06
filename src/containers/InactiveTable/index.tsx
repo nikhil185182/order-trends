@@ -7,16 +7,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import '../../shared/css/inactive.css';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { getInactiveUsersData } from "../../shared/dto/InactiveUsersDTO";
+import { getInactiveUsersData } from "../InactiveCustomers/models";
 import TablePagination from "@mui/material/TablePagination";
 import { IconButton } from "@mui/material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../../shared/styledComponents/inactiveUserComponents";
+import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../InactiveCustomers/styledComponents";
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
