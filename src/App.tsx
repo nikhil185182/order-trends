@@ -9,7 +9,6 @@ import CompaniesEnrolled from './containers/CompaniesEnrolled';
 import CompanyTrend from './containers/CompanyOrderTrend';
 import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
 import { RoutesPath } from './shared/config';
-import { FetchCompaniesEnrolledData } from './containers/CompaniesEnrolled/reducer';
 
 
 
