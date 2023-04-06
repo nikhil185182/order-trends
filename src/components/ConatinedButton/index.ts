@@ -10,4 +10,5 @@ export const ContainedButton = styled(Button)({
   color: "white",
   background: GREEN,
   textTransform: "none",
+  width : '100px'
 });

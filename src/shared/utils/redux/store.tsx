@@ -3,9 +3,11 @@ import orderTrendReducer from "../../../containers/OrderTrend/reducer";
 import newUserReducer from "../../../containers/newCustomers/Reducer";
 import companyReducer from "./reducers/companyReducer";
 import InactiveUserSlice from "./reducers/InactiveUserReducer";
+import appReducer from "./reducers/appReducer";
 
 const store = configureStore({
     reducer: {
+        globalState : appReducer,
         orderTrend: orderTrendReducer,
         NewUser: newUserReducer,
         company: companyReducer,
