@@ -25,9 +25,9 @@ export const ORANGE = '#FA8231';
 export const BLUE = '#3C40C6';
 export const GREEN = '#55B74E';
 
-
 export const STATISTICS = "Statistics";
 export const CUSTOMISE_COMPARE = "Customise & Compare";
-export const CompaniesEnrolled_head=' Companies Enrolled';
 
+export const CompaniesEnrolled_head=' Companies Enrolled';
 export const alertMessage='Select the To date After The from Date ';
+export const newUser_datepickers_Title = "Select Date Range";

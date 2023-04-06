@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { Dropdown, Wrapper, ChartContainer } from "../../shared/styledComponents/inactiveUserComponents";
-import { ChartEvent, ActiveElement } from "chart.js";
-import { Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Dialog, DialogContent } from "@mui/material";
+import styled from "styled-components";
+import { ChartEvent, ActiveElement, ChartData, ChartItem } from "chart.js";
+import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "../../shared/utils/redux/reducers/newUserReducer";
 
 
 

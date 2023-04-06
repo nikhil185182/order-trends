@@ -1,5 +1,3 @@
-export const DummyCompanies = "%[_]%,%zzz%";
-
 export const DAYS = 865;
 
 export const CompanyLevel_graphOptions = {
@@ -110,57 +108,5 @@ export const ORDERTREND_BAR_GRAPH_OPTIONS = {
   },
 };
 
-export const newUser_datepickers_Title = "Select Date Range";
 
-export const NewUser_BarOptions = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
 
-      text: "New Enrollments",
-    },
-  },
-
-};
-
-export const NewUser_LineOptions = {
-  responsive: true,
-  scales: {
-    x: {
-      grid: {
-        display: true,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
-      text: "New Enrollments",
-    },
-  },
-
-};
