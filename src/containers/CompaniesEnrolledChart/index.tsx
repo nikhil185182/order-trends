@@ -16,8 +16,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
-import { NewUsersDTO } from "../CompaniesEnrolled/models";
 import {
   useAppDispatch,
   useAppSelector,
@@ -36,6 +34,7 @@ import {
 } from "../CompaniesEnrolled/utils";
 import React from "react";
 import { StyledButtons, StyledChartHeading } from "./StyledComponents";
+import { CompaniesEnrolledDTO } from "../CompaniesEnrolled/models";
 
 Chart.register(
   CategoryScale,
@@ -49,14 +48,14 @@ Chart.register(
 );
 
 export default function CompaniesEnrolledChart() {
-  const IsLine = useAppSelector((state) => state.NewUser.isLineOrBar);
-  const fromDate = useAppSelector((state) => state.NewUser.fromDate);
-  const toDate = useAppSelector((state) => state.NewUser.toDate);
+  const IsLine = useAppSelector((state) => state.EnrolledCompanies.isLineOrBar);
+  const fromDate = useAppSelector((state) => state.EnrolledCompanies.fromDate);
+  const toDate = useAppSelector((state) => state.EnrolledCompanies.toDate);
   let fromFinal = DateTypeCast(fromDate);
   let toFinal = DateTypeCast(toDate);
   const dispatch: AppDispatch = useAppDispatch();
-  const NewUsersDataFromStore: NewUsersDTO[] = useAppSelector(
-    (state) => state.NewUser.newUsersdata
+  const NewUsersDataFromStore: CompaniesEnrolledDTO[] = useAppSelector(
+    (state) => state.EnrolledCompanies.newUsersdata
   );
 
   const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {

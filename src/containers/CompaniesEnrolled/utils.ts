@@ -10,8 +10,8 @@ export  const  DateTypeCast=(inputDate:string)=>{
 }
 
 export const ConvertedfromandToDates = () => {
-    const fromdate = useAppSelector((state) => state.NewUser.fromDate);
-    const todate = useAppSelector((state) => state.NewUser.toDate);
+    const fromdate = useAppSelector((state) => state.EnrolledCompanies.fromDate);
+    const todate = useAppSelector((state) => state.EnrolledCompanies.toDate);
     let from = fromdate.split("/");
 
     let from_final = new Date(
@@ -20,7 +20,7 @@ export const ConvertedfromandToDates = () => {
         Number(from[1])
     );
     let to = todate.split("/");
-    const CompanyInfo = useAppSelector((state) => state.NewUser.newUsersdata);
+    const CompanyInfo = useAppSelector((state) => state.EnrolledCompanies.newUsersdata);
   let enrollment: number = 0;
   CompanyInfo.map((obj) => {
     enrollment = enrollment + obj.frequency;

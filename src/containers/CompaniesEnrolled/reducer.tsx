@@ -4,8 +4,8 @@ import {
   PayloadAction,
   Slice,
 } from "@reduxjs/toolkit";
-import { NewUsersDTO, newusertype } from "./models";
-import { initialstatetypes } from "./models";
+import { CompaniesEnrolledDTO, CompaniesEnrolledType,   } from "./models";
+import { ReduxInitialState } from "./models";
 import { NEW_USER_QUERY } from "./queries";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { useQuery } from "@apollo/client";
@@ -13,8 +13,7 @@ import { useQuery } from "@apollo/client";
 const fromdate: Date = new Date();
 fromdate.setDate(fromdate.getDate() - 75);
 const todate: Date = new Date();
-
-const InitialState: initialstatetypes = {
+const InitialState: ReduxInitialState = {
   __typename: "",
   fromDate: fromdate.toLocaleDateString(),
   toDate: todate.toLocaleDateString(),
@@ -22,25 +21,27 @@ const InitialState: initialstatetypes = {
   isDrawerOpen: false,
   isLineOrBar: true,
   tempcompanieslist: [],
-  barclickedDate: "",
-  status: "",
+  barclickedDate: '',
+  status: ''
 };
 
-export const DataFromGraphql = ():NewUsersDTO[] => {
 
-  let Newuserquery = NEW_USER_QUERY;
+
+export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
+
+  let CompaniesEnrolledquery = NEW_USER_QUERY;
  
   
-  const inputfromdate=useAppSelector(state=>state.NewUser.fromDate)
+  const inputfromdate=useAppSelector(state=>state.EnrolledCompanies.fromDate)
  
-  const inputtodate=useAppSelector(state=>state.NewUser.toDate)
+  const inputtodate=useAppSelector(state=>state.EnrolledCompanies.toDate)
   
-  const { loading, error, data } = useQuery<newusertype>(Newuserquery,
+  const { loading, error, data } = useQuery<CompaniesEnrolledType>(CompaniesEnrolledquery ,
       {
           variables:{Fromdate:new Date(inputfromdate),Todate:new Date(inputtodate)}
       })
   if (data) {
-      return data.NewUsersData
+      return data.NewUsersData;
 
   } else if (loading) {
       console.log("Data is Loading")
@@ -51,12 +52,12 @@ export const DataFromGraphql = ():NewUsersDTO[] => {
       return []
   }
 }
-export const Fetchnewusersdata = createAsyncThunk(
-  "newusersdata/fetch",
+export const FetchCompaniesEnrolledData = createAsyncThunk(
+  "CompaniesEnroleddata/fetch",
   async () => {
     try {
       
-      const response: NewUsersDTO[]  = DataFromGraphql();
+      const response: CompaniesEnrolledDTO[]  = DataFromGraphql();
       return response;
     } catch (err) {
       console.log(err);
@@ -65,8 +66,8 @@ export const Fetchnewusersdata = createAsyncThunk(
   }
 );
 
-const newUserSlice: Slice<initialstatetypes> = createSlice({
-  name: "NewUsers",
+const CompaniesEnrolledSlice: Slice<ReduxInitialState> = createSlice({
+  name: "CompaniesEnrolled",
   initialState: InitialState,
   reducers: {
     settingfromdate: (state, action: PayloadAction<string>) => {
@@ -90,22 +91,22 @@ const newUserSlice: Slice<initialstatetypes> = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(Fetchnewusersdata.pending, (state) => {
+      .addCase(FetchCompaniesEnrolledData.pending, (state) => {
         state.status = "pending";
       })
       .addCase(
-        Fetchnewusersdata.fulfilled,
-        (state, action: PayloadAction<NewUsersDTO[]>) => {
+        FetchCompaniesEnrolledData.fulfilled,
+        (state, action: PayloadAction<CompaniesEnrolledDTO[]>) => {
           state.newUsersdata = action.payload;
           state.status = "fullfiled";
         }
       )
-      .addCase(Fetchnewusersdata.rejected, (state) => {
+      .addCase(FetchCompaniesEnrolledData.rejected, (state) => {
         state.status = "Rejected";
       });
   },
 });
-export default newUserSlice.reducer;
+export default CompaniesEnrolledSlice.reducer;
 export const {
   settingfromdate,
   settingtodate,
@@ -113,4 +114,4 @@ export const {
   toggleLineOrBar,
   updateCompaniesList,
   updatebarclickedDate,
-} = newUserSlice.actions;
+} = CompaniesEnrolledSlice.actions;
