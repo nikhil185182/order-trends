@@ -2,8 +2,9 @@ import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
-import NewUserDemo from './containers/CompaniesEnrolled';
-import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
+import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
+import NewUserDemo from './containers/newCustomers';
+import InactiveUsers from './containers/InactiveCustomers';
 import CompanyTrend from './containers/companyLevel';
 import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
@@ -14,9 +15,8 @@ import OrderTrend from './containers/OrderTrend';
 
 
 function App() {
-
+  
   const dispatch = useAppDispatch();
-
   dispatch(Fetchnewusersdata());
   let displaydata: getInactiveUsersData[] = DataFromGraphqlUser();
   dispatch(addingInactiveUsersdata(displaydata));

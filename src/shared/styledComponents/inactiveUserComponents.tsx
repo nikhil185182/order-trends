@@ -108,13 +108,32 @@ const CompanyGraphContainer = styled.div`
   overflow-y: auto;
 `;
 
-const ChartContainer = styled.div`
-  height: 500px;
-  margin-top: 20px;
+
+
+export const Wrapper = styled.div`
+  width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left:60px;
 `;
 
-const YearSelect = styled(FormControl)`
-  margin-bottom: 20px;
+export const ChartContainer = styled.div`
+  height: 500px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const Dropdown = styled.div`
+  margin-left: 700px;
+  margin-top: -50px;
+`;
+
+
 
 

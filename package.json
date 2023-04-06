@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.16",
     "@mui/styled-engine-sc": "^5.11.0",
+    "@mui/styles": "^5.11.16",
     "@mui/x-date-pickers": "^5.0.18",
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",

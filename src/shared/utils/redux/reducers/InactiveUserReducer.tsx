@@ -21,7 +21,7 @@ const InitialState: initialstatetypes =
 {
     Date: dateString,
     inactiveUsers: [],
-    GQL_list: []
+    GQL_list: [],
 };
 
 export const fetchInactiveMonths = createAsyncThunk("InactiveUsers/fetchInactiveData",async (thunkAPI)=>{
@@ -50,5 +50,5 @@ const InactiveUserSlice = createSlice({
 
 export default InactiveUserSlice;
 
-export const { settingDate, addingInactiveUsersdata,fetchInactiveData} = InactiveUserSlice.actions;
+export const { settingDate, addingInactiveUsersdata,fetchInactiveData } = InactiveUserSlice.actions;
 

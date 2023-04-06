@@ -13,9 +13,9 @@ import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { RadioButtonComponent } from "../../shared/styledComponents/CompanyOrderTrend";
-import { ReqCompanies } from "../../shared/utils/redux/companySelector";
+import { ReqCompanies } from "../CompanyOrderTrend/selector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import CompanyRadioButtonContainer from "./CompanyRadioButtonContainer";
+import CompanyRadioButtonContainer from "../CompanyRadioButtonContainer";
 
 interface GroupedData {
   [key: string]: companyLevel[];
@@ -43,8 +43,11 @@ const TotalOrdersVsDateGraph = () => {
     },
   ];
 
+
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
-  console.log(data);
+
+
+  // console.log(data);
   const y_label: string = useAppSelector((state) => state.company.label);
 
   

@@ -90,6 +90,7 @@
   background: rgba(0, 0, 0, 0.08) !important;
   border-radius: 0px;
 }
+
 .fc-rb{
   width: max-content;
   margin-top: 10px!important;
@@ -100,5 +101,11 @@
 
 .chartComponent{
   height: 90%;
+}
+.MuiInputBase-input .AutoComplete {
+  height: 15px !important;
+  align-items: center;
+  justify-content: center;
+
 }
 

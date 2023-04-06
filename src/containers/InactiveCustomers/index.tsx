@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import DateandDaysSelector from '../../components/InactiveUsers/DateandDaysSelector';
+import DateandDaysSelector from '../DateandDaysSelector';
 import '../../shared/css/inactive.css';
-import InactiveTable from '../../components/InactiveUsers/InactiveTable';
+import InactiveTable from '../InactiveTable';
 import { Datepicker_component, InactiveUsertable_container, Total_component } from '../../shared/styledComponents/inactiveUserComponents';
-import InactiveGraph from '../../components/InactiveUsers/InactiveGraph';
+import InactiveGraph from '../InactiveGraph';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -28,11 +28,11 @@ const InactiveUsers = () => {
     <Total_component style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={activeTab} onChange={handleTabSelect} aria-label="basic tabs example">
-          <Tab label="Inactive Table" />
-          <Tab label="Inactive Graph" />
+          <Tab label="MONTHLY DATA" />
+          <Tab label="CONSOLIDATED DATA" />
         </Tabs>
       </Box>
-      {activeTab === 0 && (
+      {activeTab === 1 && (
         <>
           <Datepicker_component>
             <DateandDaysSelector />
@@ -42,7 +42,7 @@ const InactiveUsers = () => {
           </InactiveUsertable_container>
         </>
       )}
-      {activeTab === 1 && <InactiveGraph />}
+      {activeTab === 0 && <InactiveGraph />}
     </Total_component>
   );
 };

@@ -6,8 +6,9 @@ import dayjs, { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
-import { setDateString } from "../../shared/utils/redux/reducers/companyReducer";
+import { setDateString } from "../CompanyOrderTrend/reducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
+import { randomInt } from "crypto";
 
 
 
@@ -64,8 +65,9 @@ const CompanyDatePicker = () => {
       <div className="dateListbox">
         {dateList.map((e, index) => {
           return (
-            <>
+            
               <Chip
+              
                style={{
                 position:"relative",
                }}
@@ -85,7 +87,7 @@ const CompanyDatePicker = () => {
 />}
                 variant="outlined"
               />
-            </>
+           
           );
         })}
       </div>
