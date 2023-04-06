@@ -25,7 +25,7 @@ import {
   ORDERTREND_LINE_GRAPH_OPTIONS,
   ORDERTREND_BAR_GRAPH_OPTIONS,
 } from "../../shared/config";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { selectOrderTrendData } from "./selector";
 import { FormControlLabel } from "@mui/material";
 import {
@@ -40,6 +40,7 @@ import { OutlinedButton } from "../../components/OutlinedButton";
 import { BAR_CHART, LINE_CHART } from "./constants";
 import { ConfigDays } from "./config";
 import { getDaysLabel } from "./utils";
+import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 
 ChartJS.register(
   CategoryScale,
@@ -53,6 +54,10 @@ ChartJS.register(
 );
 
 const Statistics = () => {
+
+  const dispatch = useAppDispatch();
+  dispatch(fetchFeature([true,false,false,false])); 
+    
   const [isLine, SetLine] = useState(true);
 
   const orderList: Orders[] = useAppSelector(selectOrderTrendData);

@@ -11,87 +11,71 @@ import {
   COMPANY_TREND,
   NEW_USER,
   INACTIVE_USER,
+  ECOM_ANALYTICS,
+  GREEN,
 } from "../../shared/global_constants";
 import { useNavigate } from "react-router-dom";
 import DrawerComp from "../Drawer";
-import React, { useState, useEffect } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/utils/redux/selectors/hooks";
-import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
+import React from "react";
+import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { NavbarButton } from "../NavbarButton";
+import { NavbarConatiner } from "../NavbarConatiner";
+import { RoutesPath } from "../../shared/config";
 
 export default function NavBar() {
-
-  console.log("Navbar reloaded");
   let navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
 
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [tab, SetTab] = useState([false, false,true, false]);
-
-  const feature = useAppSelector((state) => state.globalState.feature);
-
-
-  useEffect(() => {
-    tab.fill(false);
-    console.log("feature",feature);
-    switch (feature) {
-      case "orderTrend":
-        tab[0] = true;
-        break;
-      case "companyOrderTrend":
-        tab[1] = true;
-        break;
-      case "companiesEnrolled":
-        tab[2] = true;
-        break;
-      case "inactiveCustomers":
-        tab[3] = true;
-        break;
-    }
-    SetTab(tab);
-  }, [feature]);
+  const tab = useAppSelector((state) => state.globalState.feature);
 
   return (
-    <AppBar style={{ background: "#54B948" }}>
+    <AppBar style={{ background: GREEN }}>
       <Toolbar>
-        <Typography>e-Commerce Analytics</Typography>
-        {isMatch ? (
-          <div style={{ marginLeft: "auto" }}>
+        <NavbarButton onClick={() => navigate(RoutesPath.orderTrend)}>
+          {ECOM_ANALYTICS}
+        </NavbarButton>
+        <NavbarConatiner>
+          {isMatch ? (
             <DrawerComp />
-          </div>
-        ) : (
-          <div className="btn_cls" style={{ marginLeft: "auto" }}>
-            <Button
-              sx={{ border: tab[0] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("orderTrend")); navigate('/');}}
-            >
-              {ORDER_TREND}
-            </Button>
-            <Button
-              sx={{ border: tab[1] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companyOrderTrend")); navigate('/companytrend'); }}
-            >
-              {COMPANY_TREND}
-            </Button>
-            <Button
-              sx={{ border: tab[2] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/CompaniesEnrolled');}}
-            >
-              {NEW_USER}
-            </Button>
-            <Button
-              sx={{ border: tab[3] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {dispatch(fetchFeature("inactiveCustomers")); navigate('/inactiveUsers')}}
-            >
-              {INACTIVE_USER}
-            </Button>
-          </div>
-        )}
+          ) : (
+            <>
+              <NavbarButton
+                sx={{ border: tab[0] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate(RoutesPath.orderTrend);
+                }}
+              >
+                {ORDER_TREND}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[1] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate(RoutesPath.comapanyOrderTrend);
+                }}
+              >
+                {COMPANY_TREND}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[2] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate(RoutesPath.companiesEnrolled);
+                }}
+              >
+                {NEW_USER}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[3] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate(RoutesPath.inactiveCompanies);
+                }}
+              >
+                {INACTIVE_USER}
+              </NavbarButton>
+            </>
+          )}
+        </NavbarConatiner>
       </Toolbar>
     </AppBar>
   );
