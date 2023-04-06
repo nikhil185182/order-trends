@@ -3,9 +3,9 @@ import Statistics from '../Statistics';
 import Compare from '../Compare';
 import '../../shared/css/NavBar.css';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import { OrderTrendBox } from './styledComponents';
-import { fetchOrderTrenData } from './reducer';
 import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
+import { fetchOrderTrenData } from './reducer';
+import { OrderTrendBox } from './styledComponents';
 
 
 
