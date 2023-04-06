@@ -22,6 +22,8 @@ import {
 import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 
 export default function NavBar() {
+
+  console.log("Navbar reloaded");
   let navigate = useNavigate();
 
   const dispatch = useAppDispatch();
@@ -29,14 +31,14 @@ export default function NavBar() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [tab, SetTab] = useState([true, false, false, false]);
+  const [tab, SetTab] = useState([false, false,true, false]);
 
   const feature = useAppSelector((state) => state.globalState.feature);
 
 
   useEffect(() => {
     tab.fill(false);
-    console.log("Feature",feature);
+    console.log("feature",feature);
     switch (feature) {
       case "orderTrend":
         tab[0] = true;
@@ -78,7 +80,7 @@ export default function NavBar() {
             </Button>
             <Button
               sx={{ border: tab[2] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/newUsers');}}
+              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/CompaniesEnrolled');}}
             >
               {NEW_USER}
             </Button>
