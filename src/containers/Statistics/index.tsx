@@ -67,10 +67,6 @@ const Statistics = () => {
 
   const [current, setCurrent] = useState(30);
 
-  useEffect(() => {
-    updateDays(30);
-  }, [orderList]);
-
   const updateDays = (days: number) => {
     Ddata.length = 0;
     const initIndex =
@@ -103,6 +99,10 @@ const Statistics = () => {
     setCurrent(days);
   };
 
+  useEffect(() => {
+    updateDays(30);
+  }, [orderList]);
+
   const handleBarClick = () => SetLine(false);
   const handleLineClick = () => SetLine(true);
 
@@ -128,7 +128,7 @@ const Statistics = () => {
       <DaysCustomise>
         {ConfigDays.map((e) => {
           const daysLabel = getDaysLabel(e);
-          if (e == current) {
+          if (e === current) {
             return (
               <ContainedButton onClick={() => updateDays(e)}>
                 {daysLabel}
