@@ -406,7 +406,6 @@ interface INewUserChartProps {
   IsDrawerOpen: boolean;
 }
 
-
 export const NewUser_chartcomponent_withsidebardemo = styled.div<INewUserChartProps>`
 margin-top: 0.7% !important;
   margin-left: 2%;
@@ -432,7 +431,6 @@ margin-top: 0.7% !important;
     border-radius: 15px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
-
   ${(props) =>
     props.IsDrawerOpen &&
     css`
@@ -464,5 +462,4 @@ margin-top: 0.7% !important;
     
     `};
 `;
-
 

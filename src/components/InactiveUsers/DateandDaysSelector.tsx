@@ -15,13 +15,13 @@ import { Container, Date_picker, Direction, Submit_button } from '../../shared/s
 const steps = [
     {
         label: 'Select required date on the Date Picker',
-        description: `Select a Required date in the date picker and click the
+        description: `Select Required date in the date picker and click the
         submit button below it.`,
     },
     {
         label: 'View the List of Inactive Users on Table',
-        description:`The Count of Inactive Users since the past 60 Days
-        from the selected date can be viewed on the Table.`,
+        description:`The Table displays the number of 
+        inactive users since the last 60 days from the selected date.`,
     },
 ];
 
@@ -56,7 +56,7 @@ function DateandDaysSelector() {
                     <Container>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <Date_picker>
-                            <DesktopDatePicker onYearChange={undefined}
+                            <DatePicker onYearChange={undefined}
                                 value={value}
                                 label="Select a Date"
                                 onChange={(newValue) => {
@@ -67,6 +67,7 @@ function DateandDaysSelector() {
                                     console.log(val);
                                     SetVal(val);
                                 }}
+                                views={['year', 'month', 'day']}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </Date_picker>

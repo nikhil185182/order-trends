@@ -6,7 +6,12 @@ import {
   PointElement,
 
 } from "chart.js";
-
+import {
+  toggleDrawer,
+  toggleLineOrBar,
+  updatebarclickedDate,
+  updateCompaniesList,
+} from "../../containers/newCustomers/Reducer";
 
 import {
   Chart,
@@ -19,7 +24,7 @@ import {
 
 } from "chart.js";
 
-
+import { NewUsersDTO } from "../../containers/newCustomers/models";
 import {
   useAppDispatch,
   useAppSelector,
@@ -36,11 +41,11 @@ import {
 import { AppDispatch } from "../../shared/utils/redux/store";
 
 import "../../shared/css/newUserDemo.css";
-import { toggleDrawer, updateCompaniesList, updatebarclickedDate, toggleLineOrBar } from "../../containers/newCustomers/Reducer";
-import { ChartHeading_div, Bothbuttons } from "../../containers/newCustomers/StyledComponents";
+import {
+  Bothbuttons,
+  ChartHeading_div,
+} from "../../containers/newCustomers/StyledComponents";
 import { ConvertedfromandToDates } from "../../containers/newCustomers/Utils";
-import { NewUsersDTO } from "../../containers/newCustomers/models";
-
 
 
 Chart.register(

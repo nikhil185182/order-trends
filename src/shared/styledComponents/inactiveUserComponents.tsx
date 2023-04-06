@@ -1,3 +1,4 @@
+import { FormControl } from "@mui/material";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -23,8 +24,13 @@ export const Direction = styled.div`
 `;
 
 export const InactiveUsertable_container = styled.div`
-    height: 270px!important;
-    width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 270px!important;
+  width: 90%;
+  margin-left:120px;
+  margin-bottom: 100px!important;
 `;
 
 export const Heading = styled.div`
@@ -32,16 +38,17 @@ export const Heading = styled.div`
 `;
 
 export const Datepicker_component = styled.div`
-    align-items: center;
+    align-items: left;
     display: inline-block;
-    width: 20%;
+    width: 10%;
     height: 100px;
-    margin-top: 15px;
-    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 1100px;
     padding: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
+    float: 'left';
 `;
 
 export const Rows = styled.div`
@@ -69,8 +76,8 @@ export const Inactive_Table = styled.div`
     width: 900px;
     padding: 20px;
     border-radius: 10px!important;
+    margin-top:0px;
     margin-left: 5%;
-    margin-top: 1.5%;
     margin-bottom: 5%;
 `;
 
@@ -96,6 +103,36 @@ export const Radio_group = styled.div`
     margin-left: 45% !important;
 `;
 
+const CompanyGraphContainer = styled.div`
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+`;
+
+
+
+export const Wrapper = styled.div`
+  width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left:60px;
+`;
+
+export const ChartContainer = styled.div`
+  height: 500px;
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Dropdown = styled.div`
+  margin-left: 700px;
+  margin-top: -50px;
+`;
 
 
 

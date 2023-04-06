@@ -45,3 +45,13 @@ query InactiveUsers($input: DateTime!) {
   }
 }
 `;
+
+export const INACTIVEMONTHS_QUERY = gql`
+query Inactivenew($input:Int!){
+  inactivemonths(days:$input) {
+    CompanyName
+    LastOrderDate
+    Months
+  }
+}
+`;

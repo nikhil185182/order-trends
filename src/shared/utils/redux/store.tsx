@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderTrendReducer from "../../../containers/OrderTrend/reducer";
-import newUserReducer from "./reducers/newUserReducer";
-import companyReducer from "../../../containers/CompanyOrderTrend/reducer";
+import newUserReducer from "../../../containers/newCustomers/Reducer";
 import InactiveUserSlice from "./reducers/InactiveUserReducer";
+import reducer from "../../../containers/CompanyOrderTrend/reducer";
 
 const store = configureStore({
     reducer: {
         orderTrend: orderTrendReducer,
         NewUser: newUserReducer,
-        company: companyReducer,
+        company: reducer,
         InactiveUsers: InactiveUserSlice.reducer
     }
 })
