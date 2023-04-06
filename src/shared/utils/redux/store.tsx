@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderTrendReducer from "../../../containers/OrderTrend/reducer";
-import newUserReducer from "../../../containers/newCustomers/Reducer";
+import newUserReducer from "../../../containers/CompaniesEnrolled/reducer";
 import companyReducer from "./reducers/companyReducer";
 import InactiveUserSlice from "./reducers/InactiveUserReducer";
 

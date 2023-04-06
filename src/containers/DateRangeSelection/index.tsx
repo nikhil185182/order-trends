@@ -7,87 +7,80 @@ import { newUser_datepickers_Title } from "../../shared/global_constants";
 import {
   settingfromdate,
   settingtodate,
-} from "../../containers/newCustomers/Reducer";
+} from "../CompaniesEnrolled/reducer";
 import {
   useAppDispatch
 } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
-import {
-  FromContainer,
-  NewUserDatepickers,
-  NewUser_datePicker_title_Typography,
-  NewUser_Each_Datepicker,
-  NewUser_submit_btn,
-   ToContainer,
-} from "../../containers/newCustomers/StyledComponents";
 import { alertMessage } from "../../shared/global_constants";
+import { StyledDateSelectionRange, StyledFromContainer, StyledToContainer, StyledDatePicker, StyledSubmitBtn, StyledDateRange } from "./StyledComponents";
 
-export default function NewUserDate_selectionBox() {
+export default function DateSelector() {
   const dispatch: AppDispatch = useAppDispatch();
   const fromdate: Date = new Date();
   fromdate.setDate(fromdate.getDate() - 75);
   const [defaultfrom, setfrom] = useState<Date>(fromdate);
   const [defaultto, setto] = useState<Date>(new Date());
 
-  const onchangefromdate=(selectedfromdate:dayjs.Dayjs) => {
+  const OnChangeFromDate=(selectedfromdate:dayjs.Dayjs) => {
   
   setfrom(selectedfromdate?.toDate()!);
   }
-  const onchangetodate=(selectedtodate:dayjs.Dayjs) => {
+  const OnChangeToDate=(selectedtodate:dayjs.Dayjs) => {
     if (selectedtodate?.toDate()! > defaultfrom) {
       setto(selectedtodate?.toDate()!);
     } else {
       alert(alertMessage);
     }
   }
-  const submitClick=() => {
+  const SubmitClick=() => {
    
     dispatch(settingfromdate(defaultfrom.toLocaleDateString()!));
     dispatch(settingtodate(defaultto.toLocaleDateString()!));
   }
 
   return (
-    <NewUserDatepickers>
-      <NewUser_datePicker_title_Typography>
+    <StyledDateSelectionRange>
+      <StyledDateRange>
         {newUser_datepickers_Title}
-      </NewUser_datePicker_title_Typography>
-      <FromContainer>
-        <NewUser_Each_Datepicker>
+      </StyledDateRange>
+      <StyledFromContainer>
+        <StyledDatePicker>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="From"
               views={['year', 'month', 'day']}
               value={dayjs(defaultfrom)}
-              onChange={(selectedfromdate:dayjs.Dayjs|null)=>onchangefromdate(selectedfromdate!)}
+              onChange={(selectedfromdate:dayjs.Dayjs|null)=>OnChangeFromDate(selectedfromdate!)}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </NewUser_Each_Datepicker>
-      </FromContainer>
-      <ToContainer>
-        <NewUser_Each_Datepicker>
+        </StyledDatePicker>
+      </StyledFromContainer>
+      <StyledToContainer>
+        <StyledDatePicker>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               inputFormat="DD/MM/YYYY"
               label="To"
               views={['year', 'month', 'day']}
               value={dayjs(defaultto)}
-              onChange={(selectedtodate:dayjs.Dayjs|null)=>onchangetodate(selectedtodate!)}
+              onChange={(selectedtodate:dayjs.Dayjs|null)=>OnChangeToDate(selectedtodate!)}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </NewUser_Each_Datepicker>
-      </ToContainer>
-      <NewUser_submit_btn>
+        </StyledDatePicker>
+      </StyledToContainer>
+      <StyledSubmitBtn>
         <Button
           variant="contained"
           style={{ backgroundColor: "#54B948" }}
-          onClick={() => submitClick()}
+          onClick={() => SubmitClick()}
         >
           Submit
         </Button>
-      </NewUser_submit_btn>
-    </NewUserDatepickers>
+      </StyledSubmitBtn>
+    </StyledDateSelectionRange>
   );
 }

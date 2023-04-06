@@ -5,7 +5,7 @@ import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { Dialog, DialogContent } from "@mui/material";
 import styled from "styled-components";
 import { ChartEvent, ActiveElement, ChartData, ChartItem } from "chart.js";
-import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "../../containers/newCustomers/Reducer";
+import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "../../containers/CompaniesEnrolled/reducer";
 
 const Wrapper = styled.div`
   width: 1400px;

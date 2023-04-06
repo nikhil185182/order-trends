@@ -2,14 +2,13 @@ import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
-import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
-import NewUserDemo from './containers/newCustomers';
+import NewUserDemo from './containers/CompaniesEnrolled';
 import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
 import CompanyTrend from './containers/companyLevel';
 import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
 import { addingInactiveUsersdata, fetchInactiveData } from './shared/utils/redux/reducers/InactiveUserReducer';
-import { Fetchnewusersdata } from './containers/newCustomers/Reducer';
+import { Fetchnewusersdata } from './containers/CompaniesEnrolled/reducer';
 import OrderTrend from './containers/OrderTrend';
 
 
@@ -32,8 +31,8 @@ function App() {
         <div className="hello">
           <Routes>
             <Route path="/" element={<OrderTrend />} />
-            <Route path="/newUsers" element={<NewUserDemo />} />
-            <Route path="/companytrend" element={<CompanyTrend  />} />
+            <Route path="/CompaniesEnrolled" element={<NewUserDemo />} />
+            <Route path="/CompanyTrend" element={<CompanyTrend  />} />
             <Route path="/inactiveUsers" element={<InactiveUsers />} />
           </Routes>
         </div>
