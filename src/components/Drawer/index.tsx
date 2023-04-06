@@ -10,6 +10,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { RoutesPath } from "../../shared/config";
 
 export default function DrawerComp() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -20,16 +21,16 @@ export default function DrawerComp() {
   const handleClick = (x: number) => () => {
     switch (x) {
       case 1:
-        navigate("/");
+        navigate(RoutesPath.orderTrend);
         break;
       case 2:
-        navigate("/companytrend");
+        navigate(RoutesPath.comapanyOrderTrend);
         break;
       case 3:
-        navigate("/CompaniesEnrolled");
+        navigate(RoutesPath.companiesEnrolled);
         break;
       case 4:
-        navigate("/inactiveUsers");
+        navigate(RoutesPath.inactiveCompanies);
         break;
     }
     setOpenDrawer(!openDrawer);

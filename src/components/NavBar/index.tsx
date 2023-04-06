@@ -20,6 +20,7 @@ import React from "react";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { NavbarButton } from "../NavbarButton";
 import { NavbarConatiner } from "../NavbarConatiner";
+import { RoutesPath } from "../../shared/config";
 
 export default function NavBar() {
   let navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function NavBar() {
   return (
     <AppBar style={{ background: GREEN }}>
       <Toolbar>
-        <NavbarButton onClick={() => navigate("/")}>
+        <NavbarButton onClick={() => navigate(RoutesPath.orderTrend)}>
           {ECOM_ANALYTICS}
         </NavbarButton>
         <NavbarConatiner>
@@ -43,7 +44,7 @@ export default function NavBar() {
               <NavbarButton
                 sx={{ border: tab[0] ? "1px solid white" : "" }}
                 onClick={() => {
-                  navigate("/");
+                  navigate(RoutesPath.orderTrend);
                 }}
               >
                 {ORDER_TREND}
@@ -51,7 +52,7 @@ export default function NavBar() {
               <NavbarButton
                 sx={{ border: tab[1] ? "1px solid white" : "" }}
                 onClick={() => {
-                  navigate("/companytrend");
+                  navigate(RoutesPath.comapanyOrderTrend);
                 }}
               >
                 {COMPANY_TREND}
@@ -59,7 +60,7 @@ export default function NavBar() {
               <NavbarButton
                 sx={{ border: tab[2] ? "1px solid white" : "" }}
                 onClick={() => {
-                  navigate("/CompaniesEnrolled");
+                  navigate(RoutesPath.companiesEnrolled);
                 }}
               >
                 {NEW_USER}
@@ -67,7 +68,7 @@ export default function NavBar() {
               <NavbarButton
                 sx={{ border: tab[3] ? "1px solid white" : "" }}
                 onClick={() => {
-                  navigate("/inactiveUsers");
+                  navigate(RoutesPath.inactiveCompanies);
                 }}
               >
                 {INACTIVE_USER}
