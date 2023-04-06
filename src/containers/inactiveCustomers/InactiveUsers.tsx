@@ -28,11 +28,11 @@ const InactiveUsers = () => {
     <Total_component style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={activeTab} onChange={handleTabSelect} aria-label="basic tabs example">
-          <Tab label="Inactive Table" />
           <Tab label="Inactive Graph" />
+          <Tab label="Inactive Table" />
         </Tabs>
       </Box>
-      {activeTab === 0 && (
+      {activeTab === 1 && (
         <>
           <Datepicker_component>
             <DateandDaysSelector />
@@ -42,7 +42,7 @@ const InactiveUsers = () => {
           </InactiveUsertable_container>
         </>
       )}
-      {activeTab === 1 && <InactiveGraph />}
+      {activeTab === 0 && <InactiveGraph />}
     </Total_component>
   );
 };

@@ -1,36 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
-import { FormControl, Select, MenuItem, DialogProps, Button, DialogActions, DialogContentText, DialogTitle } from "@mui/material";
+import { FormControl, Select, MenuItem } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { Dialog, DialogContent } from "@mui/material";
-import styled from "styled-components";
-import { ChartEvent, ActiveElement, ChartData, ChartItem } from "chart.js";
-import { toggleDrawer, updateCompaniesList, updatebarclickedDate } from "../../shared/utils/redux/reducers/newUserReducer";
+import { Dropdown, Wrapper, ChartContainer } from "../../shared/styledComponents/inactiveUserComponents";
+import { ChartEvent, ActiveElement } from "chart.js";
+import { Drawer, List, ListItem, ListItemText } from "@mui/material";
 
-const Wrapper = styled.div`
-  width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left:60px;
-`;
 
-const ChartContainer = styled.div`
-  height: 500px;
-  width: 100%;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 
 const InactiveGraph = () => {
   const data = useAppSelector((state) => state.InactiveUsers.GQL_list);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [yearOptions, setYearOptions] = useState<number[]>([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [companiesList, setCompaniesList] = useState<
+    { CompanyName: String; LastOrderDate: string }[]
+  >([]);
 
   useEffect(() => {
     const years: number[] = [];
@@ -46,6 +32,31 @@ const InactiveGraph = () => {
   }, [data]);
 
   
+
+  const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {
+    if (chartelement.length >= 1) {
+      const clickedBar = chartelement[0];
+      const monthIndex = clickedBar.index;
+      const month = chartData.labels[monthIndex];
+      const filteredData = Object.values(data).filter((company) => {
+        const companyMonth = company.Months.split(" ")[0];
+        const companyYear = Number(company.Months.split(" ")[1]);
+        return companyMonth === month && companyYear === selectedYear;
+      });
+      const companies = filteredData.map((company) => ({
+        CompanyName: company.CompanyName,
+        LastOrderDate: company.LastOrderDate.toString().slice(0, 10),
+      }));
+      setCompaniesList(companies);
+      console.log(companies);
+      setDrawerOpen(true);
+    }
+  };
+  
+
+
+
+
 
   const filteredData = Object.values(data).filter((company) => {
     const companyYear = Number(company.Months.split(" ")[1]);
@@ -105,29 +116,46 @@ const InactiveGraph = () => {
         display: false,
       },
     },
+    onClick: Handleclickes,
   };
-  
 
-return (
-  <Wrapper>
-    <h2>Inactive Companies by Month</h2>
-    <FormControl>
-      <Select
-        value={selectedYear || ""}
-        onChange={(e: { target: { value: any; }; }) => setSelectedYear(Number(e.target.value))}
-      >
-        {yearOptions.map((year) => (
-          <MenuItem key={year} value={year}>
-            {year}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-    <ChartContainer>
-      <Bar data={chartData} options={options} />
-    </ChartContainer>
-  </Wrapper>
-);
+
+  return (
+    <Wrapper>
+      <h2>Inactive Companies by Month</h2>
+      <FormControl>
+        <Dropdown>
+          <Select
+            value={selectedYear || ""}
+            onChange={(e: { target: { value: any; }; }) => setSelectedYear(Number(e.target.value))}
+            style={{ width: 150 }} 
+          >
+            {yearOptions.map((year) => (
+              <MenuItem key={year} value={year}>
+                {year}
+              </MenuItem>
+            ))}
+          </Select>
+
+        </Dropdown>
+      </FormControl>
+      <ChartContainer>
+        <Bar data={chartData} options={options} />
+      </ChartContainer>
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <List>
+          {companiesList.map((company, index) => (
+            <ListItem key={index}>
+              <ListItemText
+                primary={company.CompanyName}
+                secondary={`Last Order Date: ${company.LastOrderDate}`}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </Wrapper>
+  );
 
 };
 
