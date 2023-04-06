@@ -97,22 +97,6 @@ p:hover{
     }
 } */
 
-.dateListbox{
-    background-color: aqua;
-    width: 90%;
-    display: flex;
-    flex-wrap:wrap;
-    font-size: small;
-    /* height: 200px; */
-    /* flex-direction: ; */
-    /* flex-wrap: wrap; */
-
-    max-height: 380px;
-    overflow-y: auto;
-    overflow-x: auto;
-    /* margin: 10px 5px;  */
-    /* padding: 5px; */
-}
 
 /* ::-webkit-scrollbar {
     width: 4px;               /* width of the entire scrollbar */

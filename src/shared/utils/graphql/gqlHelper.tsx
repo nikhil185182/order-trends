@@ -34,35 +34,7 @@ export const DataFromGraphql = ():NewUsersDTO[] => {
     }
 }
 
-export const CompanyUtil = async () => {
-    const { data } =useQuery<companiesList>(COMPANIES_QUERY);
-    const tempResult: company[] = data?.companyLists!;
-    const result: company[] = [];
-    tempResult?.map((c: company) => result.push(c));
-    return tempResult;
-  };
-  
-  
-  export async function GetSpecificCompanyData(
-    companyString: String,
-    dateString: String
-  ) {
-    console.log("====================================");
-    console.log("I called gql helper");
-    console.log("====================================");
-    const { data, loading, error } =  useQuery<fres>(
-      GETSPECIFICCOMPANIESDATA_QUERY,
-      {
-        variables: {
-          i1: companyString,
-          i2: dateString,
-        },
-      }
-    );
-  
-  
-    return { data, loading, error };
-  }
+
 
   
   export  const DataFromGraphqlUser = (): getInactiveUsersData[] => {

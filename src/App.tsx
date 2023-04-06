@@ -5,7 +5,7 @@ import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import NewUserDemo from './containers/newCustomers/newUserDemo';
 import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
-import CompanyTrend from './containers/companyLevel';
+import CompanyTrend from './containers/CompanyOrderTrend/index';
 import { getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser } from './shared/utils/graphql/gqlHelper';
 import { addingInactiveUsersdata } from './shared/utils/redux/reducers/InactiveUserReducer';
@@ -15,9 +15,8 @@ import OrderTrend from './containers/OrderTrend';
 
 
 function App() {
-
+  
   const dispatch = useAppDispatch();
-
   dispatch(Fetchnewusersdata());
   let displaydata: getInactiveUsersData[] = DataFromGraphqlUser();
   dispatch(addingInactiveUsersdata(displaydata));

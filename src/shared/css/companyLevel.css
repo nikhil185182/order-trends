@@ -101,4 +101,10 @@
 .chartComponent{
   height: 90%;
 }
+.MuiInputBase-input .AutoComplete {
+  height: 15px !important;
+  align-items: center;
+  justify-content: center;
+
+}
 

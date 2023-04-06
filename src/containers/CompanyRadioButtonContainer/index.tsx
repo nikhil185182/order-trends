@@ -2,7 +2,7 @@ import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mu
 import React from 'react';
 import { useEffect, useState } from 'react'
 
-import { setLabel } from '../../shared/utils/redux/reducers/companyReducer';
+import { setLabel } from '../CompanyOrderTrend/reducer';
 import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
 
 

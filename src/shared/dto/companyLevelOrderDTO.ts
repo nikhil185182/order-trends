@@ -22,3 +22,8 @@ export interface company{
 export type companiesList = {    
  companyLists : company[]
 }
+
+export   type searchBarDTO = {
+  key: string;
+  value: string;
+};
