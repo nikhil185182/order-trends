@@ -33,7 +33,7 @@ export const ChartCustomise = styled.div`
 
 export const DaysCustomise = styled.div`
     margin-top: 20px;
-    width:50vw;
+    width:45vw;
     display: flex;
     justify-content: space-between;
     align-items:center;

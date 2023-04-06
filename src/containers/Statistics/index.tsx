@@ -111,7 +111,7 @@ const Statistics = () => {
         )}
       </StatisticsGraph>
       <ChartCustomise>
-        <FormControlLabel
+        <FormControlLabel 
           control={<RadioButton onClick={handleLineClick} checked={isLine} />}
           label={LINE_CHART}
         />
