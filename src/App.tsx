@@ -4,7 +4,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import NewUserDemo from './containers/newCustomers';
-import InactiveUsers from './containers/inactiveCustomers/InactiveUsers';
+import InactiveUsers from './containers/InactiveCustomers';
 import CompanyTrend from './containers/companyLevel';
 import { InactiveMonths, getInactiveUsersData } from './shared/dto/InactiveUsersDTO';
 import { DataFromGraphqlUser, InactiveUtil } from './shared/utils/graphql/gqlHelper';
