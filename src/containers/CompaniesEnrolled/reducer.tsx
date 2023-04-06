@@ -4,9 +4,11 @@ import {
   PayloadAction,
   Slice,
 } from "@reduxjs/toolkit";
-import { NewUsersDTO } from "./models";
+import { NewUsersDTO, newusertype } from "./models";
 import { initialstatetypes } from "./models";
-import { DataFromGraphql } from "./gqlHelper";
+import { NEW_USER_QUERY } from "./queries";
+import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useQuery } from "@apollo/client";
 
 const fromdate: Date = new Date();
 fromdate.setDate(fromdate.getDate() - 75);
@@ -23,11 +25,38 @@ const InitialState: initialstatetypes = {
   barclickedDate: "",
   status: "",
 };
+
+export const DataFromGraphql = ():NewUsersDTO[] => {
+
+  let Newuserquery = NEW_USER_QUERY;
+ 
+  
+  const inputfromdate=useAppSelector(state=>state.NewUser.fromDate)
+ 
+  const inputtodate=useAppSelector(state=>state.NewUser.toDate)
+  
+  const { loading, error, data } = useQuery<newusertype>(Newuserquery,
+      {
+          variables:{Fromdate:new Date(inputfromdate),Todate:new Date(inputtodate)}
+      })
+  if (data) {
+      return data.NewUsersData
+
+  } else if (loading) {
+      console.log("Data is Loading")
+      return []
+  }
+  else {
+      console.log(`Error ${error?.message}`)
+      return []
+  }
+}
 export const Fetchnewusersdata = createAsyncThunk(
   "newusersdata/fetch",
   async () => {
     try {
-      const response: NewUsersDTO[] = DataFromGraphql();
+      
+      const response: NewUsersDTO[]  = DataFromGraphql();
       return response;
     } catch (err) {
       console.log(err);

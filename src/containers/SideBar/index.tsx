@@ -6,60 +6,52 @@ import {
   ListItemText,
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { toggleDrawer } from "../../containers/newCustomers/Reducer";
+import { toggleDrawer } from "../CompaniesEnrolled/reducer";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/utils/redux/selectors/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
-import {
-  CustomDrawer,
-  NewUserSidebar_dateBox,
-  NewuserSidebar_heading,
-  SideBar_CompaniesEnrolledTypo,
-  SideBar_DateTypo,
-  Sidebar_EnrollmentsTypo,
-} from "../../containers/newCustomers/StyledComponents";
+
 import { CompaniesEnrolled_head } from "../../shared/global_constants";
+import { CustomDrawer,StyledDate, StyledDisplay, StyledEnrollments, StyledHeading, StyledHeadingBackGround } from "./StyledComponents";
 
 
 
-export default function NewUsersideBar() {
+export default function SideBar() {
   const dispatch: AppDispatch = useAppDispatch();
   const IsDrawerOpen = useAppSelector((state) => state.NewUser.isDrawerOpen);
-  const listofcompanies = useAppSelector(
+  const ListOfCompanies = useAppSelector(
     (state) => state.NewUser.tempcompanieslist
   );
   const tempbarclickedDate = useAppSelector(
     (state) => state.NewUser.barclickedDate
   );
-  const onclosedrawer = () => {
+  const OnCloseDrawer = () => {
     dispatch(toggleDrawer(false));
   };
-  const closebutton = () => {
-    dispatch(toggleDrawer(false));
-  };
+ 
   return (
     <>
-      <CustomDrawer anchor="right" open={IsDrawerOpen} onClose={onclosedrawer}>
-        <IconButton onClick={closebutton}>
+      <CustomDrawer anchor="right" open={IsDrawerOpen} onClose={OnCloseDrawer}>
+        <IconButton onClick={OnCloseDrawer}>
           {IsDrawerOpen ? <ChevronRightIcon /> : <ChevronRightIcon />}
         </IconButton>
-        <NewuserSidebar_heading>
-          <SideBar_CompaniesEnrolledTypo>
+        <StyledHeadingBackGround>
+          <StyledHeading>
             {CompaniesEnrolled_head}
-          </SideBar_CompaniesEnrolledTypo>
-        </NewuserSidebar_heading>
+          </StyledHeading>
+        </StyledHeadingBackGround>
 
-        <NewUserSidebar_dateBox>
-          <SideBar_DateTypo>Date: {tempbarclickedDate}</SideBar_DateTypo>
+        <StyledDisplay>
+          <StyledDate>Date: {tempbarclickedDate}</StyledDate>
           <Divider />
-          <Sidebar_EnrollmentsTypo>
-            Enrollments: {listofcompanies.length}
-          </Sidebar_EnrollmentsTypo>
-        </NewUserSidebar_dateBox>
+          <StyledEnrollments>
+            Enrollments: {ListOfCompanies.length}
+          </StyledEnrollments>
+        </StyledDisplay>
         <List>
-          {listofcompanies?.map((text, index) => (
+          {ListOfCompanies?.map((text, index) => (
             <ListItem style={{ padding: "2%" }}>
               <ListItemText
                 primaryTypographyProps={{

@@ -1,4 +1,4 @@
-import { RootState } from "./store";
+import { RootState } from "../../shared/utils/redux/store";
 
 export const CompanySelector = (state: RootState) => state.company.companies;
 

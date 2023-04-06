@@ -1,11 +1,10 @@
-import CompanyButtonContainer from "../components/CompanyLevel/CompanyButton";
-import TotalOrdersVsDateGraph from "../components/CompanyLevel/CompanyChart";
-import CompanyDatePicker from "../components/CompanyLevel/CompanyDatePicker";
-import CompanyRadioButtonContainer from "../components/CompanyLevel/CompanyRadioButtonContainer";
-import ReactSearchBar from "../components/CompanyLevel/reactsb";
-import "../shared/css/companyLevel.css";
+import CompanyButtonContainer from "../CompanyButton";
+import TotalOrdersVsDateGraph from "../CompanyChart";
+import CompanyDatePicker from "../CompanyDatePIcker";
+import CompanyRadioButtonContainer from "../CompanyRadioButtonContainer";
+import ReactSearchBar from "../CompanySearchBar";
+import "../../shared/css/companyLevel.css";
 import {
-  ButtonComponent,
   ChartComponent,
   DatepickerComponent,
   MainContainer,
@@ -13,8 +12,10 @@ import {
   SearchBarComponent,
   SubContainerOne,
   SubcontainerTwo,
-} from "../shared/styledComponents/CompanyOrderTrend";
-import { Helperutil } from "../shared/utils/redux/companyAPI";
+} from "../../shared/styledComponents/CompanyOrderTrend";
+import { Helperutil } from "./API";
+import AutocompleteSearch from "../../components/CompanyLevel/mysb";
+import CompanyAutocomplete from "../../components/CompanyLevel/CompanySearchBar";
 
 const CompanyTrend = () => {
   Helperutil();
@@ -27,9 +28,7 @@ const CompanyTrend = () => {
         <DatepickerComponent>
           <CompanyDatePicker />
         </DatepickerComponent>
-        <ButtonComponent>
           <CompanyButtonContainer/>
-        </ButtonComponent>
       </SubContainerOne>
       <SubcontainerTwo>
         <ChartComponent>

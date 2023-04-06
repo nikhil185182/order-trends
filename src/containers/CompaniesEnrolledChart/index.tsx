@@ -1,17 +1,11 @@
 import { Bar, Line } from "react-chartjs-2";
-import {
-  ActiveElement,
-  ChartEvent,
-  LineElement,
-  PointElement,
-
-} from "chart.js";
+import { ActiveElement, ChartEvent, LineElement, PointElement } from "chart.js";
 import {
   toggleDrawer,
   toggleLineOrBar,
   updatebarclickedDate,
   updateCompaniesList,
-} from "../../containers/newCustomers/Reducer";
+} from "../CompaniesEnrolled/reducer";
 
 import {
   Chart,
@@ -21,32 +15,27 @@ import {
   Title,
   Tooltip,
   Legend,
-
 } from "chart.js";
 
-import { NewUsersDTO } from "../../containers/newCustomers/models";
+import { NewUsersDTO } from "../CompaniesEnrolled/models";
 import {
   useAppDispatch,
   useAppSelector,
 } from "../../shared/utils/redux/selectors/hooks";
 import {
-
   FormControl,
   FormControlLabel,
-
   Radio,
   RadioGroup,
-
 } from "@mui/material";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
-import "../../shared/css/newUserDemo.css";
+//import "../../shared/css/newUserDemo.css";
 import {
-  Bothbuttons,
-  ChartHeading_div,
-} from "../../containers/newCustomers/StyledComponents";
-import { ConvertedfromandToDates } from "../../containers/newCustomers/Utils";
-
+  DateTypeCast,
+} from "../CompaniesEnrolled/utils";
+import React from "react";
+import { StyledButtons, StyledChartHeading } from "./StyledComponents";
 
 Chart.register(
   CategoryScale,
@@ -59,37 +48,32 @@ Chart.register(
   LineElement
 );
 
-export default function NewUserChart() {
-  const isLine = useAppSelector((state) => state.NewUser.isLineOrBar);
-  const dates=ConvertedfromandToDates();
-  let from_final=dates[0];
-  let to_final=dates[1];
-const dispatch: AppDispatch = useAppDispatch();
-  const newusersdatafromstore: NewUsersDTO[] = useAppSelector(
+export default function CompaniesEnrolledChart() {
+  const IsLine = useAppSelector((state) => state.NewUser.isLineOrBar);
+  const fromDate = useAppSelector((state) => state.NewUser.fromDate);
+  const toDate = useAppSelector((state) => state.NewUser.toDate);
+  let fromFinal = DateTypeCast(fromDate);
+  let toFinal = DateTypeCast(toDate);
+  const dispatch: AppDispatch = useAppDispatch();
+  const NewUsersDataFromStore: NewUsersDTO[] = useAppSelector(
     (state) => state.NewUser.newUsersdata
   );
 
   const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {
     if (chartelement.length >= 1) {
-      console.log("bar is clicked");
-      const clickedBar = chartelement[0];
-      console.log(clickedBar);
-
-      const tempdate = newusersdatafromstore.map(
+      const tempdate = NewUsersDataFromStore.map(
         (item) => item.companyCreatedTimeStamp
       )[chartelement[0].index];
-      const x = newusersdatafromstore.find(
+      const x = NewUsersDataFromStore.find(
         (item) => item.companyCreatedTimeStamp === tempdate
       );
       dispatch(toggleDrawer(true));
       dispatch(updateCompaniesList(x?.namesOfCompanies!));
       dispatch(updatebarclickedDate(x?.companyCreatedTimeStamp!));
-    } else {
-      console.log("bar not clikced");
     }
   };
 
-  const lineoptions = {
+  const LineOptions = {
     responsive: true,
     scales: {
       x: {
@@ -99,12 +83,11 @@ const dispatch: AppDispatch = useAppDispatch();
       },
       y: {
         ticks: {
-       stepSize: 1
+          stepSize: 1,
         },
-        min:0,
+        min: 0,
         grid: {
           display: true,
-         
         },
       },
     },
@@ -133,7 +116,7 @@ const dispatch: AppDispatch = useAppDispatch();
     },
     onClick: Handleclickes,
   };
-  const baroptions = {
+  const BarOptions = {
     responsive: true,
     scales: {
       x: {
@@ -143,12 +126,10 @@ const dispatch: AppDispatch = useAppDispatch();
       },
       y: {
         ticks: {
-          // forces step size to be 1 units
-          stepSize: 1
+          stepSize: 1,
         },
         grid: {
           display: false,
-          
         },
       },
     },
@@ -179,12 +160,12 @@ const dispatch: AppDispatch = useAppDispatch();
   };
 
   const Data = {
-    labels: newusersdatafromstore.map((item) => item.companyCreatedTimeStamp),
+    labels: NewUsersDataFromStore.map((item) => item.companyCreatedTimeStamp),
 
     datasets: [
       {
         label: "New Registrations",
-        data: newusersdatafromstore.map((item) => item.frequency),
+        data: NewUsersDataFromStore.map((item) => item.frequency),
         backgroundColor: "#55B74E",
         borderColor: "#55B74E",
         pointBackgroundColor: "#537FE7",
@@ -193,35 +174,34 @@ const dispatch: AppDispatch = useAppDispatch();
       },
     ],
   };
-  const barchart_Click=()=>{
-    dispatch(toggleLineOrBar(true))
-  }
-  const linechart_Click=()=>{
-    dispatch(toggleLineOrBar(false))
-  }
- 
+  const BarChart_Click = () => {
+    dispatch(toggleLineOrBar(true));
+  };
+  const LineChart_Click = () => {
+    dispatch(toggleLineOrBar(false));
+  };
 
   return (
-    <>
-      <ChartHeading_div>
-      Company Enrollments from {from_final.toDateString()} -{" "}
-{to_final.toDateString()}
-      </ChartHeading_div>
-      {isLine ? (
-        <Bar data={Data} options={baroptions} />
+    <React.Fragment>
+      <StyledChartHeading>
+        Company Enrollments from {fromFinal.toDateString()} -
+        {toFinal.toDateString()}
+      </StyledChartHeading>
+      {IsLine ? (
+        <Bar data={Data} options={BarOptions} />
       ) : (
-        <Line data={Data} options={lineoptions} />
+        <Line data={Data} options={LineOptions} />
       )}
 
-      <Bothbuttons>
+      <StyledButtons>
         <FormControl>
           <RadioGroup row>
             <FormControlLabel
               control={
                 <Radio
                   style={{ color: "#54B948" }}
-                  onClick={barchart_Click}
-                  checked={isLine}
+                  onClick={BarChart_Click}
+                  checked={IsLine}
                 />
               }
               label="Bar Chart"
@@ -230,15 +210,15 @@ const dispatch: AppDispatch = useAppDispatch();
               control={
                 <Radio
                   style={{ color: "#54B948" }}
-                  onClick={linechart_Click}
-                  checked={!isLine}
+                  onClick={LineChart_Click}
+                  checked={!IsLine}
                 />
               }
               label="Line Chart"
             />
           </RadioGroup>
         </FormControl>
-      </Bothbuttons>
-    </>
+      </StyledButtons>
+    </React.Fragment>
   );
 }

@@ -113,12 +113,15 @@ export const SearchBarComponent  = styled.div`
     }
   `
 
-  export const ButtonComponent = styled.div`
-    margin: 12px;
-    padding: auto;
-    width: 150px;
+  export const ButtonComponent = styled.button`
+    color :"white",
+    backgroundColor:"#54B948",
+    width:"90%",
+    borderRadius:"20px",
+    fontSize:"16.5px",
+    height:"80%"
+    border: 2px solid palevioletred;
   `
-
   export const RadioButtonComponent= styled.div`
     width: max-content;
     margin-top: 1%;

@@ -2,22 +2,16 @@ import { Search} from "@mui/icons-material";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { Chip } from "@mui/material";
 import { useEffect, useState } from "react";
-import { company } from "../../shared/dto/companyLevelOrderDTO";
+import { company, searchBarDTO } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { setCompanyString } from "../../shared/utils/redux/reducers/companyReducer";
-import { CompanySelector } from "../../shared/utils/redux/companySelector";
+import { setCompanyString } from "../CompanyOrderTrend/reducer";
+import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";
-
-
 export default function ReactSearchBar() {
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
-  type datatype = {
-    key: string;
-    value: string;
-  };
-  const data1: datatype[] = data.map((item) => {
+  const data1: searchBarDTO[] = data.map((item) => {
     const key = item.CompanyName;
     const value = item.CompanyName;
     return { key, value };

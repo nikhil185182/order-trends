@@ -1,21 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  company,
-  companyLevel,
-} from "../../../dto/companyLevelOrderDTO";
-import { fetchCompanyData } from "../companyAPI";
+import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
+import { ReduxObjectDTO } from "./models";
+import { fetchCompanyData } from "./API";
 
-type dto = {
-  companyString: string[];
-  dateString: string[];
-  Data: companyLevel[];
-  label:string;
-  status: string;
-  companies: company[];
-
-};
-
-const InitialState: dto = {
+const InitialState: ReduxObjectDTO = {
   companyString: [],
   dateString: [],
   Data: [
@@ -23,14 +11,13 @@ const InitialState: dto = {
       Company: "",
       Date: "",
       TotalOrders: 0,
-      AttemptedOrders:0,
-      CompletedOrders:0
+      AttemptedOrders: 0,
+      CompletedOrders: 0,
     },
   ],
-
   companies: [],
   status: "",
-  label:"TotalOrders"
+  label: "TotalOrders",
 };
 
 const companysSlice = createSlice({
@@ -44,17 +31,14 @@ const companysSlice = createSlice({
       state.Data = payload;
     },
     setCompanyString(state, { payload }: PayloadAction<string[]>) {
-      console.log("====================================");
-      console.log(`companystring dispatched`);
-      console.log("====================================");
       state.companyString = payload;
     },
     setDateString(state, { payload }: PayloadAction<string[]>) {
       state.dateString = payload;
     },
-    setLabel(state,{payload}:PayloadAction<string>){
-      state.label=payload
-    }
+    setLabel(state, { payload }: PayloadAction<string>) {
+      state.label = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -65,7 +49,6 @@ const companysSlice = createSlice({
         fetchCompanyData.fulfilled,
         (state, { payload }: PayloadAction<companyLevel[]>) => {
           state.status = "success";
-          console.log(payload);
           state.Data = payload;
         }
       )
@@ -75,7 +58,6 @@ const companysSlice = createSlice({
   },
 });
 
-
 export default companysSlice.reducer;
 
 export const {
@@ -83,5 +65,5 @@ export const {
   fetchCompanyDatas,
   setCompanyString,
   setDateString,
-  setLabel
+  setLabel,
 } = companysSlice.actions;
