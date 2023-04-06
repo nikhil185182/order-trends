@@ -11,68 +11,70 @@ import {
   COMPANY_TREND,
   NEW_USER,
   INACTIVE_USER,
+  ECOM_ANALYTICS,
+  GREEN,
 } from "../../shared/global_constants";
 import { useNavigate } from "react-router-dom";
 import DrawerComp from "../Drawer";
-import React, { useState, useEffect } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/utils/redux/selectors/hooks";
-import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
+import React from "react";
+import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { NavbarButton } from "../NavbarButton";
+import { NavbarConatiner } from "../NavbarConatiner";
 
 export default function NavBar() {
   let navigate = useNavigate();
-  
+
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   const tab = useAppSelector((state) => state.globalState.feature);
 
   return (
-    <AppBar style={{ background: "#54B948" }}>
+    <AppBar style={{ background: GREEN }}>
       <Toolbar>
-        <Typography>e-Commerce Analytics</Typography>
-        {isMatch ? (
-          <div style={{ marginLeft: "auto" }}>
+        <NavbarButton onClick={() => navigate("/")}>
+          {ECOM_ANALYTICS}
+        </NavbarButton>
+        <NavbarConatiner>
+          {isMatch ? (
             <DrawerComp />
-          </div>
-        ) : (
-          <div className="btn_cls" style={{ marginLeft: "auto" }}>
-            <Button
-              sx={{ border: tab[0] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              {ORDER_TREND}
-            </Button>
-            <Button
-              sx={{ border: tab[1] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {
-                navigate("/companytrend");
-              }}
-            >
-              {COMPANY_TREND}
-            </Button>
-            <Button
-              sx={{ border: tab[2] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {
-                navigate("/CompaniesEnrolled");
-              }}
-            >
-              {NEW_USER}
-            </Button>
-            <Button
-              sx={{ border: tab[3] ? "1px solid white" : "", color: "white" }}
-              onClick={() => {
-                navigate("/inactiveUsers");
-              }}
-            >
-              {INACTIVE_USER}
-            </Button>
-          </div>
-        )}
+          ) : (
+            <>
+              <NavbarButton
+                sx={{ border: tab[0] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                {ORDER_TREND}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[1] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate("/companytrend");
+                }}
+              >
+                {COMPANY_TREND}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[2] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate("/CompaniesEnrolled");
+                }}
+              >
+                {NEW_USER}
+              </NavbarButton>
+              <NavbarButton
+                sx={{ border: tab[3] ? "1px solid white" : "" }}
+                onClick={() => {
+                  navigate("/inactiveUsers");
+                }}
+              >
+                {INACTIVE_USER}
+              </NavbarButton>
+            </>
+          )}
+        </NavbarConatiner>
       </Toolbar>
     </AppBar>
   );
