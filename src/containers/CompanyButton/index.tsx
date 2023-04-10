@@ -1,18 +1,34 @@
 import { Button } from "@mui/material";
-import { fetchCompanyData } from "../CompanyOrderTrend/API";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { useEffect, useState } from "react";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { CompanyStringSelector } from "../CompanyOrderTrend/selector";
 import { DateStringSelector } from "../CompanyOrderTrend/selector";
+import { companyLevel } from "../CompanyOrderTrend/models";
+import { GetSpecificCompanyData } from "../CompanyOrderTrend/gqlHelper";
+import { useQuery } from "@apollo/client";
+import { GETSPECIFICCOMPANIESDATA_QUERY } from "../CompanyOrderTrend/queries";
+import { fetchCompanyDatas } from "../CompanyOrderTrend/reducer";
+import { fres } from "../../shared/dto/companyLevelOrderDTO";
 const CompanyButtonContainer = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const companyArray: string[] = useAppSelector(CompanyStringSelector);
   const dateArray: string[] = useAppSelector(DateStringSelector);
   const [companyString,setcs] = useState("")
   const [dateString,setds] = useState("")
-  dispatch(fetchCompanyData({companyString:companyString,dateString:dateString})) 
+  const { data, loading, error } =  useQuery<fres>(
+    GETSPECIFICCOMPANIESDATA_QUERY,
+    {
+      variables: {
+        i1: companyString,
+        i2: dateString,
+      },
+    }
+  ); 
+useEffect(()=>{
+  dispatch(fetchCompanyDatas(data?.getSpecificCompanyData!)) 
+},[data!])
 
   const handleClick = ()=> {
     setcs(companyArray.join(",").toString());

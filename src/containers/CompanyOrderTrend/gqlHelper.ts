@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { companiesList, company, fres } from "./models";
 import { COMPANIES_QUERY, GETSPECIFICCOMPANIESDATA_QUERY } from "./queries";
+import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 
 export const CompanyUtil = async () => {
     const { data } =useQuery<companiesList>(COMPANIES_QUERY);
@@ -14,7 +15,7 @@ export const CompanyUtil = async () => {
     companyString: String,
     dateString: String
   ) {
-    const { data, loading, error } =  useQuery<fres>(
+    const { data, loading, error } =  useQuery<companyLevel[]>(
       GETSPECIFICCOMPANIESDATA_QUERY,
       {
         variables: {
@@ -24,8 +25,6 @@ export const CompanyUtil = async () => {
       }
     ); 
     if(error) console.log(error);
-
     console.log(data);
-     
     return { data, loading, error };
   }

@@ -16,6 +16,12 @@ import {
 import { Helperutil } from "./API";
 import AutocompleteSearch from "../../components/CompanyLevel/mysb";
 import CompanyAutocomplete from "../../components/CompanyLevel/CompanySearchBar";
+import { useQuery } from "@apollo/client";
+import { companiesList, company } from "./models";
+import { COMPANIES_QUERY } from "./queries";
+import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
+import { AppDispatch } from "../../shared/utils/redux/store";
+import { fetchCompanies } from "./reducer";
 
 const CompanyTrend = () => {
   Helperutil();
