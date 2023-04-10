@@ -1,3 +1,3 @@
 export const getDaysLabel = (days : number)=>{
-    return days+" "+"Days";
+    return days+" Days";
 }

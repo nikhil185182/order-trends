@@ -20,12 +20,12 @@ import { CustomDrawer,StyledDate, StyledDisplay, StyledEnrollments, StyledHeadin
 
 export default function SideBar() {
   const dispatch: AppDispatch = useAppDispatch();
-  const IsDrawerOpen = useAppSelector((state) => state.NewUser.isDrawerOpen);
+  const IsDrawerOpen = useAppSelector((state) => state.EnrolledCompanies.isDrawerOpen);
   const ListOfCompanies = useAppSelector(
-    (state) => state.NewUser.tempcompanieslist
+    (state) => state.EnrolledCompanies.tempcompanieslist
   );
   const tempbarclickedDate = useAppSelector(
-    (state) => state.NewUser.barclickedDate
+    (state) => state.EnrolledCompanies.barclickedDate
   );
   const OnCloseDrawer = () => {
     dispatch(toggleDrawer(false));
@@ -51,7 +51,7 @@ export default function SideBar() {
           </StyledEnrollments>
         </StyledDisplay>
         <List>
-          {ListOfCompanies?.map((text, index) => (
+          {ListOfCompanies?.map((text:any) => (
             <ListItem style={{ padding: "2%" }}>
               <ListItemText
                 primaryTypographyProps={{
