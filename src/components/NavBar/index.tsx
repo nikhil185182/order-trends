@@ -78,7 +78,7 @@ export default function NavBar() {
             </Button>
             <Button
               sx={{ border: tab[2] ? "1px solid white" : "", color: "white" }}
-              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/newUsers');}}
+              onClick={() => { dispatch(fetchFeature("companiesEnrolled"));  navigate('/CompaniesEnrolled');}}
             >
               {NEW_USER}
             </Button>

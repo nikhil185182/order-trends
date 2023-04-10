@@ -31,3 +31,5 @@ export const CUSTOMISE_COMPARE = "Customise & Compare";
 export const CompaniesEnrolled_head=' Companies Enrolled';
 export const alertMessage='Select the To date After The from Date ';
 export const newUser_datepickers_Title = "Select Date Range";
+
+export const SEARCHBAR_MESSAGE = "Search Companies";

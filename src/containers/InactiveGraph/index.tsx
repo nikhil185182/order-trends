@@ -54,10 +54,6 @@ const InactiveGraph = () => {
       setDrawerOpen(true);
     }
   };
-  
-
-
-
 
 
   const filteredData = Object.values(data).filter((company) => {

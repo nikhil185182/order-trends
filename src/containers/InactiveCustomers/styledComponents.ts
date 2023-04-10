@@ -76,7 +76,7 @@ export const Inactive_Table = styled.div`
     width: 900px;
     padding: 20px;
     border-radius: 10px!important;
-    margin-top:0px;
+    margin-top:-35px;
     margin-left: 5%;
     margin-bottom: 5%;
 `;

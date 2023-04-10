@@ -9,6 +9,7 @@ import { addingInactiveUsersdata, settingDate } from '../InactiveCustomers/reduc
 import { useAppDispatch, useAppSelector } from '../../shared/utils/redux/selectors/hooks';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { InputProps } from '@mui/material/Input';
 import { Container, Date_picker, Direction, Submit_button } from '../InactiveCustomers/styledComponents';
 
 const steps = [
