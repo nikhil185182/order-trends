@@ -3,6 +3,7 @@ import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
 import { ReduxObjectDTO } from "./models";
 import { fetchCompanyData } from "./API";
 
+
 const InitialState: ReduxObjectDTO = {
   companyString: [],
   dateString: [],
@@ -48,6 +49,7 @@ const companysSlice = createSlice({
       .addCase(
         fetchCompanyData.fulfilled,
         (state, { payload }: PayloadAction<companyLevel[]>) => {
+          console.log(payload);
           state.status = "success";
           state.Data = payload;
         }

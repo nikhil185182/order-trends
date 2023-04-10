@@ -1,5 +1,14 @@
 export const DAYS = 865;
 
+
+
+export const RoutesPath = {
+  orderTrend : '/',
+  comapanyOrderTrend : '/company-trend',
+  companiesEnrolled : '/companies-enrolled',
+  inactiveCompanies : 'inactive-users'
+}
+
 export const CompanyLevel_graphOptions = {
   responsive: true,
   maintainAspectRatio: false,

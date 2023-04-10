@@ -1,18 +1,18 @@
-export type NewUsersDTO={
+export type CompaniesEnrolledDTO={
     __typename:String,
     companyCreatedTimeStamp:String,
     namesOfCompanies:String[],
     frequency:number
 
 }
-export type newusertype={
-    NewUsersData:NewUsersDTO[]
+export type CompaniesEnrolledType={
+    NewUsersData: CompaniesEnrolledDTO[];
 }
-export type initialstatetypes = {
+export type ReduxInitialState = {
     __typename : string,
     fromDate: string;
     toDate: string;
-    newUsersdata: NewUsersDTO[];
+    newUsersdata: CompaniesEnrolledDTO[];
     isDrawerOpen:boolean;
     isLineOrBar:boolean;
     tempcompanieslist:String[];

@@ -4,18 +4,17 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
 import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import InactiveUsers from './containers/InactiveCustomers';
-import { Fetchnewusersdata } from './containers/CompaniesEnrolled/reducer';
 import OrderTrend from './containers/OrderTrend';
 import CompaniesEnrolled from './containers/CompaniesEnrolled';
 import CompanyTrend from './containers/CompanyOrderTrend';
 import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
+import { RoutesPath } from './shared/config';
 
 
 
 function App() {
   
   const dispatch = useAppDispatch();
-  dispatch(Fetchnewusersdata());
   dispatch(fetchInactiveDate());
   dispatch(fetchInactiveMonths());
  
@@ -25,11 +24,12 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <div className="hello">
+          {}
           <Routes>
-            <Route path="/" element={<OrderTrend />} />
-            <Route path="/CompaniesEnrolled" element={<CompaniesEnrolled />} />
-            <Route path="/CompanyTrend" element={<CompanyTrend  />} />
-            <Route path="/inactiveUsers" element={<InactiveUsers />} />
+            <Route path={RoutesPath.orderTrend} element={<OrderTrend />} />
+            <Route path={RoutesPath.companiesEnrolled} element={<CompaniesEnrolled />} />
+            <Route path={RoutesPath.comapanyOrderTrend} element={<CompanyTrend  />} />
+            <Route path={RoutesPath.inactiveCompanies} element={<InactiveUsers />} />
           </Routes>
         </div>
       </BrowserRouter>

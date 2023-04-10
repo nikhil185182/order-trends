@@ -10,7 +10,7 @@ const store = configureStore({
     reducer: {
         globalState : appReducer,
         orderTrend: orderTrendReducer,
-        NewUser: CompaniesEnrolled,
+        EnrolledCompanies: CompaniesEnrolled,
         company: reducer,
         InactiveUsers: InactiveUserSlice.reducer
     }

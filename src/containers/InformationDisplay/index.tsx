@@ -8,11 +8,13 @@ import { DateTypeCast } from "../CompaniesEnrolled/utils";
 import { StyledTableBody, StyledTableContainer, StyledTitle } from "./StyledComponents";
 
 export default function InformationDisplay() {
-  const fromDate = useAppSelector((state) => state.NewUser.fromDate);
-  const toDate = useAppSelector((state) => state.NewUser.toDate);
+  const fromDate = useAppSelector((state) => state.EnrolledCompanies.fromDate);
+  const toDate = useAppSelector((state) => state.EnrolledCompanies.toDate);
   let fromFinal = DateTypeCast(fromDate);
   let toFinal = DateTypeCast(toDate);
-  const CompanyInfo = useAppSelector((state) => state.NewUser.newUsersdata);
+  const x=useAppSelector((state)=>state.EnrolledCompanies);
+  console.log('cometo',x);
+  const CompanyInfo = useAppSelector((state) => state.EnrolledCompanies.newUsersdata);
   let Enrollments: number = 0;
   CompanyInfo.map((obj) => {
     Enrollments = Enrollments + obj.frequency;

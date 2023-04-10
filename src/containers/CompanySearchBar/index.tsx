@@ -8,6 +8,7 @@ import { setCompanyString } from "../CompanyOrderTrend/reducer";
 import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";
 export default function ReactSearchBar() {
+  
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];

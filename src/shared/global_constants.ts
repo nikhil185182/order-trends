@@ -1,9 +1,10 @@
 import { GraphType } from "../containers/OrderTrend/models";
 
-export const ORDER_TREND = 'Order Trend';
-export const COMPANY_TREND = 'Company Order Trend';
-export const INACTIVE_USER = 'Inactive Companies';
-export const NEW_USER = 'Companies Enrolled';
+export const ECOM_ANALYTICS = 'e-Commerce Analytics';
+export const ORDER_TREND = 'ORDER TREND';
+export const COMPANY_TREND = 'COMPANY ORDER TREND';
+export const INACTIVE_USER = 'INACTIVE COMPANIES';
+export const NEW_USER = 'COMPANIES ENROLLED';
 
 export const GRAPH_DUMMY_DATA: GraphType = {
     labels: [],
