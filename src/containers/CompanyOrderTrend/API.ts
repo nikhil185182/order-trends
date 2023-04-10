@@ -3,9 +3,6 @@ import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 import { fetchCompanies } from "./reducer";
 import { GetSpecificCompanyData, CompanyUtil } from "./gqlHelper";
 import { company, companyLevel, reqbody } from "./models";
-
-
-
 export const fetchCompanyData = createAsyncThunk(
     "companyOrderData/fetchSpecificCompaniesData",
     async (params: reqbody) => {

@@ -7,7 +7,7 @@ import { setCompanyString } from "../CompanyOrderTrend/reducer";
 import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";
 import { DateChip } from "../../components/DateChip";
-import { DateListBox } from "../CompanyOrderTrend/CompanyOrderTrend";
+import { DateListBox } from "../CompanyOrderTrend/styledComponents";
 import { company, searchBarDTO } from "../CompanyOrderTrend/models";
 export default function ReactSearchBar() {
 

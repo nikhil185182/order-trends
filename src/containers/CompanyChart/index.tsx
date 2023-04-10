@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { ReqCompanies } from "../CompanyOrderTrend/selector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { ChartComponent } from "../CompanyOrderTrend/CompanyOrderTrend";
+import { ChartComponent } from "../CompanyOrderTrend/styledComponents";
 import { companyLevel } from "../CompanyOrderTrend/models";
 
 interface GroupedData {

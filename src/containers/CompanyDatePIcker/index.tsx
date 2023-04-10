@@ -9,7 +9,7 @@ import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 import { setDateString } from "../CompanyOrderTrend/reducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { DateChip } from "../../components/DateChip";
-import { DateListBox } from "../CompanyOrderTrend/CompanyOrderTrend";
+import { DateListBox } from "../CompanyOrderTrend/styledComponents";
 
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());

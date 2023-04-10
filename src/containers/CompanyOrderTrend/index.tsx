@@ -11,7 +11,7 @@ import {
   SearchBarComponent,
   SubContainerOne,
   SubcontainerTwo,
-} from "./CompanyOrderTrend";
+} from "./styledComponents";
 import { Helperutil } from "./API";
 import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
