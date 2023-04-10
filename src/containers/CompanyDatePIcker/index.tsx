@@ -57,18 +57,14 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField  {...params} />}
+          renderInput={(params) => <TextField  size="small"{...params} />}
         />
       </LocalizationProvider>
       <DateListBox>
         {dateList.map((e, index) => {
           return (
               <DateChip 
-               style={{
-                position:"relative",
-               }}
                 key={index}
-                className="chipObject"
                 label={e}
                 icon={
                 <HighlightOffTwoToneIcon 
