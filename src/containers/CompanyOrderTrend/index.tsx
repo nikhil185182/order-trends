@@ -3,7 +3,6 @@ import TotalOrdersVsDateGraph from "../CompanyChart";
 import CompanyDatePicker from "../CompanyDatePIcker";
 import CompanyRadioButtonContainer from "../CompanyRadioButtonContainer";
 import ReactSearchBar from "../CompanySearchBar";
-import "../../shared/css/companyLevel.css";
 import {
   ChartComponent,
   DatepickerComponent,
@@ -12,10 +11,8 @@ import {
   SearchBarComponent,
   SubContainerOne,
   SubcontainerTwo,
-} from "../../shared/styledComponents/CompanyOrderTrend";
+} from "./CompanyOrderTrend";
 import { Helperutil } from "./API";
-import AutocompleteSearch from "../../components/CompanyLevel/mysb";
-import CompanyAutocomplete from "../../components/CompanyLevel/CompanySearchBar";
 import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 

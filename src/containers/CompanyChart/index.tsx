@@ -11,11 +11,10 @@ import {
 } from "chart.js";
 import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
-import { RadioButtonComponent } from "../../shared/styledComponents/CompanyOrderTrend";
 import { ReqCompanies } from "../CompanyOrderTrend/selector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import CompanyRadioButtonContainer from "../CompanyRadioButtonContainer";
+import { ChartComponent } from "../CompanyOrderTrend/CompanyOrderTrend";
+import { companyLevel } from "../CompanyOrderTrend/models";
 
 interface GroupedData {
   [key: string]: companyLevel[];
@@ -156,9 +155,9 @@ const TotalOrdersVsDateGraph = () => {
     [chartData]);
 
   return (
-    <>
+    <ChartComponent>
     <Line data={chartData} width={500} height={500} options={options} />
-    </>
+    </ChartComponent>
   );
 };
 

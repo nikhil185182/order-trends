@@ -2,13 +2,15 @@ import { Search} from "@mui/icons-material";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { Chip } from "@mui/material";
 import { useEffect, useState } from "react";
-import { company, searchBarDTO } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { setCompanyString } from "../CompanyOrderTrend/reducer";
 import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";
+import { DateChip } from "../../components/DateChip";
+import { DateListBox } from "../CompanyOrderTrend/CompanyOrderTrend";
+import { company, searchBarDTO } from "../CompanyOrderTrend/models";
 export default function ReactSearchBar() {
-  
+
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
@@ -43,10 +45,10 @@ export default function ReactSearchBar() {
         onChange={() => true}
       />
       </div>
-      <div className="dateListbox">
+      <DateListBox>
         {companyList.map((e, index) => {
           return (
-            <Chip
+            <DateChip
               style={{
                 position: "relative",
               }}
@@ -66,7 +68,7 @@ export default function ReactSearchBar() {
             />
           );
         })}
-      </div>
+      </DateListBox>
     </div>
   );
 }

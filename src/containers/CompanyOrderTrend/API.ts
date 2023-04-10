@@ -1,9 +1,8 @@
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { reqbody, companyLevel, company } from "../../shared/dto/companyLevelOrderDTO";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 import { fetchCompanies } from "./reducer";
 import { GetSpecificCompanyData, CompanyUtil } from "./gqlHelper";
+import { company, companyLevel, reqbody } from "./models";
 
 
 
