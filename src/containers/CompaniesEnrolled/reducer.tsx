@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { CompaniesEnrolledDTO, CompaniesEnrolledType,   } from "./models";
 import { ReduxInitialState } from "./models";
-import { NEW_USER_QUERY } from "./queries";
+import { CompaniesEnrolledQuery } from "./queries";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { useQuery } from "@apollo/client";
 
@@ -29,7 +29,7 @@ const InitialState: ReduxInitialState = {
 
 export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
 
-  let CompaniesEnrolledquery = NEW_USER_QUERY;
+  let CompaniesEnrolledquery = CompaniesEnrolledQuery;
  
   
   const inputfromdate=useAppSelector(state=>state.EnrolledCompanies.fromDate)
@@ -38,9 +38,10 @@ export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
   
   const { loading, error, data } = useQuery<CompaniesEnrolledType>(CompaniesEnrolledquery ,
       {
-          variables:{Fromdate:new Date(inputfromdate),Todate:new Date(inputtodate)}
+          variables:{FromDate:new Date(inputfromdate),ToDate:new Date(inputtodate)}
       })
   if (data) {
+    console.log('cme',data.NewUsersData);
       return data.NewUsersData;
 
   } else if (loading) {

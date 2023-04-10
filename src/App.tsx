@@ -2,7 +2,6 @@ import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import { useAppDispatch } from './shared/utils/redux/selectors/hooks';
-import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import InactiveUsers from './containers/InactiveCustomers';
 import OrderTrend from './containers/OrderTrend';
 import CompaniesEnrolled from './containers/CompaniesEnrolled';

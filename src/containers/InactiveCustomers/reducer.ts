@@ -3,12 +3,14 @@ import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "./models";
 import { INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY } from "./queries";
 import { useQuery } from "@apollo/client";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+
 type initialstatetypes =
     {
         GQL_list: InactiveMonths[];
         Date: String;
         inactiveUsers: getInactiveUsersData[];
     };
+    
 const today: Date = new Date();
 today.setDate(today.getDate() - 60);
 const dateString: string = today.toISOString().slice(0, 10);

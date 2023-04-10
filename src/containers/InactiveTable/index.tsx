@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,18 +11,20 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { getInactiveUsersData } from "../InactiveCustomers/models";
 import TablePagination from "@mui/material/TablePagination";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import {Downloading} from "@mui/icons-material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../InactiveCustomers/styledComponents";
+import * as XLSX from 'xlsx';
 
 export default function InactiveTable() {
   var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
-  var Ddata1 = useAppSelector((state)=>state.InactiveUsers.GQL_list);
+  var Ddata1 = useAppSelector((state) => state.InactiveUsers.GQL_list);
   const [rows, setRows] = useState<getInactiveUsersData[]>(Ddata);
   const [searched, setSearched] = useState<string>("");
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [sortingOrder, setSortingOrder] = useState('asc');
   const inputDate = useAppSelector(state => state.InactiveUsers.Date);
   useEffect(() => {
@@ -31,6 +32,15 @@ export default function InactiveTable() {
   }, [Ddata]);
 
   console.log(Ddata1);
+
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    const date = new Date().toISOString().slice(0, 10);
+    const filename = `Inactive Companies ${date}.xlsx`;
+    XLSX.writeFile(workbook, filename);
+  };
 
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -52,88 +62,86 @@ export default function InactiveTable() {
     setRows(filteredRows);
   };
 
-  const cancelSearch = () => {
-    setSearched("");
-    setSearchTerm("");
-    requestSearch(searched);
-  };
-
-
-
   return (
     <>
       <Inactive_Table>
-        <TableContainer>
-        <Rows>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell className="Heading" colSpan={3} align="center" style={{ backgroundColor: '#f5f5f5' }}>
-                  <h2>Inactive Companies List</h2>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell colSpan={2} align="right" >
-                  <Search_bar>
-                  <TextField
-                    label="Search Companies"
-                    variant="outlined"
-                    value={searchTerm}
-                    onChange={(event) => {
-                      setSearchTerm(event.target.value)
-                      requestSearch(event.target.value)
+        <TableContainer sx={{ maxHeight: 500 }}>
+          <Rows>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell className="Heading" colSpan={3} align="center" style={{ backgroundColor: '#f5f5f5' }}>
+                    <h2>Inactive Companies List</h2>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left">
+                    <Button onClick={exportToExcel}>
+                      Export to Excel
+                      <Downloading />
+                    </Button>
+                  </TableCell>
+                  <TableCell colSpan={2} align="right" >
+                    <Search_bar>
+                      <TextField
+                        label="Search Companies"
+                        variant="outlined"
+                        value={searchTerm}
+                        onChange={(event) => {
+                          setSearchTerm(event.target.value)
+                          requestSearch(event.target.value)
+                        }
+                        }
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <SearchIcon />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Search_bar>
+                  </TableCell>
+                  <TableCell align="right"></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell >Company Name</TableCell>
+                  <TableCell align="right">
+                    Latest Order Date
+                    <IconButton onClick={() => setSortingOrder(sortingOrder === 'asc' ? 'desc' : 'asc')}>
+                      {sortingOrder === 'asc' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.filter((row) =>
+                  row.CompanyName.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                  .sort((a, b) => {
+                    if (sortingOrder === 'asc') {
+                      return new Date(a.LatestOrderDate).getTime() - new Date(b.LatestOrderDate).getTime();
+                    } else {
+                      return new Date(b.LatestOrderDate).getTime() - new Date(a.LatestOrderDate).getTime();
                     }
-                    }
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <SearchIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  </Search_bar>
-                </TableCell>
-                <TableCell align="right"></TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell >Company Name</TableCell>
-                <TableCell align="right">
-                  Latest Order Date
-                  <IconButton onClick={() => setSortingOrder(sortingOrder === 'asc' ? 'desc' : 'asc')}>
-                    {sortingOrder === 'asc' ? <ArrowDownwardIcon /> : <ArrowUpwardIcon />}
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.filter((row) =>
-                row.CompanyName.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-                .sort((a, b) => {
-                  if (sortingOrder === 'asc') {
-                    return new Date(a.LatestOrderDate).getTime() - new Date(b.LatestOrderDate).getTime();
-                  } else {
-                    return new Date(b.LatestOrderDate).getTime() - new Date(a.LatestOrderDate).getTime();
-                  }
-                })
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => (
-                  <TableRow >
-                    <TableCell component="th" scope="row" align="left">
-                      {row.CompanyName}
-                    </TableCell>
-                    <TableCell component="th" scope="row" align="right">
-                      {row.LatestOrderDate.toString().slice(0, 10)}
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
+                  })
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow >
+                      <TableCell component="th" scope="row" align="left">
+                        {row.CompanyName}
+                      </TableCell>
+                      <TableCell component="th" scope="row" align="right">
+                        {row.LatestOrderDate.toString().slice(0, 10)}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
           </Rows>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 25, 100]}
+          rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -142,8 +150,6 @@ export default function InactiveTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Inactive_Table>
-
-
     </>
   )
 }
