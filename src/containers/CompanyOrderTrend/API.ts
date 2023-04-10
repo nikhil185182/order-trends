@@ -29,7 +29,7 @@ export const fetchCompanyData = createAsyncThunk(
         console.log('====================================');
 
         if (!response.loading && response.data) {
-          const tempResult: companyLevel[]  = response.data?.getSpecificCompanyData;
+          const tempResult: companyLevel[]  = response.data
           const result: companyLevel[] = [];
           tempResult?.map((c: companyLevel) => result.push(c));
           return result;

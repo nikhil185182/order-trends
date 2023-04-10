@@ -1,5 +1,5 @@
 import { Chip, TextField, TextFieldProps } from "@mui/material";
-import { DatePicker,  LocalizationProvider } from "@mui/x-date-pickers";
+import { LocalizationProvider,DatePicker } from "@mui/x-date-pickers";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -41,7 +41,7 @@ const CompanyDatePicker = () => {
           }}
           views={['year','month','day']}
           onChange={()=>true}
-          onAccept={(newValue) => {
+          onAccept={(newValue:any) => {
             setValue(newValue);
             const monthVal: number = newValue?.get("month")! + 1;
             const mVal: string =
@@ -59,7 +59,7 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField disabled={true}  size="small" color="secondary" {...params} />}
+          renderInput={(params) => <TextField  {...params} />}
         />
       </LocalizationProvider>
       <div className="dateListbox">

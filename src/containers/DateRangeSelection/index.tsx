@@ -1,5 +1,5 @@
 import { TextField, Button,} from "@mui/material";
-import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { LocalizationProvider,DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { useState } from "react";
@@ -53,7 +53,7 @@ export default function DateSelector() {
               views={['year', 'month', 'day']}
               value={dayjs(defaultfrom)}
               onChange={(selectedfromdate:dayjs.Dayjs|null)=>OnChangeFromDate(selectedfromdate!)}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params:any) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </StyledDatePicker>
@@ -67,7 +67,7 @@ export default function DateSelector() {
               views={['year', 'month', 'day']}
               value={dayjs(defaultto)}
               onChange={(selectedtodate:dayjs.Dayjs|null)=>OnChangeToDate(selectedtodate!)}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params:any) => <TextField {...params} />}
             />
           </LocalizationProvider>
         </StyledDatePicker>
