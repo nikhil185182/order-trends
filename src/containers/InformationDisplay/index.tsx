@@ -12,8 +12,6 @@ export default function InformationDisplay() {
   const toDate = useAppSelector((state) => state.EnrolledCompanies.toDate);
   let fromFinal = DateTypeCast(fromDate);
   let toFinal = DateTypeCast(toDate);
-  const x=useAppSelector((state)=>state.EnrolledCompanies);
-  console.log('cometo',x);
   const CompanyInfo = useAppSelector((state) => state.EnrolledCompanies.newUsersdata);
   let Enrollments: number = 0;
   CompanyInfo.map((obj) => {
