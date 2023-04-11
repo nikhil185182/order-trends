@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { DatePicker,  LocalizationProvider } from "@mui/x-date-pickers";
+import { DesktopDatePicker,  LocalizationProvider } from "@mui/x-date-pickers";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -23,7 +23,7 @@ const CompanyDatePicker = () => {
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
+        <DesktopDatePicker
           className="sha"
           label='Select Dates'
           value={value}
