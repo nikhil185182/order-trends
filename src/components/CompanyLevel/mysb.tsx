@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import { company } from "../../shared/dto/companyLevelOrderDTO";
+
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 
 import { CompanySelector } from "../../containers/CompanyOrderTrend/selector";
 import { Container } from '@mui/material';
+import { company } from '../../containers/CompanyOrderTrend/models';
 
 
 function AutocompleteSearch() {

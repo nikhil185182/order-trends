@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderTrendReducer from "../../../containers/OrderTrend/reducer";
 import appReducer from "./reducers/appReducer";
-import reducer from "../../../containers/CompanyOrderTrend/reducer";
 import CompaniesEnrolled from "../../../containers/CompaniesEnrolled/reducer"
 import InactiveUserSlice from "../../../containers/InactiveCustomers/reducer";
+import companysSlice from "../../../containers/CompanyOrderTrend/reducer";
 
 
 const store = configureStore({
@@ -11,7 +11,7 @@ const store = configureStore({
         globalState : appReducer,
         orderTrend: orderTrendReducer,
         EnrolledCompanies: CompaniesEnrolled,
-        company: reducer,
+        company: companysSlice.reducer,
         InactiveUsers: InactiveUserSlice.reducer
     }
 })

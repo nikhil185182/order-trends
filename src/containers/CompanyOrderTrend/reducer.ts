@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { companyLevel } from "../../shared/dto/companyLevelOrderDTO";
-import { ReduxObjectDTO } from "./models";
+import { companyLevel, ReduxObjectDTO } from "./models";
 import { fetchCompanyData } from "./API";
 
 
@@ -49,7 +48,6 @@ const companysSlice = createSlice({
       .addCase(
         fetchCompanyData.fulfilled,
         (state, { payload }: PayloadAction<companyLevel[]>) => {
-          console.log(payload);
           state.status = "success";
           state.Data = payload;
         }
@@ -60,7 +58,7 @@ const companysSlice = createSlice({
   },
 });
 
-export default companysSlice.reducer;
+export default companysSlice
 
 export const {
   fetchCompanies,
