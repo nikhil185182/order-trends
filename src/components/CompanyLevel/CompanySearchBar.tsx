@@ -2,7 +2,6 @@ import Autocomplete from "@mui/material/Autocomplete/Autocomplete";
 import TextField from "@mui/material/TextField/TextField";
 import { useEffect } from "react";
 import { useState } from "react";
-import { company, searchBarDTO } from "../../shared/dto/companyLevelOrderDTO";
 import {
   useAppDispatch,
   useAppSelector,
@@ -13,6 +12,7 @@ import { CompanySelector } from "../../containers/CompanyOrderTrend/selector";
 
 import SearchIcon from "@mui/icons-material/Search";
 import { Chip, autocompleteClasses } from "@mui/material";
+import { company } from "../../containers/CompanyOrderTrend/models";
 function CompanyAutocomplete(){
 const [value,setValue]=useState<company|null>();
 const data: company[] = useAppSelector(CompanySelector) || [

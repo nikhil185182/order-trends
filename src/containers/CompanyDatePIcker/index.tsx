@@ -1,5 +1,5 @@
-import { Chip, TextField, TextFieldProps } from "@mui/material";
-import { LocalizationProvider,DatePicker } from "@mui/x-date-pickers";
+import { TextField } from "@mui/material";
+import { DatePicker,  LocalizationProvider } from "@mui/x-date-pickers";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
@@ -8,10 +8,8 @@ import { useState } from "react";
 import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 import { setDateString } from "../CompanyOrderTrend/reducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
-import { randomInt } from "crypto";
-
-
-
+import { DateChip } from "../../components/DateChip";
+import { DateListBox } from "../CompanyOrderTrend/styledComponents";
 
 const CompanyDatePicker = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
@@ -26,7 +24,7 @@ const CompanyDatePicker = () => {
     console.log("====================================");
   }, [dateList,dispatch]);
   return (
-    <div className="dateComp">
+    <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           className="sha"
@@ -59,20 +57,14 @@ const CompanyDatePicker = () => {
               alert("you've already selected it")
             setValue(null);
           }}
-          renderInput={(params) => <TextField  {...params} />}
+          renderInput={(params) => <TextField  size="small"{...params} />}
         />
       </LocalizationProvider>
-      <div className="dateListbox">
+      <DateListBox>
         {dateList.map((e, index) => {
           return (
-            
-              <Chip
-              
-               style={{
-                position:"relative",
-               }}
+              <DateChip 
                 key={index}
-                className="chipObject"
                 label={e}
                 icon={
                 <HighlightOffTwoToneIcon 
@@ -87,10 +79,9 @@ const CompanyDatePicker = () => {
 />}
                 variant="outlined"
               />
-           
           );
         })}
-      </div>
+      </DateListBox>
     </div>
   );
 };

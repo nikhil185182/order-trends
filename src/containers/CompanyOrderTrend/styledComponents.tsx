@@ -1,11 +1,11 @@
 import styled from "styled-components";
-
 export const MainContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
     margin-top: 5%;
+    overflow-y:scroll;
     @media (max-width:820px){
         width:100%!important;
         flex-direction:column;
@@ -23,7 +23,6 @@ export const MainContainer = styled.div`
         padding:1%
     }
 `
-
 export const SubContainerOne = styled.div`
     width:25%
     margin: 0.5%;
@@ -50,7 +49,6 @@ export const SubContainerOne = styled.div`
         margin-left:400px!important
     }
 `
-
 export const SubcontainerTwo = styled.div`
     width: 100%;
     height: 85%;
@@ -65,7 +63,6 @@ export const SubcontainerTwo = styled.div`
         margin:0 10%;
     }
   `
-
 export const SearchBarComponent  = styled.div`
     display: flex;
     flex-direction: column;
@@ -76,7 +73,6 @@ export const SearchBarComponent  = styled.div`
     margin-bottom: 10px;
     box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
     border-radius: 10px;
-    scrollbar-width: none!important;
     overflow-y: scroll;
     overflow-x: hidden;
     @media (max-width:820px){
@@ -87,8 +83,18 @@ export const SearchBarComponent  = styled.div`
         width:90%;
         height: 300px!important;
     }
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(169, 169, 169, 0.3);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82);
+    }
   `
-
   export const DatepickerComponent = styled.div`
     display: flex;
     flex-direction: column;
@@ -111,8 +117,26 @@ export const SearchBarComponent  = styled.div`
         overflow-y: scroll;
         scrollbar-width: none!important;
     }
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(169, 169, 169, 0.3);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      -webkit-box-shadow: inset 0 0 6px rgb(82, 82, 82);
+    }
   `
-
+  export const DateListBox = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  `
   export const ButtonComponent = styled.button`
     color :"white",
     backgroundColor:"#54B948",
@@ -125,7 +149,8 @@ export const SearchBarComponent  = styled.div`
   export const RadioButtonComponent= styled.div`
     width: max-content;
     margin-top: 1%;
-    margin-left: 25%;
+    margin-left: 30%;
+    margin-right:30%;
     @media (max-width:840px){
      margin-left:10%;
     }
@@ -133,9 +158,8 @@ export const SearchBarComponent  = styled.div`
       margin-left:1%;
      }
   `
-  
   export const ChartComponent = styled.div`
-    height: 90%;
+    height: 80%;
     padding:1%
   `
   

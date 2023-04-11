@@ -1,16 +1,15 @@
-import { Button } from "@mui/material";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { useEffect, useState } from "react";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { CompanyStringSelector } from "../CompanyOrderTrend/selector";
 import { DateStringSelector } from "../CompanyOrderTrend/selector";
-import { companyLevel } from "../CompanyOrderTrend/models";
-import { GetSpecificCompanyData } from "../CompanyOrderTrend/gqlHelper";
+import { fres } from "../CompanyOrderTrend/models";
 import { useQuery } from "@apollo/client";
 import { GETSPECIFICCOMPANIESDATA_QUERY } from "../CompanyOrderTrend/queries";
 import { fetchCompanyDatas } from "../CompanyOrderTrend/reducer";
-import { fres } from "../../shared/dto/companyLevelOrderDTO";
+
+import { ContainedButton } from "../../components/ConatinedButton";
 const CompanyButtonContainer = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const companyArray: string[] = useAppSelector(CompanyStringSelector);
@@ -35,9 +34,9 @@ useEffect(()=>{
     setds(dateArray.join(",").toString())
   }
     return (
-      <Button onClick={handleClick} > 
+      <ContainedButton onClick={handleClick} > 
         submit
-      </Button>
+      </ContainedButton>
     );
     
   }
