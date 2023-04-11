@@ -41,11 +41,9 @@ export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
           variables:{FromDate:new Date(inputfromdate),ToDate:new Date(inputtodate)}
       })
   if (data) {
-    console.log('cme',data.NewUsersData);
       return data.NewUsersData;
 
   } else if (loading) {
-      console.log("Data is Loading")
       return []
   }
   else {
