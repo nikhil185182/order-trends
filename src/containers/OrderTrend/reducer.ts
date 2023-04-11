@@ -16,7 +16,6 @@ const initialState : OrderTrendState = {
 export const fetchOrderTrenData = createAsyncThunk("ordertrend/fetch",async (thunkAPI)=>{
     const {data} = useQuery<OrderTrendGQLResponse>(ORDERTREND_QUERY, {variables: { input: DAYS }});
     const result = OrderTrendUtil(data!);
-    console.log(result);
     return result;
 });
 
