@@ -13,13 +13,9 @@ import {
   SubcontainerTwo,
 } from "./styledComponents";
 import { Helperutil } from "./API";
-import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
-import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
 
 const CompanyTrend = () => {
-  const dispatch = useAppDispatch();
   Helperutil();
-  dispatch(fetchFeature([false,true,false,false])); 
   return (
     <MainContainer>
       <SubContainerOne>

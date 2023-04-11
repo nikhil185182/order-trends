@@ -1,8 +1,6 @@
 import {
   AppBar,
   Toolbar,
-  Typography,
-  Button,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
@@ -21,58 +19,27 @@ import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { NavbarButton } from "../NavbarButton";
 import { NavbarConatiner } from "../NavbarConatiner";
 import { RoutesPath } from "../../shared/config";
+import Link from '@mui/material/Link';
+import { NavLink } from "react-router-dom";
+import { NavTab, NavtabType } from "../NavTab";
 
 export default function NavBar() {
-  let navigate = useNavigate();
-
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-
-  const tab = useAppSelector((state) => state.globalState.feature);
 
   return (
     <AppBar style={{ background: GREEN }}>
       <Toolbar>
-        <NavbarButton onClick={() => navigate(RoutesPath.orderTrend)}>
-          {ECOM_ANALYTICS}
-        </NavbarButton>
+        <NavTab details={{to:RoutesPath.orderTrend,label:ECOM_ANALYTICS,status:false}}/>
         <NavbarConatiner>
           {isMatch ? (
             <DrawerComp />
           ) : (
             <>
-              <NavbarButton
-                sx={{ border: tab[0] ? "1px solid white" : "" }}
-                onClick={() => {
-                  navigate(RoutesPath.orderTrend);
-                }}
-              >
-                {ORDER_TREND}
-              </NavbarButton>
-              <NavbarButton
-                sx={{ border: tab[1] ? "1px solid white" : "" }}
-                onClick={() => {
-                  navigate(RoutesPath.comapanyOrderTrend);
-                }}
-              >
-                {COMPANY_TREND}
-              </NavbarButton>
-              <NavbarButton
-                sx={{ border: tab[2] ? "1px solid white" : "" }}
-                onClick={() => {
-                  navigate(RoutesPath.companiesEnrolled);
-                }}
-              >
-                {NEW_USER}
-              </NavbarButton>
-              <NavbarButton
-                sx={{ border: tab[3] ? "1px solid white" : "" }}
-                onClick={() => {
-                  navigate(RoutesPath.inactiveCompanies);
-                }}
-              >
-                {INACTIVE_USER}
-              </NavbarButton>
+              <NavTab details={{to:RoutesPath.orderTrend,label:ORDER_TREND,status:true}}/>
+              <NavTab details={{to:RoutesPath.comapanyOrderTrend,label:COMPANY_TREND,status:true}}/>
+              <NavTab details={{to:RoutesPath.companiesEnrolled,label:NEW_USER,status:true}}/>
+              <NavTab details={{to:RoutesPath.inactiveCompanies,label:INACTIVE_USER,status:true}}/>
             </>
           )}
         </NavbarConatiner>

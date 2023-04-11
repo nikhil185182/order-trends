@@ -7,12 +7,10 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
-import { fetchFeature } from '../../shared/utils/redux/reducers/appReducer';
 
 const InactiveUsers = () => {
 
   const dispatch = useAppDispatch();
-  dispatch(fetchFeature([false,false,false,true])); 
 
   const [activeTab, setActiveTab] = useState(0);
 

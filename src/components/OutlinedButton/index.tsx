@@ -6,5 +6,6 @@ export const OutlinedButton = styled(Button)({
     color:GREEN,
     border : '1px solid '+GREEN,
     textTransform : 'none',
-    width : '100px'
+    width : '100px',
+    margin:'5px'
 })

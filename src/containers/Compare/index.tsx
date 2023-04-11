@@ -128,10 +128,11 @@ const Compare = () => {
           />
         </LocalizationProvider>
         <DateListBox>
-          {dateList.map((e: Orders) => {
+          {dateList.map((e: Orders,index) => {
             return (
               <DateChip
                 label={e.OrderDate}
+                key={index}
                 icon={<DeleteIcon onClick={() => handleDelete(e)} />}
                 variant="outlined"
               />

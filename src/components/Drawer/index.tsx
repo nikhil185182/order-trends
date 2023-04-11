@@ -11,50 +11,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { RoutesPath } from "../../shared/config";
+import { NavTab } from "../NavTab";
+import { DrawerTab } from "../DrawerTab";
 
 export default function DrawerComp() {
   const [openDrawer, setOpenDrawer] = useState(false);
   let navigate = useNavigate();
 
-  const tab = useAppSelector((state) => state.globalState.feature);
-
-  const handleClick = (x: number) => () => {
-    switch (x) {
-      case 1:
-        navigate(RoutesPath.orderTrend);
-        break;
-      case 2:
-        navigate(RoutesPath.comapanyOrderTrend);
-        break;
-      case 3:
-        navigate(RoutesPath.companiesEnrolled);
-        break;
-      case 4:
-        navigate(RoutesPath.inactiveCompanies);
-        break;
-    }
+  const handleClick = () => {
     setOpenDrawer(!openDrawer);
-  };
-
-  const s1 = {
-    border: tab[0] ? "1px solid green" : "",
-    color: "green",
-    margin: "1px",
-  };
-  const s2 = {
-    border: tab[1] ? "1px solid green" : "",
-    color: "green",
-    margin: "1px",
-  };
-  const s3 = {
-    border: tab[2] ? "1px solid green" : "",
-    color: "green",
-    margin: "1px",
-  };
-  const s4 = {
-    border: tab[3] ? "1px solid green" : "",
-    color: "green",
-    margin: "1px",
   };
 
   return (
@@ -65,17 +30,41 @@ export default function DrawerComp() {
         anchor="right"
       >
         <List style={{ fontFamily: "roboto" }}>
-          <ListItemButton sx={s1} onClick={handleClick(1)}>
-            {ORDER_TREND}
+          <ListItemButton onClick={handleClick}>
+            <DrawerTab
+              details={{
+                to: RoutesPath.orderTrend,
+                status: true,
+                label: ORDER_TREND,
+              }}
+            />
           </ListItemButton>
-          <ListItemButton sx={s2} onClick={handleClick(2)}>
-            {COMPANY_TREND}
+          <ListItemButton onClick={handleClick}>
+            <DrawerTab
+              details={{
+                to: RoutesPath.comapanyOrderTrend,
+                status: true,
+                label: COMPANY_TREND,
+              }}
+            />
           </ListItemButton>
-          <ListItemButton sx={s3} onClick={handleClick(3)}>
-            {NEW_USER}
+          <ListItemButton onClick={handleClick}>
+            <DrawerTab
+              details={{
+                to: RoutesPath.companiesEnrolled,
+                status: true,
+                label: NEW_USER,
+              }}
+            />
           </ListItemButton>
-          <ListItemButton sx={s4} onClick={handleClick(4)}>
-            {INACTIVE_USER}
+          <ListItemButton onClick={handleClick}>
+            <DrawerTab
+              details={{
+                to: RoutesPath.inactiveCompanies,
+                status: true,
+                label: INACTIVE_USER,
+              }}
+            />
           </ListItemButton>
         </List>
       </Drawer>

@@ -40,7 +40,6 @@ import { OutlinedButton } from "../../components/OutlinedButton";
 import { BAR_CHART, LINE_CHART } from "./constants";
 import { ConfigDays } from "./config";
 import { getDaysLabel } from "./utils";
-import { fetchFeature } from "../../shared/utils/redux/reducers/appReducer";
 
 ChartJS.register(
   CategoryScale,
@@ -56,7 +55,6 @@ ChartJS.register(
 const Statistics = () => {
 
   const dispatch = useAppDispatch();
-  dispatch(fetchFeature([true,false,false,false])); 
     
   const [isLine, SetLine] = useState(true);
 
@@ -126,17 +124,17 @@ const Statistics = () => {
         />
       </ChartCustomise>
       <DaysCustomise>
-        {ConfigDays.map((e) => {
+        {ConfigDays.map((e,index) => {
           const daysLabel = getDaysLabel(e);
           if (e === current) {
             return (
-              <ContainedButton onClick={() => updateDays(e)}>
+              <ContainedButton key={index} onClick={() => updateDays(e)}>
                 {daysLabel}
               </ContainedButton>
             );
           } else {
             return (
-              <OutlinedButton onClick={() => updateDays(e)}>
+              <OutlinedButton key={index} onClick={() => updateDays(e)}>
                 {daysLabel}
               </OutlinedButton>
             );
