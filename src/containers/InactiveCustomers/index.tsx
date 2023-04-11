@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DateandDaysSelector from '../InactiveDateSelector';
 import InactiveTable from '../InactiveTable';
 import { Datepicker_component, InactiveUsertable_container, Total_component } from './styledComponents';
@@ -14,14 +14,7 @@ const InactiveUsers = () => {
   const dispatch = useAppDispatch();
   dispatch(fetchFeature([false,false,false,true])); 
 
-  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-
 
   const handleTabSelect = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);

@@ -1,4 +1,3 @@
-import { FormControl } from "@mui/material";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -66,7 +65,7 @@ export const Search_bar = styled.div`
     margin: 1%;
 `;
 
-export const Date_picker = styled.div`
+export const Datepicker = styled.div`
     margin-top: 5% !important;
     display: grid;
 `;
@@ -81,7 +80,7 @@ export const Inactive_Table = styled.div`
     margin-bottom: 5%;
 `;
 
-export const Submit_button = styled.div`
+export const Submitbutton = styled.div`
 margin-top: 18%;
 
 @media(max-width:1000px){
@@ -101,11 +100,6 @@ export const Stepper = styled.div`
 
 export const Radio_group = styled.div`
     margin-left: 45% !important;
-`;
-
-const CompanyGraphContainer = styled.div`
-  max-height: calc(100vh - 100px);
-  overflow-y: auto;
 `;
 
 

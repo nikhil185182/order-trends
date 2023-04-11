@@ -12,21 +12,21 @@ import SearchIcon from '@mui/icons-material/Search';
 import { getInactiveUsersData } from "../InactiveCustomers/models";
 import TablePagination from "@mui/material/TablePagination";
 import { Button, IconButton } from "@mui/material";
-import {Downloading} from "@mui/icons-material";
+import { Downloading } from "@mui/icons-material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Inactive_Table, Inner_rows, Rows, Search_bar } from "../InactiveCustomers/styledComponents";
+import { Inactive_Table, Rows, Search_bar } from "../InactiveCustomers/styledComponents";
 import * as XLSX from 'xlsx';
+import { inactivegraphSelector } from "../InactiveGraph/graphselector";
+import { tableSelector } from "./tableselector";
 
 export default function InactiveTable() {
-  var Ddata = useAppSelector((state) => state.InactiveUsers.inactiveUsers);
-  var Ddata1 = useAppSelector((state) => state.InactiveUsers.GQL_list);
+  var Ddata = useAppSelector(tableSelector);
+  var Ddata1 = useAppSelector(inactivegraphSelector);
   const [rows, setRows] = useState<getInactiveUsersData[]>(Ddata);
-  const [searched, setSearched] = useState<string>("");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [sortingOrder, setSortingOrder] = useState('asc');
-  const inputDate = useAppSelector(state => state.InactiveUsers.Date);
   useEffect(() => {
     setRows(Ddata);
   }, [Ddata]);

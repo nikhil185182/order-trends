@@ -2,17 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { Dialog, DialogContent } from "@mui/material";
-import styled from "styled-components";
-import { ChartEvent, ActiveElement, ChartData, ChartItem } from "chart.js";
+import { ChartEvent, ActiveElement } from "chart.js";
 import { Wrapper, Dropdown, ChartContainer } from "../InactiveCustomers/styledComponents";
-
-
-
-
+import { inactivegraphSelector } from "./graphselector";
 
 const InactiveGraph = () => {
-  const data = useAppSelector((state) => state.InactiveUsers.GQL_list);
+  const data = useAppSelector(inactivegraphSelector);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [yearOptions, setYearOptions] = useState<number[]>([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -33,7 +28,7 @@ const InactiveGraph = () => {
     setSelectedYear(years[0] || null);
   }, [data]);
 
-  
+
 
   const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {
     if (chartelement.length >= 1) {
@@ -126,7 +121,7 @@ const InactiveGraph = () => {
           <Select
             value={selectedYear || ""}
             onChange={(e: { target: { value: any; }; }) => setSelectedYear(Number(e.target.value))}
-            style={{ width: 150 }} 
+            style={{ width: 150 }}
           >
             {yearOptions.map((year) => (
               <MenuItem key={year} value={year}>
