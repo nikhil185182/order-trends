@@ -19,9 +19,6 @@ const CompanyDatePicker = () => {
 
   useEffect(() => {
     dispatch(setDateString(dateList));
-    console.log("====================================");
-    console.log(dateList);
-    console.log("====================================");
   }, [dateList,dispatch]);
   return (
     <div>
@@ -31,11 +28,8 @@ const CompanyDatePicker = () => {
           label='Select Dates'
           value={value}
           disableFuture={true}
-          onYearChange={()=>{
-             console.log('====================================');
-             console.log(`year changed`);
+          onYearChange={()=>{ 
              setYear(!year)
-             console.log('====================================');
           }}
           views={['year','month','day']}
           onChange={()=>true}
@@ -74,7 +68,7 @@ const CompanyDatePicker = () => {
                 }
               }
               onClick={() =>
-                SetDateList(dateList.filter((item) => item != e))
+                SetDateList(dateList.filter((item) => item !== e))
               }
 />}
                 variant="outlined"

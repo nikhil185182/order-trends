@@ -48,7 +48,6 @@ const companysSlice = createSlice({
       .addCase(
         fetchCompanyData.fulfilled,
         (state, { payload }: PayloadAction<companyLevel[]>) => {
-          console.log(payload);
           state.status = "success";
           state.Data = payload;
         }
