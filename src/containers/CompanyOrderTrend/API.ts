@@ -6,23 +6,11 @@ import { company, companyLevel, reqbody } from "./models";
 export const fetchCompanyData = createAsyncThunk(
     "companyOrderData/fetchSpecificCompaniesData",
     async (params: reqbody) => {
-
-      console.log('====================================');
-      console.log(`in thunk`);
-      console.log('====================================');
-      
       try {  
-        console.log('====================================');
-        console.log(`calling gql query`);
-        console.log('====================================');
         const response = await GetSpecificCompanyData(
           params.companyString,
           params.dateString
         );
-
-        console.log('====================================');
-        console.log(`called gql query res`,response);
-        console.log('====================================');
 
         if (!response.loading && response.data) {
           const tempResult: companyLevel[]  = response.data

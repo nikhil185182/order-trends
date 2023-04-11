@@ -1,6 +1,5 @@
 import { Search} from "@mui/icons-material";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
-import { Chip } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { setCompanyString } from "../CompanyOrderTrend/reducer";
@@ -49,9 +48,6 @@ export default function ReactSearchBar() {
         {companyList.map((e, index) => {
           return (
             <DateChip
-              style={{
-                position: "relative",
-              }}
               key={index}
               className="chipObject"
               label={e}
@@ -61,7 +57,7 @@ export default function ReactSearchBar() {
                     position: "absolute",
                     right: "10px",
                   }}
-                  onClick={() => SetCompanyList(companyList.filter((item) => item != e))}
+                  onClick={() => SetCompanyList(companyList.filter((item) => item !== e))}
                 />
               }
               variant="outlined"

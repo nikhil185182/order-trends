@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Line } from "react-chartjs-2";
 import { ReqCompanies } from "../CompanyOrderTrend/selector";
 import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
@@ -30,63 +30,56 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+const data1: companyLevel[] = [
+  {
+    Company: "",
+    Date: "",
+    TotalOrders: 0,
+    CompletedOrders: 0,
+    AttemptedOrders: 0,
+  },
+];
 
 const TotalOrdersVsDateGraph = () => {
 
 
-  const data1: companyLevel[] = [
-    {
-      Company: "",
-      Date: "",
-      TotalOrders: 0,
-      CompletedOrders: 0,
-      AttemptedOrders: 0,
-    },
-  ];
-
-
   const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
-
-
-  console.log(data);
   const y_label: string = useAppSelector((state) => state.company.label);
 
-  
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    hoverRadius:8,
+    hoverRadius: 8,
     scales: {
-        x: {
-            grid: {
-                display: true
-            },
-            title:{
-                display:true,
-                text:"Order Dates"
-            }
-        },
-        y: {
-            beginAtZero: true,
-            grid: {
-                display: true
-            },
-            title:{
-                display:true,
-                text:y_label
-            }
-        }
-    },
-    plugins: {
-        legend: {
-            position: 'top' as const,
+      x: {
+        grid: {
+          display: true,
         },
         title: {
-            display: false,
+          display: true,
+          text: "Order Dates",
         },
+      },
+      y: {
+        beginAtZero: true,
+        grid: {
+          display: true,
+        },
+        title: {
+          display: true,
+          text: y_label,
+        },
+      },
     },
-};
-
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: false,
+      },
+    },
+  };
 
   const groupedData = data.reduce<GroupedData>((result, currentValue) => {
     const { Company, ...rest } = currentValue;
@@ -97,9 +90,8 @@ const TotalOrdersVsDateGraph = () => {
     return result;
   }, {});
 
-  const helper = (label:string)=>{
-
-    if(label=="Total Orders"){
+  const helper =useCallback((label: string) => {
+    if (label === "Total Orders") {
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
@@ -111,8 +103,7 @@ const TotalOrdersVsDateGraph = () => {
           radius: 7.5,
         })),
       };
-    }
-    else if(label=="Attempted Orders"){
+    } else if (label === "Attempted Orders") {
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
@@ -124,8 +115,7 @@ const TotalOrdersVsDateGraph = () => {
           radius: 7.5,
         })),
       };
-    }
-    else{
+    } else {
       return {
         labels: [...new Set(data.map((d) => d.Date))],
         datasets: Object.keys(groupedData).map((Company) => ({
@@ -138,25 +128,22 @@ const TotalOrdersVsDateGraph = () => {
         })),
       };
     }
+  },[data,groupedData])
 
-  }
-
-  const chartData =  
-    (data[0].Company === data1[0].Company)
+  const chartData = useMemo(() => {
+    return data[0].Company === data1[0].Company
       ? {
           labels: [],
           datasets: [],
         }
-      : helper(y_label)
+      : helper(y_label);
+  }, [helper,data,y_label]);
 
-  useEffect(
-    () => {
-    }, 
-    [chartData]);
+  useEffect(() => {}, [chartData]);
 
   return (
     <ChartComponent>
-    <Line data={chartData} width={500} height={500} options={options} />
+      <Line data={chartData} width={500} height={500} options={options} />
     </ChartComponent>
   );
 };
