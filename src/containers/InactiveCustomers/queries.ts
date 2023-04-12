@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const INACTIVEUSERS_QUERY = gql`
 query InactiveUsers($input: DateTime!) {
-  inactiveusers(date: $input) {
+  getInactiveCompanies(date: $input) {
     CompanyName
     LatestOrderDate
   }
@@ -11,7 +11,7 @@ query InactiveUsers($input: DateTime!) {
 
 export const INACTIVEMONTHS_QUERY = gql`
 query Inactivenew($input:Int!){
-  inactivemonths(days:$input) {
+  getInactiveMonths(days:$input) {
     CompanyName
     LastOrderDate
     Months

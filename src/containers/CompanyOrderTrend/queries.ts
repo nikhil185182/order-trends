@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const COMPANIES_QUERY = gql`
   query companyRequest {
-    companyLists {
+    getCompanyList {
       CompanyName
     }
   }

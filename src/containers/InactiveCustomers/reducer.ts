@@ -24,7 +24,7 @@ const InitialState: initialstatetypes =
 
 export const fetchInactiveMonths = createAsyncThunk("InactiveUsers/fetchInactiveData", async (thunkAPI) => {
     const { data } = useQuery<GQL_list>(INACTIVEMONTHS_QUERY, { variables: { input: 60 } });
-    const tempResult: InactiveMonths[] = data?.inactivemonths ?? [];
+    const tempResult: InactiveMonths[] = data?.getInactiveMonths ?? [];
     const result: InactiveMonths[] = [];
     tempResult?.map((c: InactiveMonths) => result.push(c));
     return result;
@@ -36,7 +36,7 @@ export const fetchInactiveDate = createAsyncThunk("InactiveUsers/addingInactiveU
     variables: { input: inputDays }
   })
   if (data) {
-    const li2: getInactiveUsersData[] | undefined = data?.inactiveusers;
+    const li2: getInactiveUsersData[] | undefined = data?.getInactiveCompanies;
 
     var original: getInactiveUsersData[] = [];
 

@@ -20,7 +20,7 @@ export interface companyLevel {
   }
   
   export type companiesList = {    
-   companyLists : company[]
+    getCompanyList : company[]
   }
   
   export   type searchBarDTO = {

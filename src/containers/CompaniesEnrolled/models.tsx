@@ -6,7 +6,7 @@ export type CompaniesEnrolledDTO={
 
 }
 export type CompaniesEnrolledType={
-    NewUsersData: CompaniesEnrolledDTO[];
+    getCompaniesEnrolled: CompaniesEnrolledDTO[];
 }
 export type ReduxInitialState = {
     __typename : string,

@@ -41,7 +41,7 @@ export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
           variables:{FromDate:new Date(inputfromdate),ToDate:new Date(inputtodate)}
       })
   if (data) {
-      return data.NewUsersData;
+      return data.getCompaniesEnrolled;
 
   } else if (loading) {
       return []

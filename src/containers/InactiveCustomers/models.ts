@@ -13,10 +13,10 @@ export type InactiveMonths = {
     Months: String;
 }
 export type GQL_list =  {
-    inactivemonths: InactiveMonths[];
+    getInactiveMonths: InactiveMonths[];
 }
 export type Li2 = {
-    inactiveusers : getInactiveUsersData[];
+    getInactiveCompanies : getInactiveUsersData[];
 }
 
 export type inacparam = {
