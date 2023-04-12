@@ -5,7 +5,6 @@ export const MainContainer = styled.div`
     width: 100%;
     justify-content: space-between;
     margin-top: 5%;
-    overflow-y:scroll;
     @media (max-width:820px){
         width:100%!important;
         flex-direction:column;
@@ -148,7 +147,7 @@ export const SearchBarComponent  = styled.div`
   `
   export const RadioButtonComponent= styled.div`
     width: max-content;
-    margin-top: 1%;
+    margin-top: 0.5%;
     margin-left: 30%;
     margin-right:30%;
     @media (max-width:840px){
