@@ -5,7 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch } from "../../shared/utils/redux/hooks";
 import { setDateString } from "../CompanyOrderTrend/reducer";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { DateChip } from "../../components/DateChip";

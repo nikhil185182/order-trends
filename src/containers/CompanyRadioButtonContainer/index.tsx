@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 
 import { setLabel } from '../CompanyOrderTrend/reducer';
-import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
+import { useAppDispatch } from '../../shared/utils/redux/hooks';
 
 
 

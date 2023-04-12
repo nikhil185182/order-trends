@@ -27,7 +27,7 @@ import {
 } from "../../shared/config";
 import {
   useAppSelector,
-} from "../../shared/utils/redux/selectors/hooks";
+} from "../../shared/utils/redux/hooks";
 import { selectOrderTrendData } from "./selector";
 import { FormControlLabel } from "@mui/material";
 import {

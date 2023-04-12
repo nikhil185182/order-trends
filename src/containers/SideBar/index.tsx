@@ -10,7 +10,7 @@ import { toggleDrawer } from "../CompaniesEnrolled/reducer";
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../shared/utils/redux/selectors/hooks";
+} from "../../shared/utils/redux/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
 
 import { CompaniesEnrolled_head } from "../../shared/global_constants";

@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 export  const  DateTypeCast=(inputDate:string)=>{
   let from = inputDate.split("/");
 

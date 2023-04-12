@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 
 import { CompanySelector } from "../../containers/CompanyOrderTrend/selector";
 import { Container } from '@mui/material';

@@ -12,7 +12,7 @@ import {
 import { useCallback, useEffect, useMemo } from "react";
 import { Line } from "react-chartjs-2";
 import { ReqCompanies } from "../CompanyOrderTrend/selector";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { ChartComponent } from "../CompanyOrderTrend/styledComponents";
 import { companyLevel } from "../CompanyOrderTrend/models";
 

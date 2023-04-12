@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { ChartEvent, ActiveElement } from "chart.js";
 import { Wrapper, Dropdown, ChartContainer } from "../InactiveCustomers/styledComponents";
-import { inactivegraphSelector } from "./graphselector";
+import { inactivegraphSelector } from "./selector";
 
 const InactiveGraph = () => {
   const data = useAppSelector(inactivegraphSelector);

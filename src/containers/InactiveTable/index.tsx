@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
@@ -17,7 +17,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Inactive_Table, Rows, Search_bar } from "../InactiveCustomers/styledComponents";
 import * as XLSX from 'xlsx';
-import { inactivegraphSelector } from "../InactiveGraph/graphselector";
+import { inactivegraphSelector } from "../InactiveGraph/selector";
 import { tableSelector } from "./tableselector";
 
 export default function InactiveTable() {

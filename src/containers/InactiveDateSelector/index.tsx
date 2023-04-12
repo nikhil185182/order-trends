@@ -4,7 +4,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import React, { useState } from 'react';
 import {  settingDate } from '../InactiveCustomers/reducer';
-import { useAppDispatch} from '../../shared/utils/redux/selectors/hooks';
+import { useAppDispatch} from '../../shared/utils/redux/hooks';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { Container, Datepicker, Direction, Submitbutton } from '../InactiveCustomers/styledComponents';

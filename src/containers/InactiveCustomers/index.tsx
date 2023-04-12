@@ -6,7 +6,7 @@ import InactiveGraph from '../InactiveGraph';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
+import { useAppDispatch } from '../../shared/utils/redux/hooks';
 
 const InactiveUsers = () => {
 

@@ -1,7 +1,7 @@
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { useEffect, useState } from "react";
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/hooks";
 import { CompanyStringSelector } from "../CompanyOrderTrend/selector";
 import { DateStringSelector } from "../CompanyOrderTrend/selector";
 import { fres } from "../CompanyOrderTrend/models";

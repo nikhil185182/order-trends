@@ -3,7 +3,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { DateTypeCast } from "../CompaniesEnrolled/utils";
 import { StyledTableBody, StyledTableContainer, StyledTitle } from "./StyledComponents";
 

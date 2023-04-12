@@ -7,7 +7,7 @@ import {
 import { CompaniesEnrolledDTO, CompaniesEnrolledType,   } from "./models";
 import { ReduxInitialState } from "./models";
 import { CompaniesEnrolledQuery } from "./queries";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { useQuery } from "@apollo/client";
 
 const fromdate: Date = new Date();

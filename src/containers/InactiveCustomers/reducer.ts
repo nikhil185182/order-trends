@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "./models";
 import { INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY } from "./queries";
 import { useQuery } from "@apollo/client";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
 
 type initialstatetypes =
     {

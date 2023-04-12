@@ -2,7 +2,7 @@ import React from 'react';
 import Statistics from '../Statistics';
 import Compare from '../Compare';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import { useAppDispatch } from '../../shared/utils/redux/selectors/hooks';
+import { useAppDispatch } from '../../shared/utils/redux/hooks';
 import { fetchOrderTrenData } from './reducer';
 import { OrderTrendBox } from './styledComponents';
 

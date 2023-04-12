@@ -1,7 +1,7 @@
 import { Search} from "@mui/icons-material";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { useEffect, useState } from "react";
-import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/hooks";
 import { setCompanyString } from "../CompanyOrderTrend/reducer";
 import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";

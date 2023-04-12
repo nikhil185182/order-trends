@@ -5,7 +5,7 @@ import { addOrderDateList } from "../OrderTrend/reducer";
 import {
   useAppSelector,
   useAppDispatch,
-} from "../../shared/utils/redux/selectors/hooks";
+} from "../../shared/utils/redux/hooks";
 import { getDateFromDatePicker, getOrderListMap } from "./utils";
 import { getOrderListData, selectOrderTrendData } from "./selector";
 import {

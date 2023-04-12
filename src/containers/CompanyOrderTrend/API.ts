@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useAppDispatch } from "../../shared/utils/redux/selectors/hooks";
+import { useAppDispatch } from "../../shared/utils/redux/hooks";
 import { fetchCompanies } from "./reducer";
 import { GetSpecificCompanyData, CompanyUtil } from "./gqlHelper";
 import { company, companyLevel, reqbody } from "./models";

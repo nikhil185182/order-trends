@@ -10,7 +10,7 @@ import {
 } from "../CompaniesEnrolled/reducer";
 import {
   useAppDispatch
-} from "../../shared/utils/redux/selectors/hooks";
+} from "../../shared/utils/redux/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import { alertMessage } from "../../shared/global_constants";
 import { StyledDateSelectionRange, StyledFromContainer, StyledToContainer, StyledDatePicker, StyledSubmitBtn, StyledDateRange } from "./StyledComponents";

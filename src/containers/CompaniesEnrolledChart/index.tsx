@@ -19,7 +19,7 @@ import {
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../shared/utils/redux/selectors/hooks";
+} from "../../shared/utils/redux/hooks";
 import {
   FormControl,
   FormControlLabel,
