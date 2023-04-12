@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material'
+import { FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material'
 import React from 'react';
 import { useEffect, useState } from 'react'
 
@@ -32,9 +32,9 @@ const CompanyRadioButtonContainer = () => {
         name="row-radio-buttons-group"
         onChange={handleChange}
       >
-        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio style={{ color: "#54B948" }} />} label="Total Orders" />
-        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
-        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
+        <FormControlLabel value="Total Orders"  checked={value==="Total Orders"} control={<Radio style={{ color: "#54B948" }} />} label="Total Orders" />
+        <FormControlLabel value="Completed Orders" checked={value==="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
+        <FormControlLabel value="Attempted Orders" checked={value==="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
       </RadioGroup>
     </FormControl>
     :
@@ -45,9 +45,9 @@ const CompanyRadioButtonContainer = () => {
         onChange={handleChange}
         color="green"
       >
-        <FormControlLabel value="Total Orders"  checked={value=="Total Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Total Orders" />
-        <FormControlLabel value="Completed Orders" checked={value=="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
-        <FormControlLabel value="Attempted Orders" checked={value=="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
+        <FormControlLabel value="Total Orders"  checked={value==="Total Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Total Orders" />
+        <FormControlLabel value="Completed Orders" checked={value==="Completed Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Completed Orders" />
+        <FormControlLabel value="Attempted Orders" checked={value==="Attempted Orders"} control={<Radio style={{ color: "#54B948" }}/>} label="Attempted Orders" />
       </RadioGroup>
     </FormControl>
 
