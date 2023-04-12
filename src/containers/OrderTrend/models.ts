@@ -11,7 +11,7 @@ export type OrdersListType = {
 }
 
 export type OrderTrendGQLResponse = {
-    ordertrend : Orders[]
+    getLastDays : Orders[]
 }
 
 export type GraphType = {
