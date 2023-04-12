@@ -25,7 +25,9 @@ import {
   ORDERTREND_LINE_GRAPH_OPTIONS,
   ORDERTREND_BAR_GRAPH_OPTIONS,
 } from "../../shared/config";
-import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/selectors/hooks";
+import {
+  useAppSelector,
+} from "../../shared/utils/redux/selectors/hooks";
 import { selectOrderTrendData } from "./selector";
 import { FormControlLabel } from "@mui/material";
 import {
@@ -53,9 +55,6 @@ ChartJS.register(
 );
 
 const Statistics = () => {
-
-  const dispatch = useAppDispatch();
-    
   const [isLine, SetLine] = useState(true);
 
   const orderList: Orders[] = useAppSelector(selectOrderTrendData);
@@ -114,7 +113,7 @@ const Statistics = () => {
         )}
       </StatisticsGraph>
       <ChartCustomise>
-        <FormControlLabel 
+        <FormControlLabel
           control={<RadioButton onClick={handleLineClick} checked={isLine} />}
           label={LINE_CHART}
         />
@@ -124,7 +123,7 @@ const Statistics = () => {
         />
       </ChartCustomise>
       <DaysCustomise>
-        {ConfigDays.map((e,index) => {
+        {ConfigDays.map((e, index) => {
           const daysLabel = getDaysLabel(e);
           if (e === current) {
             return (

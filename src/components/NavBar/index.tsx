@@ -12,16 +12,11 @@ import {
   ECOM_ANALYTICS,
   GREEN,
 } from "../../shared/global_constants";
-import { useNavigate } from "react-router-dom";
 import DrawerComp from "../Drawer";
 import React from "react";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
-import { NavbarButton } from "../NavbarButton";
 import { NavbarConatiner } from "../NavbarConatiner";
 import { RoutesPath } from "../../shared/config";
-import Link from '@mui/material/Link';
-import { NavLink } from "react-router-dom";
-import { NavTab, NavtabType } from "../NavTab";
+import { NavTab } from "../NavTab";
 
 export default function NavBar() {
   const theme = useTheme();

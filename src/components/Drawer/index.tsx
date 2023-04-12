@@ -8,19 +8,12 @@ import {
   ORDER_TREND,
 } from "../../shared/global_constants";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../shared/utils/redux/selectors/hooks";
 import { RoutesPath } from "../../shared/config";
-import { NavTab } from "../NavTab";
 import { DrawerTab } from "../DrawerTab";
 
 export default function DrawerComp() {
   const [openDrawer, setOpenDrawer] = useState(false);
-  let navigate = useNavigate();
-
-  const handleClick = () => {
-    setOpenDrawer(!openDrawer);
-  };
+  const handleClick = () => setOpenDrawer(!openDrawer);
 
   return (
     <>
@@ -29,7 +22,7 @@ export default function DrawerComp() {
         onClose={() => setOpenDrawer(false)}
         anchor="right"
       >
-        <List style={{ fontFamily: "roboto" }}>
+        <List>
           <ListItemButton onClick={handleClick}>
             <DrawerTab
               details={{

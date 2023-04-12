@@ -51,7 +51,7 @@ const Compare = () => {
   const [graphData, SetGraphData] = useState<GraphType>(GRAPH_DUMMY_DATA);
 
   const handleDelete = (e: Orders) => {
-    SetDateList(dateList.filter((item) => item != e));
+    SetDateList(dateList.filter((item) => item !== e));
     dispatch(addOrderDateList({ data: dateList }));
   };
 
@@ -60,7 +60,7 @@ const Compare = () => {
     const val = getDateFromDatePicker(newValue);
     if (orderMap.has(val)) {
       const flag =
-        dateList.filter((e) => e.OrderDate == orderMap.get(val)!.OrderDate)
+        dateList.filter((e) => e.OrderDate === orderMap.get(val)!.OrderDate)
           .length > 0;
       if (!flag) {
         SetDateList([...dateList, orderMap.get(val)!]);
@@ -102,7 +102,7 @@ const Compare = () => {
       ],
     };
     SetGraphData(temp_graphData);
-  }, [ReduxdateList]);
+  }, [ReduxdateList,dateList]);
 
   return (
     <CompareTab>
