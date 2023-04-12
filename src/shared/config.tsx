@@ -54,6 +54,10 @@ export const ORDERTREND_LINE_GRAPH_OPTIONS = {
       title: {
         display: true,
         text: "Order Dates",
+        font : {
+          size : 15,
+        },
+        color : 'black'
       },
     },
     y: {
@@ -64,6 +68,10 @@ export const ORDERTREND_LINE_GRAPH_OPTIONS = {
       title: {
         display: true,
         text: "Total Number Of Orders",
+        font : {
+          size : 15,
+        },
+        color : 'black'
       },
     },
   },
@@ -89,6 +97,10 @@ export const ORDERTREND_BAR_GRAPH_OPTIONS = {
       title: {
         display: true,
         text: "Order Dates",
+        font : {
+          size : 15,
+        },
+        color : 'black'
       },
     },
     y: {
@@ -99,6 +111,10 @@ export const ORDERTREND_BAR_GRAPH_OPTIONS = {
       title: {
         display: true,
         text: "Total Number Of Orders",
+        font : {
+          size : 15,
+        },
+        color : 'black'
       },
     },
   },
