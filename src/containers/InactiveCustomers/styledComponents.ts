@@ -10,9 +10,20 @@ export const Container = styled.div`
 export const Total_component = styled.div`
     display: flex;
     margin-top: 5%;
-    @media(max-width:820px){
+    @media(max-width:700px){
       display: flex;
       flex-direction:column;
+      margin-top:100px;
+    }
+    @media(max-width:1100px){
+      display: flex;
+      flex-direction:column;
+      margin-top:100px;
+    }
+    @media(max-width:2300px){
+      display: flex;
+      flex-direction:column;
+      margin-top:100px;
     }
 `;
 
@@ -30,6 +41,20 @@ export const InactiveUsertable_container = styled.div`
   width: 90%;
   margin-left:120px;
   margin-bottom: 100px!important;
+  @media(max-width:700px){
+    display: flex;
+    flex-direction:column;
+    margin-top:100px;
+  }
+  @media(max-width:1100px){
+    flex-direction:column;
+    margin-top:800px;
+  }
+  @media(max-width:2300px){
+    display: flex;
+    flex-direction:column;
+    margin-top:100px;
+  }
 `;
 
 export const Heading = styled.div`
@@ -37,18 +62,29 @@ export const Heading = styled.div`
 `;
 
 export const Datepicker_component = styled.div`
-    align-items: left;
-    display: inline-block;
-    width: 10%;
-    height: 100px;
-    margin-top: 20px;
-    margin-right: 1100px;
-    padding: 50px;
-    margin-bottom: 12px;
-    box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
-    float: 'left';
+  align-items: left;
+  display: inline-block;
+  width: 10%;
+  height: 100px;
+  margin-top: 20px;
+  margin-right: 1100px;
+  padding: 50px;
+  margin-bottom: 12px;
+  box-shadow: rgba(37, 37, 37, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  float: 'left';
+
+  @media(max-width: 1100px) {
+    margin-right: 0;
+  }
+
+  @media(max-width: 700px) {
+    width: 90%;
+    margin-right: 0;
+    margin-top: 200px;
+  }
 `;
+
 
 export const Rows = styled.div`
     width: 100%;
@@ -75,7 +111,7 @@ export const Inactive_Table = styled.div`
     width: 900px;
     padding: 20px;
     border-radius: 10px!important;
-    margin-top:-35px;
+    margin-top:-235px;
     margin-left: 5%;
     margin-bottom: 5%;
 `;
@@ -83,51 +119,8 @@ export const Inactive_Table = styled.div`
 export const Submitbutton = styled.div`
 margin-top: 18%;
 
-@media(max-width:1000px){
-  padding-left: 36%;
-    margin-top: 15%;
-}
-@media(max-width:590px){
-  margin-top:10%;
-  padding-left:35%;
-  margin-bottom:4%;
-}
 `;
 
 export const Stepper = styled.div`
     width: 20%;
 `;
-
-export const Radio_group = styled.div`
-    margin-left: 45% !important;
-`;
-
-
-
-export const Wrapper = styled.div`
-  width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left:60px;
-`;
-
-export const ChartContainer = styled.div`
-  height: 500px;
-  width: 100%;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Dropdown = styled.div`
-  margin-left: 700px;
-  margin-top: -50px;
-`;
-
-
-
-
