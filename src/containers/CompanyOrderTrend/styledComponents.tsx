@@ -66,13 +66,14 @@ export const SearchBarComponent  = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px!important;
+    height: 400px!important;
     width: 93%;
-    padding: 20px;
+    // padding: 20px;
     margin-bottom: 10px;
     box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
     border-radius: 10px;
     overflow-y: scroll;
+    border : 2px solid black;
     overflow-x: hidden;
     @media (max-width:820px){
         width:45%;
