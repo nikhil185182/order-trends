@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { ChartEvent, ActiveElement } from "chart.js";
-import { Wrapper, Dropdown, ChartContainer } from "../InactiveCustomers/styledComponents";
+import { Wrapper, ChartContainer, Dropdown } from "./StyledComponents";
 import { inactivegraphSelector } from "./selector";
 
 const InactiveGraph = () => {
@@ -45,7 +45,6 @@ const InactiveGraph = () => {
         LastOrderDate: company.LastOrderDate.toString().slice(0, 10),
       }));
       setCompaniesList(companies);
-      console.log(companies);
       setDrawerOpen(true);
     }
   };
@@ -120,8 +119,10 @@ const InactiveGraph = () => {
         <Dropdown>
           <Select
             value={selectedYear || ""}
-            onChange={(e: { target: { value: any; }; }) => setSelectedYear(Number(e.target.value))}
-            style={{ width: 150 }}
+            onChange={(e: { target: { value: any } }) =>
+              setSelectedYear(Number(e.target.value))
+            }
+            style={{ width: 100 }}
           >
             {yearOptions.map((year) => (
               <MenuItem key={year} value={year}>

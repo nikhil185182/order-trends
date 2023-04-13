@@ -13,7 +13,24 @@ export default function ReactSearchBar() {
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
-  const data1: searchBarDTO[] = data.map((item) => {
+  
+  const capitalizeFirstLetterOfEachWord = (str: string): string => {
+    const words = str.toLowerCase().split(' ');
+    for (let i = 0; i < words.length; i++) {
+      if (words[i] && words[i].length > 0) { // Check if words[i] is defined and has length greater than 0
+        words[i] = words[i][0].toUpperCase() + words[i].substring(1);
+      }
+    }
+    return words.join(' ');
+  };
+  
+  const cData = data.map((company: company) => {
+    return {
+      CompanyName: capitalizeFirstLetterOfEachWord(company.CompanyName)
+    };
+  });
+ 
+  const data1: searchBarDTO[] = cData.map((item) => {
     const key = item.CompanyName;
     const value = item.CompanyName;
     return { key, value };
