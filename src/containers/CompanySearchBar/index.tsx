@@ -1,15 +1,15 @@
-import { Search} from "@mui/icons-material";
-import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
+import { Search } from "@mui/icons-material";
+import HighlightOffTwoToneIcon from "@mui/icons-material/HighlightOffTwoTone";
 import { useEffect, useState } from "react";
-import { useAppDispatch,useAppSelector } from "../../shared/utils/redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/hooks";
 import { setCompanyString } from "../CompanyOrderTrend/reducer";
 import { CompanySelector } from "../CompanyOrderTrend/selector";
 import ReactSearchBox from "react-search-box";
 import { DateChip } from "../../components/DateChip";
 import { DateListBox } from "../CompanyOrderTrend/styledComponents";
 import { company, searchBarDTO } from "../CompanyOrderTrend/models";
+import { SearchBoxContainer } from "./styledComponents";
 export default function ReactSearchBar() {
-
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
@@ -41,26 +41,24 @@ export default function ReactSearchBar() {
     dispatch(setCompanyString(companyList));
   }, [companyList, dispatch]);
   return (
-    <div >
-      <div className="sb">
-      <ReactSearchBox
-        placeholder="Select Companies"
-        autoFocus={true}
-        data={data1}
-        clearOnSelect
-        onSelect={(Record:any) => {
-          if (companyList.indexOf(Record.item.value) === -1)
-            SetCompanyList([...companyList, Record.item.value]);
-          else alert("you've already selected it");
-        }}
-        onFocus={() => true}
-        leftIcon={<Search />}
-        iconBoxSize="35px"
-        inputHeight="45px"
-        dropdownHoverColor="rgba(62, 60, 60, 0.2)"
-        onChange={() => true}
-      />
-      </div>
+    <div>
+        <ReactSearchBox
+          placeholder="Select Companies"
+          autoFocus={true}
+          data={data1}
+          clearOnSelect
+          onSelect={(Record: any) => {
+            if (companyList.indexOf(Record.item.value) === -1)
+              SetCompanyList([...companyList, Record.item.value]);
+            else alert("you've already selected it");
+          }}
+          onFocus={() => true}
+          leftIcon={<Search />}
+          iconBoxSize="35px"
+          inputHeight="45px"
+          dropdownHoverColor="rgba(62, 60, 60, 0.2)"
+          onChange={() => true}
+        />
       <DateListBox>
         {companyList.map((e, index) => {
           return (
@@ -74,7 +72,9 @@ export default function ReactSearchBar() {
                     position: "absolute",
                     right: "10px",
                   }}
-                  onClick={() => SetCompanyList(companyList.filter((item) => item !== e))}
+                  onClick={() =>
+                    SetCompanyList(companyList.filter((item) => item !== e))
+                  }
                 />
               }
               variant="outlined"
