@@ -1,4 +1,12 @@
 import styled from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import '@fontsource/roboto';
+
+export const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+`;
 
 export const Container = styled.div`
     display: flex;
@@ -41,19 +49,17 @@ export const InactiveUsertable_container = styled.div`
   width: 90%;
   margin-left:120px;
   margin-bottom: 100px!important;
+  margin-top:100px;
   @media(max-width:700px){
     display: flex;
     flex-direction:column;
+    width:40%;
     margin-top:100px;
   }
-  @media(max-width:1100px){
+  @media(max-width:1400px){
     flex-direction:column;
-    margin-top:800px;
-  }
-  @media(max-width:2300px){
-    display: flex;
-    flex-direction:column;
-    margin-top:100px;
+    width: 40%;
+    margin-top:700px;
   }
 `;
 
@@ -74,14 +80,12 @@ export const Datepicker_component = styled.div`
   border-radius: 10px;
   float: 'left';
 
-  @media(max-width: 1100px) {
+  @media(max-width: 1400px) {
     margin-right: 0;
   }
 
   @media(max-width: 700px) {
-    width: 90%;
     margin-right: 0;
-    margin-top: 200px;
   }
 `;
 

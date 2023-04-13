@@ -1,4 +1,5 @@
 export const DAYS = 865;
+export const INACTIVE_DAY_COUNT = 60;
 
 export const RoutesPath = {
   orderTrend: "/",

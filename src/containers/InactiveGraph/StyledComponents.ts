@@ -23,7 +23,7 @@ export const ChartContainer = styled.div`
     width: 20%;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1400px) {
     width: 60%;
   }
 `;
@@ -37,7 +37,7 @@ export const Dropdown = styled.div`
     margin-top: 10px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1400px) {
     margin-left: 70px;
     margin-top:10px;
   }
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
   align-items: center;
   margin-left:60px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1400px) {
     width: 90%;
   }
 

@@ -15,7 +15,7 @@ export type InactiveMonths = {
 export type GQL_list =  {
     getInactiveMonths: InactiveMonths[];
 }
-export type Li2 = {
+export type InactiveList = {
     getInactiveCompanies : getInactiveUsersData[];
 }
 

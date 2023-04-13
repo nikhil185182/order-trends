@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getInactiveUsersData, GQL_list, InactiveMonths, Li2 } from "./models";
+import { getInactiveUsersData, GQL_list, InactiveList, InactiveMonths } from "./models";
 import { INACTIVEMONTHS_QUERY, INACTIVEUSERS_QUERY } from "./queries";
 import { useQuery } from "@apollo/client";
 import { useAppSelector } from "../../shared/utils/redux/hooks";
+import { INACTIVE_DAY_COUNT } from "../../shared/config";
 
 type initialstatetypes =
     {
@@ -23,16 +24,16 @@ const InitialState: initialstatetypes =
 };
 
 export const fetchInactiveMonths = createAsyncThunk("InactiveUsers/fetchInactiveData", async (thunkAPI) => {
-    const { data } = useQuery<GQL_list>(INACTIVEMONTHS_QUERY, { variables: { input: 60 } });
+    const { data } = useQuery<GQL_list>(INACTIVEMONTHS_QUERY, { variables: { input: INACTIVE_DAY_COUNT } });
     const tempResult: InactiveMonths[] = data?.getInactiveMonths ?? [];
     const result: InactiveMonths[] = [];
-    tempResult?.map((c: InactiveMonths) => result.push(c));
+    tempResult?.forEach((c: InactiveMonths) => result.push(c));
     return result;
 });
 
 export const fetchInactiveDate = createAsyncThunk("InactiveUsers/addingInactiveUsersdata", async (thunkAPI) => {
     const inputDays = useAppSelector(state => state.InactiveUsers.Date);
-  const {  data } = useQuery<Li2>(INACTIVEUSERS_QUERY, {
+  const {  data } = useQuery<InactiveList>(INACTIVEUSERS_QUERY, {
     variables: { input: inputDays }
   })
   if (data) {
@@ -40,7 +41,7 @@ export const fetchInactiveDate = createAsyncThunk("InactiveUsers/addingInactiveU
 
     var original: getInactiveUsersData[] = [];
 
-    li2?.map((e: getInactiveUsersData) => {
+    li2?.forEach((e: getInactiveUsersData) => {
       original.push(e);
     })
     return original;

@@ -123,6 +123,13 @@ const InactiveGraph = () => {
               setSelectedYear(Number(e.target.value))
             }
             style={{ width: 100 }}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: 100 
+                }
+              }
+            }}
           >
             {yearOptions.map((year) => (
               <MenuItem key={year} value={year}>
