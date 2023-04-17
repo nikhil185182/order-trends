@@ -1,12 +1,12 @@
 import NavBar from './components/NavBar';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { GlobalStyles } from './containers/InactiveCustomers/styledComponents';
+import { GlobalStyles } from './containers/InactiveCompanies/styledComponents';
 import { useAppDispatch } from './shared/utils/redux/hooks';
-import InactiveUsers from './containers/InactiveCustomers';
+import InactiveUsers from './containers/InactiveCompanies';
 import OrderTrend from './containers/OrderTrend';
 import CompaniesEnrolled from './containers/CompaniesEnrolled';
 import CompanyTrend from './containers/CompanyOrderTrend';
-import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
+import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCompanies/reducer';
 import { RoutesPath } from './shared/config';
 import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
 import GlobalSnackBar from './components/SnackBar';

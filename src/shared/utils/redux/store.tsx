@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderTrendReducer from "../../../containers/OrderTrend/reducer";
 import CompaniesEnrolled from "../../../containers/CompaniesEnrolled/reducer"
-import InactiveUserSlice from "../../../containers/InactiveCustomers/reducer";
+import InactiveUserSlice from "../../../containers/InactiveCompanies/reducer";
 import companysSlice from "../../../containers/CompanyOrderTrend/reducer";
 import appReducer from "./appReducer";
 
