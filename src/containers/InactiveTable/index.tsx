@@ -22,7 +22,6 @@ import { tableSelector } from "./tableselector";
 
 export default function InactiveTable() {
   var Ddata = useAppSelector(tableSelector);
-  var Ddata1 = useAppSelector(inactivegraphSelector);
   const [rows, setRows] = useState<getInactiveUsersData[]>(Ddata);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -30,8 +29,8 @@ export default function InactiveTable() {
   useEffect(() => {
     setRows(Ddata);
   }, [Ddata]);
+  console.log(Ddata);
 
-  console.log(Ddata1);
 
   const exportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(rows);
@@ -126,8 +125,8 @@ export default function InactiveTable() {
                     }
                   })
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <TableRow >
+                  .map((row,index) => (
+                    <TableRow key={index} >
                       <TableCell component="th" scope="row" align="left">
                         {row.CompanyName}
                       </TableCell>

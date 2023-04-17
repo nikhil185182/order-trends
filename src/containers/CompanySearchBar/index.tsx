@@ -13,11 +13,11 @@ export default function ReactSearchBar() {
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
-  
+  const[datac,setdatac] = useState({});
   const capitalizeFirstLetterOfEachWord = (str: string): string => {
     const words = str.toLowerCase().split(' ');
     for (let i = 0; i < words.length; i++) {
-      if (words[i] && words[i].length > 0) { // Check if words[i] is defined and has length greater than 0
+      if (words[i] && words[i].length > 0) { 
         words[i] = words[i][0].toUpperCase() + words[i].substring(1);
       }
     }
@@ -29,12 +29,26 @@ export default function ReactSearchBar() {
       CompanyName: capitalizeFirstLetterOfEachWord(company.CompanyName)
     };
   });
+
+  const [searchText, setSearchText] = useState<string>("");
+  console.log(searchText);
+  let data1: searchBarDTO[] =[];
  
-  const data1: searchBarDTO[] = cData.map((item) => {
-    const key = item.CompanyName;
-    const value = item.CompanyName;
-    return { key, value };
-  });
+  useEffect(()=>{
+    data1=cData.map((item) => {
+      const key = item.CompanyName;
+      const value = item.CompanyName;
+      return { key, value };
+
+  })
+  data1=data1.filter((item) => item.value.toLowerCase().startsWith(searchText))
+            .sort((a, b) => a.value.localeCompare(b.value))
+            .slice(0, 10)
+            console.log(data1);
+            setdatac(data1);
+  },[searchText]);
+
+  
   const [companyList, SetCompanyList] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -57,7 +71,7 @@ export default function ReactSearchBar() {
           iconBoxSize="35px"
           inputHeight="45px"
           dropdownHoverColor="rgba(62, 60, 60, 0.2)"
-          onChange={() => true}
+          onChange={(value) => setSearchText(value)}
         />
       <DateListBox>
         {companyList.map((e, index) => {
