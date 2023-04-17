@@ -8,12 +8,13 @@ import CompaniesEnrolled from './containers/CompaniesEnrolled';
 import CompanyTrend from './containers/CompanyOrderTrend';
 import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCustomers/reducer';
 import { RoutesPath } from './shared/config';
-
-
+import { fetchOrderTrenData } from './containers/OrderTrend/reducer';
+import GlobalSnackBar from './components/SnackBar';
 
 function App() {
   
   const dispatch = useAppDispatch();
+  dispatch(fetchOrderTrenData());
   dispatch(fetchInactiveDate());
   dispatch(fetchInactiveMonths());
 
@@ -22,14 +23,13 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <NavBar />
-        <div className="hello">
+        <GlobalSnackBar/>
           <Routes>
             <Route path={RoutesPath.orderTrend} element={<OrderTrend />} />
             <Route path={RoutesPath.companiesEnrolled} element={<CompaniesEnrolled />} />
             <Route path={RoutesPath.comapanyOrderTrend} element={<CompanyTrend  />} />
             <Route path={RoutesPath.inactiveCompanies} element={<InactiveUsers />} />
           </Routes>
-        </div>
       </BrowserRouter>
     </>
   );

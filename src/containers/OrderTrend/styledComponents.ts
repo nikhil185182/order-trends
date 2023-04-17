@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const OrderTrendBox = styled.div`
+export const StyledOrderTrendBox = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;

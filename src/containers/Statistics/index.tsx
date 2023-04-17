@@ -12,26 +12,30 @@ import {
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 import { Orders, GraphType } from "../OrderTrend/models";
-import { GRAPH_DUMMY_DATA } from "../../shared/global_constants";
 import {
   ORDERTREND_LINE_GRAPH_OPTIONS,
   ORDERTREND_BAR_GRAPH_OPTIONS,
 } from "../../shared/config";
-import { useAppSelector } from "../../shared/utils/redux/hooks";
-import { selectOrderTrendData } from "./selector";
+import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/hooks";
+import {
+  selectOrderTrendChart,
+  selectOrderTrendData,
+  selectOrderTrendDays,
+} from "./selector";
 import { FormControlLabel } from "@mui/material";
 import {
-  ChartCustomise,
-  DaysCustomise,
-  StatisticsGraph,
-  StatisticsTab,
+  StyledChartCustomise,
+  StyledDaysCustomise,
+  StyledStatisticsGraph,
+  StyledStatisticsTab,
 } from "./styledComponents";
 import { RadioButton } from "../../components/RadioButton";
 import { ContainedButton } from "../../components/ConatinedButton";
 import { OutlinedButton } from "../../components/OutlinedButton";
 import { BAR_CHART, LINE_CHART } from "./constants";
-import { ConfigDays } from "./config";
+import { ConfigDays } from "./constants";
 import { getDaysLabel, getSlicedDays, setGraphObject } from "./utils";
+import { setOrderTrendChart, setOrderTrendDays } from "../OrderTrend/reducer";
 
 ChartJS.register(
   CategoryScale,
@@ -45,33 +49,35 @@ ChartJS.register(
 );
 
 const Statistics = () => {
+  const dispatch = useAppDispatch();
 
   const orderList: Orders[] = useAppSelector(selectOrderTrendData);
+  const isLineChart = useAppSelector(selectOrderTrendChart);
+  const currentDays = useAppSelector(selectOrderTrendDays);
 
-  const [isLineChart, SetLineChart] = useState(true);
-  const [graphData, SetGraphData] = useState<GraphType>(setGraphObject(getSlicedDays(orderList,30)));
-  const [currentDays, setCurrentDays] = useState(30);
+  const [graphData, SetGraphData] = useState<GraphType>(
+    setGraphObject(getSlicedDays(orderList, currentDays))
+  );
 
-  const updateGraph = (days: number) => {
-    const data = getSlicedDays(orderList,days);
+  useEffect(() => {
+    const data = getSlicedDays(orderList, currentDays);
     const tempGraphData = setGraphObject(data);
     SetGraphData(tempGraphData);
-    setCurrentDays(days);
-  };
+  }, [currentDays, orderList]);
 
-
-  const handleClick = (flag: boolean) => SetLineChart(flag);
+  const updateDays = (days: number) => dispatch(setOrderTrendDays(days));
+  const handleClick = (flag: boolean) => dispatch(setOrderTrendChart(flag));
 
   return (
-    <StatisticsTab>
-      <StatisticsGraph>
+    <StyledStatisticsTab>
+      <StyledStatisticsGraph>
         {isLineChart ? (
           <Line options={ORDERTREND_LINE_GRAPH_OPTIONS} data={graphData} />
         ) : (
           <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
         )}
-      </StatisticsGraph>
-      <ChartCustomise>
+      </StyledStatisticsGraph>
+      <StyledChartCustomise>
         <FormControlLabel
           control={
             <RadioButton
@@ -90,26 +96,26 @@ const Statistics = () => {
           }
           label={BAR_CHART}
         />
-      </ChartCustomise>
-      <DaysCustomise>
+      </StyledChartCustomise>
+      <StyledDaysCustomise>
         {ConfigDays.map((days, index) => {
           const daysLabel = getDaysLabel(days);
           if (days === currentDays) {
             return (
-              <ContainedButton key={index} onClick={() => updateGraph(days)}>
+              <ContainedButton key={index} onClick={() => updateDays(days)}>
                 {daysLabel}
               </ContainedButton>
             );
           } else {
             return (
-              <OutlinedButton key={index} onClick={() => updateGraph(days)}>
+              <OutlinedButton key={index} onClick={() => updateDays(days)}>
                 {daysLabel}
               </OutlinedButton>
             );
           }
         })}
-      </DaysCustomise>
-    </StatisticsTab>
+      </StyledDaysCustomise>
+    </StyledStatisticsTab>
   );
 };
 

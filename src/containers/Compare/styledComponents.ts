@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CompareTab = styled.div`
+export const StyledCompareTab = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,18 +12,18 @@ export const CompareTab = styled.div`
   }
 `;
 
-export const CompareGraph = styled.div`
+export const StyledCompareGraph = styled.div`
   position: relative;
   margin: auto;
   height: 75vh;
-  width: 75%;
+  width: 80%;
 `;
 
-export const ComparePicker = styled.div`
+export const StyledComparePicker = styled.div`
   border: 2px;
   border-radius: 10px;
   padding: 20px;
-  width: 15%;
+  width: 13%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +35,7 @@ export const ComparePicker = styled.div`
   }
 `;
 
-export const DateListBox = styled.div`
+export const StyledDateListBox = styled.div`
   width: 100%;
   margin-top: 5px;
   justify-content: center;

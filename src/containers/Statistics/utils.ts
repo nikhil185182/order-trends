@@ -20,7 +20,7 @@ export const getDaysLabel = (days: number) => {
 
 export const setGraphObject = (data: Orders[]) => {
   return {
-    labels: data.map((item) => item.OrderDate.slice(0, 10)),
+    labels: data.map((item) => item.OrderDate.toLocaleString().slice(0,10)),
     datasets: [
       {
         label: ATTEMPTED_ORDERS_LABEL,

@@ -2,16 +2,11 @@ import React from 'react';
 import Statistics from '../Statistics';
 import Compare from '../Compare';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import { useAppDispatch } from '../../shared/utils/redux/hooks';
-import { fetchOrderTrenData } from './reducer';
-import { OrderTrendBox } from './styledComponents';
+import {StyledOrderTrendBox } from './styledComponents';
 
 
 
 const OrderTrend = () => {
-    const dispatch = useAppDispatch();
-    dispatch(fetchOrderTrenData());
-
     interface TabPanelProps {
         children?: React.ReactNode;
         index: number;
@@ -51,7 +46,7 @@ const OrderTrend = () => {
 
 
     return (
-        <OrderTrendBox>
+        <StyledOrderTrendBox>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange}>
                     <Tab label="Statistics" {...a11yProps(0)} />
@@ -64,7 +59,7 @@ const OrderTrend = () => {
             <TabPanel value={value} index={1}>
                 <Compare />
             </TabPanel>
-        </OrderTrendBox>
+        </StyledOrderTrendBox>
     )
 }
 

@@ -1,123 +1,81 @@
 import dayjs, { Dayjs } from "dayjs";
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from "../../shared/config";
-import { DUPLICATE_DATA, DATA_NOT_FOUND } from "./messages";
-import { addOrderDateList } from "../OrderTrend/reducer";
+import { DUPLICATE_DATA, DATA_NOT_FOUND, SELECT_DATES } from "./messages";
+import { addOrderDateList, deleteOrderDateList } from "../OrderTrend/reducer";
+import { useAppSelector, useAppDispatch } from "../../shared/utils/redux/hooks";
+import { getOrderListData, getOrderTrendData } from "./selector";
 import {
-  useAppSelector,
-  useAppDispatch,
-} from "../../shared/utils/redux/hooks";
-import { getDateFromDatePicker, getOrderListMap } from "./utils";
-import { getOrderListData, selectOrderTrendData } from "./selector";
-import {
-  CompareTab,
-  CompareGraph,
-  ComparePicker,
-  DateListBox,
+  StyledCompareGraph,
+  StyledComparePicker,
+  StyledCompareTab,
+  StyledDateListBox,
 } from "./styledComponents";
 import { Bar } from "react-chartjs-2";
 import { Orders, GraphType } from "../OrderTrend/models";
-import React, { useEffect, useState } from "react";
-import {
-  GRAPH_DUMMY_DATA,
-  ATTEMPTED_ORDERS_LABEL,
-  ORANGE,
-  COMPLETED_ORDERS_LABEL,
-  BLUE,
-  TOTAL_ORDERS_LABEL,
-  GREEN,
-} from "../../shared/global_constants";
-import { Snackbar, TextField } from "@mui/material";
+import React, { useMemo, useState } from "react";
+import { GRAPH_DUMMY_DATA } from "../../shared/global_constants";
+import { TextField } from "@mui/material";
 import { LocalizationProvider, DesktopDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateChip } from "../../components/DateChip";
 import { DeleteIcon } from "../../components/DeleteIcon";
+import { setGraphObject } from "../Statistics/utils";
+import { getDateToString } from "./utils";
+import {
+  setConsoleMessage,
+  setConsoleOpen,
+} from "../../shared/utils/redux/appReducer";
 
-const Compare = () => {
+ const  Compare = () => {
   const dispatch = useAppDispatch();
 
-  const orderMap = getOrderListMap(useAppSelector(selectOrderTrendData));
+  const orderData = useAppSelector(getOrderTrendData);
+  const dateList = useAppSelector(getOrderListData);
 
-  const minimumDate = Array.from(orderMap)[0][0];
-  const maximumDate = Array.from(orderMap)[orderMap.size - 1][0];
+  const minimumDate: Date = new Date(orderData[0].OrderDate);
+  const maximumDate: Date = new Date(orderData[orderData.length - 1].OrderDate);
 
   const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
-  const [dateList, SetDateList] = useState<Orders[]>([
-    orderMap.get(maximumDate)!,
-  ]);
-
-  const [consoleMessage, SetConsoleMessage] = useState("");
-  const [consoleOpen, SetConsoleOpen] = useState(false);
-
   const [graphData, SetGraphData] = useState<GraphType>(GRAPH_DUMMY_DATA);
 
-  const handleDelete = (e: Orders) => {
-    SetDateList(dateList.filter((item) => item !== e));
-    dispatch(addOrderDateList({ data: dateList }));
+  useMemo(() => {
+    const temp_graphData = setGraphObject(dateList);
+    SetGraphData(temp_graphData);
+  }, [dateList]);
+
+  const handleDelete = (e: Orders) => dispatch(deleteOrderDateList(e));
+
+  const displayPopUp = (message: string) => {
+    console.log("invoked");
+    dispatch(setConsoleMessage(message));
+    dispatch(setConsoleOpen(true));
   };
 
   const HandleOnAccept = (newValue: Dayjs | null) => {
     setValue(newValue);
-    const val = getDateFromDatePicker(newValue);
-    if (orderMap.has(val)) {
-      const flag =
-        dateList.filter((e) => e.OrderDate === orderMap.get(val)!.OrderDate)
-          .length > 0;
-      if (!flag) {
-        SetDateList([...dateList, orderMap.get(val)!]);
-        dispatch(addOrderDateList({ data: dateList }));
+    const val = getDateToString(newValue);
+    const index = orderData.findIndex(
+      (item) => item.OrderDate.slice(0, 10) === val
+    );
+    if (index > -1) {
+      const obj = orderData[index];
+      const flag = dateList.includes(obj);
+      if (flag) {
+        displayPopUp(DUPLICATE_DATA);
       } else {
-        SetConsoleMessage(DUPLICATE_DATA);
-        SetConsoleOpen(true);
+        dispatch(addOrderDateList(obj));
       }
     } else {
-      SetConsoleMessage(DATA_NOT_FOUND);
-      SetConsoleOpen(true);
+      displayPopUp(DATA_NOT_FOUND);
     }
   };
 
-  const ReduxdateList = useAppSelector(getOrderListData);
-
-  useEffect(() => {
-    var temp_graphData = {
-      labels: dateList.map((item) => item.OrderDate.slice(0, 10)),
-      datasets: [
-        {
-          label: ATTEMPTED_ORDERS_LABEL,
-          data: dateList.map((item) => item.AttemptedOrders),
-          borderColor: ORANGE,
-          backgroundColor: ORANGE,
-        },
-        {
-          label: COMPLETED_ORDERS_LABEL,
-          data: dateList.map((item) => item.CompletedOrders),
-          borderColor: BLUE,
-          backgroundColor: BLUE,
-        },
-        {
-          label: TOTAL_ORDERS_LABEL,
-          data: dateList.map((item) => item.TotalOrders),
-          borderColor: GREEN,
-          backgroundColor: GREEN,
-        },
-      ],
-    };
-    SetGraphData(temp_graphData);
-  }, [ReduxdateList,dateList]);
-
   return (
-    <CompareTab>
-      <ComparePicker>
-        <Snackbar
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
-          open={consoleOpen}
-          onClose={() => SetConsoleOpen(false)}
-          message={consoleMessage}
-          autoHideDuration={2000}
-        />
+    <StyledCompareTab>
+      <StyledComparePicker>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
-            onYearChange={undefined}
-            label="Select date(s)"
+            label={SELECT_DATES}
             value={value}
             maxDate={dayjs(maximumDate)}
             views={["year", "month", "day"]}
@@ -127,23 +85,21 @@ const Compare = () => {
             renderInput={(params) => <TextField {...params} />}
           />
         </LocalizationProvider>
-        <DateListBox>
-          {dateList.map((e: Orders,index) => {
-            return (
-              <DateChip
-                label={e.OrderDate}
-                key={index}
-                icon={<DeleteIcon onClick={() => handleDelete(e)} />}
-                variant="outlined"
-              />
-            );
-          })}
-        </DateListBox>
-      </ComparePicker>
-      <CompareGraph>
+        <StyledDateListBox>
+          {dateList.map((e: Orders, index) => (
+            <DateChip
+              label={e.OrderDate.toString().slice(0, 10)}
+              key={index}
+              icon={<DeleteIcon onClick={() => handleDelete(e)} />}
+              variant="outlined"
+            />
+          ))}
+        </StyledDateListBox>
+      </StyledComparePicker>
+      <StyledCompareGraph>
         <Bar options={ORDERTREND_BAR_GRAPH_OPTIONS} data={graphData} />
-      </CompareGraph>
-    </CompareTab>
+      </StyledCompareGraph>
+    </StyledCompareTab>
   );
 };
 
