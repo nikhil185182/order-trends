@@ -1,9 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { AppBar, Toolbar, useTheme, useMediaQuery } from "@mui/material";
 import {
   ORDER_TREND,
   COMPANY_TREND,
@@ -16,7 +11,8 @@ import DrawerComp from "../Drawer";
 import React from "react";
 import { NavbarConatiner } from "../NavbarConatiner";
 import { RoutesPath } from "../../shared/config";
-import { NavTab } from "../NavTab";
+import { StyledNavLink } from "../NavLink";
+import { StyledLink } from "../Link";
 
 export default function NavBar() {
   const theme = useTheme();
@@ -25,16 +21,24 @@ export default function NavBar() {
   return (
     <AppBar style={{ background: GREEN }}>
       <Toolbar>
-        <NavTab details={{to:RoutesPath.orderTrend,label:ECOM_ANALYTICS,status:false}}/>
+        <StyledLink to={RoutesPath.orderTrend}>{ECOM_ANALYTICS}</StyledLink>
         <NavbarConatiner>
           {isMatch ? (
             <DrawerComp />
           ) : (
             <>
-              <NavTab details={{to:RoutesPath.orderTrend,label:ORDER_TREND,status:true}}/>
-              <NavTab details={{to:RoutesPath.comapanyOrderTrend,label:COMPANY_TREND,status:true}}/>
-              <NavTab details={{to:RoutesPath.companiesEnrolled,label:NEW_USER,status:true}}/>
-              <NavTab details={{to:RoutesPath.inactiveCompanies,label:INACTIVE_USER,status:true}}/>
+              <StyledNavLink to={RoutesPath.orderTrend}>
+                {ORDER_TREND}
+              </StyledNavLink>
+              <StyledNavLink to={RoutesPath.comapanyOrderTrend}>
+                {COMPANY_TREND}
+              </StyledNavLink>
+              <StyledNavLink to={RoutesPath.companiesEnrolled}>
+                {NEW_USER}
+              </StyledNavLink>
+              <StyledNavLink to={RoutesPath.inactiveCompanies}>
+                {INACTIVE_USER}
+              </StyledNavLink>
             </>
           )}
         </NavbarConatiner>

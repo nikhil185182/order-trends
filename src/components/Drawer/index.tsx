@@ -9,7 +9,7 @@ import {
 } from "../../shared/global_constants";
 import MenuIcon from "@mui/icons-material/Menu";
 import { RoutesPath } from "../../shared/config";
-import { DrawerTab } from "../DrawerTab";
+import { DrawerLink } from "../DrawerLink";
 
 export default function DrawerComp() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -24,40 +24,22 @@ export default function DrawerComp() {
       >
         <List>
           <ListItemButton onClick={handleClick}>
-            <DrawerTab
-              details={{
-                to: RoutesPath.orderTrend,
-                status: true,
-                label: ORDER_TREND,
-              }}
-            />
+            <DrawerLink to={RoutesPath.orderTrend}>{ORDER_TREND}</DrawerLink>
           </ListItemButton>
           <ListItemButton onClick={handleClick}>
-            <DrawerTab
-              details={{
-                to: RoutesPath.comapanyOrderTrend,
-                status: true,
-                label: COMPANY_TREND,
-              }}
-            />
+            <DrawerLink to={RoutesPath.comapanyOrderTrend}>
+              {COMPANY_TREND}
+            </DrawerLink>
           </ListItemButton>
           <ListItemButton onClick={handleClick}>
-            <DrawerTab
-              details={{
-                to: RoutesPath.companiesEnrolled,
-                status: true,
-                label: NEW_USER,
-              }}
-            />
+            <DrawerLink to={RoutesPath.companiesEnrolled}>
+              {NEW_USER}
+            </DrawerLink>
           </ListItemButton>
           <ListItemButton onClick={handleClick}>
-            <DrawerTab
-              details={{
-                to: RoutesPath.inactiveCompanies,
-                status: true,
-                label: INACTIVE_USER,
-              }}
-            />
+            <DrawerLink to={RoutesPath.inactiveCompanies}>
+              {INACTIVE_USER}
+            </DrawerLink>
           </ListItemButton>
         </List>
       </Drawer>

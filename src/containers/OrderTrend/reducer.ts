@@ -25,6 +25,8 @@ export const fetchOrderTrenData = createAsyncThunk(
     const { data } = useQuery<OrderTrendGQLResponse>(ORDERTREND_QUERY, {
       variables: { input: DAYS },
     });
+
+    console.log("Order trend");
     const result = OrderTrendUtil(data!);
     return result;
   }
@@ -49,6 +51,7 @@ const orderTrendSlice = createSlice({
       state.compare.orderDateList = temp;
     },
     deleteOrderDateList: (state, action: PayloadAction<Orders>) => {
+    
       state.compare.orderDateList.splice(
         state.compare.orderDateList.findIndex(
           (item) => item !== action.payload
@@ -66,6 +69,7 @@ const orderTrendSlice = createSlice({
         fetchOrderTrenData.fulfilled,
         (state, action: PayloadAction<Orders[]>) => {
           state.statistics.Data = action.payload;
+
           state.status = "Fulfilled";
         }
       )

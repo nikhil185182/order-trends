@@ -5,8 +5,8 @@ import {
   BLUE,
   TOTAL_ORDERS_LABEL,
   GREEN,
-} from "../../shared/global_constants";
-import { Orders } from "../OrderTrend/models";
+} from "../../../shared/global_constants";
+import { Orders } from "../models";
 
 export const getSlicedDays = (orderList : Orders[],days : number) =>{
     const index =orderList.length - 1 - days >= 0 ? orderList.length - 1 - days : 0;
