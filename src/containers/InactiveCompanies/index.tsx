@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DateandDaysSelector from '../InactiveDateSelector';
-import InactiveTable from '../InactiveTable';
+import InactiveTable from './InactiveTable';
 import { Datepicker_component, InactiveUsertable_container, Total_component } from './styledComponents';
-import InactiveGraph from '../InactiveGraph';
+import InactiveGraph from './InactiveGraph';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';

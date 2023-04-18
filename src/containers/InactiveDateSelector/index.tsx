@@ -47,50 +47,47 @@ function DateandDaysSelector() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-  const dispatch = useAppDispatch();
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+    const dispatch = useAppDispatch();
+  
 
-  return (
-    <>
-      <Container>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Datepicker>
-            <DatePicker
-              onYearChange={undefined}
-              value={value}
-              label="Select a Date"
-              onChange={(newValue) => {
-                setValue(newValue);
-                const monthVal: number = newValue?.get("month")! + 1;
-                const mVal: string =
-                  monthVal < 10 ? "0" + monthVal : monthVal.toString();
-                var val: string =
-                  newValue?.get("year").toString()! +
-                  "-" +
-                  mVal +
-                  "-" +
-                  newValue?.get("date").toString()!;
-                console.log(val);
-                SetVal(val);
-              }}
-              views={["year", "month", "day"]}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </Datepicker>
-        </LocalizationProvider>
-
-        <Submitbutton>
-          <ContainedButton
-            onClick={() => {
-              dispatch(settingDate(Val));
-              console.log("action dispatched");
-            }}
-          >
-            SUBMIT
-          </ContainedButton>
-        </Submitbutton>
+    return (
+        
+                    <>  
+                    <Container>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <Datepicker>
+                            <DatePicker onYearChange={undefined}
+                                value={value}
+                                label="Select a Date"
+                                onChange={(newValue) => {
+                                    setValue(newValue);
+                                    const monthVal: number = newValue?.get('month')! + 1;
+                                    const mVal: string = monthVal < 10 ? '0' + monthVal : monthVal.toString();
+                                    var val: string = newValue?.get('year').toString()! + '-' + mVal + '-' + newValue?.get('date').toString()!;
+                                    console.log(val);
+                                    SetVal(val);
+                                }}
+                                views={['year', 'month', 'day']}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </Datepicker>
+                        </LocalizationProvider>
+                        
+                        <Submitbutton>
+                        <Button
+                            variant="contained"
+                            onClick={() => {
+                                dispatch(settingDate(Val));
+                                console.log("action dispatched");
+                            }}
+                            style={{backgroundColor: '#55B74E'}}
+                        >
+                        Submit
+                        </Button>
+                        </Submitbutton>
 
         <Direction>
           <Box sx={{ width: 270, flexGrow: 1, marginTop: 8 }}>

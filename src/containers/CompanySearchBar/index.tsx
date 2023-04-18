@@ -8,12 +8,12 @@ import ReactSearchBox from "react-search-box";
 import { DateChip } from "../../components/DateChip";
 import { DateListBox } from "../CompanyOrderTrend/styledComponents";
 import { company, searchBarDTO } from "../CompanyOrderTrend/models";
-import { SearchBoxContainer } from "./styledComponents";
+
 export default function ReactSearchBar() {
   const data: company[] = useAppSelector(CompanySelector) || [
     { CompanyName: "Options are loading" },
   ];
-  const[datac,setdatac] = useState({});
+
   const capitalizeFirstLetterOfEachWord = (str: string): string => {
     const words = str.toLowerCase().split(' ');
     for (let i = 0; i < words.length; i++) {
@@ -31,48 +31,53 @@ export default function ReactSearchBar() {
   });
 
   const [searchText, setSearchText] = useState<string>("");
-  console.log(searchText);
-  let data1: searchBarDTO[] =[];
- 
+  const [data1, setData1] = useState<searchBarDTO[]>(cData.map((item) => ({
+    key: item.CompanyName,
+    value: item.CompanyName
+  })));
+
+  const filteredData = searchText
+  ? cData.filter((item) => item.CompanyName.toLowerCase().startsWith(searchText))
+         .slice(0, 10)
+         .map((item) => ({
+            key: item.CompanyName,
+            value: item.CompanyName
+         }))
+  : cData.map((item) => ({
+        key: item.CompanyName,
+        value: item.CompanyName
+     }));
+     
+
   useEffect(()=>{
-    data1=cData.map((item) => {
-      const key = item.CompanyName;
-      const value = item.CompanyName;
-      return { key, value };
+    setData1(filteredData);
+  }, [cData]);
 
-  })
-  data1=data1.filter((item) => item.value.toLowerCase().startsWith(searchText))
-            .sort((a, b) => a.value.localeCompare(b.value))
-            .slice(0, 10)
-            console.log(data1);
-            setdatac(data1);
-  },[searchText]);
-
-  
-  const [companyList, SetCompanyList] = useState<string[]>([]);
+  const [companyList, setCompanyList] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setCompanyString(companyList));
   }, [companyList, dispatch]);
+
   return (
     <div>
-        <ReactSearchBox
-          placeholder="Select Companies"
-          autoFocus={true}
-          data={data1}
-          clearOnSelect
-          onSelect={(Record: any) => {
-            if (companyList.indexOf(Record.item.value) === -1)
-              SetCompanyList([...companyList, Record.item.value]);
-            else alert("you've already selected it");
-          }}
-          onFocus={() => true}
-          leftIcon={<Search />}
-          iconBoxSize="35px"
-          inputHeight="45px"
-          dropdownHoverColor="rgba(62, 60, 60, 0.2)"
-          onChange={(value) => setSearchText(value)}
-        />
+      <ReactSearchBox
+        placeholder="Select Companies"
+        autoFocus={true}
+        data={data1}
+        clearOnSelect
+        onSelect={(Record: any) => {
+          if (companyList.indexOf(Record.item.value) === -1)
+            setCompanyList([...companyList, Record.item.value]);
+          else alert("you've already selected it");
+        }}
+        onFocus={() => true}
+        leftIcon={<Search />}
+        iconBoxSize="35px"
+        inputHeight="45px"
+        dropdownHoverColor="rgba(62, 60, 60, 0.2)"
+        onChange={(value) => setSearchText(value)}
+      />
       <DateListBox>
         {companyList.map((e, index) => {
           return (
@@ -87,7 +92,7 @@ export default function ReactSearchBar() {
                     right: "10px",
                   }}
                   onClick={() =>
-                    SetCompanyList(companyList.filter((item) => item !== e))
+                    setCompanyList(companyList.filter((item) => item !== e))
                   }
                 />
               }
