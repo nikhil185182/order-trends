@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import React from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
 
 
 // export const Wrapper = styled.div`
@@ -10,6 +14,19 @@ import styled from "styled-components";
 //   align-items: center;
 //   margin-left:60px;
 // `;
+
+export const StyledDropdown = styled(Select)`
+  width: 100px;
+  height:40px;
+  border-radius: 5px;
+  border: #55B74E;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+`;
+
+export const StyledMenuItem = styled(MenuItem)`
+  font-size: 14px;
+  margin-top: 8px;
+`;
 
 export const ChartContainer = styled.div`
   height: 500px;

@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useAppSelector } from "../../shared/utils/redux/hooks";
 import { ChartEvent, ActiveElement } from "chart.js";
-import { Wrapper, ChartContainer, Dropdown } from "./StyledComponents";
+import { Wrapper, ChartContainer, Dropdown, StyledDropdown } from "./StyledComponents";
 import { inactivegraphSelector } from "./selector";
 
 const InactiveGraph = () => {
@@ -54,6 +54,7 @@ const InactiveGraph = () => {
     const companyYear = Number(company.Months.split(" ")[1]);
     return companyYear === selectedYear;
   });
+  console.log(filteredData);
 
   const monthCounts: { [key: string]: number } = {};
 
@@ -61,7 +62,8 @@ const InactiveGraph = () => {
     const month = company.Months.split(" ")[0];
     monthCounts[month] = (monthCounts[month] || 0) + 1;
   });
-
+  console.log(filteredData);
+ 
 
   const chartData = {
     labels: Object.keys(monthCounts),
@@ -117,26 +119,18 @@ const InactiveGraph = () => {
       <h2>Inactive Companies by Month</h2>
       <FormControl>
         <Dropdown>
-          <Select
+          <StyledDropdown
             value={selectedYear || ""}
             onChange={(e: { target: { value: any } }) =>
               setSelectedYear(Number(e.target.value))
             }
-            style={{ width: 100 }}
-            MenuProps={{
-              PaperProps: {
-                style: {
-                  maxHeight: 100 
-                }
-              }
-            }}
           >
             {yearOptions.map((year) => (
               <MenuItem key={year} value={year}>
                 {year}
               </MenuItem>
             ))}
-          </Select>
+          </StyledDropdown>
 
         </Dropdown>
       </FormControl>

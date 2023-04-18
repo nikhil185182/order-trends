@@ -13,6 +13,9 @@ import {
   SubcontainerTwo,
 } from "./styledComponents";
 import { Helperutil } from "./API";
+import CompanyAutocomplete from "../../components/CompanyLevel/CompanySearchBar";
+import CompanySearchBar from "../CompanySearchBar";
+import AutocompleteSearch from "../../components/CompanyLevel/mysb";
 
 const CompanyTrend = () => {
   Helperutil();
