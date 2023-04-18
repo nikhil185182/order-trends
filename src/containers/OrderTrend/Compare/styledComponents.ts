@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledCompareTab = styled.div`
   display: flex;
   flex-direction: row;
+  width:97%;
   justify-content: space-between;
   align-items: flex-start;
   @media (max-width: 900px) {

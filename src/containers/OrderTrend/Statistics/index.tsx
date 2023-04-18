@@ -11,12 +11,12 @@ import {
   Legend,
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
-import { Orders, GraphType } from "../OrderTrend/models";
+import { Orders, GraphType } from "../models";
 import {
   ORDERTREND_LINE_GRAPH_OPTIONS,
   ORDERTREND_BAR_GRAPH_OPTIONS,
-} from "../../shared/config";
-import { useAppDispatch, useAppSelector } from "../../shared/utils/redux/hooks";
+} from "../../../shared/config";
+import { useAppDispatch, useAppSelector } from "../../../shared/utils/redux/hooks";
 import {
   selectOrderTrendChart,
   selectOrderTrendData,
@@ -29,13 +29,13 @@ import {
   StyledStatisticsGraph,
   StyledStatisticsTab,
 } from "./styledComponents";
-import { RadioButton } from "../../components/RadioButton";
-import { ContainedButton } from "../../components/ConatinedButton";
-import { OutlinedButton } from "../../components/OutlinedButton";
+import { RadioButton } from "../../../components/RadioButton";
+import { ContainedButton } from "../../../components/ConatinedButton";
+import { OutlinedButton } from "../../../components/OutlinedButton";
 import { BAR_CHART, LINE_CHART } from "./constants";
 import { ConfigDays } from "./constants";
 import { getDaysLabel, getSlicedDays, setGraphObject } from "./utils";
-import { setOrderTrendChart, setOrderTrendDays } from "../OrderTrend/reducer";
+import { setOrderTrendChart, setOrderTrendDays } from "../reducer";
 
 ChartJS.register(
   CategoryScale,
@@ -51,19 +51,19 @@ ChartJS.register(
 const Statistics = () => {
   const dispatch = useAppDispatch();
 
-  const orderList: Orders[] = useAppSelector(selectOrderTrendData);
-  const isLineChart = useAppSelector(selectOrderTrendChart);
-  const currentDays = useAppSelector(selectOrderTrendDays);
+  const orderData: Orders[] = useAppSelector(selectOrderTrendData);
+  const isLineChart: boolean = useAppSelector(selectOrderTrendChart);
+  const currentDays: number = useAppSelector(selectOrderTrendDays);
 
   const [graphData, SetGraphData] = useState<GraphType>(
-    setGraphObject(getSlicedDays(orderList, currentDays))
+    setGraphObject(getSlicedDays(orderData, currentDays))
   );
 
   useEffect(() => {
-    const data = getSlicedDays(orderList, currentDays);
+    const data = getSlicedDays(orderData, currentDays);
     const tempGraphData = setGraphObject(data);
     SetGraphData(tempGraphData);
-  }, [currentDays, orderList]);
+  }, [currentDays, orderData]);
 
   const updateDays = (days: number) => dispatch(setOrderTrendDays(days));
   const handleClick = (flag: boolean) => dispatch(setOrderTrendChart(flag));

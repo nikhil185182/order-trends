@@ -16,7 +16,7 @@ import styled from "styled-components";
 
 export const StyledStatisticsTab = styled.div`
     align-items: center;
-    width: 100%;
+    width: 97%;
     display: flex;
     flex-direction: column;
 `;
