@@ -10,7 +10,8 @@ export type InactiveMonths = {
     __typename: String;
     CompanyName: String;
     LastOrderDate: Date;
-    Months: String;
+    Month: string;
+    Year: number;
 }
 export type GQL_list =  {
     getInactiveMonths: InactiveMonths[];

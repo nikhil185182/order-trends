@@ -14,7 +14,8 @@ query Inactivenew($input:Int!){
   getInactiveMonths(days:$input) {
     CompanyName
     LastOrderDate
-    Months
+    Month
+    Year
   }
 }
 `;

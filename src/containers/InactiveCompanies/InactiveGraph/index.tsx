@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
-import { useAppSelector } from "../../shared/utils/redux/hooks";
+import { useAppSelector } from "../../../shared/utils/redux/hooks";
 import { ChartEvent, ActiveElement } from "chart.js";
 import { Wrapper, ChartContainer, Dropdown, StyledDropdown } from "./StyledComponents";
 import { inactivegraphSelector } from "./selector";
@@ -18,7 +18,7 @@ const InactiveGraph = () => {
   useEffect(() => {
     const years: number[] = [];
     Object.values(data).forEach((company) => {
-      const companyYear = Number(company.Months.split(" ")[1]);
+      const companyYear = Number(company.Year);
       if (!years.includes(companyYear)) {
         years.push(companyYear);
       }
@@ -30,14 +30,14 @@ const InactiveGraph = () => {
 
 
 
-  const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {
+  const Handleclick = (event: ChartEvent, chartelement: ActiveElement[]) => {
     if (chartelement.length >= 1) {
       const clickedBar = chartelement[0];
       const monthIndex = clickedBar.index;
       const month = chartData.labels[monthIndex];
       const filteredData = Object.values(data).filter((company) => {
-        const companyMonth = company.Months.split(" ")[0];
-        const companyYear = Number(company.Months.split(" ")[1]);
+        const companyMonth = company.Month;
+        const companyYear = Number(company.Year);
         return companyMonth === month && companyYear === selectedYear;
       });
       const companies = filteredData.map((company) => ({
@@ -51,7 +51,7 @@ const InactiveGraph = () => {
 
 
   const filteredData = Object.values(data).filter((company) => {
-    const companyYear = Number(company.Months.split(" ")[1]);
+    const companyYear = Number(company.Year);
     return companyYear === selectedYear;
   });
   console.log(filteredData);
@@ -59,10 +59,11 @@ const InactiveGraph = () => {
   const monthCounts: { [key: string]: number } = {};
 
   filteredData.forEach((company) => {
-    const month = company.Months.split(" ")[0];
+    const month:string = company.Month;
     monthCounts[month] = (monthCounts[month] || 0) + 1;
   });
-  console.log(filteredData);
+  
+  console.log(monthCounts);
  
 
   const chartData = {
@@ -110,7 +111,7 @@ const InactiveGraph = () => {
         display: false,
       },
     },
-    onClick: Handleclickes,
+    onClick: Handleclick,
   };
 
 

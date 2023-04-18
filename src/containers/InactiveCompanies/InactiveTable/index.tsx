@@ -5,19 +5,18 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useAppSelector } from "../../shared/utils/redux/hooks";
+import { useAppSelector } from "../../../shared/utils/redux/hooks";
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { getInactiveUsersData } from "../InactiveCompanies/models";
+import { getInactiveUsersData } from "../models";
 import TablePagination from "@mui/material/TablePagination";
 import { Button, IconButton } from "@mui/material";
 import { Downloading } from "@mui/icons-material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Inactive_Table, Rows, Search_bar } from "../InactiveCompanies/styledComponents";
+import { Inactive_Table, Rows, Search_bar } from "../styledComponents";
 import * as XLSX from 'xlsx';
-import { inactivegraphSelector } from "../InactiveGraph/selector";
 import { tableSelector } from "./tableselector";
 
 export default function InactiveTable() {

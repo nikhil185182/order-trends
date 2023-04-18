@@ -53,7 +53,6 @@ function DateandDaysSelector() {
                                     const monthVal: number = newValue?.get('month')! + 1;
                                     const mVal: string = monthVal < 10 ? '0' + monthVal : monthVal.toString();
                                     var val: string = newValue?.get('year').toString()! + '-' + mVal + '-' + newValue?.get('date').toString()!;
-                                    console.log(val);
                                     SetVal(val);
                                 }}
                                 views={['year', 'month', 'day']}
@@ -67,7 +66,6 @@ function DateandDaysSelector() {
                             variant="contained"
                             onClick={() => {
                                 dispatch(settingDate(Val));
-                                console.log("action dispatched");
                             }}
                             style={{backgroundColor: '#55B74E'}}
                         >
