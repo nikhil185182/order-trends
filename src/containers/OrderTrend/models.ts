@@ -25,9 +25,9 @@ export type OrderTrendState = {
     Data: Orders[];
     chartToggle: boolean;
     days: number;
-  },
+  };
   compare: {
     orderDateList: Orders[];
-  },
+  };
   status: String;
 };

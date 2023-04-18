@@ -16,7 +16,10 @@ import {
   ORDERTREND_LINE_GRAPH_OPTIONS,
   ORDERTREND_BAR_GRAPH_OPTIONS,
 } from "../../../shared/config";
-import { useAppDispatch, useAppSelector } from "../../../shared/utils/redux/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../shared/utils/redux/hooks";
 import {
   selectOrderTrendChart,
   selectOrderTrendData,
@@ -32,10 +35,10 @@ import {
 import { RadioButton } from "../../../components/RadioButton";
 import { ContainedButton } from "../../../components/ConatinedButton";
 import { OutlinedButton } from "../../../components/OutlinedButton";
-import { BAR_CHART, LINE_CHART } from "./constants";
-import { ConfigDays } from "./constants";
-import { getDaysLabel, getSlicedDays, setGraphObject } from "./utils";
+import { BAR_CHART, LINE_CHART, ConfigDays } from "./constants";
+import { getDaysLabel, getSlicedDays } from "./utils";
 import { setOrderTrendChart, setOrderTrendDays } from "../reducer";
+import { setGraphObject } from "../utils";
 
 ChartJS.register(
   CategoryScale,

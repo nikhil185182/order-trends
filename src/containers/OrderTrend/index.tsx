@@ -3,7 +3,7 @@ import Statistics from "./Statistics";
 import Compare from "./Compare";
 import { Box, Tab, Tabs } from "@mui/material";
 import { StyledOrderTrendBox } from "./styledComponents";
-import { COMPARE, STATISTICS } from "./messages";
+import { COMPARE, STATISTICS } from "./constants";
 
 const OrderTrend = () => {
   const [value, setValue] = React.useState(0);

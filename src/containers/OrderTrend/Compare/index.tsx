@@ -2,7 +2,10 @@ import dayjs, { Dayjs } from "dayjs";
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from "../../../shared/config";
 import { DUPLICATE_DATA, DATA_NOT_FOUND, SELECT_DATES } from "./messages";
 import { addOrderDateList, deleteOrderDateList } from "../reducer";
-import { useAppSelector, useAppDispatch } from "../../../shared/utils/redux/hooks";
+import {
+  useAppSelector,
+  useAppDispatch,
+} from "../../../shared/utils/redux/hooks";
 import { getOrderListData, getOrderTrendData } from "./selector";
 import {
   StyledCompareGraph,
@@ -12,19 +15,19 @@ import {
 } from "./styledComponents";
 import { Bar } from "react-chartjs-2";
 import { Orders, GraphType } from "../models";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { GRAPH_DUMMY_DATA } from "../../../shared/global_constants";
 import { TextField } from "@mui/material";
 import { LocalizationProvider, DesktopDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateChip } from "../../../components/DateChip";
 import { DeleteIcon } from "../../../components/DeleteIcon";
-import { setGraphObject } from "../Statistics/utils";
 import { getDateToString } from "./utils";
 import {
   setConsoleMessage,
   setConsoleOpen,
 } from "../../../shared/utils/redux/appReducer";
+import { setGraphObject } from "../utils";
 
 const Compare = () => {
   const dispatch = useAppDispatch();
@@ -38,13 +41,10 @@ const Compare = () => {
   const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
   const [graphData, SetGraphData] = useState<GraphType>(GRAPH_DUMMY_DATA);
 
-  useEffect(()=>{
-    if(selectedDateList.length==0){
-      dispatch(addOrderDateList(orderData[orderData.length - 1]))
-    }
-  },[]);
-
   useMemo(() => {
+    if (selectedDateList.length === 0) {
+      dispatch(addOrderDateList(orderData[orderData.length - 1]));
+    }
     const temp_graphData = setGraphObject(selectedDateList);
     SetGraphData(temp_graphData);
   }, [selectedDateList]);
@@ -92,7 +92,7 @@ const Compare = () => {
         <StyledDateListBox>
           {selectedDateList.map((e: Orders, index) => (
             <DateChip
-              label={e.OrderDate.slice(0,10)}
+              label={e.OrderDate.slice(0, 10)}
               key={index}
               icon={<DeleteIcon onClick={() => handleDelete(e)} />}
               variant="outlined"
