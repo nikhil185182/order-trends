@@ -1,19 +1,24 @@
-import NavBar from './components/NavBar';
+import NavBar from "./components/NavBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { GlobalStyles } from './containers/InactiveCompanies/styledComponents';
-import { useAppDispatch, useAppSelector } from './shared/utils/redux/hooks';
-import InactiveUsers from './containers/InactiveCompanies';
-import OrderTrend from './containers/OrderTrend';
-import CompaniesEnrolled from './containers/CompaniesEnrolled';
-import CompanyTrend from './containers/CompanyOrderTrend';
-import { fetchInactiveDate, fetchInactiveMonths } from './containers/InactiveCompanies/reducer';
-import { RoutesPath } from './shared/config';
-import { addOrderDateList, fetchOrderTrenData } from './containers/OrderTrend/reducer';
-import GlobalSnackBar from './components/SnackBar';
-import { selectOrderTrendData } from './containers/OrderTrend/Statistics/selector';
+import { GlobalStyles } from "./containers/InactiveCompanies/styledComponents";
+import { useAppDispatch, useAppSelector } from "./shared/utils/redux/hooks";
+import InactiveUsers from "./containers/InactiveCompanies";
+import OrderTrend from "./containers/OrderTrend";
+import CompaniesEnrolled from "./containers/CompaniesEnrolled";
+import CompanyTrend from "./containers/CompanyOrderTrend";
+import {
+  fetchInactiveDate,
+  fetchInactiveMonths,
+} from "./containers/InactiveCompanies/reducer";
+import { RoutesPath } from "./shared/config";
+import {
+  addOrderDateList,
+  fetchOrderTrenData,
+} from "./containers/OrderTrend/reducer";
+import GlobalSnackBar from "./components/SnackBar";
+import { selectOrderTrendData } from "./containers/OrderTrend/Statistics/selector";
 
 function App() {
-  
   const dispatch = useAppDispatch();
 
   dispatch(fetchOrderTrenData());
@@ -26,22 +31,25 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <NavBar />
-        <GlobalSnackBar/>
-          <Routes>
-            <Route path={RoutesPath.orderTrend} element={<OrderTrend />} />
-            <Route path={RoutesPath.companiesEnrolled} element={<CompaniesEnrolled />} />
-            <Route path={RoutesPath.comapanyOrderTrend} element={<CompanyTrend  />} />
-            <Route path={RoutesPath.inactiveCompanies} element={<InactiveUsers />} />
-          </Routes>
+        <GlobalSnackBar />
+        <Routes>
+          <Route path={RoutesPath.orderTrend} element={<OrderTrend />} />
+          <Route
+            path={RoutesPath.companiesEnrolled}
+            element={<CompaniesEnrolled />}
+          />
+          <Route
+            path={RoutesPath.comapanyOrderTrend}
+            element={<CompanyTrend />}
+          />
+          <Route
+            path={RoutesPath.inactiveCompanies}
+            element={<InactiveUsers />}
+          />
+        </Routes>
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
-
-
-
-
-
-
