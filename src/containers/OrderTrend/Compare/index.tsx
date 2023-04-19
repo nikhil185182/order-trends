@@ -22,7 +22,7 @@ import { LocalizationProvider, DesktopDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateChip } from "../../../components/DateChip";
 import { DeleteIcon } from "../../../components/DeleteIcon";
-import { getDateToString } from "./utils";
+import { getDateToString, getMaxDate, getMinDate } from "./utils";
 import {
   setConsoleMessage,
   setConsoleOpen,
@@ -35,16 +35,10 @@ const Compare = () => {
   const orderData = useAppSelector(getOrderTrendData);
   const selectedDateList = useAppSelector(getOrderListData);
 
-  const minimumDate: Date = new Date(orderData[0].OrderDate);
-  const maximumDate: Date = new Date(orderData[orderData.length - 1].OrderDate);
-
-  const [value, setValue] = useState<Dayjs | null>(dayjs(maximumDate));
+  const [value, setValue] = useState<Dayjs | null>(getMaxDate(orderData));
   const [graphData, SetGraphData] = useState<GraphType>(GRAPH_DUMMY_DATA);
 
   useMemo(() => {
-    if (selectedDateList.length === 0) {
-      dispatch(addOrderDateList(orderData[orderData.length - 1]));
-    }
     const temp_graphData = setGraphObject(selectedDateList);
     SetGraphData(temp_graphData);
   }, [selectedDateList]);
@@ -81,9 +75,9 @@ const Compare = () => {
           <DesktopDatePicker
             label={SELECT_DATES}
             value={value}
-            maxDate={dayjs(maximumDate)}
+            maxDate={getMaxDate(orderData)}
             views={["year", "month", "day"]}
-            minDate={dayjs(minimumDate)}
+            minDate={getMinDate(orderData)}
             onChange={() => true}
             onAccept={handleOnAccept}
             renderInput={(params) => <TextField {...params} />}

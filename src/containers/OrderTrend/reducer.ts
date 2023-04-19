@@ -22,7 +22,7 @@ const initialState: OrderTrendState = {
 export const fetchOrderTrenData = createAsyncThunk(
   "orderTrend/fetch",
   async (thunkAPI) => {
-    const { data } = useQuery<OrderTrendGQLResponse>(ORDERTREND_QUERY, {
+    const { data ,loading,error } = useQuery<OrderTrendGQLResponse>(ORDERTREND_QUERY, {
       variables: { input: DAYS },
     });
     const result = OrderTrendUtil(data!);
@@ -66,7 +66,8 @@ const orderTrendSlice = createSlice({
         fetchOrderTrenData.fulfilled,
         (state, action: PayloadAction<Orders[]>) => {
           state.statistics.Data = action.payload;
-
+          const temp = action.payload;
+          state.compare.orderDateList = [temp[temp.length - 1]];
           state.status = "Fulfilled";
         }
       )
