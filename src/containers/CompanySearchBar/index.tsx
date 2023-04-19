@@ -43,7 +43,7 @@ export default function ReactSearchBar() {
             key: item.CompanyName,
             value: item.CompanyName
          }))
-  : cData.map((item) => ({
+  : cData.slice(0,10).map((item) => ({
         key: item.CompanyName,
         value: item.CompanyName
      }));
@@ -51,7 +51,7 @@ export default function ReactSearchBar() {
 
   useEffect(()=>{
     setData1(filteredData);
-  }, [cData]);
+  }, [data1]);
 
   const [companyList, setCompanyList] = useState<string[]>([]);
   const dispatch = useAppDispatch();

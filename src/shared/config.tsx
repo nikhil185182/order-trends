@@ -5,7 +5,7 @@ export const RoutesPath = {
   orderTrend: "/",
   comapanyOrderTrend: "/company-trend",
   companiesEnrolled: "/companies-enrolled",
-  inactiveCompanies: "inactive-users",
+  inactiveCompanies: "/inactive-users",
 };
 
 export const CompanyLevel_graphOptions = {

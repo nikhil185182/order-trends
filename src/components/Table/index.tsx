@@ -5,19 +5,20 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useAppSelector } from "../../../shared/utils/redux/hooks";
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { getInactiveUsersData } from "../models";
 import TablePagination from "@mui/material/TablePagination";
 import { Button, IconButton } from "@mui/material";
 import { Downloading } from "@mui/icons-material";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Inactive_Table, Rows, Search_bar } from "../styledComponents";
 import * as XLSX from 'xlsx';
-import { tableSelector } from "./tableselector";
+import { getInactiveUsersData } from "../../containers/InactiveCompanies/models";
+import { tableSelector } from "../../containers/InactiveCompanies/selector";
+import {  Inactivetable, Rows, Searchbar } from "../../containers/InactiveCompanies/styledComponents";
+import { useAppSelector } from "../../shared/utils/redux/hooks";
+
 
 export default function InactiveTable() {
   var Ddata = useAppSelector(tableSelector);
@@ -62,7 +63,7 @@ export default function InactiveTable() {
 
   return (
     <>
-      <Inactive_Table>
+      <Inactivetable>
         <TableContainer sx={{ maxHeight: 500 }}>
           <Rows>
             <Table aria-label="simple table">
@@ -80,7 +81,7 @@ export default function InactiveTable() {
                     </Button>
                   </TableCell>
                   <TableCell colSpan={2} align="right" >
-                    <Search_bar>
+                    <Searchbar>
                       <TextField
                         label="Search Companies"
                         variant="outlined"
@@ -98,7 +99,7 @@ export default function InactiveTable() {
                           ),
                         }}
                       />
-                    </Search_bar>
+                    </Searchbar>
                   </TableCell>
                   <TableCell align="right"></TableCell>
                 </TableRow>
@@ -147,7 +148,7 @@ export default function InactiveTable() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Inactive_Table>
+      </Inactivetable>
     </>
   )
 }
