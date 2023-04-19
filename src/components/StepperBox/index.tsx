@@ -2,9 +2,10 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { Box, Paper, Typography, MobileStepper, Button, useTheme } from '@mui/material'
 import React from 'react'
 import { Direction } from '../../containers/InactiveCompanies/styledComponents'
-import { steps } from './messages'
 
-export default function StepperBox() {
+
+export default function StepperBox(props:any) {
+    const { steps } = props;
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = steps.length;
     const theme = useTheme();

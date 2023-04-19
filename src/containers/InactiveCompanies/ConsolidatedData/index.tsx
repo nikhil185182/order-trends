@@ -6,14 +6,17 @@ import { ContainedButton } from '../../../components/ConatinedButton'
 import StepperBox from '../../../components/StepperBox'
 import { Datepicker, Datepickercomponent, InactiveUsertablecontainer, Stepper, Submitbutton } from '../styledComponents'
 import dayjs, { Dayjs } from 'dayjs'
-import { useAppDispatch } from '../../../shared/utils/redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../shared/utils/redux/hooks'
 import { settingDate } from '../reducer'
 import InactiveTable from '../../../components/Table'
+import { steps } from '../../../components/StepperBox/messages'
+import NewTable from '../../../components/Table'
 
 
 export default function ConsolidatedData() {
     const [Val, SetVal] = useState("");
     const value = dayjs().subtract(30, "day");
+    const data = useAppSelector((state)=>state.InactiveUsers.inactiveUsers);
 
     const dispatch = useAppDispatch();
 
@@ -49,7 +52,7 @@ export default function ConsolidatedData() {
                         </ContainedButton>
                     </Submitbutton>
                     <Stepper>
-                    <StepperBox />
+                    <StepperBox steps={steps} />
                     </Stepper>                    
                 </Container>
             </Datepickercomponent>

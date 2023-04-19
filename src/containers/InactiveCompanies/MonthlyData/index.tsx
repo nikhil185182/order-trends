@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { FormControl, Select, MenuItem, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useAppSelector } from "../../../shared/utils/redux/hooks";
@@ -28,6 +28,21 @@ const InactiveGraph = () => {
     setSelectedYear(years[0] || null);
   }, [data]);
 
+  // const filteredData = useMemo(() => {
+  //   return Object.values(data).filter((company) => {
+  //     const companyYear = Number(company.Year);
+  //     return companyYear === selectedYear;
+  //   });
+  // }, [data, selectedYear]);
+
+  // const monthCounts = useMemo(() => {
+  //   const counts: { [key: string]: number } = {};
+  //   filteredData.forEach((company) => {
+  //     const month = company.Month;
+  //     counts[month] = (counts[month] || 0) + 1;
+  //   });
+  //   return counts;
+  // }, [filteredData]);
 
 
   const Handleclick = (event: ChartEvent, chartelement: ActiveElement[]) => {

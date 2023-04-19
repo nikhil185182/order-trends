@@ -1,22 +1,10 @@
-import {
-  IconButton,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import {IconButton,Divider,List,ListItem,ListItemText} from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { toggleDrawer } from "../CompaniesEnrolled/reducer";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/utils/redux/hooks";
+import {useAppDispatch,useAppSelector} from "../../shared/utils/redux/hooks";
 import { AppDispatch } from "../../shared/utils/redux/store";
-
 import { CompaniesEnrolled_head } from "../../shared/global_constants";
-import { CustomDrawer,StyledDate, StyledDisplay, StyledEnrollments, StyledHeading, StyledHeadingBackGround } from "./StyledComponents";
-
-
+import { CustomDrawer, StyledDate, StyledDisplay, StyledEnrollments, StyledHeading, StyledHeadingBackGround } from "./StyledComponents";
 
 export default function SideBar() {
   const dispatch: AppDispatch = useAppDispatch();
@@ -30,7 +18,7 @@ export default function SideBar() {
   const OnCloseDrawer = () => {
     dispatch(toggleDrawer(false));
   };
- 
+
   return (
     <>
       <CustomDrawer anchor="right" open={IsDrawerOpen} onClose={OnCloseDrawer}>
@@ -51,7 +39,7 @@ export default function SideBar() {
           </StyledEnrollments>
         </StyledDisplay>
         <List>
-          {ListOfCompanies?.map((text:any) => (
+          {ListOfCompanies?.map((text: any) => (
             <ListItem style={{ padding: "2%" }}>
               <ListItemText
                 primaryTypographyProps={{

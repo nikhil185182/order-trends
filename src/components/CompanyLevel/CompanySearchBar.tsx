@@ -2,10 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete/Autocomplete";
 import TextField from "@mui/material/TextField/TextField";
 import { useEffect } from "react";
 import { useState } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../shared/utils/redux/hooks";
+import { useAppDispatch, useAppSelector} from "../../shared/utils/redux/hooks";
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { setCompanyString } from "../../containers/CompanyOrderTrend/reducer";
 import { CompanySelector } from "../../containers/CompanyOrderTrend/selector";
