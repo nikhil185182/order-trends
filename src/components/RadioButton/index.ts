@@ -5,4 +5,7 @@ import { GREEN } from "../../shared/global_constants";
 export const RadioButton = styled(Radio)({
   color: GREEN,
   accentColor: GREEN,
+  ":active" : {
+    
+  }
 });

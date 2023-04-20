@@ -58,14 +58,14 @@ const Statistics = () => {
   const isLineChart: boolean = useAppSelector(selectOrderTrendChart);
   const currentDays: number = useAppSelector(selectOrderTrendDays);
 
-  const [graphData, SetGraphData] = useState<GraphType>(
+  const [graphData, setGraphData] = useState<GraphType>(
     setGraphObject(getSlicedDays(orderData, currentDays))
   );
 
   useEffect(() => {
     const data = getSlicedDays(orderData, currentDays);
     const tempGraphData = setGraphObject(data);
-    SetGraphData(tempGraphData);
+    setGraphData(tempGraphData);
   }, [currentDays, orderData]);
 
   const updateDays = (days: number) => dispatch(setOrderTrendDays(days));

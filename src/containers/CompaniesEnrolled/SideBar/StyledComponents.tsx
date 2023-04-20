@@ -1,5 +1,5 @@
 import { Drawer, Typography } from "@mui/material";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const CustomDrawer = styled(Drawer)({
   "& .MuiDrawer-paper": {

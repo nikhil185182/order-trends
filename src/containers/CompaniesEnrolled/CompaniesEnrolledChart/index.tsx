@@ -1,3 +1,4 @@
+import React from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { ActiveElement, ChartEvent, LineElement, PointElement } from "chart.js";
 import {
@@ -5,8 +6,7 @@ import {
   toggleLineOrBar,
   updatebarclickedDate,
   updateCompaniesList,
-} from "../CompaniesEnrolled/reducer";
-
+} from "../reducer";
 import {
   Chart,
   CategoryScale,
@@ -19,22 +19,18 @@ import {
 import {
   useAppDispatch,
   useAppSelector,
-} from "../../shared/utils/redux/hooks";
+} from "../../../shared/utils/redux/hooks";
 import {
   FormControl,
   FormControlLabel,
-  Radio,
   RadioGroup,
 } from "@mui/material";
-import { AppDispatch } from "../../shared/utils/redux/store";
-
-//import "../../shared/css/newUserDemo.css";
-import {
-  DateTypeCast,
-} from "../CompaniesEnrolled/utils";
-import React from "react";
+import { AppDispatch } from "../../../shared/utils/redux/store";
+import { DateTypeCast } from "../utils";
 import { StyledButtons, StyledChartHeading } from "./StyledComponents";
-import { CompaniesEnrolledDTO } from "../CompaniesEnrolled/models";
+import { CompaniesEnrolledDTO } from "../models";
+import { lineOptions, barOptions } from "./constants";
+import { RadioButton } from "../../../components/RadioButton";
 
 Chart.register(
   CategoryScale,
@@ -48,11 +44,13 @@ Chart.register(
 );
 
 export default function CompaniesEnrolledChart() {
-  const IsLine = useAppSelector((state) => state.EnrolledCompanies.isLineOrBar);
+  const IsLine = useAppSelector((state) => state.EnrolledCompanies.isLineChart);
   const fromDate = useAppSelector((state) => state.EnrolledCompanies.fromDate);
   const toDate = useAppSelector((state) => state.EnrolledCompanies.toDate);
-  let fromFinal = DateTypeCast(fromDate);
-  let toFinal = DateTypeCast(toDate);
+
+  let fromFinal = DateTypeCast(fromDate).toDateString();
+  let toFinal = DateTypeCast(toDate).toDateString();
+
   const dispatch: AppDispatch = useAppDispatch();
   const NewUsersDataFromStore: CompaniesEnrolledDTO[] = useAppSelector(
     (state) => state.EnrolledCompanies.newUsersdata
@@ -72,95 +70,11 @@ export default function CompaniesEnrolledChart() {
     }
   };
 
-  const LineOptions = {
-    responsive: true,
-    scales: {
-      x: {
-        grid: {
-          display: true,
-        },
-      },
-      y: {
-        ticks: {
-          stepSize: 1,
-        },
-        min: 0,
-        grid: {
-          display: true,
-        },
-      },
-    },
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: (context: any) => {
-            console.log(context);
-            return [
-              `New Enrollments: ${context.raw}`,
-              "Click on it to Get Companies Info",
-            ];
-          },
-        },
-      },
-      label: false,
-      legend: {
-        display: false,
-        position: "top" as const,
-      },
-      title: {
-        display: false,
-        text: "New Enrollments",
-        fontSize: 100,
-      },
-    },
-    onClick: Handleclickes,
-  };
-  const BarOptions = {
-    responsive: true,
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-      },
-      y: {
-        ticks: {
-          stepSize: 1,
-        },
-        grid: {
-          display: false,
-        },
-      },
-    },
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: (context: any) => {
-            return [
-              `New Enrollments: ${context.raw}`,
-              "Click on it to Get Enrolled Companies",
-            ];
-          },
-        },
-      },
-
-      label: false,
-      legend: {
-        display: false,
-        position: "top" as const,
-      },
-      title: {
-        display: false,
-        text: "New Enrollments",
-        fontSize: 100,
-      },
-    },
-    onClick: Handleclickes,
-  };
+  const LineOptions = { ...lineOptions, onClick: Handleclickes };
+  const BarOptions = { ...barOptions, onClick: Handleclickes };
 
   const Data = {
     labels: NewUsersDataFromStore.map((item) => item.companyCreatedTimeStamp),
-
     datasets: [
       {
         label: "New Registrations",
@@ -173,33 +87,26 @@ export default function CompaniesEnrolledChart() {
       },
     ],
   };
-  const BarChart_Click = () => {
-    dispatch(toggleLineOrBar(true));
-  };
-  const LineChart_Click = () => {
-    dispatch(toggleLineOrBar(false));
-  };
+
+  const handleChartToggle = (flag: boolean) => dispatch(toggleLineOrBar(flag));
 
   return (
     <React.Fragment>
       <StyledChartHeading>
-        Company Enrollments from {fromFinal.toDateString()} -
-        {toFinal.toDateString()}
+        Company Enrollments from {fromFinal} - {toFinal}
       </StyledChartHeading>
       {IsLine ? (
         <Bar data={Data} options={BarOptions} />
       ) : (
         <Line data={Data} options={LineOptions} />
       )}
-
       <StyledButtons>
         <FormControl>
           <RadioGroup row>
             <FormControlLabel
               control={
-                <Radio
-                  style={{ color: "#54B948" }}
-                  onClick={BarChart_Click}
+                <RadioButton
+                  onClick={() => handleChartToggle(true)}
                   checked={IsLine}
                 />
               }
@@ -207,9 +114,8 @@ export default function CompaniesEnrolledChart() {
             />
             <FormControlLabel
               control={
-                <Radio
-                  style={{ color: "#54B948" }}
-                  onClick={LineChart_Click}
+                <RadioButton
+                  onClick={() => handleChartToggle(false)}
                   checked={!IsLine}
                 />
               }

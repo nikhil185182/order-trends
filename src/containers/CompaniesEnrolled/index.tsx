@@ -4,20 +4,17 @@ import {
 } from "../../shared/utils/redux/hooks";
 import {
   StyledCompaniesEnrolled,
-  StyledDateSelector,
   StyledEnrolledCompaniesChart,
 } from "./styledComponents";
 import { AppDispatch } from "../../shared/utils/redux/store";
 import React from "react";
-import DateSelector from "../DateRangeSelection";
-import InformationDisplay from "../InformationDisplay";
-import CompaniesEnrolledChart from "../CompaniesEnrolledChart";
-import SideBar from "../SideBar";
+import CompaniesEnrolledChart from "./CompaniesEnrolledChart";
+import SideBar from "./SideBar";
 import { FetchCompaniesEnrolledData } from "./reducer";
+import DateInformation from "./DateInformation";
 
 export default function CompaniesEnrolled() {
   const dispatch: AppDispatch = useAppDispatch();
-  // dispatch(fetchFeature([false,false,true,false])); 
   dispatch(FetchCompaniesEnrolledData());
 
   const IsDrawerOpen = useAppSelector((state) => state.EnrolledCompanies.isDrawerOpen);
@@ -25,10 +22,7 @@ export default function CompaniesEnrolled() {
   return (
     <React.Fragment>
       <StyledCompaniesEnrolled>
-        <StyledDateSelector>
-          <DateSelector />
-          <InformationDisplay />
-        </StyledDateSelector>
+        <DateInformation/>
         <StyledEnrolledCompaniesChart IsDrawerOpen={IsDrawerOpen}>
           <CompaniesEnrolledChart />
         </StyledEnrolledCompaniesChart>

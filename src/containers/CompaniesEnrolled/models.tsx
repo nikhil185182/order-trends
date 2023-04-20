@@ -14,8 +14,8 @@ export type ReduxInitialState = {
     toDate: string;
     newUsersdata: CompaniesEnrolledDTO[];
     isDrawerOpen:boolean;
-    isLineOrBar:boolean;
-    tempcompanieslist:String[];
-    barclickedDate:String;
+    isLineChart:boolean;
+    tempCompaniesList:String[];
+    chartClickedDate:String;
     status:String;
   };

@@ -4,7 +4,7 @@ import {
   PayloadAction,
   Slice,
 } from "@reduxjs/toolkit";
-import { CompaniesEnrolledDTO, CompaniesEnrolledType,   } from "./models";
+import { CompaniesEnrolledDTO, CompaniesEnrolledType } from "./models";
 import { ReduxInitialState } from "./models";
 import { CompaniesEnrolledQuery } from "./queries";
 import { useAppSelector } from "../../shared/utils/redux/hooks";
@@ -19,44 +19,44 @@ const InitialState: ReduxInitialState = {
   toDate: todate.toLocaleDateString(),
   newUsersdata: [],
   isDrawerOpen: false,
-  isLineOrBar: true,
-  tempcompanieslist: [],
-  barclickedDate: '',
-  status: ''
+  isLineChart: true,
+  tempCompaniesList: [],
+  chartClickedDate: "",
+  status: "",
 };
 
-
-
-export const DataFromGraphql = ():CompaniesEnrolledDTO[] => {
-
+export const DataFromGraphql = (): CompaniesEnrolledDTO[] => {
   let CompaniesEnrolledquery = CompaniesEnrolledQuery;
- 
-  
-  const inputfromdate=useAppSelector(state=>state.EnrolledCompanies.fromDate)
- 
-  const inputtodate=useAppSelector(state=>state.EnrolledCompanies.toDate)
-  
-  const { loading, error, data } = useQuery<CompaniesEnrolledType>(CompaniesEnrolledquery ,
-      {
-          variables:{FromDate:new Date(inputfromdate),ToDate:new Date(inputtodate)}
-      })
-  if (data) {
-      return data.getCompaniesEnrolled;
 
+  const inputfromdate = useAppSelector(
+    (state) => state.EnrolledCompanies.fromDate
+  );
+
+  const inputtodate = useAppSelector((state) => state.EnrolledCompanies.toDate);
+
+  const { loading, error, data } = useQuery<CompaniesEnrolledType>(
+    CompaniesEnrolledquery,
+    {
+      variables: {
+        FromDate: new Date(inputfromdate),
+        ToDate: new Date(inputtodate),
+      },
+    }
+  );
+  if (data) {
+    return data.getCompaniesEnrolled;
   } else if (loading) {
-      return []
+    return [];
+  } else {
+    console.log(`Error ${error?.message}`);
+    return [];
   }
-  else {
-      console.log(`Error ${error?.message}`)
-      return []
-  }
-}
+};
 export const FetchCompaniesEnrolledData = createAsyncThunk(
   "CompaniesEnroleddata/fetch",
   async () => {
     try {
-      
-      const response: CompaniesEnrolledDTO[]  = DataFromGraphql();
+      const response: CompaniesEnrolledDTO[] = DataFromGraphql();
       return response;
     } catch (err) {
       console.log(err);
@@ -79,13 +79,13 @@ const CompaniesEnrolledSlice: Slice<ReduxInitialState> = createSlice({
       state.isDrawerOpen = action.payload;
     },
     toggleLineOrBar: (state, action: PayloadAction<boolean>) => {
-      state.isLineOrBar = action.payload;
+      state.isLineChart = action.payload;
     },
     updateCompaniesList: (state, action: PayloadAction<String[]>) => {
-      state.tempcompanieslist = action.payload;
+      state.tempCompaniesList = action.payload;
     },
     updatebarclickedDate: (state, action: PayloadAction<String>) => {
-      state.barclickedDate = action.payload;
+      state.chartClickedDate = action.payload;
     },
   },
   extraReducers: (builder) => {

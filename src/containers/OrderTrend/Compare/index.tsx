@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { ORDERTREND_BAR_GRAPH_OPTIONS } from "../../../shared/config";
 import { DUPLICATE_DATA, DATA_NOT_FOUND, SELECT_DATES } from "./messages";
 import { addOrderDateList, deleteOrderDateList } from "../reducer";
