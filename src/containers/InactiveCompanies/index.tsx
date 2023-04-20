@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import DateandDaysSelector from '../InactiveDateSelector';
-import InactiveTable from './InactiveTable';
-import { Datepicker_component, InactiveUsertable_container, Total_component } from './styledComponents';
-import InactiveGraph from './InactiveGraph';
+import { Switchbox, Totalcomponent,  } from './styledComponents';
+import InactiveGraph from './MonthlyData';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useAppDispatch } from '../../shared/utils/redux/hooks';
+import ConsolidatedData from './ConsolidatedData';
 
 const InactiveUsers = () => {
 
@@ -19,25 +18,17 @@ const InactiveUsers = () => {
   };
 
   return (
-    <Total_component style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Totalcomponent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Switchbox>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={activeTab} onChange={handleTabSelect} aria-label="basic tabs example">
+        <Tabs value={activeTab} onChange={handleTabSelect}>
           <Tab label="MONTHLY DATA" />
           <Tab label="CONSOLIDATED DATA" />
         </Tabs>
       </Box>
-      {activeTab === 1 && (
-        <>
-          <Datepicker_component>
-            <DateandDaysSelector />
-          </Datepicker_component>
-          <InactiveUsertable_container>
-            <InactiveTable />
-          </InactiveUsertable_container>
-        </>
-      )}
-      {activeTab === 0 && <InactiveGraph />}
-    </Total_component>
+      </Switchbox>
+      {activeTab ? <ConsolidatedData/> : <InactiveGraph/>}
+    </Totalcomponent>
   );
 };
 
