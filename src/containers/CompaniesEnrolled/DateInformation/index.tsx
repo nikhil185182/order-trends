@@ -10,7 +10,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 import { useState } from "react";
 import { newUser_datepickers_Title } from "../../../shared/global_constants";
-import { settingfromdate, settingtodate } from "../reducer";
+import {
+  fetchCompaniesEnrolledData,
+  settingfromdate,
+  settingtodate,
+} from "../reducer";
 import {
   useAppDispatch,
   useAppSelector,
@@ -43,14 +47,15 @@ import {
 } from "./StyledComponents";
 import { StyledDateSelector } from "../styledComponents";
 import { getFromDate, getToDate, getCompanyInfo } from "./selector";
+import { useQuery } from "@apollo/client";
+import { CompaniesEnrolledDTO, CompaniesEnrolledType } from "../models";
+import { CompaniesEnrolledQuery } from "../queries";
 
 export default function DateInformation() {
   const dispatch: AppDispatch = useAppDispatch();
 
-  const currentDate = new Date();
-
-  const [fromDate, setFromDate] = useState<Date>(getPastDate(currentDate, 75));
-  const [toDate, setToDate] = useState<Date>(currentDate);
+  const [fromDate, setFromDate] = useState<Date>(getPastDate(new Date(), 75));
+  const [toDate, setToDate] = useState<Date>(new Date());
 
   const displayPopUp = (message: string) => {
     dispatch(setConsoleMessage(message));
@@ -73,9 +78,21 @@ export default function DateInformation() {
     }
   };
 
+  const { loading, error, data } = useQuery<CompaniesEnrolledType>(
+    CompaniesEnrolledQuery,
+    {
+      variables: {
+        FromDate: fromDate,
+        ToDate: toDate,
+      },
+    }
+  );
+
   const SubmitClick = () => {
     dispatch(settingfromdate(fromDate.toLocaleDateString()!));
     dispatch(settingtodate(toDate.toLocaleDateString()!));
+    const res: CompaniesEnrolledDTO[] = data?.getCompaniesEnrolled!;
+    dispatch(fetchCompaniesEnrolledData(res));
   };
 
   const fromDateFromRedux = useAppSelector(getFromDate);
@@ -95,6 +112,7 @@ export default function DateInformation() {
           <StyledDatePicker>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
+                inputFormat="DD/MM/YYYY"
                 label="From"
                 views={["year", "month", "day"]}
                 value={dayjs(fromDate)}
@@ -108,6 +126,7 @@ export default function DateInformation() {
           <StyledDatePicker>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
+                inputFormat="DD/MM/YYYY"
                 label="To"
                 views={["year", "month", "day"]}
                 value={dayjs(toDate)}

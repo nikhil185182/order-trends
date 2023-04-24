@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyles } from "./containers/InactiveCompanies/styledComponents";
-import { useAppDispatch, useAppSelector } from "./shared/utils/redux/hooks";
+import { useAppDispatch } from "./shared/utils/redux/hooks";
 import InactiveUsers from "./containers/InactiveCompanies";
 import OrderTrend from "./containers/OrderTrend";
 import CompaniesEnrolled from "./containers/CompaniesEnrolled";
@@ -12,11 +12,9 @@ import {
 } from "./containers/InactiveCompanies/reducer";
 import { RoutesPath } from "./shared/config";
 import {
-  addOrderDateList,
   fetchOrderTrenData,
 } from "./containers/OrderTrend/reducer";
 import GlobalSnackBar from "./components/SnackBar";
-import { selectOrderTrendData } from "./containers/OrderTrend/Statistics/selector";
 
 function App() {
   const dispatch = useAppDispatch();

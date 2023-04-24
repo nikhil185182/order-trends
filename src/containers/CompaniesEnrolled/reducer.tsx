@@ -1,14 +1,6 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  PayloadAction,
-  Slice,
-} from "@reduxjs/toolkit";
-import { CompaniesEnrolledDTO, CompaniesEnrolledType } from "./models";
+import { createSlice, PayloadAction, Slice } from "@reduxjs/toolkit";
+import { CompaniesEnrolledDTO } from "./models";
 import { ReduxInitialState } from "./models";
-import { CompaniesEnrolledQuery } from "./queries";
-import { useAppSelector } from "../../shared/utils/redux/hooks";
-import { useQuery } from "@apollo/client";
 
 const fromdate: Date = new Date();
 fromdate.setDate(fromdate.getDate() - 75);
@@ -24,46 +16,6 @@ const InitialState: ReduxInitialState = {
   chartClickedDate: "",
   status: "",
 };
-
-export const DataFromGraphql = (): CompaniesEnrolledDTO[] => {
-  let CompaniesEnrolledquery = CompaniesEnrolledQuery;
-
-  const inputfromdate = useAppSelector(
-    (state) => state.EnrolledCompanies.fromDate
-  );
-
-  const inputtodate = useAppSelector((state) => state.EnrolledCompanies.toDate);
-
-  const { loading, error, data } = useQuery<CompaniesEnrolledType>(
-    CompaniesEnrolledquery,
-    {
-      variables: {
-        FromDate: new Date(inputfromdate),
-        ToDate: new Date(inputtodate),
-      },
-    }
-  );
-  if (data) {
-    return data.getCompaniesEnrolled;
-  } else if (loading) {
-    return [];
-  } else {
-    console.log(`Error ${error?.message}`);
-    return [];
-  }
-};
-export const FetchCompaniesEnrolledData = createAsyncThunk(
-  "CompaniesEnroleddata/fetch",
-  async () => {
-    try {
-      const response: CompaniesEnrolledDTO[] = DataFromGraphql();
-      return response;
-    } catch (err) {
-      console.log(err);
-      return [];
-    }
-  }
-);
 
 const CompaniesEnrolledSlice: Slice<ReduxInitialState> = createSlice({
   name: "CompaniesEnrolled",
@@ -87,22 +39,12 @@ const CompaniesEnrolledSlice: Slice<ReduxInitialState> = createSlice({
     updatebarclickedDate: (state, action: PayloadAction<String>) => {
       state.chartClickedDate = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(FetchCompaniesEnrolledData.pending, (state) => {
-        state.status = "pending";
-      })
-      .addCase(
-        FetchCompaniesEnrolledData.fulfilled,
-        (state, action: PayloadAction<CompaniesEnrolledDTO[]>) => {
-          state.newUsersdata = action.payload;
-          state.status = "fullfiled";
-        }
-      )
-      .addCase(FetchCompaniesEnrolledData.rejected, (state) => {
-        state.status = "Rejected";
-      });
+    fetchCompaniesEnrolledData: (
+      state,
+      action: PayloadAction<CompaniesEnrolledDTO[]>
+    ) => {
+      state.newUsersdata = action.payload;
+    },
   },
 });
 export default CompaniesEnrolledSlice.reducer;
@@ -113,4 +55,5 @@ export const {
   toggleLineOrBar,
   updateCompaniesList,
   updatebarclickedDate,
+  fetchCompaniesEnrolledData,
 } = CompaniesEnrolledSlice.actions;
