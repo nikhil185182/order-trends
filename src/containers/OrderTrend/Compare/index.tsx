@@ -73,6 +73,7 @@ const Compare = () => {
       <StyledComparePicker>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
+            inputFormat="DD/MM/YYYY"
             label={SELECT_DATES}
             value={value}
             maxDate={getMaxDate(orderData)}

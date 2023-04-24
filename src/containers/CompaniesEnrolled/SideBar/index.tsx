@@ -47,8 +47,8 @@ export default function SideBar() {
           </StyledEnrollments>
         </StyledDisplay>
         <List>
-          {ListOfCompanies?.map((text: any) => (
-            <ListItem style={{ padding: "2%" }}>
+          {ListOfCompanies?.map((text: any,index) => (
+            <ListItem style={{ padding: "2%" }} key={index}>
               <ListItemText
                 primaryTypographyProps={{
                   paddingLeft: 1,
