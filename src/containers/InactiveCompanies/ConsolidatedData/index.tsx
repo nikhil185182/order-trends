@@ -14,8 +14,7 @@ import NewTable from '../../../components/Table'
 
 
 export default function ConsolidatedData() {
-    const [Val, SetVal] = useState("");
-    const value = dayjs().subtract(30, "day");
+    const [Val, SetVal] = useState(dayjs().subtract(30, "day").toString());
     const data = useAppSelector((state)=>state.InactiveUsers.inactiveUsers);
 
     const dispatch = useAppDispatch();
@@ -38,7 +37,7 @@ export default function ConsolidatedData() {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <Datepicker>
                             <DatePicker onYearChange={undefined}
-                                value={value}
+                                value={Val}
                                 label="Select a Date"
                                 onChange={handleOnChange}
                                 views={['year', 'month', 'day']}

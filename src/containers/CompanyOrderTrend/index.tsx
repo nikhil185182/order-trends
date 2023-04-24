@@ -1,8 +1,4 @@
-import CompanyButtonContainer from "../CompanyButton";
-import TotalOrdersVsDateGraph from "../CompanyChart";
-import CompanyDatePicker from "../CompanyDatePIcker";
-import CompanyRadioButtonContainer from "../CompanyRadioButtonContainer";
-import ReactSearchBar from "../CompanySearchBar";
+import CompanyDatePicker from "./CompanyInput";
 import {
   ChartComponent,
   DatepickerComponent,
@@ -13,30 +9,17 @@ import {
   SubcontainerTwo,
 } from "./styledComponents";
 import { Helperutil } from "./API";
-import CompanyAutocomplete from "../../components/CompanyLevel/CompanySearchBar";
-import CompanySearchBar from "../CompanySearchBar";
-import AutocompleteSearch from "../../components/CompanyLevel/mysb";
+import CompanyChartComponent from "./CompanyChart";
 
 const CompanyTrend = () => {
   Helperutil();
   return (
     <MainContainer>
       <SubContainerOne>
-        <SearchBarComponent>
-          <ReactSearchBar />
-        </SearchBarComponent>
-        <DatepickerComponent>
-          <CompanyDatePicker />
-        </DatepickerComponent>
-        <CompanyButtonContainer />
+        <CompanyDatePicker />
       </SubContainerOne>
       <SubcontainerTwo>
-        <ChartComponent>
-          <TotalOrdersVsDateGraph />
-        </ChartComponent>
-        <RadioButtonComponent>
-          <CompanyRadioButtonContainer />
-        </RadioButtonComponent>
+        <CompanyChartComponent/>
       </SubcontainerTwo>
     </MainContainer>
   );

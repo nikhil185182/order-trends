@@ -26,7 +26,7 @@ export const SubContainerOne = styled.div`
     width:25%
     margin: 0.5%;
     padding: 1%;
-    height: 650px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,7 @@ export const SearchBarComponent  = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 400px!important;
+    height: 250px!important;
     width: 93%;
     // padding: 20px;
     margin-bottom: 10px;
@@ -98,7 +98,7 @@ export const SearchBarComponent  = styled.div`
   export const DatepickerComponent = styled.div`
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 300px;
     width: 93%;
     align-items: center;
     padding: 25px;
