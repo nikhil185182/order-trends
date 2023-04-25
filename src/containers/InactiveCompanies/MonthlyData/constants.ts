@@ -4,9 +4,6 @@ export const baroptions = {
     hoverRadius: 8,
     scales: {
       x: {
-        grid: {
-          display: true,
-        },
         title: {
           display: true,
           text: "Months",
@@ -17,9 +14,6 @@ export const baroptions = {
         },
       },
       y: {
-        grid: {
-          display: false,
-        },
         title: {
           display: true,
           text: "Number of Inactive Companies",
