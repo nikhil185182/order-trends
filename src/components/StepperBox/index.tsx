@@ -1,7 +1,8 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 import { Box, Paper, Typography, MobileStepper, Button, useTheme } from '@mui/material'
 import React from 'react'
-import { Direction } from '../../containers/InactiveCompanies/styledComponents'
+import { Direction } from '../../containers/InactiveCompanies/ConsolidatedData/StyledComponents';
+
 
 
 export default function StepperBox(props:any) {

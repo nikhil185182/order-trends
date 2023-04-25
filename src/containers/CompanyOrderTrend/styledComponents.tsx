@@ -4,7 +4,7 @@ export const MainContainer = styled.div`
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    margin-top: 5%;
+    margin-top: 4.2%;
     @media (max-width:820px){
         width:100%!important;
         flex-direction:column;
@@ -68,12 +68,11 @@ export const SearchBarComponent  = styled.div`
     align-items: center;
     height: 250px!important;
     width: 93%;
-    // padding: 20px;
+    padding: 20px;
     margin-bottom: 10px;
     box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
     border-radius: 10px;
     overflow-y: scroll;
-    border : 2px solid black;
     overflow-x: hidden;
     @media (max-width:820px){
         width:45%;

@@ -43,8 +43,6 @@ import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material"
   ];
   
   const CompanyChartComponent = () => {
-  
-  
     const data: companyLevel[] = useAppSelector(ReqCompanies) || data1;
     const y_label: string = useAppSelector((state) => state.company.label);
     const dispatch = useAppDispatch()
@@ -73,6 +71,10 @@ import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material"
           title: {
             display: true,
             text: "Order Dates",
+            font : {
+              size : 15,
+            },
+            color : 'black'
           },
         },
         y: {
@@ -83,6 +85,10 @@ import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material"
           title: {
             display: true,
             text: y_label,
+            font : {
+              size : 15,
+            },
+            color : 'black'
           },
         },
       },

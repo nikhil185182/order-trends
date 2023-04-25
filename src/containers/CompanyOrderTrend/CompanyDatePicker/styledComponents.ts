@@ -6,20 +6,16 @@ export const SearchBoxContainer = styled.div`
 `;
 
 
-
 // Input component
 export const Input = styled.input`
-  border: 1px solid gray;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
-  box-sizing: border-box;
 `;
 
 // ResultsBox component
 export const ResultsBox = styled.div`
   background-color: white;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   width: 100%;
   position: absolute;
@@ -36,4 +32,9 @@ export const Result = styled.div`
     background-color: #f6f6f6;
   }
 `;
+
+export const CompanySubmit = styled.div`
+margin-left:50px;
+margin-top:10px;
+`
 

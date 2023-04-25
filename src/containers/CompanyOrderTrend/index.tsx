@@ -1,4 +1,4 @@
-import CompanyDatePicker from "./CompanyInput";
+import CompanyDatePicker from "./CompanyDatePicker";
 import {
   ChartComponent,
   DatepickerComponent,

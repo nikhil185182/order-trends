@@ -1,19 +1,6 @@
 import styled from "styled-components";
-import React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-
-
-
-// export const Wrapper = styled.div`
-//   width: 1400px;
-//   margin: 0 auto;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   margin-left:60px;
-// `;
 
 export const StyledDropdown = styled(Select)`
   width: 100px;
@@ -29,7 +16,7 @@ export const StyledMenuItem = styled(MenuItem)`
 `;
 
 export const ChartContainer = styled.div`
-  height: 500px;
+  height: 450px;
   width: 100%;
   margin-top: 40px;
   display: flex;

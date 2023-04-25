@@ -51,12 +51,14 @@ export default function CompaniesEnrolledChart() {
   let fromFinal = DateTypeCast(fromDate).toDateString();
   let toFinal = DateTypeCast(toDate).toDateString();
 
+  
+
   const dispatch: AppDispatch = useAppDispatch();
   const NewUsersDataFromStore: CompaniesEnrolledDTO[] = useAppSelector(
     (state) => state.EnrolledCompanies.newUsersdata
   );
 
-  const Handleclickes = (event: ChartEvent, chartelement: ActiveElement[]) => {
+  const Handleclick = (event: ChartEvent, chartelement: ActiveElement[]) => {
     if (chartelement.length >= 1) {
       const tempdate = NewUsersDataFromStore.map(
         (item) => item.companyCreatedTimeStamp
@@ -70,8 +72,8 @@ export default function CompaniesEnrolledChart() {
     }
   };
 
-  const LineOptions = { ...lineOptions, onClick: Handleclickes };
-  const BarOptions = { ...barOptions, onClick: Handleclickes };
+  const LineOptions = { ...lineOptions, onClick: Handleclick };
+  const BarOptions = { ...barOptions, onClick: Handleclick };
 
   const Data = {
     labels: NewUsersDataFromStore.map((item) => item.companyCreatedTimeStamp),

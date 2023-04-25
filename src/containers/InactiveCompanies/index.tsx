@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Switchbox, Totalcomponent,  } from './styledComponents';
 import InactiveGraph from './MonthlyData';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useAppDispatch } from '../../shared/utils/redux/hooks';
 import ConsolidatedData from './ConsolidatedData';
+import { Switchbox } from './ConsolidatedData/StyledComponents';
+import { Totalcomponent } from './styledComponents';
 
 const InactiveUsers = () => {
-
-  const dispatch = useAppDispatch();
 
   const [activeTab, setActiveTab] = useState(0);
 

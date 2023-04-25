@@ -16,8 +16,8 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import * as XLSX from 'xlsx';
 import { getInactiveUsersData } from "../../containers/InactiveCompanies/models";
 import { tableSelector } from "../../containers/InactiveCompanies/selector";
-import {  Inactivetable, Rows, Searchbar } from "../../containers/InactiveCompanies/styledComponents";
 import { useAppSelector } from "../../shared/utils/redux/hooks";
+import { Inactivetable, Rows, Searchbar } from "../../containers/InactiveCompanies/ConsolidatedData/StyledComponents";
 
 
 export default function InactiveTable() {
@@ -29,7 +29,7 @@ export default function InactiveTable() {
   useEffect(() => {
     setRows(Ddata);
   }, [Ddata]);
-  console.log(Ddata);
+ 
 
 
   const exportToExcel = () => {
@@ -63,7 +63,6 @@ export default function InactiveTable() {
 
   return (
     <>
-      <Inactivetable>
         <TableContainer sx={{ maxHeight: 500 }}>
           <Rows>
             <Table aria-label="simple table">
@@ -148,7 +147,6 @@ export default function InactiveTable() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Inactivetable>
     </>
   )
 }

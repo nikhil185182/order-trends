@@ -17,6 +17,8 @@ import ReactSearchBox from "react-search-box";
 import { useQuery } from "@apollo/client";
 import { GETSPECIFICCOMPANIESDATA_QUERY } from "../queries";
 import { ContainedButton } from "../../../components/ConatinedButton";
+import { CompanySubmit } from "./styledComponents";
+
 
 
 const CompanyDatePicker = () => {
@@ -29,7 +31,7 @@ const CompanyDatePicker = () => {
   const dateArray: string[] = useAppSelector(DateStringSelector);
   const [companyString, setcs] = useState("")
   const [dateString, setds] = useState("")
-  const { data, loading, error } = useQuery<fres>(
+  const { data } = useQuery<fres>(
     GETSPECIFICCOMPANIESDATA_QUERY,
     {
       variables: {
@@ -74,12 +76,12 @@ const CompanyDatePicker = () => {
 
   const filteredData = searchText
     ? cData.filter((item) => item.CompanyName.toLowerCase().startsWith(searchText))
-      .slice(0, 10)
+      .slice(0, 50)
       .map((item) => ({
         key: item.CompanyName,
         value: item.CompanyName
       }))
-    : cData.slice(0, 10).map((item) => ({
+    : cData.slice(0, 50).map((item) => ({
       key: item.CompanyName,
       value: item.CompanyName
     }));
@@ -99,27 +101,25 @@ const CompanyDatePicker = () => {
   }, [dateList, dispatch]);
   return (
     <div>
-      <SearchBarComponent>
-        <ReactSearchBox
-          placeholder="Select Companies"
-          autoFocus={true}
-          data={data1}
-          clearOnSelect
-          onSelect={(Record: any) => {
-            if (companyList.indexOf(Record.item.value) === -1)
-              setCompanyList([...companyList, Record.item.value]);
-            else alert("you've already selected it");
-          }}
-          onFocus={() => true}
-          leftIcon={<Search />}
-          iconBoxSize="35px"
-          inputHeight="45px"
-          dropdownHoverColor="rgba(62, 60, 60, 0.2)"
-          onChange={(value) => setSearchText(value)}
-        />
-      </SearchBarComponent>
-      <DatepickerComponent>
-        <DateListBox>
+        <SearchBarComponent>
+          <ReactSearchBox
+            placeholder="Select Companies"
+            autoFocus={true}
+            data={data1}
+            clearOnSelect
+            onSelect={(Record: any) => {
+              if (companyList.indexOf(Record.item.value) === -1)
+                setCompanyList([...companyList, Record.item.value]);
+              else alert("you've already selected it");
+            }}
+            onFocus={() => true}
+            leftIcon={<Search />}
+            iconBoxSize="30px"
+            inputHeight="45px"
+            dropdownHoverColor="rgba(62, 60, 60, 0.2)"
+            onChange={(value) => setSearchText(value)}
+          />
+          <DateListBox>
           {companyList.map((e, index) => {
             return (
               <DateChip
@@ -142,6 +142,8 @@ const CompanyDatePicker = () => {
             );
           })}
         </DateListBox>
+        </SearchBarComponent>
+      <DatepickerComponent>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
             className="sha"
@@ -197,9 +199,11 @@ const CompanyDatePicker = () => {
           })}
         </DateListBox>
       </DatepickerComponent>
+      <CompanySubmit>
       <ContainedButton onClick={handleClick} >
         SUBMIT
       </ContainedButton>
+      </CompanySubmit>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 export const steps = [
     {
         label: "Select required date on the Date Picker",
-        description: `Select Required date in the date picker and click the
-          submit button below it.`,
+        description: `Select the Required date from the date picker
+         and then click the Submit button.`,
     },
     {
         label: "View the List of Inactive Users on Table",
-        description: `The Table displays the number of 
-          inactive users since the last 60 days from the selected date.`,
+        description: `The table shows list of inactive users 
+        in the last 60 days from the selected date.`,
     },
 ];
