@@ -67,7 +67,7 @@ export const SearchBarComponent  = styled.div`
     flex-direction: column;
     align-items: center;
     height: 250px!important;
-    width: 93%;
+    width: 225px;
     padding: 20px;
     margin-bottom: 10px;
     box-shadow: rgba(62, 60, 60, 0.2) 0px 4px 10px 0px;
